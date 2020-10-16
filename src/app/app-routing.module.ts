@@ -19,7 +19,8 @@ import { EmpresasEditComponent } from './empresas/empresas-edit/empresas-edit.co
 
 import { EmpresasverComponent } from './empresas/empresas-ver/empresas-ver.component';
 import { PerfilComponent } from './perfil/perfil.component';
-
+import { AlumnosverComponent } from './alumnos-ver/alumnos-ver.component';
+import { AlumnosevaluarComponent } from './alumnos-evaluar/alumnos-evaluar.component';
 EmpresasverComponent
 const routes: Routes = [
 { path: '',
@@ -36,6 +37,8 @@ const routes: Routes = [
   { path: 'proyectos/alumnos/:id', component: ProyectosAlumnosAddComponent },
   { path:'convocatorias',component:ConvocatoriasComponent},
   { path:'perfil',component:PerfilComponent},
+  { path:'alumnosver/:id',component:AlumnosverComponent},
+  { path:'alumnosevaluar/:id',component:AlumnosevaluarComponent},
 
   {path:'empresas',component:EmpresashomeComponent},
   {path:'empresas/add',component:EmpresasAddComponent},

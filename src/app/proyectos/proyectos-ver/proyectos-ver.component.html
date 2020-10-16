@@ -385,7 +385,7 @@
                       Alumnos
                     </h2>
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0" *ngIf="alumnos?.length < proyectoModel.noVacantes">
-                      <button [routerLink]="['/proyectos/alumnos/',proyectoModel.id]" class="button text-white bg-theme-1 shadow-md mr-2">Asignar alumno</button>
+                      <!-- <button [routerLink]="['/proyectos/alumnos/',proyectoModel.id]" class="button text-white bg-theme-1 shadow-md mr-2">Asignar alumno</button> -->
                     </div>
                   </div>
 
@@ -408,7 +408,9 @@
 
         <tr *ngFor="let alumno of alumnos">
           <td class="border-b">
-            <div class="font-medium flex sm:justify-center items-center">{{alumno.alumno}}</div>
+            <a [routerLink]="['/alumnosver', alumno.id]">  
+            <div class="font-medium flex sm:justify-center items-center" > {{alumno.alumno}}</div>
+            </a>
           </td>
           <td class="border-b">
             <div class="font-medium flex sm:justify-center items-center">{{alumno.matricula}}</div>
@@ -451,7 +453,7 @@
               <div class="report-box ">
                 <div class="box p-5">
 
-                  <div class="intro-y flex items-center h-10">
+                  <!-- <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">
                       Estado del proyecto
                     </h2>
@@ -484,7 +486,7 @@
                     </div>
 
 
-                  </div>
+                  </div> -->
                   
                   <!-- BEGIN: Datatable -->
                   <div class="intro-y flex items-center h-10">

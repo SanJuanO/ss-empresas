@@ -98,6 +98,7 @@ export class ProyectoService {
     return this.http.get(uri);
   }
   createProyectosActividades(model) {
+  
     const uri = `${this.api}/ProyectosActividades`
     return this.http.post(uri, model);
   }

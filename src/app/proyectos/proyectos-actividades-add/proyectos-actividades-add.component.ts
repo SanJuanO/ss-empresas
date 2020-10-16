@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Feather from 'feather-icons';
 import { ProyectoService } from '../../services/proyecto.service';
-import { Proyecto, PerfilesActividadesModel, ProyectosActividadesModel } from "../../models/proyectos";
+import { Proyectoactividad, PerfilesActividadesModel, ProyectosActividadesModel } from "../../models/proyectos";
 import { Router, ActivatedRoute } from '@angular/router';
 declare var $: any;
 
@@ -13,7 +13,7 @@ declare var $: any;
 export class ProyectosActividadesAddComponent implements OnInit {
 
   public proyectoActividadesModel = new ProyectosActividadesModel();
-  public proyectoModel = new Proyecto();
+  public proyectoModel = new Proyectoactividad();
   public perfiles: PerfilesActividadesModel[] = [];
   public validar = false;
   public idobtenido: number;
@@ -27,6 +27,7 @@ export class ProyectosActividadesAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
+    console.log(this.idobtenido);
     this.obtenerPerfilesActividades();
   }
   ngAfterViewInit() {
@@ -40,9 +41,9 @@ export class ProyectosActividadesAddComponent implements OnInit {
   }
   create() {
 
-    let model = this.proyectoModel;
+    let model = this.proyectoActividadesModel;
 
-    
+    model.idProyecto=Number(this.idobtenido);
     model.activo = true;
     console.log(model)
     
@@ -51,6 +52,8 @@ export class ProyectosActividadesAddComponent implements OnInit {
       //console.log(res.message);
       if (res) {
         this.validar = true;
+        this.router.navigate(['/proyectos/ver/' + this.idobtenido]).then(() => { window.location.reload(); });
+
       }
 
     }, error => {

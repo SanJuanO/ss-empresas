@@ -25,6 +25,8 @@ import { EmpresasAddComponent } from './empresas/empresas-add/empresas-add.compo
 import { EmpresasEditComponent } from './empresas/empresas-edit/empresas-edit.component';
 import { EmpresasverComponent } from './empresas/empresas-ver/empresas-ver.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AlumnosverComponent } from './alumnos-ver/alumnos-ver.component';
+import { AlumnosevaluarComponent } from './alumnos-evaluar/alumnos-evaluar.component';
 
 
 import { CookieService } from 'ngx-cookie-service';
@@ -36,6 +38,7 @@ import { CookieService } from 'ngx-cookie-service';
     AppComponent,
     LoginComponent,
     MenuComponent,
+    AlumnosevaluarComponent,
     PerfilComponent,
     ProyectosComponent,
     ProyectosAddComponent,
@@ -49,6 +52,7 @@ import { CookieService } from 'ngx-cookie-service';
     EmpresasAddComponent,
     EmpresasEditComponent,
     EmpresasverComponent,
+    AlumnosverComponent
   ],
   imports: [
     BrowserModule,
