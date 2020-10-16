@@ -6,7 +6,7 @@ import { SessionService } from '../services/session.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-login',
+  selector: '',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -20,9 +20,10 @@ public mensaje="";
   }
 
   onSubmit(data) {
+let user= $('#usuario').val()
+let pass=$('#usuario').val()
 
-    
-    this.loginservice.login(data.value).subscribe((res: any)=>{
+    this.loginservice.login(user,pass).subscribe((res: any)=>{
 if(res['resultado']==1){
   var datosvalue=res['datos'];
   this.session.setToken(datosvalue['idOrganizacion']);

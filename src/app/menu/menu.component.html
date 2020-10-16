@@ -93,12 +93,13 @@
                 <div class="top-menu__title"> Dashboard </div>
             </a>
         </li>
-        <!-- <li>
-            <a routerLink="/alumnos" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="box"></i> </div>
-                <div class="top-menu__title"> Estudiantes <i data-feather="chevron-down" class="top-menu__sub-icon"></i> </div>
+        <li>
+            <a [routerLink]="['/empresas/ver',id]" routerLinkActive="top-menu top-menu--active" class="top-menu">
+                <div class="top-menu__icon"> <i data-feather="user"></i> </div>
+                <div class="top-menu__title"> Perfil <i data-feather="chevron-down" class="top-menu__sub-icon"></i> </div>
             </a>
         </li>
+        <!--
         <li>
             <a routerLink="/empresas" routerLinkActive="top-menu top-menu--active" class="top-menu">
                 <div class="top-menu__icon"> <i data-feather="activity"></i> </div>
