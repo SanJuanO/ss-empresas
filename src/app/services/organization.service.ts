@@ -93,4 +93,11 @@ console.log(estado);
 
     return this.http.put(`${this.api}/Organizaciones/actualizaEstado?idOrganizacion=${estado.idOrganizacion}&idEstado=${estado.idEstado}&observaciones=${estado.observaciones}`, estado);
   }
+
+respuestapreguntas(model){
+    const uri = `${this.api}/RespuestasEvaluacionAlumno/addRespuestas`;
+         console.log(uri);
+    return this.http.post(uri,model);
+  }
+
 }

@@ -33,6 +33,7 @@ export class AlumnosverComponent implements OnInit {
   public documentoscadena = new DocumentosAlumno();
   public documentosfile = new Documentosfile()
 
+  public respuestas: string=""  ;
 
   public idAlumno: string;
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0);
@@ -51,6 +52,7 @@ export class AlumnosverComponent implements OnInit {
     this.obtenerFacultades();
     this.obtenerproyectoalumno();
     this.obtenerdocumentosRequeridos();
+    this.obtenerrespuesta();
     console.log(this.alumno);
   }
 
@@ -82,7 +84,14 @@ export class AlumnosverComponent implements OnInit {
       .subscribe((facultades: Facultad[]) => this.facultades = facultades);
 
   }
+  obtenerrespuesta() {
 
+ 
+    this.alumnoService.getrespuesta(this.idAlumno).subscribe((res: any) => {
+      console.log(res[0]['fechaCreacion']);
+this.respuestas=res[0]['fechaCreacion'];
+    });
+  }
   obtenerdocumentosRequeridos() {
     return this.alumnoService
       .getdocumentosRequeridos()

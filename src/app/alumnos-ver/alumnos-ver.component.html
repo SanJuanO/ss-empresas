@@ -340,7 +340,7 @@
             </div>
             <br>
             <br>
-
+<!-- 
             <div class="intro-y flex items-center h-10">
               <h2 class="text-lg font-medium truncate mr-5">
                 Horario de asistencia
@@ -1013,7 +1013,7 @@
 <option value="00" selected="selected">00</option>
 <option value="01">01</option>
 <option value="02">02</option>
-<option value="03">03</option>
+<option value="03">03</option>|
 <option value="04">04</option>
 <option value="05">05</option>
 <option value="06">06</option>
@@ -1806,7 +1806,7 @@
 
               <br>
             <br>
-
+ -->
 
             <div class="intro-y flex items-center h-10">
               <h2 class="text-lg font-medium truncate mr-5">
@@ -1881,7 +1881,7 @@
   
               <div class="intro-y flex items-center h-10">
                 <h2 class="text-lg font-medium truncate mr-5">
-                  Reportes mensuales
+                  Reportes 
                 </h2>
               </div>
   
@@ -1921,7 +1921,7 @@
                 <br>
                 <br>
     
-    
+<!--     
                 <div class="intro-y flex items-center h-10">
                   <h2 class="text-lg font-medium truncate mr-5">
                     Reportes global
@@ -1961,11 +1961,10 @@
 
                     </div>
 
-                  </div>
+                  </div> -->
 
 
-                  <br>
-                  <br>
+         
       
       
                   <div class="intro-y flex items-center h-10">
@@ -1978,7 +1977,7 @@
                   <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
                     <div class="box p-5">
       
-                      <table class="table table-report sm:mt-2">
+                      <table class="table table-report sm:mt-2" *ngIf="respuestas!=''" >
                         <thead>
                           <tr>
       
@@ -1992,16 +1991,16 @@
   
                         </thead>
                         <tbody>
-                          <tr class="intro-x">
+                          <tr class="intro-x" >
       
                             <td>
-                              <div class="ext-base text-xs whitespace-no-wrap">  </div>
+                              <div class="ext-base text-xs whitespace-no-wrap">Entregado</div>
                             </td>
                             <td>
-                              <div class="ext-base text-xs whitespace-no-wrap">  </div>
+                              <div class="ext-base text-xs whitespace-no-wrap"> {{respuestas}} </div>
                             </td>
                             <td>
-                              <div class="ext-base text-xs whitespace-no-wrap"> No </div>
+                              <div class="ext-base text-xs whitespace-no-wrap"> SI </div>
                             </td>
                              
                           
@@ -2011,7 +2010,7 @@
       
                         </tbody>
                       </table>
-                      <button [routerLink]="['/alumnosevaluar', alumno.id]" class="button text-white bg-theme-1 shadow-md mr-2">Evaluar alumno</button>
+                      <button [routerLink]="['/alumnosevaluar', alumno.id]" class="button text-center text-white bg-theme-1 shadow-md mr-2"  *ngIf="respuestas==''" >Evaluar alumno</button>
   
                       </div>
   

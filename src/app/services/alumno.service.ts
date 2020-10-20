@@ -67,6 +67,8 @@ export class AlumnoService {
     const uri = `${this.baseUrl}/DocumentosAlumnos/saveDocuments`
     return this.http.post(uri, model);
   }
-
-
+  
+  getrespuesta(id: string | number) {
+    return this.http.get(`${this.baseUrl}/RespuestasEvaluacionAlumno/getByIdAlumno?IdAlumno=${id}`);
+  }
 }

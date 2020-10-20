@@ -38,6 +38,15 @@ export class AlumnoProyecto {
     ) { }
 
 }
+export class respuesta {
+    constructor(
+        public idAlumno:number,
+        public idPregunta: number,
+        public pregunta: string,
+        public respuesta: string,
+      
+        
+    ) { }
 
-
+}
 
