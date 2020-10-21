@@ -52,7 +52,7 @@ export class ProyectosActividadesAddComponent implements OnInit {
       //console.log(res.message);
       if (res) {
         this.validar = true;
-        this.router.navigate(['/proyectos/ver/' + this.idobtenido]).then(() => { window.location.reload(); });
+        this.router.navigate(['/proyectos/ver/', this.idobtenido]).then(() => { window.location.reload(); });
 
       }
 
@@ -64,7 +64,7 @@ export class ProyectosActividadesAddComponent implements OnInit {
       $('#success-modal-preview').modal('show');
 
 
-      this.router.navigate(['/proyectos/ver/' + this.idobtenido]);
+      this.router.navigate(['/proyectos/ver/', this.idobtenido]);
     }
   }
 }
