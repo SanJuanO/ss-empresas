@@ -4,6 +4,7 @@ import { ProyectoService } from '../../services/proyecto.service';
 import { Proyecto, AlumnosProyectosAsignadosAddModel, AlumnosModel} from "../../models/proyectos";
 import { Router, ActivatedRoute } from '@angular/router';
 declare var $: any;
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-proyectos-alumnos-add',
@@ -20,7 +21,7 @@ export class ProyectosAlumnosAddComponent implements OnInit {
   dataTable: any;
 
   constructor(private proyectoService: ProyectoService, private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,private _location: Location) {
   }
 
 
@@ -82,7 +83,7 @@ export class ProyectosAlumnosAddComponent implements OnInit {
     if (this.validar) {
       $('#success-modal-preview').modal('show');
 
-      this.router.navigate(['/proyectos/ver/' + this.idobtenido]);
+      this._location.back();
     }
   }
 }
