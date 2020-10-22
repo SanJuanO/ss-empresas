@@ -12,6 +12,7 @@ import {Location} from '@angular/common';
   styleUrls: ['./proyectos-actividades-add.component.scss']
 })
 export class ProyectosActividadesAddComponent implements OnInit {
+  public mensajevalidacion="";
 
   public proyectoActividadesModel = new ProyectosActividadesModel();
   public proyectoModel = new Proyectoactividad();
@@ -30,6 +31,9 @@ export class ProyectosActividadesAddComponent implements OnInit {
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
     console.log(this.idobtenido);
     this.obtenerPerfilesActividades();
+    this.proyectoActividadesModel.noPrestadores=0;
+    this.proyectoActividadesModel.idPerfil=1;
+
   }
   ngAfterViewInit() {
     Feather.replace();
@@ -41,8 +45,33 @@ export class ProyectosActividadesAddComponent implements OnInit {
       .subscribe((perfiles: PerfilesActividadesModel[]) => this.perfiles = perfiles);
   }
   create() {
+    console.log("2");
 
     let model = this.proyectoActividadesModel;
+var actividad=$('#actividad').val();
+var descripcion=$('#descripcion').val();
+var cantidad=Number($('#cantidad').val());
+console.log(actividad);
+console.log(cantidad);
+
+if(actividad==""){
+
+  this.mensajevalidacion="No puedes dejar el campo de actividad vacío";
+  $('#validacion').modal('show');
+}
+else if(descripcion==""){
+  this.mensajevalidacion="No puedes dejar el campo de descripcion vacío";
+  $('#validacion').modal('show');
+
+}
+else if(cantidad==0){
+  this.mensajevalidacion="No puedes dejar el campo de cantidad vacío o en 0";
+  $('#validacion').modal('show');
+  
+}
+else{
+
+console.log(actividad+descripcion+cantidad);
 
     model.idProyecto=Number(this.idobtenido);
     model.activo = true;
@@ -60,6 +89,6 @@ export class ProyectosActividadesAddComponent implements OnInit {
       alert(error.error)
     })
 
-    
+  }
   }
 }

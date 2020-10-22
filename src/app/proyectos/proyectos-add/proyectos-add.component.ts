@@ -7,14 +7,14 @@ import {
   FormControl,
   ValidatorFn } from '@angular/forms';
 import { ProyectoService } from '../../services/proyecto.service';
-import { Proyecto, listaApoyosModel, listaLineasTrabajoModel, ApoyosModel, LineasTrabajoModel, ProyectosAreasModel, ProyectosRangosModel, ProyectosPoblacionesModel, PeriodosModel, EstadosProyectosModel } from "../../models/proyectos";
+import { Proyecto2, listaApoyosModel, listaLineasTrabajoModel, ApoyosModel, LineasTrabajoModel, ProyectosAreasModel, ProyectosRangosModel, ProyectosPoblacionesModel, PeriodosModel, EstadosProyectosModel } from "../../models/proyectos";
 import { Empresa } from "../../models/empresa";
 import { OrganizationService } from '../../services/organization.service';
 import { Universidad } from "../../models/universidad";
 import { UniversidadService } from '../../services/universidad.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { SessionService } from '../../services/session.service';
-import {Location} from '@angular/common';
 
 declare var $: any;
 
@@ -25,10 +25,10 @@ declare var $: any;
 })
 export class ProyectosAddComponent implements OnInit {
    public form: FormGroup;
-   public idempresa:number;
-   public empresa:string;
+   public mensajevalidacion="";
+   public d: Date = new Date(); // but the type can also be inferred from "new Date()" already
 
-  public proyectoModel = new Proyecto();
+  public proyectoModel = new Proyecto2("","","",0,"",0,"",0,"",0,"","","",false,0,"",false,"","","",0,"","",0,"",false,0,"",0,"","",false,undefined,undefined,0);
   public listaApoyos = new Array<listaApoyosModel>();
   public listaLineasTrabajo = new Array<listaLineasTrabajoModel>();
   public validar = false;
@@ -41,6 +41,8 @@ export class ProyectosAddComponent implements OnInit {
   public estadosProyectos: EstadosProyectosModel[] = [];
   public apoyos: ApoyosModel[] = [];
   public lineasTrabajo: LineasTrabajoModel[] = [];
+  public idobtenido:string;
+  public empresa:string;
 
   //public empresaModel = new Empresa("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", true, 0, "", 0, false, true, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, undefined, undefined, undefined)
 
@@ -63,13 +65,13 @@ export class ProyectosAddComponent implements OnInit {
 
 
   constructor(private proyectoService: ProyectoService, private organizacionService: OrganizationService,
-    private universidadService: UniversidadService, private router: Router,public session: SessionService,private _location: Location) {
+    private universidadService: UniversidadService, private router: Router, private _location: Location,public session: SessionService) {
   }
 
 
   ngOnInit(): void {
-    this.idempresa=Number(this.session.getToken());
-    this.empresa=this.session.getnombre();
+    this.idobtenido=(this.session.getToken());
+    this.empresa=(this.session.getnombre());
 
     this.obtenerOrganizaciones();
     this.obtenerProyectosAreas();
@@ -80,6 +82,16 @@ export class ProyectosAddComponent implements OnInit {
     this.obtenerEstadosProyectos();
     this.obtenerApoyos();
     this.obtenerLineasTrabajo();
+    this.proyectoModel.idArea=1;
+    this.proyectoModel.idUniversidad=1;
+    this.proyectoModel.idEstadoProyecto=1;
+    this.proyectoModel.idOrganizacion=1;
+    this.proyectoModel.idRango=1;
+    this.proyectoModel.idPeriodo=1;
+    this.proyectoModel.idPoblacion=1;
+    this.proyectoModel.horasProyecto=240;
+
+    this.proyectoModel.idPeriodo=1;
   }
   ngAfterViewInit() {
     Feather.replace();
@@ -214,25 +226,92 @@ var valor= { "idRubro": id ,"activo": true};
 
     model.listaApoyos = this.listaApoyos;
     model.listaLineasTrabajo = this.listaLineasTrabajo;
-model.activo=true;
-model.idEstadoProyecto=2;
     model.activo = true;
-    
+    model.disponible=true;
+    model.idEstadoProyecto=2;
+    model.idOrganizacion=Number(this.idobtenido);
     console.log(this.listaApoyos);
     console.log(this.listaLineasTrabajo);
     console.log(model)
-    
+    if(model.proyecto==""){
+      this.mensajevalidacion="No puedes dejar el campo de nombre de proyecto vacío"
+            $('#validacion').modal('show');
+      
+          }
+          else if(model.descripcion==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción vacío"
+            $('#validacion').modal('show');
+          }
+          else if(model.objetivo==""){
+            this.mensajevalidacion="No puedes dejar el campo de objetivo vacío"
+            $('#validacion').modal('show');
+          }    
+             else if(model.beneficioInstitucional==""){
+            this.mensajevalidacion="No puedes dejar el campo de beneficioInstitucional vacío"
+            $('#validacion').modal('show');
+          } 
+                else if(model.descripcion==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción vacío"
+            $('#validacion').modal('show');
+          }
+                 else if(model.descripcionFormacion==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción de Formacion vacío"
+            $('#validacion').modal('show');
+          }   
+              else if(model.descripcionImpactoSocial==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción de Impacto Social vacío"
+            $('#validacion').modal('show');
+          }  
+               else if(model.descripcionBeneficiosAlumno==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción Beneficios Alumno vacío"
+            $('#validacion').modal('show');
+          }  
+               else if(model.noVacantes==0){
+            this.mensajevalidacion="No puedes dejar el campo de vacantes o en 0 vacío"
+            $('#validacion').modal('show');
+          }  
+               else if(model.listaApoyos.length==0){
+            this.mensajevalidacion="Selecciona al menos un apoyo"
+            $('#validacion').modal('show');
+          }
+
+          else if(model.listaLineasTrabajo.length==0){
+            this.mensajevalidacion="Selecciona al menos una linea de trabajo"
+            $('#validacion').modal('show');
+          }
+          else if(model.fechaTermino==""){
+            this.mensajevalidacion="No puedes dejar el campo de fecha Termino vacío"
+            $('#validacion').modal('show');
+          }
+          else if(model.fechaInicio==""){
+            this.mensajevalidacion="No puedes dejar el campo de fecha Inicio vacío"
+            $('#validacion').modal('show');
+          }
+else{
+
+
     
     this.proyectoService.create(model).subscribe((res: any) => {
       //console.log(res.message);
-      if (res) {
-        this._location.back();
-      }
+      /*if (res) {
+        this.validar = true;
+      }*/
+      $('#success-modal-preview').modal('show');
+      this._location.back();
+
 
     }, error => {
       alert(error.error)
     })
+  }
+    /*
 
-   
+    if (this.validar) {
+      $('#success-modal-preview').modal('show');
+
+
+      this.router.navigate(['/proyectos']);
+    }
+    */
   }
 }
