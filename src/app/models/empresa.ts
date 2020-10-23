@@ -117,3 +117,14 @@ export class check {
 }
 
 
+
+export class OrganizacionesSucesosModel {
+    public id: number;
+    public idOrganizacion: number;
+    public observaciones: string;
+    public fechaCreacion: string;
+    public activo: boolean;
+    constructor(
+    ) { }
+  }
+  

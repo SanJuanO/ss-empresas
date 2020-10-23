@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Empresa,estadoActualizar } from '../models/empresa';
-
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 @Injectable({
   providedIn: 'root'
 })
@@ -100,4 +101,26 @@ respuestapreguntas(model){
     return this.http.post(uri,model);
   }
 
+  obtenerDocumentosSubidos(id: string | number) {
+    const uri = `${this.api}/DocumentosOrganizaciones/getDocumentoByIdOrganizacion?idOrganizacion=${id}`
+    return this.http.get(uri);
+  }
+  obtenerDocumentosSubidosConRequeridos(id: string | number) {
+    const uri = `${this.api}/DocumentosOrganizaciones/getDocumentoByIdOrganizacionWithRequeridos?idOrganizacion=${id}`
+    return this.http.get(uri);
+  }
+  getSucesosByIdOrganizacion(idOrganizacion: string | number) {
+    return this.http.get(`${this.api}/OrganizacionesSucesos/getByIdOrganizacion?idOrganizacion=${idOrganizacion}`);
+  }
+
+  postFile(fileToUpload: File,idDocumento:string,idOrganizacion:string): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data; charset=utf-8');
+    const endpoint = `${this.api}/DocumentosOrganizaciones/UploadFile2`;
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('idDocumento', idDocumento);
+    formData.append('idOrganizacion', idOrganizacion);
+    return this.http.post(endpoint, formData);
+  }
 }

@@ -37,8 +37,9 @@ export class DocumentosCadena {
 
 }
 export class Documentosfile {
+    public file:  any;
+
     constructor(
-        public file:  any
 
 
   
@@ -47,4 +48,20 @@ export class Documentosfile {
 
     
 
+}
+
+
+export class DocumentosSubidosRequeridos {
+    constructor(
+        public idEstado:  number,
+        public idOrganizacion: number,
+        public idDocumento:  number,
+        public ruta: string,
+      public Estado: string,
+      public idDocumentoRequerido :number,
+      public documento :string,
+      public configuracion :number,
+
+      public file: any
+    ) { }
 }
