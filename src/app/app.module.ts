@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
-import { ProyectosComponent } from './proyectos/proyectos.component';
 import { ProyectosAddComponent } from './proyectos/proyectos-add/proyectos-add.component';
 import { ProyectosEditComponent } from './proyectos/proyectos-edit/proyectos-edit.component';
 import { ProyectosVerComponent } from './proyectos/proyectos-ver/proyectos-ver.component';
@@ -20,7 +19,6 @@ import { ProyectosAlumnosAddComponent  } from './proyectos/proyectos-alumnos-add
 import { ConvocatoriasComponent } from './convocatorias/convocatorias.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EmpresashomeComponent } from './empresas/empresas-home.component';
 import { EmpresasAddComponent } from './empresas/empresas-add/empresas-add.component';
 import { EmpresasEditComponent } from './empresas/empresas-edit/empresas-edit.component';
 import { EmpresasverComponent } from './empresas/empresas-ver/empresas-ver.component';
@@ -40,7 +38,6 @@ import { CookieService } from 'ngx-cookie-service';
     MenuComponent,
     AlumnosevaluarComponent,
     PerfilComponent,
-    ProyectosComponent,
     ProyectosAddComponent,
     ProyectosEditComponent,
     ProyectosVerComponent,
@@ -48,7 +45,6 @@ import { CookieService } from 'ngx-cookie-service';
     ProyectosAlumnosAddComponent,
     ConvocatoriasComponent,
     DashboardComponent,
-    EmpresashomeComponent,
     EmpresasAddComponent,
     EmpresasEditComponent,
     EmpresasverComponent,

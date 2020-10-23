@@ -13,11 +13,10 @@ import { Empresa } from "../../models/empresa";
 import { OrganizationService } from '../../services/organization.service';
 import { Universidad } from "../../models/universidad";
 import { UniversidadService } from '../../services/universidad.service';
-import { SessionService } from '../../services/session.service';
 
-import {Location} from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { Router,ActivatedRoute } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -28,7 +27,7 @@ declare var $: any;
 export class ProyectosEditComponent implements OnInit {
   public form: FormGroup;
   public idobtenido: number;
-  public proyectoModel = new Proyecto();
+  public proyectoModel = new Proyecto("","","",0,"",0,"",0,"",0,"","","",false,0,"",false,"","","",0,"","",0,"",false,0,"",0,"","",false,undefined,undefined,0);
   public listaApoyos = new Array<listaApoyosModel>();
   public listaLineasTrabajo = new Array<listaLineasTrabajoModel>();
   public validar = false;
@@ -43,17 +42,17 @@ export class ProyectosEditComponent implements OnInit {
   public lineasTrabajo: LineasTrabajoModel[] = [];
   public idApoyo: any;
   public idLineasTrabajo: any;
-  public idempresa:number;
-  public empresa:string;
+  public mensajevalidacion="";
+
   constructor(private proyectoService: ProyectoService, private organizacionService: OrganizationService,
-    private universidadService: UniversidadService, private router: Router,private activatedRoute: ActivatedRoute,public session: SessionService,private _location: Location) {
+    private universidadService: UniversidadService, private router: Router, private activatedRoute: ActivatedRoute,
+    private _location: Location) {
 
     
   }
 
   ngOnInit(): void {
-    this.idempresa=Number(this.session.getToken());
-    this.empresa=this.session.getnombre();
+
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
     //this.proyectoService.getProyecto(this.idobtenido).subscribe((proyectoModel: Proyecto) => this.proyectoModel = proyectoModel);
     this.getProyecto(this.idobtenido);
@@ -66,7 +65,8 @@ export class ProyectosEditComponent implements OnInit {
     this.obtenerEstadosProyectos();
     this.obtenerApoyos();
     this.obtenerLineasTrabajo();
-    
+    console.log(this.proyectoModel);
+    this.proyectoModel.horasProyecto=Number(240);
 
   }
   
@@ -167,19 +167,78 @@ export class ProyectosEditComponent implements OnInit {
     model.listaLineasTrabajo = this.listaLineasTrabajo;
 
     model.activo = true;
-    model.idEstadoProyecto=2;
+
     console.log(this.listaApoyos);
     console.log(this.listaLineasTrabajo);
     console.log(model)
-    
+    if(model.proyecto==""){
+      this.mensajevalidacion="No puedes dejar el campo de nombre de proyecto vacío"
+            $('#validacion').modal('show');
+      
+          }
+          else if(model.descripcion==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción vacío"
+            $('#validacion').modal('show');
+          }
+          else if(model.objetivo==""){
+            this.mensajevalidacion="No puedes dejar el campo de objetivo vacío"
+            $('#validacion').modal('show');
+          }    
+             else if(model.beneficioInstitucional==""){
+            this.mensajevalidacion="No puedes dejar el campo de beneficioInstitucional vacío"
+            $('#validacion').modal('show');
+          } 
+                else if(model.descripcion==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción vacío"
+            $('#validacion').modal('show');
+          }
+                 else if(model.descripcionFormacion==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción de Formacion vacío"
+            $('#validacion').modal('show');
+          }   
+              else if(model.descripcionImpactoSocial==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción de Impacto Social vacío"
+            $('#validacion').modal('show');
+          }  
+               else if(model.descripcionBeneficiosAlumno==""){
+            this.mensajevalidacion="No puedes dejar el campo de descripción Beneficios Alumno vacío"
+            $('#validacion').modal('show');
+          }  
+               else if(model.noVacantes==0){
+            this.mensajevalidacion="No puedes dejar el campo de vacantes o en 0 vacío"
+            $('#validacion').modal('show');
+          }  
+               else if(model.listaApoyos.length==0){
+            this.mensajevalidacion="Selecciona al menos un apoyo"
+            $('#validacion').modal('show');
+          }
+
+          else if(model.listaLineasTrabajo.length==0){
+            this.mensajevalidacion="Selecciona al menos una linea de trabajo"
+            $('#validacion').modal('show');
+          }
+          else if(model.fechaTermino==""){
+            this.mensajevalidacion="No puedes dejar el campo de fecha Termino vacío"
+            $('#validacion').modal('show');
+          }
+          else if(model.fechaInicio==""){
+            this.mensajevalidacion="No puedes dejar el campo de fecha Inicio vacío"
+            $('#validacion').modal('show');
+          }
+else{
     this.proyectoService.updateproyecto(this.idobtenido, model).subscribe((res: any) => {
       if (res) {
+        $('#success-modal-preview').modal('show');
+
         this._location.back();
+
+
       }
     }, error => {
       alert(error.error)
     })
 
   
+  }
   }
 }

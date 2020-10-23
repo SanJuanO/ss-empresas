@@ -2,7 +2,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProyectosComponent } from './proyectos/proyectos.component';
 import { ProyectosAddComponent } from './proyectos/proyectos-add/proyectos-add.component';
 import { ProyectosEditComponent } from './proyectos/proyectos-edit/proyectos-edit.component';
 import { ProyectosVerComponent } from './proyectos/proyectos-ver/proyectos-ver.component';
@@ -12,7 +11,6 @@ import { ConvocatoriasComponent } from './convocatorias/convocatorias.component'
 
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EmpresashomeComponent } from './empresas/empresas-home.component';
 import { EmpresasAddComponent } from './empresas/empresas-add/empresas-add.component';
 import { LoginComponent } from './login/login.component';
 import { EmpresasEditComponent } from './empresas/empresas-edit/empresas-edit.component';
@@ -29,7 +27,6 @@ const routes: Routes = [
 },
   {path:'login',component:LoginComponent},
   {path:'dashboard',component:DashboardComponent},
-  { path: 'proyectos', component: ProyectosComponent },
   { path: 'proyectos/add', component: ProyectosAddComponent },
   { path: 'proyectos/edit/:id', component: ProyectosEditComponent },
   { path: 'proyectos/ver/:id', component: ProyectosVerComponent },
@@ -40,7 +37,6 @@ const routes: Routes = [
   { path:'alumnosver/:id',component:AlumnosverComponent},
   { path:'alumnosevaluar/:id',component:AlumnosevaluarComponent},
 
-  {path:'empresas',component:EmpresashomeComponent},
   {path:'empresas/add',component:EmpresasAddComponent},
   {path:'empresas/ver/:id',component:EmpresasverComponent},
   {path:'empresas/Edit/:id',component:EmpresasEditComponent},

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Empresa,estadoActualizar } from '../models/empresa';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+
 import 'rxjs/add/operator/share';
 @Injectable({
   providedIn: 'root'
