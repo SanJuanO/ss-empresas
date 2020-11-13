@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import * as Feather from 'feather-icons';
 import { OrganizationService } from '../services/organization.service';
 import { Empresa } from "../models/empresa"
@@ -19,6 +19,8 @@ declare var $: any;
 })
 export class DashboardComponent implements OnInit {
   public empresa: Empresa[] = [  ];
+
+  
   public empresacantidad: number;
   public empresaactiva: Empresa[] = [  ];
   public empresadesaciva: Empresa[] = [  ];
@@ -30,6 +32,11 @@ export class DashboardComponent implements OnInit {
   public proyectosrechazados: Proyecto[] = [];
   public proyectosactivos: Proyecto[] = [];
   public proyectospendientes: Proyecto[] = [];
+  @ViewChild('dataTable', {static: false}) table;
+  @ViewChild('dataTable2', {static: false}) table2;
+
+  dataTable:any;
+  dataTable2:any;
 
   public convocatoriasf:Convocatoria [] = [ ];
   public convocatoriasalumnosf:Convocatoria [] = [ ];
@@ -61,8 +68,9 @@ export class DashboardComponent implements OnInit {
     this.obtenerConvocatoria1();
     this.obtenerConvocatoria2();
 this.obtenerProyectos();
+this.dataTable.DataTable();
 
-
+this.dataTable2.DataTable();
 
 
   }
@@ -102,17 +110,22 @@ console.log(this.empresa);
   }
 
 
+  
+
   obtenerConvocatoria1() {
     let model = this.tipoModel;
     model.tipo=1;
     this.convocatoriaService.getConvocatoriatipo(model).subscribe((res: any[])=>{        
-                   
+      var Fecha = new Date((this.d.toString()));
+           
 this.convocatorias=res;
 for(var i=0;i<this.convocatorias.length;i++){
 
-  var fech= Date.parse(this.convocatorias[i].fechaTermino.toString());
 
-if(fech < Date.now() ){
+  var Fecha1 = new Date((this.convocatorias[i].fechaTermino.toString()));
+
+if(Fecha1> Fecha ){
+  console.log(Fecha1);
 this.convocatoriasf.push(this.convocatorias[i]);
 
 }
@@ -121,6 +134,7 @@ this.convocatoriasf.push(this.convocatorias[i]);
 
 })
   }
+
 
   obtenerConvocatoria2() {
     let model = this.tipoModel;

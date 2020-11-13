@@ -1,12 +1,15 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import * as Feather from 'feather-icons';
 import { ProyectoService } from '../../services/proyecto.service';
-import { Proyecto, listaApoyosModel, listaLineasTrabajoModel, ApoyosModel, LineasTrabajoModel, ProyectosAreasModel, ProyectosRangosModel, ProyectosPoblacionesModel, PeriodosModel, EstadosProyectosModel, estadoProyectoActualizar, ProyectosSucesosModel, ProyectosActividadesModel, AlumnosProyectosAsignadosModel } from "../../models/proyectos";
+import { Proyecto,  PeriodosModel, EstadosProyectosModel, estadoProyectoActualizar, ProyectosSucesosModel, ProyectosActividadesModel, AlumnosProyectosAsignadosModel, ProyectosCompetencias, ProyectosCarreras } from "../../models/proyectos";
 import { Empresa } from "../../models/empresa";
 import { OrganizationService } from '../../services/organization.service';
 import { Universidad } from "../../models/universidad";
 import { UniversidadService } from '../../services/universidad.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Estadosalumnos,Estadosalumnoscambio } from "../../models/estadosalumnoss";
+
+
 
 declare var $: any;
 
@@ -16,34 +19,24 @@ declare var $: any;
   styleUrls: ['./proyectos-ver.component.scss']
 })
 export class ProyectosVerComponent implements OnInit {
+
   public idobtenido: number;
-  public proyectoModel = new Proyecto();
-  public listaApoyos = new Array<listaApoyosModel>();
-  public listaLineasTrabajo = new Array<listaLineasTrabajoModel>();
+  public listaProyectosCompetencias = new Array<ProyectosCompetencias>();
+  public listaProyectosCarreras = new Array<ProyectosCarreras>();
+  public proyectoModel = new Proyecto("", "", "", 0, "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
   public validar = false;
   public organizaciones: Empresa[] = [];
-  public proyectosAreas: ProyectosAreasModel[] = [];
-  public proyectosRangos: ProyectosRangosModel[] = [];
-  public proyectosPoblaciones: ProyectosPoblacionesModel[] = [];
   public periodos: PeriodosModel[] = [];
   public universidades: Universidad[] = [];
   public estadosProyectos: EstadosProyectosModel[] = [];
-  public apoyos: ApoyosModel[] = [];
-  public lineasTrabajo: LineasTrabajoModel[] = [];
-  public idApoyo: any;
-  public idLineasTrabajo: any;
   public estadoact = new estadoProyectoActualizar();
   public sucesos: ProyectosSucesosModel[] = [];
   public proyectosActividades: ProyectosActividadesModel[] = [];
   public alumnos: AlumnosProyectosAsignadosModel[] = [];
+  public estadosalumnos: Estadosalumnos[] = [];
+  public estadoalumnocambio: Estadosalumnoscambio = new Estadosalumnoscambio();
 
-  @ViewChild('dataTable', { static: false }) table;
-  @ViewChild('dataTable1', { static: false }) table1;
-  @ViewChild('dataTable2', { static: false }) table2;
-  public dataTable: any;
-  public dataTable1: any;
-  public dataTable2: any;
-
+  public idalum: number;
 
   //public alumno: Alumnos[] = [];
 
@@ -56,23 +49,11 @@ export class ProyectosVerComponent implements OnInit {
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
     //this.proyectoService.getProyecto(this.idobtenido).subscribe((proyectoModel: Proyecto) => this.proyectoModel = proyectoModel);
     this.getProyecto(this.idobtenido);
-    this.obtenerOrganizaciones();
-    this.obtenerProyectosAreas();
-    this.obtenerProyectosRangos();
-    this.obtenerProyectosPoblaciones();
-    this.obtenerPeriodos();
-    this.obtenerUniversidades();
     this.obtenerEstadosProyectos();
-    this.obtenerApoyos();
-    this.obtenerLineasTrabajo();
     this.obtenerSucesos();
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
-
-    this.dataTable.DataTable();
-    this.dataTable1.DataTable();
-    this.dataTable2.DataTable();
-
+    this.obtenerestadoalumnos();
   }
  
   ngAfterViewInit() {
@@ -83,34 +64,19 @@ export class ProyectosVerComponent implements OnInit {
 
     this.proyectoService.getProyecto(id).subscribe((res: any[]) => {
 
-    this.proyectoModel = <Proyecto><any>res;
-    this.listaApoyos = res['listaApoyos'];
-    this.listaLineasTrabajo = res['listaLineasTrabajo'];
-    this.idApoyo = this.listaApoyos.map(({ idApoyo }) => idApoyo);
-    this.idLineasTrabajo = this.listaLineasTrabajo.map(({ idLineaTrabajo }) => idLineaTrabajo);
-    //console.log(this.idApoyo);
-    //console.log(this.idLineasTrabajo);
+      this.proyectoModel = <Proyecto><any>res;
+      console.log(this.proyectoModel);
     })
+  }
+  obtenerestadoalumnos() {
+    return this.organizacionService
+      .getestadosalumnos()
+      .subscribe((estadosalumnos: Estadosalumnos[]) => this.estadosalumnos = estadosalumnos);
   }
   obtenerOrganizaciones() {
     return this.organizacionService
       .getAll()
       .subscribe((organizaciones: Empresa[]) => this.organizaciones = organizaciones);
-  }
-  obtenerProyectosAreas() {
-    return this.proyectoService
-      .getProyectosAreas()
-      .subscribe((proyectosAreas: ProyectosAreasModel[]) => this.proyectosAreas = proyectosAreas);
-  }
-  obtenerProyectosRangos() {
-    return this.proyectoService
-      .getProyectosRangos()
-      .subscribe((proyectosRangos: ProyectosRangosModel[]) => this.proyectosRangos = proyectosRangos);
-  }
-  obtenerProyectosPoblaciones() {
-    return this.proyectoService
-      .getProyectosPoblaciones()
-      .subscribe((proyectosPoblaciones: ProyectosPoblacionesModel[]) => this.proyectosPoblaciones = proyectosPoblaciones);
   }
   obtenerPeriodos() {
     return this.proyectoService
@@ -127,16 +93,6 @@ export class ProyectosVerComponent implements OnInit {
       .getEstadosProyectos()
       .subscribe((estadosProyectos: EstadosProyectosModel[]) => this.estadosProyectos = estadosProyectos);
   }
-  obtenerLineasTrabajo() {
-    return this.proyectoService
-      .getLineasTrabajo()
-      .subscribe((lineasTrabajo: LineasTrabajoModel[]) => this.lineasTrabajo = lineasTrabajo);
-  }
-  obtenerApoyos() {
-    return this.proyectoService
-      .getApoyos()
-      .subscribe((apoyos: ApoyosModel[]) => this.apoyos = apoyos);
-  }
   obtenerSucesos() {
     return this.proyectoService
       .getSucesosByIdProyecto(this.idobtenido)
@@ -152,40 +108,11 @@ export class ProyectosVerComponent implements OnInit {
       .getAlumnosInscritosByIdProyecto(this.idobtenido)
       .subscribe((alumnos: AlumnosProyectosAsignadosModel[]) => this.alumnos = alumnos);
   }
-  toggleApoyos(checked, id) {
-    //console.log(checked);
-    var valor = { "idApoyo": id, "activo": true };
-
-    var area = this.listaApoyos.find(x => x.idApoyo === id);
-    if (checked) this.listaApoyos.push(valor);
-    else this.listaApoyos = this.listaApoyos.filter(item => item.idApoyo !== id);
-
-    //console.log(this.listaApoyos);
-  }
-  toggleLineasTrabajo(checked, id) {
-    //console.log(checked);
-    var valor = { "idLineaTrabajo": id, "activo": true };
-
-    var area = this.listaLineasTrabajo.find(x => x.idLineaTrabajo === id);
-    if (checked) this.listaLineasTrabajo.push(valor);
-    else this.listaLineasTrabajo = this.listaLineasTrabajo.filter(item => item.idLineaTrabajo !== id);
-
-    //console.log(this.listaApoyos);
-  }
-
+  
   onSubmit() {
     let model = this.proyectoModel;
 
-    model.listaApoyos = this.listaApoyos;
-    model.listaLineasTrabajo = this.listaLineasTrabajo;
-
-    model.activo = true;
-    /*
-    console.log(this.listaApoyos);
-    console.log(this.listaLineasTrabajo);
-    console.log(model)
-    */
-    this.proyectoService.updateproyecto(this.idobtenido, model).subscribe((res: any) => {
+     this.proyectoService.updateproyecto(this.idobtenido, model).subscribe((res: any) => {
       if (res) {
         this.validar = true;
       }
@@ -203,10 +130,19 @@ export class ProyectosVerComponent implements OnInit {
 
   abrirsubir(id){
 
-    //console.log("dfdsfdsfds"+ id);
+    console.log("dfdsfdsfds"+ id);
     $('#abrirsubir-'+id).modal('show');
 
   }
+
+  mostraractualizarestado(id){
+    this.idalum=Number(id);
+    console.log("dfdsfdsfds"+ id);
+
+        $('#mostareditaralumno-'+this.idalum).modal('show');
+    
+    
+      }
 
   actualizarestado() {
 
@@ -216,8 +152,9 @@ export class ProyectosVerComponent implements OnInit {
     let model = this.estadoact;
     console.log(model);
     this.proyectoService.updateestado(model).subscribe(() => {
-
       $('#success-modal-preview').modal('show');
+      location.reload();
+
 
     }, error => {
       alert(error.error)
@@ -225,5 +162,31 @@ export class ProyectosVerComponent implements OnInit {
 
 
   }
+  cambiarestatusalumno(){
 
+
+    this.estadoalumnocambio.idProyecto = Number(this.idobtenido);
+    this.estadoalumnocambio.idAlumno = Number(this.idalum);
+
+
+console.log(this.estadoalumnocambio);
+    // this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe(() => {
+    //   $('#success-modal-preview').modal('show');
+    //   location.reload();
+    var idf=  $('#estadofinal').val();
+    var lastFive = idf.substr(idf.length - 1); // => "Tabs1" 
+
+//camibo
+    this.estadoalumnocambio.idEstado = Number(lastFive);
+console.log(this.estadoalumnocambio);
+    this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe(() => {
+      $('#success-modal-preview').modal('show');
+      location.reload();
+//fincambio
+
+    // }, error => {
+    //   alert(error.error)
+    })
+
+  }
 }

@@ -3,8 +3,7 @@ import * as Feather from 'feather-icons';
 import { OrganizationService } from '../../services/organization.service';
 import { Empresa, Responsablemodel, check, estadoActualizar, OrganizacionesSucesosModel } from "../../models/empresa"
 import { AreaAccion } from "../../models/areaaccion"
-import { Documentos, DocumentosCadena, Documentosfile, DocumentosSubidosRequeridos } from "../../models/documentos"
-
+import { Documentos, DocumentosCadena, Documentosfile, DocumentosSubidos, DocumentosSubidosRequeridos } from "../../models/documentos"
 import { RubroEmpresa } from "../../models/rubrosempresa"
 import { Universidad } from "../../models/universidad"
 import { TipoEmpresa } from "../../models/tipoempresa"
@@ -27,6 +26,7 @@ declare var $: any;
 export class EmpresasverComponent implements OnInit {
   public areas: AreaAccion[] = [];
   public estadoact = new estadoActualizar(0,"",0)
+  public  logo="https://img.icons8.com/ios/452/company.png";
 
   public responsable: Responsablemodel[] = [];
   public rubros: RubroEmpresa[] = [];
@@ -35,6 +35,7 @@ export class EmpresasverComponent implements OnInit {
 public idobtenido:string;
   public giro: GiroEmpresa[] = [];
   public documentos: Documentos[] = [];
+  public prermitido = true;
 
   public estado: EstadoEmpresa[] = [];
   public listaAreasAccion = [];
@@ -45,7 +46,6 @@ public validar=false;
   public contactos = [];
   public clasificacion: ClasificacionEmpresa[] = [];
   horasAlumno = [];
-  public responsablemodel = new Responsablemodel("","","","","","","","","",true,true)
   public documentoscadena = new DocumentosCadena(1,1,1,"","",undefined)
   public binary: number = 0b1010;
   public sucesos: OrganizacionesSucesosModel[] = [];
@@ -56,10 +56,13 @@ public validar=false;
 
 
   public documentosfile = new Documentosfile();
+  public cambio=false;
 
+
+
+  public responsablemodel = new Responsablemodel("","","","","","","","",true,false)
   checkmodel = new check("false","false")
-  empresaModel = new Empresa("","","","","","","","","","","","","","","","","","","",true,0,"",null,false,true,1,1,1,1,1,0,0,0,0,0,0,this.listaAreasAccion,this.listaRubros,this.responsablemodel)
-
+  public empresaModel = new Empresa(false,"","","","",1,1,1,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
 
   constructor(private organizacionService: OrganizationService,private router: Router,private activatedRoute: ActivatedRoute) { 
   
@@ -67,6 +70,7 @@ public validar=false;
   ngOnInit(): void {
     this.idobtenido = this.activatedRoute.snapshot.paramMap.get("id");
     this.obtenerAreas();
+    this.obtenerlogo();
     this.obtenerRubros();
     this.obtenerUniversidades();
     this.obtenerTipo();
@@ -78,8 +82,17 @@ public validar=false;
     this.organizacionService.getOrganizacion(this.idobtenido).subscribe((empresaModel: Empresa) => this.empresaModel = empresaModel);
     this.getempresa(this.idobtenido);
 
+    this.externa();
 
   }
+  obtenerlogo(){
+    this.organizacionService.getOrganizacion(this.idobtenido).subscribe((res: any[])=>{
+      console.log(res);
+  
+      this.logo ="data:image/jpeg;base64,"+ res['imagenArchivo'];
+  
+    })
+        }
   toggleArea(checked, id){
 var valor= { "idAreaAccion": id ,"activo": true};
 
@@ -179,7 +192,7 @@ var valor= { "idRubro": id ,"activo": true};
     let model = this.empresaModel;
 
    
-    model.responsable = this.responsablemodel;
+    model.Responsable = this.responsablemodel;
 
     model.listaAreasAccion = this.listaAreasAccion;
     model.listaRubros = this.listaRubros ;
@@ -244,5 +257,31 @@ let model=this.estadoact;
     })
 
   }
+  externa(){
+
+    console.log(this.responsablemodel.externa);
+     this.cambio=this.responsablemodel.externa;
+ 
+  }
+  permitir(){
+
+    //console.log("dfdsfdsfds" + id);
+    $('#abrirsubir').modal('show');
+  
+  }
+  obtenerpermisos() {
+    this.organizacionService.permisopedir(this.idobtenido).subscribe(data => {
+    console.log(data);
+        $('#abrirsubir').modal('hide');
+        $('#listo').modal('show');
+    
+    }, error => {
+      console.log(error);
+    });
+    }
+    
+  
+
+
 
 }

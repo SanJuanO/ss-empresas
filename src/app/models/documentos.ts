@@ -10,46 +10,20 @@ export class Documentos {
 
 
   
-    ) { }
-
-
-    
+    ) { }  
 
 }
 
-export class DocumentosCadena {
+export class DocumentosSubidos {
     constructor(
         public idEstado:  number,
-
         public idOrganizacion: number,
-        public iddocumento:  number,
+        public idDocumento:  number,
         public ruta: string,
         public Estado:  string,
-        public file:  any
-
-
-
-  
+      public file: any
     ) { }
-
-
-    
-
 }
-export class Documentosfile {
-    public file:  any;
-
-    constructor(
-
-
-  
-    ) { }
-
-
-    
-
-}
-
 
 export class DocumentosSubidosRequeridos {
     constructor(
@@ -63,5 +37,22 @@ export class DocumentosSubidosRequeridos {
       public configuracion :number,
 
       public file: any
+    ) { }
+}
+
+export class DocumentosCadena {
+    constructor(
+        public idEstado:  number,
+        public idOrganizacion: number,
+        public iddocumento:  number,
+        public ruta: string,
+        public Estado:  string,
+      public file: any
+    ) { }
+}
+
+export class Documentosfile {
+  public file: File;
+  constructor(
     ) { }
 }

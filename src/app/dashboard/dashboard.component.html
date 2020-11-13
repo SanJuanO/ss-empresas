@@ -71,12 +71,13 @@
                             </h2>
 
                         </div>
-                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                            <table class="table table-report sm:mt-2">
+                   <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+        <table 
+            class="table table-report -mt-2">  
                                 <thead>
                                     <tr>
 
-                                        <th class="whitespace-no-wrap">CONVOCATORIAS EMPRESAS</th>
+                                        <th class="whitespace-no-wrap">CONVOCATORIAS DE  INSTITUCIÓN / ÁREA</th>
                                         <th class="text-center whitespace-no-wrap">INICIA</th>
                                         <th class="text-center whitespace-no-wrap">TERMINA</th>
                                         <th class="text-center whitespace-no-wrap">STATUS</th>
@@ -121,9 +122,6 @@
                         </div>
 
                     </div>
-                    <!-- END: Convocatorias Abiertas -->
-
-
 
                     <!-- BEGIN: Weekly Top Products -->
                     <div class="col-span-12 mt-6">
@@ -137,52 +135,50 @@
                             <table class="table table-report sm:mt-2">
                                 <thead>
                                     <tr>
-
-                                        <th class="whitespace-no-wrap">PROYECTO</th>
-                                        <th class="text-center whitespace-no-wrap">VACANTES</th>
-                                        <th class="text-center whitespace-no-wrap">OCUPADAS</th>
+                                        
+                                        <th class="whitespace-no-wrap">PROYECTOS PENDIENTES</th>
+                                  
                                         <th class="text-center whitespace-no-wrap">STATUS</th>
                                         <th class="text-center whitespace-no-wrap">ACCIÓN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="intro-x" *ngFor="let proyect of proyectos">
+                                    <tr class="intro-x" *ngFor="let proyect of proyectospendientes">
                                         <td>
-                                            <a class="font-medium whitespace-no-wrap" [routerLink]="['/proyectos/ver', proyect.id  ]"> {{proyect.proyecto}}</a>
-                                            <div class="text-gray-600 text-xs whitespace-no-wrap">{{proyect.descripcion}}</div>
+                                            <a  class="font-medium whitespace-no-wrap">{{proyect.proyecto}}</a> 
+                                            <div class="text-gray-600 text-xs whitespace-no-wrap">Responsable: {{proyect.nombreResponsable}}</div>
                                         </td>
-                                        <td class="text-center">{{proyect.noVacantes}}</td>
-                                        <td class="text-center">{{proyect.noVacantes}}</td>
+                            
                                         <td class="w-40">
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-12 text-white cursor-pointer font-medium" *ngIf="proyect.idEstadoProyecto<3">Pendiente</div>
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium" *ngIf="proyect.idEstadoProyecto==4">{{proyect.estadoProyecto}}</div>
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium" *ngIf="proyect.idEstadoProyecto==3">{{proyect.estadoProyecto}}</div>
-
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium">PENDIENTE</div>
                                         </td>
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
-                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]" *ngIf="proyect.idEstadoProyecto!=3"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Editar </a>
-
+                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Editar </a>
+                                                
                                             </div>
                                         </td>
                                     </tr>
-
-
-
-
+        
+                               
+                                    
+                                    
                                 </tbody>
                             </table>
                         </div>
 
-                    </div>
                     <!-- END: Weekly Top Products -->
 
-                </div>
                 <!-- END: General Report -->
+            </div>
 
 
 
 
+            <!-- END: Convocatorias Abiertas -->
+
+
+        </div>
 
 
 
