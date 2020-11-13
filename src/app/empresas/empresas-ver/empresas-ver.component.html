@@ -689,7 +689,7 @@
                                     <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
                                     <div class="text-base mt-5">Subir Archivo del documento: {{d.documento}}</div>
                                     <br>
-                                    <input type="file" id="file" name="file" (change)="uploadFile($event.target.files)">
+                                    <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
                                 </div>
 
                                 <div class="px-5 pb-8 text-center">
@@ -1179,7 +1179,7 @@
                                     <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
                                     <div class="text-base mt-5">Subir Archivo del documento: {{d.documento}}</div>
                                     <br>
-                                    <input type="file" id="file" name="file" (change)="uploadFile($event.target.files)">
+                                    <input type="file" id="file" name="file" accept="application/pdf"  (change)="uploadFile($event.target.files)">
                                 </div>
 
                                 <div class="px-5 pb-8 text-center">
