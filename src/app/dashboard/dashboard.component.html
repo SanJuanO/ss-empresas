@@ -136,6 +136,50 @@
                                 <thead>
                                     <tr>
                                         
+                                        <th class="whitespace-no-wrap">PROYECTOS ACTIVOS</th>
+                                  
+                                        <th class="text-center whitespace-no-wrap">STATUS</th>
+                                        <th class="text-center whitespace-no-wrap">ACCIÓN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="intro-x" *ngFor="let proyect of proyectosactivos">
+                                        <td>
+                                            <a  class="font-medium whitespace-no-wrap">{{proyect.proyecto}}</a> 
+                                            <div class="text-gray-600 text-xs whitespace-no-wrap">Responsable: {{proyect.nombreResponsable}}</div>
+
+                                    
+                                        </td>
+                            <td>
+
+                                <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium" *ngIf="proyect.cantidadPendientes>0; else loading"> {{proyect.cantidadPendientes}}</div>
+                                <ng-template #loading>
+                                <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer font-medium" > {{proyect.cantidadPendientes}}</div>
+                            </ng-template>
+
+                            </td>
+                                        <td class="w-40">
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium">ACTIVO</div>
+                                        </td>
+                                        <td class="table-report__action w-56">
+                                            <div class="flex justify-center items-center">
+                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/ver', proyect.id  ]"> Ver </a>
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+        
+                               
+                                    
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                            <table class="table table-report sm:mt-2">
+                                <thead>
+                                    <tr>
+                                        
                                         <th class="whitespace-no-wrap">PROYECTOS PENDIENTES</th>
                                   
                                         <th class="text-center whitespace-no-wrap">STATUS</th>
@@ -147,6 +191,9 @@
                                         <td>
                                             <a  class="font-medium whitespace-no-wrap">{{proyect.proyecto}}</a> 
                                             <div class="text-gray-600 text-xs whitespace-no-wrap">Responsable: {{proyect.nombreResponsable}}</div>
+
+
+                                 
                                         </td>
                             
                                         <td class="w-40">
@@ -154,7 +201,7 @@
                                         </td>
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
-                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Editar </a>
+                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]">Editar </a>
                                                 
                                             </div>
                                         </td>

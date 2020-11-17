@@ -2,23 +2,12 @@
 
 <div class="content" *ngIf="responsablemodel.externa">
 
-    <div class="modal" id="listo">
-        <div class="modal__content">
-            <div class="p-5 text-center">
-                <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-                <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">Solicitud enviada!</div>
-            </div>
-            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-        </div>
-    </div>
-
     <div class="modal" id="success-modal-preview">
         <div class="modal__content">
             <div class="p-5 text-center">
                 <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
                 <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">Has editado una empresa!</div>
+                <div class="text-basemt-2">Has editado una Institución / Área!</div>
             </div>
             <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
@@ -28,14 +17,14 @@
             <div class="p-5 text-center">
                 <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
                 <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">¡Se subió el archivo de la empresa!</div>
+                <div class="text-basemt-2">¡Se subió el archivo de la Institución / Área!</div>
             </div>
             <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
     </div>
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Empresa
+            Institución / Área
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0" *ngIf="empresaModel.idEstadoOrganizacion>2" >
             <button (click)="permitir()" class="button text-white bg-theme-1 shadow-md mr-2">Solicitar Modificar Institución / Área</button>
@@ -85,14 +74,14 @@
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-center text-gray-600 mt-1" align="center">Nombre Oficial de la Institución / Área:</div>
+                    <div class="text-base text-center text-gray-600 mt-1" align="center">Nombre Oficial de la Institución:</div>
 
                     <div class="text-base font-bold leading-8 mt-6" align="center"> {{empresaModel.organizacion}} </div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-center text-gray-600 mt-1" align="center">Nombre Común de la Institución / Área:</div>
+                    <div class="text-base text-center text-gray-600 mt-1" align="center">Nombre Común de la Institución:</div>
 
                     <div class="text-base font-bold leading-8 mt-6" align="center"> {{empresaModel.nombreComun}} </div>
                 </div>
@@ -102,7 +91,7 @@
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="col-span-12 sm:col-span-8 xl:col-span-8 intro-y">
                 <div class=" p-5">
-                    <div class="text-base  text-gray-600 mt-1" >Descripción introductoria de la Institución / Área:</div>
+                    <div class="text-base  text-gray-600 mt-1" >Descripción introductoria de la Institución:</div>
 
                     <div class="text-base font-bold leading-8 mt-6" > {{empresaModel.descripcion}} </div>
                
@@ -113,7 +102,7 @@
                 <div class=" p-5">
                     <div class="text-base text-gray-600 mt-1">
 
-                    Años de Antigüedad de la Institución / Área:</div>
+                    Años de Antigüedad de la Institución:</div>
 
                     <div class="text-base font-bold leading-12 mt-12" ></div> {{empresaModel.antiguedad}} </div>
                 </div>
@@ -128,11 +117,10 @@
             </div>
 
         </div>
-
         <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class="p-5">
-                    <div class="text-base text-gray-600 mt-1">Nombre del Director de la Institución / Área:</div>
+                    <div class="text-base text-gray-600 mt-1">Nombre del Director de la Institución:</div>
 
                     <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoDirector}} </div>
                 </div>
@@ -148,7 +136,7 @@
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Nombre del Responsable de Servicio Social en la Institución / Área:</div>
+                    <div class="text-base text-gray-600 mt-1">Nombre del Responsable de Servicio Social en la Institución:</div>
 
                     <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoResponsable}} </div>
                 </div>
@@ -213,7 +201,6 @@
                 </div>
             </div>
         </div>
-
         
 
 
@@ -255,7 +242,7 @@
                 <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
 
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">¿Cuál es la razón de ser de la Institución / Área?</div>
+                    <div class="text-base text-gray-600 mt-1">¿Cuál es la razón de ser de la Institución?</div>
 
                     <div class="text-base font-bold leading-8 mt-6">{{empresaModel.razon}}</div>
                 </div>
@@ -263,7 +250,7 @@
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Enumere los Reconocimientos y Certificaciones con los que cuenta la Institución / Área: </div>
+                    <div class="text-base text-gray-600 mt-1">Enumere los Reconocimientos y Certificaciones con los que cuenta la Institución: </div>
 
 
                     <div class="text-base font-bold leading-8 mt-6">{{empresaModel.reconocimiento}}</div>
@@ -271,7 +258,7 @@
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Enumere los Principales Logros de la Institución / Área: </div>
+                    <div class="text-base text-gray-600 mt-1">Enumere los Principales Logros de la Institución: </div>
 
 
                     <div class="text-base font-bold leading-8 mt-6">{{empresaModel.logros}}</div>
@@ -281,7 +268,7 @@
 
    <br>
         <div class="grid grid-cols-12 gap-6 mt-5">
-            <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
                     <div class="text-base text-gray-600 mt-1">Legionario</div>
                     <div class="text-base font-bold leading-8 mt-6">
@@ -292,7 +279,7 @@
             </div>
 
 
-            <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
                     <div class="text-base text-gray-600 mt-1">
                         <div class="col-xs-1-12">
@@ -308,7 +295,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
                     <div class="text-base text-gray-600 mt-1">Clasificación</div>
 
@@ -319,17 +306,85 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                        Pagina Web
+ 
+        </div>
 
+<br>
 
-                        <div class="text-base font-bold leading-8 mt-6">{{empresaModel.web}} </div>
-                    </div>
-                </div>
+<br>
+
+<div class="grid grid-cols-12 gap-6 mt-5">
+    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+        <div class=" p-5">
+            <div class="text-base text-center text-gray-600 mt-1" align="center">Redes Sociales</div>
+        </div>
+    </div>
+
+</div>
+<div class="grid grid-cols-12 gap-6 mt-5">
+    <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+        <div class=" p-5">
+            <div class="text-base text-gray-600 mt-1">
+                Pagina Web
+
+<a href="{{empresaModel.web}}">
+                <div class="text-base font-bold leading-8 mt-6">{{empresaModel.web}} </div>
+            </a>
             </div>
         </div>
+    </div>
+
+    <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+        <div class=" p-5">
+            <div class="text-base text-gray-600 mt-1">
+Facebook
+<a href="{{empresaModel.facebook}}">
+                <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.facebook}} </div>
+            </a>
+            </div>
+        </div>
+    </div> 
+    
+</div>
+<br>
+<div class="grid grid-cols-12 gap-6 mt-5">
+   
+     <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class=" p-5">
+            <div class="text-base text-gray-600 mt-1">
+            Instagram
+
+            <a href="{{empresaModel.instagram}}">
+
+                <div class="text-base font-bold leading-8 mt-6">{{empresaModel.instagram}} </div>
+            </a>
+            </div>
+        </div>
+    </div>  <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class=" p-5">
+            <div class="text-base text-gray-600 mt-1">
+                Youtube
+
+                <a href="{{empresaModel.youtube}}">
+
+                <div class="text-base font-bold leading-8 mt-6">{{empresaModel.youtube}} </div>
+            </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class=" p-5">
+            <div class="text-base text-gray-600 mt-1">
+                Tiktok
+
+                <a href="{{empresaModel.tiktok}}">
+
+                <div class="text-base font-bold leading-8 mt-6">{{empresaModel.tiktok}} </div>
+            </a>
+            </div>
+        </div>
+    </div>
+</div>
     </div>
 
 
@@ -468,10 +523,9 @@
 
     </div>
 
-
-
-    <br><br>
-
+    <br>
+    <br>
+ 
 
 
     <div class="intro-y flex items-center h-10">
@@ -504,7 +558,7 @@
 
     <div class="intro-y flex items-center h-10">
         <h2 class="text-lg font-medium truncate mr-5">
-            Institución / Área Externa
+            Institución Externa
         </h2>
     </div>
 
@@ -530,6 +584,9 @@
 
 <br>
 <br>
+
+
+
 <section  *ngIf="cambio" >
     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
         <h2 class="font-medium text-base mr-auto">
@@ -655,6 +712,7 @@
                 <tr>
 
                     <th class="whitespace-no-wrap">DOCUMENTO</th>
+                    <th class="whitespace-no-wrap">SUBIR</th>
                     <th class="whitespace-no-wrap">ADJUNTO</th>
                     <th class="whitespace-no-wrap"> FECHA ENTREGA</th>
                     <th class="whitespace-no-wrap">ENTREGADO</th>
@@ -669,12 +727,19 @@
                     </td>
                     <td>
                         <div class="ext-base text-xs whitespace-no-wrap">
-                            <a (click)="abrirsubir(d.idDocumentoRequerido)">
+                            <a (click)="abrirsubir(d.idDocumentoRequerido)" >
+                             
                                 <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">   Subir Archivo </button>
                             </a>
                         </div>
                     </td>
-
+                    <td>
+                        <div class="ext-base text-xs whitespace-no-wrap"  *ngIf="d.id >0">
+                            <a (click)="descargar(d.archivo)">                             
+                                <button type="button" data-dismiss="modal" class="button w-24 bg-theme-12 text-white">  Ver Archivo </button>
+                            </a>
+                        </div>
+                    </td>
                     <td>
                         <div class="text-base whitespace-no-wrap" *ngIf="d.id >0"> {{d.fechaCreacion.substr(0,10)}}</div>
                     </td>
@@ -717,6 +782,9 @@
 
     <br><br>
 
+
+
+
     <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="p-5">
@@ -725,107 +793,104 @@
                         Estado
                     </h2>
                 </div>
-              
-
-                  <textarea class="mt-3 w-full " style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.estadoOrganizacion" name="estadoOrganizacion" rows="1"></textarea>
-
+                <textarea class="mt-3 w-full " style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.estadoOrganizacion" name="estadoOrganizacion" rows="1"></textarea>
                  </div>
-           
+                
         </div>
 
 
 
 
         <div class="col-span-12 sm:col-span-6 xl:col-span-9 intro-y">
-            <div class="p-5">
+            <div class=" p-5">
           
          
-                <div class="intro-y flex items-center h-10 ">
+                <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">
                         Observaciones
                     </h2>
                 </div>
-                <div >
-                    <textarea class="mt-3 w-full bg-primary" style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones" rows="5" ></textarea>
-
-                </div>                </div>
+                <textarea class="mt-3 w-full" style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones" rows="5"></textarea>
+          
+            </div>
        
         </div>
    
     </div>
  
-    <br>
-    <br>
-    <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
-            Número de personas que atienden
-        </h2>
+<br>
+<br>
+<div class="intro-y flex items-center h-10">
+    <h2 class="text-lg font-medium truncate mr-5">
+        Número de personas que atienden
+    </h2>
+</div>
+
+<div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+    <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+        <div class="report-box ">
+            <div class="box p-5">
+
+                <div class="text-base font-bold leading-8 mt-6"> Ancianos : {{empresaModel.ancianos}} </div>
+            </div>
+        </div>
     </div>
 
-    <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
-        <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
+    <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+        <div class="report-box ">
+            <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6"> Ancianos : {{empresaModel.ancianos}} </div>
+                <div class="text-base font-bold leading-8 mt-6">
+                    Indígenas : {{empresaModel.indigenas}}
                 </div>
             </div>
         </div>
-
-        <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                        Indígenas : {{empresaModel.indigenas}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                        Discapacitados : {{empresaModel.discapacitados}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                        Jóvenes : {{empresaModel.jovenes}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                        Mujeres : {{empresaModel.mujeres}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                        Niños : {{empresaModel.ninos}}
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
- 
-    
+    <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+        <div class="report-box ">
+            <div class="box p-5">
+
+                <div class="text-base font-bold leading-8 mt-6">
+                    Discapacitados : {{empresaModel.discapacitados}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+        <div class="report-box ">
+            <div class="box p-5">
+
+                <div class="text-base font-bold leading-8 mt-6">
+                    Jóvenes : {{empresaModel.jovenes}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+        <div class="report-box ">
+            <div class="box p-5">
+
+                <div class="text-base font-bold leading-8 mt-6">
+                    Mujeres : {{empresaModel.mujeres}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+        <div class="report-box ">
+            <div class="box p-5">
+
+                <div class="text-base font-bold leading-8 mt-6">
+                    Niños : {{empresaModel.ninos}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br><br>
+
 
 </div>
 
@@ -836,7 +901,7 @@
             <div class="p-5 text-center">
                 <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
                 <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">Has editado una empresa!</div>
+                <div class="text-basemt-2">Has editado una Institución / Área!</div>
             </div>
             <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
@@ -846,14 +911,14 @@
             <div class="p-5 text-center">
                 <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
                 <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">¡Se subió el archivo de la empresa!</div>
+                <div class="text-basemt-2">¡Se subió el archivo de la Institución / Área!</div>
             </div>
             <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
     </div>
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Empresa
+            Institución / Área
         </h2>
 
     </div>
@@ -945,7 +1010,7 @@
         <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class="p-5">
-                    <div class="text-base text-gray-600 mt-1">Nombre del Director de la Institución / Área:</div>
+                    <div class="text-base text-gray-600 mt-1">Nombre del Director de la Institución:</div>
 
                     <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoDirector}} </div>
                 </div>
@@ -961,7 +1026,7 @@
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Nombre del Responsable de Servicio Social en la Institución / Área:</div>
+                    <div class="text-base text-gray-600 mt-1">Nombre del Responsable de Servicio Social en la Institución:</div>
 
                     <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoResponsable}} </div>
                 </div>
@@ -1027,6 +1092,8 @@
             </div>
         </div>
 
+        
+
 
     </div>
 
@@ -1069,7 +1136,7 @@
 
     <div class="intro-y flex items-center h-10">
         <h2 class="text-lg font-medium truncate mr-5">
-            Institución / Área Externa
+            Institución Externa
         </h2>
     </div>
 
@@ -1144,10 +1211,12 @@
                 <tr>
 
                     <th class="whitespace-no-wrap">DOCUMENTO</th>
+                    <th class="whitespace-no-wrap">SUBIR</th>
                     <th class="whitespace-no-wrap">ADJUNTO</th>
+
                     <th class="whitespace-no-wrap"> FECHA ENTREGA</th>
                     <th class="whitespace-no-wrap">ENTREGADO</th>
-               
+
                 </tr>
             </thead>
             <tbody>
@@ -1164,7 +1233,13 @@
                             </a>
                         </div>
                     </td>
-
+                    <td>
+                        <div class="ext-base text-xs whitespace-no-wrap"  *ngIf="d.id >0">
+                            <a href="{{d.archivo}}" target="_blank">                             
+                                <button type="button" data-dismiss="modal" class="button w-24 bg-theme-12 text-white">   Descargar Archivo </button>
+                            </a>
+                        </div>
+                    </td>
                     <td>
                         <div class="text-base whitespace-no-wrap" *ngIf="d.id >0"> {{d.fechaCreacion.substr(0,10)}}</div>
                     </td>
@@ -1179,7 +1254,7 @@
                                     <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
                                     <div class="text-base mt-5">Subir Archivo del documento: {{d.documento}}</div>
                                     <br>
-                                    <input type="file" id="file" name="file" accept="application/pdf"  (change)="uploadFile($event.target.files)">
+                                    <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
                                 </div>
 
                                 <div class="px-5 pb-8 text-center">
@@ -1216,14 +1291,9 @@
                         Estado
                     </h2>
                 </div>
-                <select class="input  border mr-2 tail-select w-full" [(ngModel)]="empresaModel.idEstadoOrganizacion" name="estado">
-                    <option [ngValue]="gi.id" *ngFor="let gi of estado">{{gi.estado}}</option>
-        
-                  </select>
+                <textarea class="mt-3 w-full " style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.estadoOrganizacion" name="estadoOrganizacion" rows="1"></textarea>
                  </div>
-                      <button class="button text-white bg-theme-1 shadow-lg ml-5 " (click)="actualizarestado()">
-                Actualizar estado
-              </button>
+           
         </div>
 
 
@@ -1238,14 +1308,12 @@
                         Observaciones
                     </h2>
                 </div>
-                <div class="report-box" >
-                <textarea class="mt-3 w-full" style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones" rows="5" ></textarea>
-            </div>
+                <textarea class="mt-3 w-full" style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones" rows="5"></textarea>
+          
             </div>
        
         </div>
    
     </div>
- 
 
 </div>

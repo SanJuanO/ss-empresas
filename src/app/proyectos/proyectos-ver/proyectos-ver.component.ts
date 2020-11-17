@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import * as Feather from 'feather-icons';
 import { ProyectoService } from '../../services/proyecto.service';
-import { Proyecto,  PeriodosModel, EstadosProyectosModel, estadoProyectoActualizar, ProyectosSucesosModel, ProyectosActividadesModel, AlumnosProyectosAsignadosModel, ProyectosCompetencias, ProyectosCarreras } from "../../models/proyectos";
+import { Proyecto,  PeriodosModel, EstadosProyectosModel, estadoProyectoActualizar, ProyectosSucesosModel, ProyectosActividadesModel, AlumnosProyectosAsignadosModel, ProyectosCompetencias, ProyectosCarreras, AlumnosModel } from "../../models/proyectos";
 import { Empresa } from "../../models/empresa";
 import { OrganizationService } from '../../services/organization.service';
 import { Universidad } from "../../models/universidad";
@@ -23,7 +23,7 @@ export class ProyectosVerComponent implements OnInit {
   public idobtenido: number;
   public listaProyectosCompetencias = new Array<ProyectosCompetencias>();
   public listaProyectosCarreras = new Array<ProyectosCarreras>();
-  public proyectoModel = new Proyecto("", "", "", 0, "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
+  public proyectoModel = new Proyecto(0,"", "", "", 0, "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
   public validar = false;
   public organizaciones: Empresa[] = [];
   public periodos: PeriodosModel[] = [];
@@ -35,6 +35,7 @@ export class ProyectosVerComponent implements OnInit {
   public alumnos: AlumnosProyectosAsignadosModel[] = [];
   public estadosalumnos: Estadosalumnos[] = [];
   public estadoalumnocambio: Estadosalumnoscambio = new Estadosalumnoscambio();
+  public estadosalumnoslimitado: Estadosalumnos[] = [];
 
   public idalum: number;
 
@@ -54,6 +55,8 @@ export class ProyectosVerComponent implements OnInit {
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
     this.obtenerestadoalumnos();
+
+
   }
  
   ngAfterViewInit() {
@@ -71,7 +74,20 @@ export class ProyectosVerComponent implements OnInit {
   obtenerestadoalumnos() {
     return this.organizacionService
       .getestadosalumnos()
-      .subscribe((estadosalumnos: Estadosalumnos[]) => this.estadosalumnos = estadosalumnos);
+      .subscribe((estadosalumnos: Estadosalumnos[]) => {this.estadosalumnos = estadosalumnos;
+        console.log(this.estadosalumnos.length);
+
+        for(var i=0;i<this.estadosalumnos.length;i++){
+          if(i<2 || i==4){
+            this.estadosalumnoslimitado.push(this.estadosalumnos[i]);
+
+
+        }
+      }
+      console.log(this.estadosalumnoslimitado);
+      });
+
+      
   }
   obtenerOrganizaciones() {
     return this.organizacionService
@@ -166,20 +182,23 @@ export class ProyectosVerComponent implements OnInit {
 
 
     this.estadoalumnocambio.idProyecto = Number(this.idobtenido);
-    this.estadoalumnocambio.idAlumno = Number(this.idalum);
+    this.estadoalumnocambio.idAlumno = Number(this.idalum);   
+     var idf=  $( "#myselect option:selected" ).val();
+
+     console.log(idf);
+     var ultimoCaracter = idf.charAt(idf.length - 1);
+
+
+    this.estadoalumnocambio.idEstado = Number(ultimoCaracter);
 
 
 console.log(this.estadoalumnocambio);
     // this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe(() => {
     //   $('#success-modal-preview').modal('show');
     //   location.reload();
-    var idf=  $('#estadofinal').val();
-    var lastFive = idf.substr(idf.length - 1); // => "Tabs1" 
 
 //camibo
-    this.estadoalumnocambio.idEstado = Number(lastFive);
-console.log(this.estadoalumnocambio);
-    this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe(() => {
+     this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe(() => {
       $('#success-modal-preview').modal('show');
       location.reload();
 //fincambio

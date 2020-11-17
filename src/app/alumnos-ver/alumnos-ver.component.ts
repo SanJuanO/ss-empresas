@@ -7,8 +7,8 @@ import { FacultadService } from '../services/facultad.service';
 import { Universidad } from "../models/universidad";
 import { Carrera } from "../models/carrera";
 import { Facultad } from "../models/facultad";
-import { Alumno,AlumnoProyecto } from '../models/alumno';
-import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile } from "../models/documentosalumnos";
+import { Alumno,AlumnoProyecto, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales } from '../models/alumno';
+import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile, DocumentosSubidosRequeridos } from "../models/documentosalumnos"
 
 import {Location} from '@angular/common';
 
@@ -32,13 +32,16 @@ export class AlumnosverComponent implements OnInit {
   public documentos: DocumentosRequeridosAlumnos[] = [];
   public documentoscadena = new DocumentosAlumno();
   public documentosfile = new Documentosfile()
-
+  public idAlumno: string;
   public respuestas: string=""  ;
 
-  public idAlumno: string;
+  public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
+  public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0);
-
-  public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", true,0 , 0);
+  public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", true, true, this.listaAreasUniversidadParticipadoNew, this.listaAreasUniversidadActualesNew, 0, "", "");
+  public DocumentosSubidos: DocumentosSubidosRequeridos[];
+  public idDocumento: string = "";
+  public fileToUpload: File = null;
 
   constructor(private route: ActivatedRoute, private router: Router, private facultadService: FacultadService, private carreraService: CarreraService, private universidadService: UniversidadService, private alumnoService: AlumnoService, private _location: Location) { }
 
@@ -51,8 +54,9 @@ export class AlumnosverComponent implements OnInit {
     this.obtenerCarreras();
     this.obtenerFacultades();
     this.obtenerproyectoalumno();
-    this.obtenerdocumentosRequeridos();
     this.obtenerrespuesta();
+    this.obtenerdocumentosRequeridos();
+    this.obtenerdocumentosSubidosConRequeridos();
     console.log(this.alumno);
   }
 
@@ -78,12 +82,57 @@ export class AlumnosverComponent implements OnInit {
   }
 
   obtenerFacultades() {
-
+     
     return this.facultadService
       .getFacultades()
       .subscribe((facultades: Facultad[]) => this.facultades = facultades);
 
   }
+
+  obtenerdocumentosRequeridos() {
+    return this.alumnoService
+      .getdocumentosRequeridos()
+      .subscribe((documentos: DocumentosRequeridosAlumnos[]) => this.documentos = documentos);
+  }
+
+  //TODO SERGIO
+  obtenerdocumentosSubidosConRequeridos() {
+    return this.alumnoService
+      .obtenerDocumentosSubidosConRequeridos(this.idAlumno)
+      .subscribe((documentosS: DocumentosSubidosRequeridos[]) => {
+        this.DocumentosSubidos = documentosS;
+        //console.log("iddocumentos subidos "+this.idDocumentosSubidos);
+        console.log("requeridos " + this.DocumentosSubidos);
+
+      });
+  }
+  abrirsubir(id) {
+
+    console.log("dfdsfdsfds" + id + " alumno " + this.idAlumno);
+    this.idDocumento = id;
+    $('#abrirsubir-' + id).modal('show');
+
+  }
+
+  uploadFile(files: FileList) {
+    this.fileToUpload = files.item(0);
+  }
+
+  subeArchivo() {
+    console.log("iddocumento" + this.idDocumento + " alumno " + this.idAlumno);
+
+    
+    this.alumnoService.postFileAlumno(this.fileToUpload, this.idDocumento, this.idAlumno).subscribe(data => {
+      if (data.resultado == 1) {
+        $('#abrirsubir-' + this.idDocumento).modal('hide');
+        $('#success-modal-preview-file').modal('show');
+        location.reload();
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+  //TODO SERGIO
   obtenerrespuesta() {
 
  
@@ -92,94 +141,12 @@ export class AlumnosverComponent implements OnInit {
 this.respuestas=res[0]['fechaCreacion'];
     });
   }
-  obtenerdocumentosRequeridos() {
-    return this.alumnoService
-      .getdocumentosRequeridos()
-      .subscribe((documentos: DocumentosRequeridosAlumnos[]) => this.documentos = documentos);
-  }
 
-  abrirsubir(id) {
+  regresar() {
 
-    console.log("dfdsfdsfds" + id);
-    $('#abrirsubir-' + id).modal('show');
+    this._location.back();
 
   }
-  abrirsubirr() {
-
-
-    $('#abrirsubirr').modal('show');
-
-  }
-
-  subirarchivo() {
-    console.log("subir");
-
-    this.documentosfile.file = this.documentoscadena.file;
-    console.log(this.documentosfile);
-
-    this.alumnoService.subirdocumentos(this.documentosfile).subscribe((res: any) => {
-      console.log(res);
-
-      this.documentoscadena.ruta = res.ruta;
-
-      this.subirarchivoconcadena();
-
-    }, error => {
-      alert(error.error)
-    })
-
-
-  }
-
-  subirarchivoconcadena() {
-
-    this.alumnoService.subirdocumentoscadena(this.documentoscadena).subscribe((res: any) => {
-      console.log(res);
-
-
-    }, error => {
-      alert(error.error)
-    })
-
-
-  }
-  subeArchivoreporte() {
-
-   
-  }
-
-  subeArchivo() {
-
-    var selecttedFile = ($("#Imagen"))[0].files[0];
-    var dataString = new FormData();
-    dataString.append("file", selecttedFile);
-
-    $.ajax({
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:4200,https://serviciosocial.gesdesapplication.com/api/DocumentosOrganizaciones/UploadFile',https://localhost:4200",
-        "Access-Control-Allow-Headers": "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method",
-        "Access-Control-Allow-Methods": " POST",
-        "Allow": " POST"
-      },
-      url: "https://serviciosocial.gesdesapplication.com/api/DocumentosAlumnos/UploadFile",
-      type: "POST",
-      data: dataString,
-      contentType: false,
-      processData: false,
-      async: true,
-
-      success: function (data) {
-        if (parseInt(data.resultado)) {
-
-          alert("archivo agregado " + data);
-        }
-      },
-      error: function (data) {
-        alert("Error al agregado archivo" + data);
-      }
-
-    });
-  }
-
 
 }
+

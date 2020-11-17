@@ -35,7 +35,6 @@ export class EmpresasverComponent implements OnInit {
 public idobtenido:string;
   public giro: GiroEmpresa[] = [];
   public documentos: Documentos[] = [];
-  public prermitido = true;
 
   public estado: EstadoEmpresa[] = [];
   public listaAreasAccion = [];
@@ -62,15 +61,16 @@ public validar=false;
 
   public responsablemodel = new Responsablemodel("","","","","","","","",true,false)
   checkmodel = new check("false","false")
-  public empresaModel = new Empresa(false,"","","","",1,1,1,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
+  public empresaModel = new Empresa("","","","",1,1,1,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
 
   constructor(private organizacionService: OrganizationService,private router: Router,private activatedRoute: ActivatedRoute) { 
   
   }
   ngOnInit(): void {
     this.idobtenido = this.activatedRoute.snapshot.paramMap.get("id");
+    this.getempresa(this.idobtenido);
+
     this.obtenerAreas();
-    this.obtenerlogo();
     this.obtenerRubros();
     this.obtenerUniversidades();
     this.obtenerTipo();
@@ -79,20 +79,11 @@ public validar=false;
     this.obtenerEstado();
     this.obtenerdocumentosSubidosConRequeridos();
     this.obtenerSucesos();
-    this.organizacionService.getOrganizacion(this.idobtenido).subscribe((empresaModel: Empresa) => this.empresaModel = empresaModel);
-    this.getempresa(this.idobtenido);
 
     this.externa();
 
   }
-  obtenerlogo(){
-    this.organizacionService.getOrganizacion(this.idobtenido).subscribe((res: any[])=>{
-      console.log(res);
-  
-      this.logo ="data:image/jpeg;base64,"+ res['imagenArchivo'];
-  
-    })
-        }
+ 
   toggleArea(checked, id){
 var valor= { "idAreaAccion": id ,"activo": true};
 
@@ -120,10 +111,13 @@ var valor= { "idRubro": id ,"activo": true};
   getempresa(id){
     this.organizacionService.getOrganizacion(id).subscribe((res: any[])=>{
       this.horasAlumno = res;
+      this.empresaModel = <Empresa><any>res;
+
       //console.log(this.horasAlumno);
       this.responsablemodel=res['responsable'];
       this.listaAreasAccion=res['listaAreasAccion'];
       this.listaRubros=res['listaRubros'];
+      this.logo ="data:image/jpeg;base64,"+ res['imagenArchivo'];
 
       //console.log(this.listaAreasAccion);
       this.idRubro =  this.listaRubros.map(({ idRubro }) => idRubro);
@@ -221,6 +215,15 @@ if(this.validar){
     $('#abrirsubir-'+id).modal('show');
 
   }
+  descargar(id){
+
+    let pdfWindow = window.open("")
+    pdfWindow.document.write(
+        "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
+        encodeURI(id) + "'></iframe>"
+    )
+
+  }
 
   uploadFile(files: FileList) {
     this.fileToUpload = files.item(0);
@@ -263,6 +266,16 @@ let model=this.estadoact;
      this.cambio=this.responsablemodel.externa;
  
   }
+
+
+
+
+
+
+
+
+
+
   permitir(){
 
     //console.log("dfdsfdsfds" + id);

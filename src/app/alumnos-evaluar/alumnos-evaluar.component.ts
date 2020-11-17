@@ -7,7 +7,7 @@ import { FacultadService } from '../services/facultad.service';
 import { Universidad } from "../models/universidad";
 import { Carrera } from "../models/carrera";
 import { Facultad } from "../models/facultad";
-import { Alumno,AlumnoProyecto } from '../models/alumno';
+import { Alumno, AreasVidaUniversitaria, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales,AlumnoProyecto } from '../models/alumno';
 import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile } from "../models/documentosalumnos";
 
 import { respuesta } from "../models/alumno";
@@ -45,7 +45,10 @@ public cinco="siempre";
 public seis="siempre";
 public siete="siempre";
 public ocho="siempre";
-
+public listaAreasUniversidadParticipado: AlumnosAreasVidaUniversitariaParticipado[] = [];
+public listaAreasUniversidadActuales: AlumnosAreasVidaUniversitariaActuales[] = [];
+public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
+public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
 
   public idAlumno: string;
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0);
@@ -62,8 +65,7 @@ public ocho="siempre";
   public respuestas11: respuesta = new respuesta(1,1,"","");
   public respuestas12: respuesta = new respuesta(1,1,"","");
   public respuestas13: respuesta = new respuesta(1,1,"","");
-
-  public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", true,0 , 0);
+  public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", true,true, this.listaAreasUniversidadParticipadoNew, this.listaAreasUniversidadActualesNew,0,"","");
 
   constructor(private org: OrganizationService,private route: ActivatedRoute, private router: Router, private facultadService: FacultadService, private carreraService: CarreraService, private universidadService: UniversidadService, private alumnoService: AlumnoService, private _location: Location) { }
 

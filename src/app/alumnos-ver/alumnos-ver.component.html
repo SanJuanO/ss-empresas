@@ -2,2046 +2,402 @@
 
 
 <div class="content">
-    <div class="grid grid-cols-12 gap-6">
-        <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-12">
-            <!-- BEGIN: General Report -->
-          <div class="col-span-12 mt-8">
 
 
 
-            <div class="intro-y flex items-center h-10">
-              <h2 class="text-lg font-medium truncate mr-5">
-                Información General
-              </h2>
-            </div>
+  <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+         Información General
+    </h2>
+<div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+  <a (click)="regresar()" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+</div>
+</div>
 
-            <div class="grid grid-cols-12 gap-6 mt-5">
 
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      Nombre
+  <div class="box">
+    <div class="grid grid-cols-12 gap-6 mt-5">
 
-                      <div class="text-base font-bold leading-8 mt-6"> {{alumno.nombre}} </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class=" p-5">
+          <div class="text-base text-gray-600 mt-1">
+            Nombre
 
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Apellido Paterno</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.paterno}}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Apellido Materno</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.materno}}</div>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-
-
-            </div>
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      Universidad
-
-                      <div class="text-base font-bold leading-8 mt-6">
-                        <h1 *ngFor="let a of universidades">
-                          <p *ngIf="a.id==alumno.idUniversidad">{{a.universidad}}</p>
-                        </h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Facultad</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                      <h1 *ngFor="let a of facultades">
-                        <p *ngIf="a.id==alumno.idFacultad">{{a.facultad}}</p>
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Carrera</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                      <h1 *ngFor="let a of carreras">
-                        <p *ngIf="a.id==alumno.idCarrera">{{a.carrera}}</p>
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-
-
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      ID. Matricula
-
-                      <div class="text-base font-bold leading-8 mt-6">
-                        {{alumno.matricula}}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Porcentaje</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">  {{alumno.porcentaje}} %</div>
-                  </div>
-                </div>
-              </div>
-
-
-
-            </div>
-
-
-
-            <br>
-
-
-            <div class="intro-y flex items-center h-10">
-              <h2 class="text-lg font-medium truncate mr-5">
-                Medios de Contacto
-              </h2>
-            </div>
-
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      Correo
-
-                      <div class="text-base font-bold leading-8 mt-6"> {{alumno.correo}} </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Celular</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.celular}}</div>
-                  </div>
-                </div>
-              </div>
-
-
-
-            </div>
-            <br>
-            <div class="intro-y flex items-center h-10">
-              <h2 class="text-lg font-medium truncate mr-5">
-                Dirección
-              </h2>
-            </div>
-
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      Pais
-
-                      <div class="text-base font-bold leading-8 mt-6"> {{alumno.pais}} </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">CP</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.cp}}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Estado</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.estado}}</div>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-
-
-            </div>
-
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      Municipio
-
-                      <div class="text-base font-bold leading-8 mt-6"> {{alumno.municipio}} </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Colonia</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.colonia}}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Calle</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.calle}}</div>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-
-
-            <!-- <br>
-           <div class="intro-y flex items-center h-10">
-                  <h2 class="text-lg font-medium truncate mr-5">
-  Sucesos en el sistema
-               </h2>
-                </div>
-
-    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-        <table class="table table-report sm:mt-2" >
-            <thead>
-                <tr>
-
-                    <th class="whitespace-no-wrap">FECHA DE REGISTRO</th>
-                    <th class="whitespace-no-wrap">SUCESO</th>
-                    <th class="whitespace-no-wrap">  OBSERVACIONES</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="intro-x">
-
-                    <td>
-                        <div class="ext-base text-xs whitespace-no-wrap">   </div>
-                    </td>
-                    <td>
-                      <div class="ext-base text-xs whitespace-no-wrap"> </div>
-                  </td>
-
-
-
-                  <td>
-                    <div class="text-base whitespace-no-wrap"> </div>
-                </td>
-
-
-                </tr>
-
-
-
-            </tbody>
-        </table>
-    </div> -->
-
-            <br>
-            <br>
-
-
-            <div class="intro-y flex items-center h-10">
-              <h2 class="text-lg font-medium truncate mr-5">
-                Proyecto Asignado
-              </h2>
-            </div>
-
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1" *ngIf="alumnoproyecto.id>0; else templateName">
-                      Proyecto
-
-                      <div class="text-base font-bold leading-8 mt-6"> {{alumnoproyecto.proyectoNombre}} </div>
-                      <div class="text-base font-bold leading-8 mt-6">Inscrito:  {{alumnoproyecto.fechaCreacion.substr(0,10)}} </div>
-
-                    </div>
-                    <ng-template #templateName>
-                      <div class="text-base text-gray-600 mt-1">
-                        Sin proyecto asignado
-
-
-                      </div>
-                    </ng-template>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-            </div>
-            <br>
-            <br>
-<!-- 
-            <div class="intro-y flex items-center h-10">
-              <h2 class="text-lg font-medium truncate mr-5">
-                Horario de asistencia
-              </h2>
-            </div>
-
-
-            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-              <div class="box p-5">
-
-                <table class="table table-report sm:mt-2">
-                  <thead>
-                    <tr>
-
-                      <th class="whitespace-no-wrap">HORARIO</th>
-                      <th class="whitespace-no-wrap">LUNES</th>
-                      <th class="whitespace-no-wrap">  MARTES</th>
-                      <th class="whitespace-no-wrap">MIERCOLES</th>
-                      <th class="whitespace-no-wrap">JUEVES</th>
-                      <th class="whitespace-no-wrap">VIERNES</th>
-                      <th class="whitespace-no-wrap">SABADO</th>
-                      <th class="whitespace-no-wrap">DOMINGO</th>
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="intro-x">
-                      <td>
-
-                 
-                          <div class="ext-base text-xs whitespace-no-wrap">ENTRADA</div>
-                        </td>
-                      
- <td >
-
-                        <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-									<option value="00" selected="selected">00</option>
-									<option value="01">01</option>
-									<option value="02">02</option>
-									<option value="03">03</option>
-									<option value="04">04</option>
-									<option value="05">05</option>
-									<option value="06">06</option>
-									<option value="07">07</option>
-									<option value="08">08</option>
-									<option value="09">09</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>									
-									<option value="13">13</option>
-									<option value="14">14</option>
-									<option value="15">15</option>
-									<option value="16">16</option>
-									<option value="17">17</option>
-									<option value="18">18</option>
-									<option value="19">19</option>
-									<option value="20">20</option>
-									<option value="21">21</option>
-									<option value="22">22</option>
-									<option value="23">23</option>
-									
-								</select>
-								
-								<span>:</span>
-								
-								<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-									<option value="00" selected="selected">00</option>
-									<option value="01">01</option>
-									<option value="02">02</option>
-									<option value="03">03</option>
-									<option value="04">04</option>
-									<option value="05">05</option>
-									<option value="06">06</option>
-									<option value="07">07</option>
-									<option value="08">08</option>
-									<option value="09">09</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-									<option value="13">13</option>
-									<option value="14">14</option>
-									<option value="15">15</option>
-									<option value="16">16</option>
-									<option value="17">17</option>
-									<option value="18">18</option>
-									<option value="19">19</option>
-									<option value="20">20</option>
-									<option value="21">21</option>
-									<option value="22">22</option>
-									<option value="23">23</option>
-									<option value="24">24</option>
-									<option value="25">25</option>
-									<option value="26">26</option>
-									<option value="27">27</option>
-									<option value="28">28</option>
-									<option value="29">29</option>
-									<option value="30">30</option>
-									<option value="31">31</option>
-									<option value="32">32</option>
-									<option value="33">33</option>
-									<option value="34">34</option>
-									<option value="35">35</option>
-									<option value="36">36</option>
-									<option value="37">37</option>
-									<option value="38">38</option>
-									<option value="39">39</option>
-									<option value="40">40</option>
-									<option value="41">41</option>
-									<option value="42">42</option>
-									<option value="43">43</option>
-									<option value="44">44</option>
-									<option value="45">45</option>
-									<option value="46">46</option>
-									<option value="47">47</option>
-									<option value="48">48</option>
-									<option value="49">49</option>
-									<option value="50">50</option>
-									<option value="51">51</option>
-									<option value="52">52</option>
-									<option value="53">53</option>
-									<option value="54">54</option>
-									<option value="55">55</option>
-									<option value="56">56</option>
-									<option value="57">57</option>
-									<option value="58">58</option>
-									<option value="59">59</option>
-								</select>	
-	
-	
-	
-	
-	
-</td>
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>       
-
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>          
-
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>       
-
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>          
-<td>
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>                 
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>|
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>        
-
-                   
-
-
-                    </tr>
-                    <tr class="intro-x">
-                      <td>
-
-                 
-                          <div class="ext-base text-xs whitespace-no-wrap">SALIDA</div>
-                        </td>
-                      
- <td >
-
-                        <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-									<option value="00" selected="selected">00</option>
-									<option value="01">01</option>
-									<option value="02">02</option>
-									<option value="03">03</option>
-									<option value="04">04</option>
-									<option value="05">05</option>
-									<option value="06">06</option>
-									<option value="07">07</option>
-									<option value="08">08</option>
-									<option value="09">09</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>									
-									<option value="13">13</option>
-									<option value="14">14</option>
-									<option value="15">15</option>
-									<option value="16">16</option>
-									<option value="17">17</option>
-									<option value="18">18</option>
-									<option value="19">19</option>
-									<option value="20">20</option>
-									<option value="21">21</option>
-									<option value="22">22</option>
-									<option value="23">23</option>
-									
-								</select>
-								
-								<span>:</span>
-								
-								<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-									<option value="00" selected="selected">00</option>
-									<option value="01">01</option>
-									<option value="02">02</option>
-									<option value="03">03</option>
-									<option value="04">04</option>
-									<option value="05">05</option>
-									<option value="06">06</option>
-									<option value="07">07</option>
-									<option value="08">08</option>
-									<option value="09">09</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-									<option value="13">13</option>
-									<option value="14">14</option>
-									<option value="15">15</option>
-									<option value="16">16</option>
-									<option value="17">17</option>
-									<option value="18">18</option>
-									<option value="19">19</option>
-									<option value="20">20</option>
-									<option value="21">21</option>
-									<option value="22">22</option>
-									<option value="23">23</option>
-									<option value="24">24</option>
-									<option value="25">25</option>
-									<option value="26">26</option>
-									<option value="27">27</option>
-									<option value="28">28</option>
-									<option value="29">29</option>
-									<option value="30">30</option>
-									<option value="31">31</option>
-									<option value="32">32</option>
-									<option value="33">33</option>
-									<option value="34">34</option>
-									<option value="35">35</option>
-									<option value="36">36</option>
-									<option value="37">37</option>
-									<option value="38">38</option>
-									<option value="39">39</option>
-									<option value="40">40</option>
-									<option value="41">41</option>
-									<option value="42">42</option>
-									<option value="43">43</option>
-									<option value="44">44</option>
-									<option value="45">45</option>
-									<option value="46">46</option>
-									<option value="47">47</option>
-									<option value="48">48</option>
-									<option value="49">49</option>
-									<option value="50">50</option>
-									<option value="51">51</option>
-									<option value="52">52</option>
-									<option value="53">53</option>
-									<option value="54">54</option>
-									<option value="55">55</option>
-									<option value="56">56</option>
-									<option value="57">57</option>
-									<option value="58">58</option>
-									<option value="59">59</option>
-								</select>	
-	
-	
-	
-	
-	
-</td>
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>       
-
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>          
-
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>       
-
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>          
-<td>
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>                 
-<td >
-
-  <select name="horasiL" class="removedc" id="horasiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>									
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-
-</select>
-
-<span>:</span>
-
-<select name="minutosiL" class="removedc" id="minutosiL" style="width:50px;">
-<option value="00" selected="selected">00</option>
-<option value="01">01</option>
-<option value="02">02</option>
-<option value="03">03</option>
-<option value="04">04</option>
-<option value="05">05</option>
-<option value="06">06</option>
-<option value="07">07</option>
-<option value="08">08</option>
-<option value="09">09</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-</select>	
-
-
-
-
-
-</td>        
-
-                   
-
-
-                    </tr>
-
-
-                  </tbody>
-                </table>
-                </div>
-              </div>
-
-              <br>
-            <br>
- -->
-
-            <div class="intro-y flex items-center h-10">
-              <h2 class="text-lg font-medium truncate mr-5">
-                Documentos
-              </h2>
-            </div>
-
-
-            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-              <div class="box p-5">
-
-                <table class="table table-report sm:mt-2">
-                  <thead>
-                    <tr>
-
-                      <th class="whitespace-no-wrap">DOCUMENTO</th>
-                      <th class="whitespace-no-wrap">ADJUNTO</th>
-                      <th class="whitespace-no-wrap">  FECHA ENTREGA</th>
-                      <th class="whitespace-no-wrap">ENTREGADO</th>
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="intro-x" *ngFor="let d of documentos">
-
-                      <td>
-                        <div class="ext-base text-xs whitespace-no-wrap">   {{d.documento}}</div>
-                      </td>
-                      <td>
-                        <div class="ext-base text-xs whitespace-no-wrap"> <a (click)="abrirsubir(d.id)"><i data-feather="check-square" class="w-4 h-4 mr-1"></i> Subir archivo</a></div>
-                      </td>
-
-
-
-                      <td>
-                        <div class="text-base whitespace-no-wrap"> {{d.fecha}} </div>
-                      </td>
-                      <td style="padding: 5px; background: #ffffff; " align="center"><input type="checkbox" id="1" onclick="entregadoDocumento(this.id,137994,35);"></td>
-
-                      <div class="modal" id="abrirsubir-{{d.id}}">
-                        <div class="modal__content">
-                          <form #form="ngForm" (ngSubmit)="subeArchivo()">
-                            <div class="p-5 text-center">
-                              <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                              <div class="text-base mt-5">Subir Archivo</div>
-                              <br>
-                              <input type="file" id="Imagen" name="Imagen">
-
-                            </div>
-
-                            <div class="px-5 pb-8 text-center">
-                              <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-                              <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
-                            </div>
-                          </form>
-
-                        </div>
-                      </div>
-
-                    </tr>
-
-
-
-                  </tbody>
-                </table>
-                </div>
-              </div>
-
-              <br>
-              <br>
-  
-  
-              <div class="intro-y flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">
-                  Reportes 
-                </h2>
-              </div>
-  
-  
-              <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                <div class="box p-5">
-  
-                  <table class="table table-report sm:mt-2">
-                    <thead>
-                      <tr>
-  
-                        <th class="whitespace-no-wrap">Reporte</th>
-                      
-  
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap">  </div>
-                        </td>
-                       
-                      
-                      </tr>
-  
-  
-  
-                    </tbody>
-                  </table>
-                  <button (click)="abrirsubirr()" class="button text-white bg-theme-1 shadow-md mr-2">Agregar reporte</button>
-
-                  </div>
-
-                </div>
-  
-                <br>
-                <br>
-    
-<!--     
-                <div class="intro-y flex items-center h-10">
-                  <h2 class="text-lg font-medium truncate mr-5">
-                    Reportes global
-                  </h2>
-                </div>
-    
-    
-                <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                  <div class="box p-5">
-    
-                    <table class="table table-report sm:mt-2">
-                      <thead>
-                        <tr>
-    
-                          <th class="whitespace-no-wrap">Reporte</th>
-                        
-    
-                        </tr>
-
-
-                      </thead>
-                      <tbody>
-                        <tr class="intro-x">
-    
-                          <td>
-                            <div class="ext-base text-xs whitespace-no-wrap">  </div>
-                          </td>
-                           
-                        
-                        </tr>
-
-                   
-    
-                      </tbody>
-                    </table>
-                    <button (click)="abrirsubirr()" class="button text-white bg-theme-1 shadow-md mr-2">Agregar reporte</button>
-
-                    </div>
-
-                  </div> -->
-
-
-         
-      
-      
-                  <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                      Reportes desempeño
-                    </h2>
-                  </div>
-      
-      
-                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                    <div class="box p-5">
-      
-                      <table class="table table-report sm:mt-2" *ngIf="respuestas!=''" >
-                        <thead>
-                          <tr>
-      
-                            <th class="whitespace-no-wrap">Reporte</th>
-                            <th class="whitespace-no-wrap">Fecha registro</th>
-                            <th class="whitespace-no-wrap">Realizado</th>
-
-      
-                          </tr>
-  
-  
-                        </thead>
-                        <tbody>
-                          <tr class="intro-x" >
-      
-                            <td>
-                              <div class="ext-base text-xs whitespace-no-wrap">Entregado</div>
-                            </td>
-                            <td>
-                              <div class="ext-base text-xs whitespace-no-wrap"> {{respuestas}} </div>
-                            </td>
-                            <td>
-                              <div class="ext-base text-xs whitespace-no-wrap"> SI </div>
-                            </td>
-                             
-                          
-                          </tr>
-  
-                     
-      
-                        </tbody>
-                      </table>
-                      <button [routerLink]="['/alumnosevaluar', alumno.id]" class="button text-center text-white bg-theme-1 shadow-md mr-2"  *ngIf="respuestas==''" >Evaluar alumno</button>
-  
-                      </div>
-  
-                    </div>
-<br>
-<br>
-
-            </div>
+            <div class="text-base font-bold leading-8 mt-6"> {{alumno.nombre}} </div>
+          </div>
         </div>
-        <div class="modal" id="abrirsubirr">
+      </div>
 
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class=" p-5">
+          <div class="text-base text-gray-600 mt-1">Apellido Paterno</div>
 
-          <div class="modal__content">
-            <form #form="ngForm" (ngSubmit)="subeArchivoreporte()">
-              <div class="p-5 text-center">
-                <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                <div class="text-base mt-5">Subir Archivo</div>
-                <br>
-                <input type="file" id="Imagen" name="Imagen">
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.paterno}}</div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class=" p-5">
+          <div class="text-base text-gray-600 mt-1">Apellido Materno</div>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.materno}}</div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>ID Matricula</label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.matricula}}</div>
+        </div>
+      </div>
 
-              </div>
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>Universidad:</label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.universidad}}</div>
+        </div>
+      </div>
 
-              <div class="px-5 pb-8 text-center">
-                <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-                <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
-              </div>
-            </form>
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>Facultad:</label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.facultad}}</div>
+        </div>
+      </div>
 
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>Carrera:</label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.carrera}}</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>Porcentaje Academico:</label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.porcentaje}} %</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Avance en créditos de la carrera:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.avanceCreditos}}</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Número de Semestre / Cuatrimestre:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.noCuatrimestreSemestre}}</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            ¿Tu carrera es semestral o cuatrimestral?
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.esquemaPeriodo}}</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Generación:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.generacion}}</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Fecha estimada de graduación:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.fechaEstimadaGraduacionString}}</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Correo Institucional:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.correoInstitucional}}</div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Correo Personal:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.correoPersonal}}</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Teléfono de Contacto:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.celular}}</div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Fecha de Nacimiento:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.fechaNacimientoString}}</div>
+        </div>
+      </div>
+
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            Sexo:
+          </label>
+          <div class="text-base font-bold leading-8 mt-6">{{alumno.sexo}}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+
+  <div class="intro-y flex items-center h-10">
+    <h2 class="text-lg font-medium truncate mr-5">
+      Información Complementaria
+    </h2>
+  </div>
+  <div class="box">
+    <div class="grid grid-cols-12 gap-6 mt-5">
+
+        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+          <div class="p-5">
+            <label>
+              ¿Has participado en ASUA?:
+            </label>
+            <div class="text-base font-bold leading-8 mt-6">{{alumno.participacionAsua}}</div>
+          </div>
+        </div>
+      
+        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+          <div class="p-5">
+            <label>
+              ¿Actualmente trabajas?:
+            </label>
+            <div class="text-base font-bold leading-8 mt-6">{{alumno.trabajas}}</div>
           </div>
         </div>
 
+        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+          <div class="p-5">
+            <label>
+              ¿Bajo qué modalidad trabajas?
+            </label>
+            <div class="text-base font-bold leading-8 mt-6">{{ alumno.modalidadTrabajo}}</div>
+          </div>
+        </div>
+
+        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+          <div class="p-5">
+            <label>
+              ¿A partir de qué semestre / cuatrimestre comenzaste a trabajar?
+            </label>
+            <div class="text-base font-bold leading-8 mt-6">{{alumno.cuatrimestreComienzoTrabajo}}</div>
+          </div>
+        </div>
+
+  
+
+   
+        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+          <div class="p-5">
+          <label>
+            Indica en cuál(es) área(s) de Vida Universitaria has participado
+          </label>
+        </div>
+        <div class="sm:grid grid-cols-3 gap-2">
+          <div *ngFor="let area of alumno.listaAreaVidaUniversitariaParticipado" class="text-base text-gray-600 mt-1">
+            <div class="flex items-center p-5">
+              <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+              <span>{{area.areaVidaUniversitaria}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="p-5">
+          <label>
+            ¿Actualmente formas parte de alguna área de Vida Universitaria?
+          </label>
+        </div>
+        <div class="sm:grid grid-cols-3 gap-2">
+          <div *ngFor="let area of alumno.listaAreaVidaUniversitariaActuales" class="text-base text-gray-600 mt-1">
+            <div class="flex items-center p-5">
+              <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+              <span>{{area.areaVidaUniversitaria}}</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
     </div>
-    <!-- END: FORM -->
-<!-- END: Content -->
+
+    </div> 
+  <br>
+  
+  <br>
+  <br>
+
+
+  <div class="intro-y flex items-center h-10">
+    <h2 class="text-lg font-medium truncate mr-5">
+      Reportes 
+    </h2>
+  </div>
+
+
+  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+    <div class="box p-5">
+
+      <table class="table table-report sm:mt-2">
+        <thead>
+          <tr>
+
+            <th class="whitespace-no-wrap">Reporte</th>
+          
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="intro-x">
+
+            <td>
+              <div class="ext-base text-xs whitespace-no-wrap">  </div>
+            </td>
+           
+          
+          </tr>
+
+
+
+        </tbody>
+      </table>
+
+      </div>
+
+    </div>
+
+    <br>
+    <br>
+
+<!--     
+    <div class="intro-y flex items-center h-10">
+      <h2 class="text-lg font-medium truncate mr-5">
+        Reportes global
+      </h2>
+    </div>
+
+
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+      <div class="box p-5">
+
+        <table class="table table-report sm:mt-2">
+          <thead>
+            <tr>
+
+              <th class="whitespace-no-wrap">Reporte</th>
+            
+
+            </tr>
+
+
+          </thead>
+          <tbody>
+            <tr class="intro-x">
+
+              <td>
+                <div class="ext-base text-xs whitespace-no-wrap">  </div>
+              </td>
+               
+            
+            </tr>
+
+       
+
+          </tbody>
+        </table>
+        <button (click)="abrirsubirr()" class="button text-white bg-theme-1 shadow-md mr-2">Agregar reporte</button>
+
+        </div>
+
+      </div> -->
+
+
+
+
+
+      <div class="intro-y flex items-center h-10">
+        <h2 class="text-lg font-medium truncate mr-5">
+          Reportes desempeño
+        </h2>
+      </div>
+
+
+      <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+        <div class="box p-5">
+
+          <table class="table table-report sm:mt-2" *ngIf="respuestas!=''" >
+            <thead>
+              <tr>
+
+                <th class="whitespace-no-wrap">Reporte</th>
+                <th class="whitespace-no-wrap">Fecha registro</th>
+                <th class="whitespace-no-wrap">Realizado</th>
+
+
+              </tr>
+
+
+            </thead>
+            <tbody>
+              <tr class="intro-x" >
+
+                <td>
+                  <div class="ext-base text-xs whitespace-no-wrap">Entregado</div>
+                </td>
+                <td>
+                  <div class="ext-base text-xs whitespace-no-wrap"> {{respuestas}} </div>
+                </td>
+                <td>
+                  <div class="ext-base text-xs whitespace-no-wrap"> SI </div>
+                </td>
+                 
+              
+              </tr>
+
+         
+
+            </tbody>
+          </table>
+          <button [routerLink]="['/alumnosevaluar', alumno.id]" class="button text-center text-white bg-theme-1 shadow-md mr-2"  *ngIf="respuestas==''" >Evaluar alumno</button>
+
+          </div>
+
+        </div>
+<br>
+<br>
+
+ 
+
+
+</div>
+
+

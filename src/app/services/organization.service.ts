@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Empresa,estadoActualizar,permisos } from '../models/empresa';
+import { Empresa,estadoActualizar } from '../models/empresa';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
