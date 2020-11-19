@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 import { SessionService } from 'src/app/services/session.service';
 
 declare var $: any;
+let now = new Date();
 
 @Component({
   selector: 'app-proyectos-add',
@@ -21,6 +22,7 @@ export class ProyectosAddComponent implements OnInit {
    
    public mensajevalidacion="";
    public d: Date = new Date(); // but the type can also be inferred from "new Date()" already
+   public fechaMinima: Date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 90);
 
   public listaProyectosCompetencias = new Array<ProyectosCompetencias>();
   public listaProyectosCarreras = new Array<ProyectosCarreras>();

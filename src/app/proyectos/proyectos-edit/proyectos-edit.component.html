@@ -52,7 +52,7 @@
                   </select>
                   <div
                   *ngFor="let organizacion2 of organizaciones">
-               <div *ngIf="organizacion2.organizacion!='Interna';else templateName">
+               <div *ngIf="organizacion2.nombreComun!='Interna';else templateName">
                    <input type="text" class="input  w-full border mt-2 " value="{{organizacion2.organizacion}}"  *ngIf="proyectoModel.idOrganizacion== organizacion2.id "  disabled>
                  </div>
                  <ng-template #templateName>

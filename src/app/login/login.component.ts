@@ -44,24 +44,21 @@ if(res['resultado']==1){
   this.session.setapellidos(datosvalue['nombreCompletoDirector']);
 
   console.log(datosvalue);
-if(datosvalue['organizacion']=='Interna'){
 
-  this.getempresa(datosvalue['idOrganizacion']);
-}else{
   this.session.setnombre(datosvalue['organizacion']);
-  var tempo=datosvalue['idOrganizacion'];
-  console.log(tempo);
+ 
+
+
+
+var tempo=datosvalue['idOrganizacion'];
+console.log(tempo);
 if( tempo == '0'){
-  this.router.navigate(['/empresas/add']);
+this.router.navigate(['/empresas/add']);
 
 }else{
-  this.router.navigate(['/dashboard']);
+this.router.navigate(['/dashboard']);
 
 }
-
-}
-
-
 
 }else{
 
