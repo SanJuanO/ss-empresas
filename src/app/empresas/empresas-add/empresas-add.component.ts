@@ -421,8 +421,8 @@ console.log(this.responsablemodel);
 
                $('#success-modal-preview').modal('show');
 
-    this._location.back();
 
+               
 
     }, error=>{
       alert(error.error)
@@ -502,7 +502,6 @@ console.log(model);
       
                      $('#success-modal-preview').modal('show');
       
-          this._location.back();
       
       
           }, error=>{

@@ -62,6 +62,7 @@
         <h2 class="text-lg font-medium truncate mr-5">
             Información General
         </h2>
+        
     </div>
     <div class="box ">
         <br>
@@ -920,7 +921,34 @@ Facebook
         <h2 class="text-lg font-medium mr-auto">
             Institución / Área
         </h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0" *ngIf="empresaModel.idEstadoOrganizacion>2" >
+            <button (click)="permitir()" class="button text-white bg-theme-1 shadow-md mr-2">Solicitar Modificar Institución / Área</button>
+        </div>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0"  *ngIf="empresaModel.idEstadoOrganizacion<3">
+            <a [routerLink]="['/empresas/Edit', idobtenido]">
+                <button  class="button text-white bg-theme-1 shadow-md mr-2">Modificar Institucióm / Área</button>
+            </a>
+        </div>
+        <div class="modal" id="abrirsubir">
+            <div class="modal__content">
+                <form #form="ngForm" (ngSubmit)="obtenerpermisos()">
+                    <div class="p-5 text-center">
+                        <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                        <div class="text-base mt-5">Solicitar permiso para editar información</div>
+                        <br>
+                    </div>
 
+                    <div class="px-5 pb-8 text-center">
+                        <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">
+        Cancelar
+      </button>
+                        <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Aceptar</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
     </div>
 
 
@@ -929,7 +957,9 @@ Facebook
         <h2 class="text-lg font-medium truncate mr-5">
             Información General
         </h2>
+        
     </div>
+    
     <div class="box ">
         <div class="grid grid-cols-12 gap-4 mt-5">
 

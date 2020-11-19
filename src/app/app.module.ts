@@ -25,6 +25,7 @@ import { EmpresasverComponent } from './empresas/empresas-ver/empresas-ver.compo
 import { PerfilComponent } from './perfil/perfil.component';
 import { AlumnosverComponent } from './alumnos-ver/alumnos-ver.component';
 import { AlumnosevaluarComponent } from './alumnos-evaluar/alumnos-evaluar.component';
+import { passComponent } from './pass/pass.component';
 
 
 import { CookieService } from 'ngx-cookie-service';
@@ -36,6 +37,7 @@ import { CookieService } from 'ngx-cookie-service';
     AppComponent,
     LoginComponent,
     MenuComponent,
+    passComponent,
     AlumnosevaluarComponent,
     PerfilComponent,
     ProyectosAddComponent,

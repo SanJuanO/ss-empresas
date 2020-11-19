@@ -8,8 +8,10 @@ import { Universidad } from "../../models/universidad";
 import { UniversidadService } from '../../services/universidad.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { SessionService } from 'src/app/services/session.service';
 
 declare var $: any;
+let now = new Date();
 
 @Component({
   selector: 'app-proyectos-add',
@@ -21,6 +23,7 @@ export class ProyectosEditComponent implements OnInit {
   public listaProyectosCompetencias = new Array<ProyectosCompetencias>();
   public listaProyectosCarreras = new Array<ProyectosCarreras>();
   public proyectoModel = new Proyecto(0,"", "", "", 0, "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0,  this.listaProyectosCompetencias, this.listaProyectosCarreras);
+  public fechaMinima: Date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 90);
 
   public validar = false;
   public organizaciones: Empresa[] = [];
@@ -32,14 +35,16 @@ export class ProyectosEditComponent implements OnInit {
   public mensajevalidacion = "";
   public idsCarreras :any
   public idsCompetencias:any
+  public vc=""
 
-  constructor(private proyectoService: ProyectoService, private organizacionService: OrganizationService,
+  constructor(private cookies: SessionService,private proyectoService: ProyectoService, private organizacionService: OrganizationService,
     private universidadService: UniversidadService, private router: Router, private activatedRoute: ActivatedRoute,
     private _location: Location) {
   }
 
   ngOnInit(): void {
-
+    this.vc=this.cookies.getnombre();
+    console.log(this.vc);
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
     //this.proyectoService.getProyecto(this.idobtenido).subscribe((proyectoModel: Proyecto) => this.proyectoModel = proyectoModel);
     this.getProyecto(this.idobtenido);
@@ -271,4 +276,18 @@ else{
   
   }
   }
+
+  onChangeHoras() {
+    //console.log(this.proyectoModel.fechaInicio);
+    this.proyectoModel.fechaTermino = "";
+    let dia: Date = new Date(this.proyectoModel.fechaInicio);
+
+    if (this.proyectoModel.horas == 240) {
+      this.fechaMinima = new Date(dia.getFullYear(), dia.getMonth(), dia.getDate() + 90);
+    } else {
+      this.fechaMinima = new Date(dia.getFullYear(), dia.getMonth(), dia.getDate() + 190);
+    }
+  }
+
+
 }

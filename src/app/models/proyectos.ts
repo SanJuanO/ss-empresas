@@ -45,6 +45,7 @@ export class Proyecto {
     public id: number,
     public competenciasList?: Array<ProyectosCompetencias>,
     public carrerasList?: Array<ProyectosCarreras>,
+    public horas?:number,
 
   ) { }
 

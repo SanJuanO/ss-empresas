@@ -9,6 +9,7 @@ import { ProyectosActividadesAddComponent } from './proyectos/proyectos-activida
 import { ProyectosAlumnosAddComponent } from './proyectos/proyectos-alumnos-add/proyectos-alumnos-add.component';
 import { ConvocatoriasComponent } from './convocatorias/convocatorias.component';
 
+import { passComponent } from './pass/pass.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmpresasAddComponent } from './empresas/empresas-add/empresas-add.component';
@@ -40,12 +41,13 @@ const routes: Routes = [
   {path:'empresas/add',component:EmpresasAddComponent},
   {path:'empresas/ver/:id',component:EmpresasverComponent},
   {path:'empresas/Edit/:id',component:EmpresasEditComponent},
+  {path:'pass',component:passComponent},
 
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -20,25 +20,30 @@
                                 <div class="col-12">
                                     <div class="card login-page border-0" style="z-index: 1">
                                         <!-- <img alt="Servicio Social" aling="center" class="w-100" src="assets/images/logo.png"> -->
-    
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alerta" style="display: none;">
+                                            <strong>{{mensaje}}</strong>
+                                            <button type="button" class="close" (click)="ocultar()" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
                                         <div class="card-body p-0">
-                                            <h1 class="card-title text-center">Login</h1>  
+                                            <h1 class="card-title text-center">Iniciar Sesión</h1>  
                                             <form class="login-form mt-4"    #formAlumno="ngForm" (ngSubmit)="onSubmit(formAlumno)">
 
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="form-group position-relative">
-                                                            <label>Su Usuario <span class="text-danger">*</span></label>
+                                                            <label>Correo <span class="text-danger">*</span></label>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user fea icon-sm icons"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                                            <input type=“text” class="form-control pl-5" placeholder=“Usuario” name="usuario"  id="usuario" required>
+                                                            <input type="email" class="form-control pl-5" placeholder="correo@example.com" name="usuario"  id="usuario" required>
                                                         </div>
                                                     </div><!--end col-->
         
                                                     <div class="col-lg-12">
                                                         <div class="form-group position-relative">
-                                                            <label>Password <span class="text-danger">*</span></label>
+                                                            <label>Contraseña <span class="text-danger">*</span></label>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key fea icon-sm icons"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
-                                                            <input type="password" class="form-control pl-5" placeholder="Password" name="pass" id="pass" required>
+                                                            <input type="password" class="form-control pl-5" placeholder="Contraseña" name="pass" id="pass" required>
                                                         </div>
                                                     </div><!--end col-->
         
@@ -46,11 +51,9 @@
                                                         <div class="d-flex justify-content-between">
                                                             <div class="form-group">
                                                                 <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                                    <label class="custom-control-label" for="customCheck1">Recordar</label>
                                                                 </div>
                                                             </div>
-                                                            <p class="forgot-pass mb-0"><a href="auth-cover-re-password.html" class="text-dark font-weight-bold">Olvidaste tu password?</a></p>
+                                                            <p class="forgot-pass mb-0"><a routerLink="/pass" class="text-dark font-weight-bold">¿Olvidaste tu contraseña?</a></p>
                                                         </div>
                                                     </div><!--end col-->
     
@@ -87,7 +90,7 @@
               <!-- END: Login Form -->
           </div>
       
-        <div class="modal" id="success-modal-preview">
+        <div class="modal" id="success-modal-preview" data-toggle="modal">
             <div class="modal__content">
                 <div class="p-5 text-center"> <i data-feather="alert-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
                     <div class="text-3xl mt-5">Algo salio mal!</div>
