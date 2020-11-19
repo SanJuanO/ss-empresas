@@ -40,7 +40,7 @@ public validar=false;
   public listaAreasAccion = [];
   public listaRubros = [];
   public clasificacion: ClasificacionEmpresa[] = [];
-  public empresaModel = new Empresa("","","","",1,1,1,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
+  public empresaModel = new Empresa("","","","","",1,1,1,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
 public mensajevalidacion="";
   public contactos = [];
   checkmodel = new check("false","false")
@@ -213,6 +213,8 @@ listapaist.forEach(el => {
         this.listaestados=[];
         this.listaciudad=[];
         this.listapais=[];
+        this.mensajevalidacion="Ingresa un CP valido"
+        $('#validacion').modal('show');
       }
 
     })
@@ -271,6 +273,25 @@ listapaist.forEach(el => {
   }
 
 
+   validarEmail(valor) {
+    var caract = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+
+    if (caract.test(valor) == false){
+     return false
+    } else {
+     return true;
+    }
+  }
+  mostrarpass(){
+    console.log("cambioar");
+    if ($('#mostrar_contrasena').is(':checked')) {
+      $('#password').attr('type', 'text');
+    } else {
+      $('#password').attr('type', 'password');
+    }
+  
+  }
+
 
   create(){
     this.responsablemodel.usuario=this.responsablemodel.correo;
@@ -291,8 +312,39 @@ this.mensajevalidacion="No puedes dejar el campo de Nombre Oficial de la Institu
       $('#validacion').modal('show');
 
     }
+//responsable
+else if(this.responsablemodel.telefono.length<10){
+  this.mensajevalidacion="Ingrese un telefono valido"
+  $('#validacion').modal('show');
+} 
+else if(!this.validarEmail(this.responsablemodel.correo)){
+  this.mensajevalidacion="Ingrese un correo valido"
+  $('#validacion').modal('show');
+} 
 
-    
+
+//maximo
+    else if(model.descripcion.length<500){
+      this.mensajevalidacion="El campo de descripcion debe tener menos de 500 caracteres"
+      $('#validacion').modal('show');
+    } 
+    else if(model.razon.length<500){
+      this.mensajevalidacion="El campo de Razón de ser debe tener menos de 500 caracteres"
+      $('#validacion').modal('show');
+    } 
+    else if(model.mision.length<500){
+      this.mensajevalidacion="El campo de misión debe tener menos de 500 caracteres"
+      $('#validacion').modal('show');
+    } 
+    else if(model.vision.length<500){
+      this.mensajevalidacion="El campo de Visión debe tener menos de 500 caracteres"
+      $('#validacion').modal('show');
+    } 
+    else if(model.mision.length<500){
+      this.mensajevalidacion="El campo de misión debe tener menos de 500 caracteres"
+      $('#validacion').modal('show');
+    } 
+
     else if(model.nombreComun==""){
       this.mensajevalidacion="No puedes dejar el campo de Nombre Común de la Institución vacío"
       $('#validacion').modal('show');
@@ -576,9 +628,10 @@ $('#abrirsubir').modal('hide');
   obtenerdireccion(){
     var cp=this.empresaModel.cp;
     console.log(cp);
-    if(cp.length==5){
+   
     this.obtenerdirecciones(cp);
-    }
+
+    
   }
  
 }
