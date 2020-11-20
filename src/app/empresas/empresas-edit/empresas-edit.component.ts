@@ -271,7 +271,7 @@ if(this.responsablemodel.externa){
       
           }
 //responsable
-else if(this.responsablemodel.telefono.length<10){
+else if(this.responsablemodel.telefono.length>9){
   this.mensajevalidacion="Ingrese un telefono valido"
   $('#validacion').modal('show');
 } 
