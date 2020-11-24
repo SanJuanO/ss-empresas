@@ -29,8 +29,8 @@
   </div>
 
   <div class="preview">
-    <div class="intro-y box mt-5">
-      <form class="p-5" (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="intro-y mt-5">
+      <form class="p-5" >
         <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
         <div class="intro-y box mt-5">
           <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
@@ -38,50 +38,38 @@
               Información General
             </h2>
           </div>
-          <div class="mt-3">
+          <div class="mt-3 p-5">
             <div class="sm:grid grid-cols-3 gap-2">
 
               <div class="relative mt-8">
                 <div>
-                  <label>Institución / Área:</label>
-                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idOrganizacion" [ngModelOptions]="{standalone: true}" style="display: none;">
+                  <label>Institución / Área*</label>
+                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idOrganizacion" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="organizacion.id" *ngFor="let organizacion of organizaciones">{{organizacion.organizacion}} </option>
                   </select>
-                  <div
-                  *ngFor="let organizacion2 of organizaciones">
-               <div *ngIf="organizacion2.nombreComun!='Interna';else templateName">
-                   <input type="text" class="input  w-full border mt-2 " value="{{organizacion2.organizacion}}"  *ngIf="proyectoModel.idOrganizacion== organizacion2.id "  disabled>
-                 </div>
-                 <ng-template #templateName>
-                   <div >
-                     <input type="text" class="input  w-full border mt-2 " value="{{vc}}"   disabled>
-                   </div>
-               
-                 </ng-template>
-               
-               </div>
-               
+
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
-                  <label>Nombre del proyecto:</label>
-                  <input type="text" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.proyecto" [ngModelOptions]="{standalone: true}" ng-reflect-required="ejemplo nombre" required>
+                  <label>Nombre del proyecto*</label>
+                  <input type="text" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.proyecto" [ngModelOptions]="{standalone: true}" ng-reflect-required="ejemplo nombre" maxlength="70" placeholder="Máximo 70 caracteres" required>
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
-                  <label>Descripción:</label>
-                  <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.descripcion" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                  <label>Descripción del proyecto*</label>
+                  <textarea type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.descripcion" [ngModelOptions]="{standalone: true}" placeholder="Máximo 500 caracteres" maxlength="500" rows="5" required>
+              </textarea>
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Nombre del Responsable del Proyecto:
+                    Nombre del Responsable del Proyecto*
                   </label>
                   <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.nombreResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
                 </div>
@@ -90,7 +78,7 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Puesto del Responsable del Proyecto:
+                    Puesto del Responsable del Proyecto*
                   </label>
                   <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.puesto" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
                 </div>
@@ -99,7 +87,7 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Área del Responsbale del Proyecto:
+                    Área del Responsbale del Proyecto*
                   </label>
                   <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.area" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
                 </div>
@@ -108,7 +96,7 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Correo electrónico del responsable del proyecto:
+                    Correo electrónico del responsable del proyecto*
                   </label>
                   <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.correoResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
                 </div>
@@ -117,39 +105,18 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Teléfono de responsable del proyecto:
+                    Teléfono de responsable del proyecto
                   </label>
-                  <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.telefono" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                  <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.telefono" [ngModelOptions]="{standalone: true}" required>
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Justifica el impacto social del proyecto:
+                    ¿Plazas de Servicio Social disponibles para el proyecto?*
                   </label>
-                  <input type="text" class="input   w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.justificacionImpactoSocial" [ngModelOptions]="{standalone: true}" required>
-                </div>
-              </div>
-
-              <div class="relative mt-8">
-                <div>
-                  <label>
-                    ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?
-                  </label>
-                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.modalidadDistancia" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="'si'">Si</option>
-                    <option [ngValue]="'no'">No</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="relative mt-8">
-                <div>
-                  <label>
-                    ¿Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 480 hrs.?
-                  </label>
-                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.plazas480" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.plazas" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="1">1</option>
                     <option [ngValue]="2">2</option>
                     <option [ngValue]="3">3</option>
@@ -165,6 +132,31 @@
               </div>
 
               <div class="relative mt-8">
+                <div>
+                  <label>
+                    ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?*
+                  </label>
+                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.modalidadDistancia" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="'si'">Si</option>
+                    <option [ngValue]="'no'">No</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="relative mt-8">
+                <div>
+                  <label>
+                    Justifica el impacto social del proyecto*
+                  </label>
+                  <textarea type="text" class="input   w-full border mt-2 " placeholder="Máximo 500 caracteres" [(ngModel)]="proyectoModel.justificacionImpactoSocial" [ngModelOptions]="{standalone: true}" maxlength="500" rows="7" required>
+              </textarea>
+                </div>
+              </div>
+
+
+
+
+              <!--<div class="relative mt-8">
                 <div>
                   <label>
                     ¿Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 240 hrs.?
@@ -182,14 +174,15 @@
                     <option [ngValue]="10">10</option>
                   </select>
                 </div>
-              </div>
+              </div>-->
 
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Enlista los objetivos del proyecto máximo(7):
+                    Enlista los objetivos del proyecto máximo(7)*
                   </label>
-                  <textarea type="text" rows="7" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.objetivo" [ngModelOptions]="{standalone: true}" value="objetivo ejemplo" required></textarea>
+                  <textarea type="text" rows="7" class="input  w-full border mt-2 " placeholder="Enlista máximo 7" [(ngModel)]="proyectoModel.objetivo" [ngModelOptions]="{standalone: true}" required>
+              </textarea>
                 </div>
               </div>
 
@@ -205,38 +198,42 @@
           </div>
 
           <div class="mt-8 p-5">
-            <div class="sm:grid grid-cols-3 gap-2">
+            <div class="sm:grid grid-cols-2 gap-2">
 
-              <div class="relative mt-8">
+              <!--<div class="relative mt-8">
                 <div>
                   <label>
-                    ¿Cantidad de horas totales del proyecto?
+                    ¿Cantidad de horas totales del proyecto?*
                   </label>
                   <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.horas" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()">
                     <option [ngValue]="240">240</option>
                     <option [ngValue]="480">480</option>
                   </select>
                 </div>
-              </div>
-
+              </div>-->
               <div class="relative mt-8">
                 <div>
-                  <label>Fecha de inicio:</label>
-                  <input type="date" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaInicio" [ngModelOptions]="{standalone: true}" required>
+                  <label>Fecha de inicio*</label>
+                  <input type="date" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaInicio" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()" required>
                 </div>
               </div>
-
+              <!--
               <div class="relative mt-8">
                 <div>
-                  <label>Fecha de termino:</label>
-                  <input type="date" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaTermino" [ngModelOptions]="{standalone: true}" required>
+                  <label>Fecha de termino* </label>
+                  <input type="date" class="input  w-full border mt-2 "
+                         [(ngModel)]="proyectoModel.fechaTermino"
+                         [ngModelOptions]="{standalone: true}"
+                         [disabled]="!fechaMinima"
+                         min="{{fechaMinima|date:'yyyy-MM-dd'}}"
+                         required>
                 </div>
               </div>
-
+              -->
               <div class="relative mt-8">
                 <div>
                   <label>
-                    ¿El alumno recibe capacitación/formación por parte de la Institución?
+                    ¿El alumno recibe capacitación/formación por parte de la Institución?*
                   </label>
                   <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.capacitacion" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="'si'">Si</option>
@@ -248,7 +245,7 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Días hábiles para la prestación de servicio social:
+                    Días hábiles para la prestación de servicio social*
                   </label>
                 </div>
                 <div class="well">
@@ -314,7 +311,7 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    Horarios disponibles para la prestación de servicio social:
+                    Horarios disponibles para la prestación de servicio social*
                   </label>
                 </div>
                 <div class="well">
@@ -347,7 +344,8 @@
                   <label>
                     Rol o función del prestador de servicio social (estudiante) dentro del proyecto:
                   </label>
-                  <input type="text" class="input   w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.rolPrestador" [ngModelOptions]="{standalone: true}" required>
+                  <textarea type="text" class="input w-full border mt-2 " placeholder="Máximo 400 caracteres" [(ngModel)]="proyectoModel.rolPrestador" [ngModelOptions]="{standalone: true}" maxlength="400" rows="5" required>
+              </textarea>
                 </div>
               </div>
 
@@ -356,7 +354,7 @@
                   <label>
                     Responsabilidades del prestador de servicio social máximo(7):
                   </label>
-                  <textarea type="text" rows="7" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.responsabilidades" [ngModelOptions]="{standalone: true}" value="objetivo ejemplo" required></textarea>
+                  <textarea type="text" rows="7" class="input  w-full border mt-2 " placeholder="Enumere las principales responsabilidades que tendrá el estudiante. Máximo 7" [(ngModel)]="proyectoModel.responsabilidades" [ngModelOptions]="{standalone: true}" value="objetivo ejemplo" rows="5" required></textarea>
                 </div>
               </div>
 
@@ -370,7 +368,7 @@
             </h2>
           </div>
 
-          <div class="mt-8">
+          <div class="mt-8 p-5">
             <div class="sm:grid grid-cols-1 gap-2">
 
               <div class="relative mt-2">
@@ -383,7 +381,7 @@
                   <div *ngFor="let competencia of listaProyectosCompetencias">
 
                     <label>
-                      <input type="checkbox" id="{{competencia.id}}" (change)="toggleCompetencias($event.target.checked, competencia.id)" [checked]="idsCompetencias.indexOf(competencia.id) >=0">
+                      <input type="checkbox" id="co{{competencia.id}}" (change)="toggleCompetencias($event.target.checked, competencia.id)" [checked]="idsCompetencias.indexOf(competencia.id) >=0">
                       {{competencia.competencia}}
                     </label>
 
@@ -401,7 +399,7 @@
                   <div *ngFor="let carrera of listaProyectosCarreras">
 
                     <label>
-                      <input type="checkbox" id="{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)"  [checked]="idsCarreras.indexOf(carrera.id) >=0">
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
                       {{carrera.carrera}}
                     </label>
 
@@ -420,8 +418,8 @@
             </h2>
           </div>
 
-          <div class="mt-8">
-            <div class="sm:grid grid-cols-3 gap-2">
+          <div class="mt-8 p-5">
+            <div class="sm:grid grid-cols-2 gap-2">
 
               <div class="relative mt-2">
                 <div>
@@ -434,22 +432,34 @@
                 </div>
               </div>
 
+              <div class="relative mt-2">
+                <div>
+                  <label>
+                    Periodo
+                  </label>
+                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idPeriodo" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="periodo.id" *ngFor="let periodo of periodos">{{periodo.periodo}} </option>
+                  </select>
+                </div>
+              </div>
+
+
             </div>
           </div>
           <br>
 
-          <div class="mt-8">
-            <div class="sm:grid grid-cols-3 gap-2">
-              <div class="relative mt-8">
+          <div class="mt-1 p-5">
+            <div class="sm:grid grid-cols-2 gap-2">
+              <div class="relative mt-3">
                 <div>
-                  <label>Universidad:</label>
+                  <label>Campus:</label>
                   <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idUniversidad" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="universidad.id" *ngFor="let universidad of universidades">{{universidad.universidad}}</option>
                   </select>
                 </div>
 
               </div>
-              <div class="relative mt-8">
+              <div class="relative mt-3" style="display: none;">
                 <div>
                   <label>Estado:</label>
                   <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idEstadoProyecto" [ngModelOptions]="{standalone: true}">
@@ -457,7 +467,8 @@
                   </select>
                 </div>
               </div>
-              <div class="relative mt-8">
+              
+              <div class="relative mt-3">
                 <div>
                   <label>Observaciones:</label>
                   <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.observaciones" [ngModelOptions]="{standalone: true}" required>
@@ -469,17 +480,21 @@
           <br>
 
         </div>
+
+        <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+          <h2 class="text-lg font-medium mr-auto">
+            <!--Agregar Proyecto-->
+          </h2>
+          <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <a routerLink="/dashboard" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+            <button (click)="onSubmit()" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
-  <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">
-    </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <a routerLink="/dashboard" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
-      <button (click)="onSubmit()" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
-    </div>
-  </div>
+
+
   <!-- END: FORM -->
 </div>
 <!-- END: Content -->

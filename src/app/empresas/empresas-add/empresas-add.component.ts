@@ -88,18 +88,33 @@ this.responsablemodel.externa=this.cambio;
    this.empresaModel.IdResponsable= Number(this.cookies.get("idresponsable"));
 
   }
+
+
   toggleArea(checked, id){
  
     console.log(checked);
 var valor= { "idAreaAccion": id ,"activo": true};
 
-    var area = this.areas.find(x=>x.id===id);
-    if(checked) this.listaAreasAccion.push(valor);
-    else this.listaAreasAccion = this.listaAreasAccion.filter(item => item.idAreaAccion !== id);   
-    
+    if(checked) 
+    {
+      if (this.listaAreasAccion.length < 3) {
+
+    this.listaAreasAccion.push(valor);
+      }
+      else {
+        $("#area-" + id).prop("checked", false);
+        this.mensajevalidacion = "solo permite seleccionar como máximo 3 áreas de accion "
+        $('#validacion').modal('show');
+      }
+    }
+    else 
+    {
+      this.listaAreasAccion = this.listaAreasAccion.filter(item => item.idAreaAccion !== id);   
+    }
     console.log(this.listaAreasAccion);
     
   }
+      
   togleRubros(checked, id){
     console.log(checked);
 var valor= { "idRubro": id ,"activo": true};
@@ -151,6 +166,15 @@ var valor= { "idRubro": id ,"activo": true};
 
 
         }
+
+        this.empresaModel.colonia= listacoloniast[0];
+        this.empresaModel.municipio= listamunicipiost[0];
+        this.empresaModel.estado= listaestadost[0];
+        this.empresaModel.ciudad= listaciudadt[0];
+        this.empresaModel.pais= listapaist[0];
+
+
+
         const myObj1 = {}
         const myObj2 = {}
         const myObj3 = {}
@@ -213,7 +237,7 @@ listapaist.forEach(el => {
         this.listaestados=[];
         this.listaciudad=[];
         this.listapais=[];
-        this.mensajevalidacion="Ingresa un CP valido"
+        this.mensajevalidacion="Ingresa un CP valido";
         $('#validacion').modal('show');
       }
 
@@ -305,6 +329,7 @@ model.listaRubros = this.listaRubros ;
 model.Imagen=this.imagensubidaurl;
 
 console.log(this.responsablemodel.externa);
+console.log(this.responsablemodel.telefono.length);
 
 if(model.Responsable.externa){
      if(model.organizacion==""){
@@ -313,7 +338,7 @@ this.mensajevalidacion="No puedes dejar el campo de Nombre Oficial de la Institu
 
     }
 //responsable
-else if(this.responsablemodel.telefono.length>9){
+else if(this.responsablemodel.telefono.length<10){
   this.mensajevalidacion="Ingrese un telefono valido"
   $('#validacion').modal('show');
 } 
@@ -324,23 +349,23 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
 
 
 //maximo
-    else if(model.descripcion.length<500){
+    else if(model.descripcion.length>500){
       this.mensajevalidacion="El campo de descripcion debe tener menos de 500 caracteres"
       $('#validacion').modal('show');
     } 
-    else if(model.razon.length<500){
+    else if(model.razon.length>500){
       this.mensajevalidacion="El campo de Razón de ser debe tener menos de 500 caracteres"
       $('#validacion').modal('show');
     } 
-    else if(model.mision.length<500){
+    else if(model.mision.length>500){
       this.mensajevalidacion="El campo de misión debe tener menos de 500 caracteres"
       $('#validacion').modal('show');
     } 
-    else if(model.vision.length<500){
+    else if(model.vision.length>500){
       this.mensajevalidacion="El campo de Visión debe tener menos de 500 caracteres"
       $('#validacion').modal('show');
     } 
-    else if(model.mision.length<500){
+    else if(model.mision.length>500){
       this.mensajevalidacion="El campo de misión debe tener menos de 500 caracteres"
       $('#validacion').modal('show');
     } 
@@ -449,14 +474,14 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
       $('#validacion').modal('show');
 
     } 
-    else if(this.listaRubros.length==0){
-      this.mensajevalidacion="Debes selecciónar al menos un rubro"
-      $('#validacion').modal('show');
+    // else if(this.listaRubros.length==0){
+    //   this.mensajevalidacion="Debes selecciónar al menos un rubro"
+    //   $('#validacion').modal('show');
 
-    } 
+    // } 
     
-    else if(this.listaAreasAccion.length==0){
-      this.mensajevalidacion="Debes selecciónar al menos una Area"
+    else if(this.listaAreasAccion.length==0 && this.listaAreasAccion.length < 4){
+      this.mensajevalidacion="Debes selecciónar al menos una Area y maximo 3"
       $('#validacion').modal('show');
 
     } 
@@ -495,6 +520,21 @@ console.log(model);
           $('#validacion').modal('show');
     
         }
+
+//responsable
+else if(this.responsablemodel.telefono.length<10){
+  this.mensajevalidacion="Ingrese un telefono valido"
+  $('#validacion').modal('show');
+} 
+else if(!this.validarEmail(this.responsablemodel.correo)){
+  this.mensajevalidacion="Ingrese un correo valido"
+  $('#validacion').modal('show');
+} 
+
+
+
+
+
         else if(model.Responsable['NombreCompletoresponsable']==""){
           this.mensajevalidacion="No puedes dejar el campo de Nombre Completo del responsable vacío"
           $('#validacion').modal('show');
@@ -531,17 +571,14 @@ console.log(model);
         } 
         
        
-        else if(model.descripcionArea==""){
-          this.mensajevalidacion="No puedes dejar el campo de  los descripcion de la área  vacío"
-          $('#validacion').modal('show');
-        }
+       
         else if(model.objetivo==""){
           this.mensajevalidacion="No puedes dejar el campo de  los objetivos n vacío"
           $('#validacion').modal('show');
         }
      
-        else if(this.listaAreasAccion.length==0){
-          this.mensajevalidacion="Debes selecciónar al menos una Area"
+        else if(this.listaAreasAccion.length==0 && this.listaAreasAccion.length < 4){
+          this.mensajevalidacion="Debes selecciónar al menos una Area y maximo 3"
           $('#validacion').modal('show');
     
         }else{
@@ -585,18 +622,14 @@ console.log(model);
       if (data.resultado == 1) {
        this.imagensubidaurl= data.datos;
        console.log(this.imagensubidaurl);
-
-this.imagensubidaurl=this.imagensubidaurl;
-
-console.log(this.imagensubidaurl);
 this.getBase64(this.fileToUpload).then(
   data => 
   this.logo=data.toString()
 );
 
-
 $('#abrirsubir').modal('hide');
-        $('#success-modal-preview-file').modal('show');
+
+
       }
     }, error => {
       console.log(error);

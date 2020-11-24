@@ -15,10 +15,7 @@
     <h2 class="text-lg font-medium mr-auto">
       Asignar alumnos a proyectos
     </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <a routerLink="/proyectos" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
-      <button (click)="create()" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
-    </div>
+ 
   </div>
 
   <form (ngSubmit)="create()" #form="ngForm">
@@ -85,7 +82,14 @@
       </div>
     </div>
   </form>
-
+  <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+    </h2>
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+      <a routerLink="/proyectos" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+      <button (click)="create()" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
+    </div>
+  </div>
     <!-- END: FORM -->
 </div>
 <!-- END: Content -->

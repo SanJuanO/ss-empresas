@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { LoginServices } from '../services/login.service';
 import { SessionService } from '../services/session.service';
 import { OrganizationService } from '../services/organization.service';
+import { login } from '../models/empresa';
+import { ThrowStmt } from '@angular/compiler';
+
 
 declare var $: any;
 
@@ -14,9 +17,9 @@ declare var $: any;
 export class LoginComponent implements OnInit {
 public mensaje="";
 public organizacion="";
+public logo="assets/images/aaa.jpg";
 
-
-
+public log:login = new login();
   constructor(private organizacionService: OrganizationService,public session: SessionService,private router: Router,private loginservice: LoginServices){ }
 
   ngOnInit(): void {
@@ -27,7 +30,14 @@ public organizacion="";
   onSubmit(data) {
 let user= $('#usuario').val();
 let pass=$('#pass').val();
-    this.loginservice.login(user,pass).subscribe((res: any)=>{
+this.session.setlogo(this.logo);
+
+var ingresar= new login();
+ingresar.usuario=user;
+ingresar.contrasena=pass;
+
+    this.loginservice.login(ingresar).subscribe((res: any)=>{
+      console.log(res);
       this.mensaje=res['mensaje'];
 
 if(res['resultado']==1){
@@ -52,11 +62,16 @@ if(res['resultado']==1){
 
 var tempo=datosvalue['idOrganizacion'];
 console.log(tempo);
+
+
+
 if( tempo == '0'){
+
 this.router.navigate(['/empresas/add']);
 
 }else{
-this.router.navigate(['/dashboard']);
+  this.router.navigate(['/dashboard']);
+
 
 }
 
@@ -113,5 +128,8 @@ this.router.navigate(['/dashboard']);
       
     })
   }
+
+
+
   
 }

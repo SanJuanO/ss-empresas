@@ -53,7 +53,9 @@ public validar=false;
   public DocumentosSubidos: DocumentosSubidosRequeridos[];
   public idDocumentosSubidos: any;
 
-
+  public reconocimientost:any;
+  public logrost:any;
+  public obejtivost:any;
   public documentosfile = new Documentosfile();
   public cambio=false;
 
@@ -119,6 +121,11 @@ var valor= { "idRubro": id ,"activo": true};
       this.listaRubros=res['listaRubros'];
       this.logo ="data:image/jpeg;base64,"+ res['imagenArchivo'];
 
+
+      this.reconocimientost=this.empresaModel.reconocimiento.split('\n');
+      this.logrost=this.empresaModel.logros.split('\n');
+      this.obejtivost=this.empresaModel.objetivo.split('\n');
+      
       //console.log(this.listaAreasAccion);
       this.idRubro =  this.listaRubros.map(({ idRubro }) => idRubro);
       this.idAreaAccion =  this.listaAreasAccion.map(({ idAreaAccion }) => idAreaAccion);

@@ -85,10 +85,11 @@ this.dataTable2.DataTable();
   obtenerempresa() {
     let model = this.tipoModel;
     model.tipo=1;
-    this.organizacionService.getAll().subscribe((res: any[])=>{     
+    this.organizacionService.getOrganizacion(this.session.getToken()).subscribe((res: any[])=>{     
 
 this.empresacantidad= res.length;
-this.empresa= res;
+this.empresa= res; 
+
 
 
 for(var i=0;i<this.empresacantidad;i++){
@@ -103,7 +104,6 @@ this.empresaactiva.push(this.empresa[i]);
  }
 
 }
-console.log(this.empresa);
 
 })
 

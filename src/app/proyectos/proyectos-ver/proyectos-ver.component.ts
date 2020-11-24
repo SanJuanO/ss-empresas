@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import * as Feather from 'feather-icons';
 import { ProyectoService } from '../../services/proyecto.service';
-import { Proyecto,  PeriodosModel, EstadosProyectosModel, estadoProyectoActualizar, ProyectosSucesosModel, ProyectosActividadesModel, AlumnosProyectosAsignadosModel, ProyectosCompetencias, ProyectosCarreras, AlumnosModel } from "../../models/proyectos";
+import { Proyecto,  PeriodosModel, EstadosProyectosModel, estadoProyectoActualizar, ProyectosSucesosModel, ProyectosActividadesModel, AlumnosProyectosAsignadosModel, ProyectosCompetencias, ProyectosCarreras } from "../../models/proyectos";
 import { Empresa } from "../../models/empresa";
 import { OrganizationService } from '../../services/organization.service';
 import { Universidad } from "../../models/universidad";
@@ -23,7 +23,7 @@ export class ProyectosVerComponent implements OnInit {
   public idobtenido: number;
   public listaProyectosCompetencias = new Array<ProyectosCompetencias>();
   public listaProyectosCarreras = new Array<ProyectosCarreras>();
-  public proyectoModel = new Proyecto(0,"", "", "", 0, "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
+  public proyectoModel = new Proyecto("", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
   public validar = false;
   public organizaciones: Empresa[] = [];
   public periodos: PeriodosModel[] = [];
@@ -55,8 +55,6 @@ export class ProyectosVerComponent implements OnInit {
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
     this.obtenerestadoalumnos();
-
-
   }
  
   ngAfterViewInit() {
@@ -89,6 +87,7 @@ export class ProyectosVerComponent implements OnInit {
 
       
   }
+  
   obtenerOrganizaciones() {
     return this.organizacionService
       .getAll()

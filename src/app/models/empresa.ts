@@ -1,6 +1,14 @@
 export class vicerrectorias {
-  public vicerrectoria: string;
-  public id: number;
+  
+
+  constructor(
+    public vicerrectoria: string,
+  public id: number
+  ) { }
+}
+export class login {
+  public usuario: string;
+  public contrasena: string;
 
   constructor(
   ) { }

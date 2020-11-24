@@ -2,7 +2,6 @@
 export class Proyecto {
 
   constructor(
-    public cantidadPendientes: number,
     public proyecto: string,
     public descripcion: string,
     public objetivo: string,
@@ -15,8 +14,8 @@ export class Proyecto {
     public correoResponsable: string,
     public telefono: string,
     public justificacionImpactoSocial: string,
-    public plazas480: number,
-    public plazas240: number,
+    public plazas: number,
+    //public plazas240: number,
     public rolPrestador: string,
     public responsabilidades: string,
     public fechaInicio: string,

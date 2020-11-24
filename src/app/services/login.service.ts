@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { Usuario } from '../models/usuario';
 import { EmailValidator } from '@angular/forms';
+import { login } from '../models/empresa';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,11 @@ export class LoginServices {
   constructor(private http:HttpClient) { }
 
 
-  login(user,pass) {
+  login(ingresar) {
 
-
-    const uri = `${this.api}/Organizaciones/login?usuario=${user}&contrase%C3%B1a=${pass}`;
-    console.log(uri);
-    return this.http.get(uri,user);
+    const uri = `${this.api}/Organizaciones/login`;
+    console.log(ingresar);
+    return this.http.post(uri,ingresar);
  
   } 
   

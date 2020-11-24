@@ -24,7 +24,6 @@
                                     <div class="flex">
                                         <i data-feather="layout" class="report-box__icon text-theme-9"></i>
                                         <div class="ml-auto">
-                                            <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer" title="12% Higher than last month"> {{ ((proyectosactivos.length * 100 )/proyectos.length).toFixed(2)}} % <i data-feather="chevron-up" class="w-4 h-4"></i> </div>
                                         </div>
                                     </div>
                                     <div class="text-3xl font-bold leading-8 mt-6">{{proyectosactivos.length}} </div>
@@ -38,7 +37,6 @@
                                     <div class="flex">
                                         <i data-feather="layout" class="report-box__icon text-theme-6"></i>
                                         <div class="ml-auto">
-                                            <div class="report-box__indicator bg-theme-6 tooltip cursor-pointer" title="22% Higher than last month"> {{ ((proyectosrechazados.length * 100 )/proyectos.length).toFixed(2)}} % <i data-feather="chevron-down" class="w-4 h-4"></i> </div>
                                         </div>
                                     </div>
                                     <div class="text-3xl font-bold leading-8 mt-6">{{proyectosrechazados.length}}</div>
@@ -52,7 +50,6 @@
                                     <div class="flex">
                                         <i data-feather="layout" class="report-box__icon text-theme-12"></i>
                                         <div class="ml-auto">
-                                            <div class="report-box__indicator bg-theme-12 tooltip cursor-pointer" title="22% Higher than last month"> {{ ((proyectospendientes.length * 100 )/proyectos.length).toFixed(2)}} % <i data-feather="chevron-down" class="w-4 h-4"></i> </div>
                                         </div>
                                     </div>
                                     <div class="text-3xl font-bold leading-8 mt-6">{{proyectospendientes.length}}</div>
@@ -138,8 +135,10 @@
                                         
                                         <th class="whitespace-no-wrap">PROYECTOS ACTIVOS</th>
                                   
+                                        <th class="text-center whitespace-no-wrap">ALUMNOS INTERESADOS</th>
                                         <th class="text-center whitespace-no-wrap">STATUS</th>
                                         <th class="text-center whitespace-no-wrap">ACCIÓN</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
