@@ -141,7 +141,7 @@
                             <div class="sm:grid grid-cols-1 gap-2">
                                 <div class="relative mt-2">
                                     <div>
-                                        <label>Descripción introductoria de la Institución*</label>
+                                        <label>Descripción introductoria de la Institución (Objeto o Finalidad de la Institución)*</label>
                                         <textarea type="text" class="input  w-full border mt-2 " rows="3" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.descripcion" [ngModelOptions]="{standalone: true}" required></textarea>
                                     </div>
     
@@ -555,7 +555,7 @@
                                                
                                                 </td>
                                                 <div *ngIf="area.id==13" >
-                                                    <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}"placeholder="" disabled>
+                                                    <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}"placeholder="" disabled>
                                                 </div>
 
                                             </tr>
@@ -930,7 +930,7 @@
                                 
                                             </td>
                                             <div *ngIf="area.id==13" >
-                                                <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}"placeholder="" disabled>
+                                                <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}"placeholder="" disabled>
                                             </div>
                                         </tr>
                                     </tbody>

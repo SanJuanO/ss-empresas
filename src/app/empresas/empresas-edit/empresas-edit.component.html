@@ -117,7 +117,7 @@
                         <div class="sm:grid grid-cols-2 gap-2">
                             <div class="relative mt-2">
                                 <div>
-                                    <label>Nombre Oficial de la Institución / Área*</label>
+                                    <label>Nombre Oficial de la Institución / Área  (denominación o razón social)*</label>
                                     <input type="text" class="input  w-full border mt-2 " placeholder="Como aparece en el Acta Constitutiva" [(ngModel)]="empresaModel.organizacion" [ngModelOptions]="{standalone: true}" required>
 
                                 </div>
@@ -125,7 +125,7 @@
                             </div>
                             <div class="relative mt-2">
                                 <div>
-                                    <label>Nombre Común de la Institución / Área*</label>
+                                    <label>Nombre Común de la Institución / Área (nombre comercial)*</label>
                                     <input type="text" class="input  w-full border mt-2 " placeholder="Escribir el nombre con el que es comúnmente conocida la Institución" [(ngModel)]="empresaModel.nombreComun" [ngModelOptions]="{standalone: true}" required>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                         <div class="sm:grid grid-cols-1 gap-2">
                             <div class="relative mt-2">
                                 <div>
-                                    <label>Descripción introductoria de la Institución*</label>
+                                    <label>Descripción introductoria de la Institución (Objeto o Finalidad de la Institución)*</label>
                                     <textarea type="text" class="input  w-full border mt-2 " maxlength="500" rows="3" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.descripcion" [ngModelOptions]="{standalone: true}" required></textarea>
                                 </div>
 
@@ -349,7 +349,7 @@
                         <div class="sm:grid grid-cols-2 gap-2">
                             <div class="relative mt-2">
                                 <div>
-                                    <label>Nombre del Director de la Institución*</label>
+                                    <label>Nombre del Titular o Director de la Institución*</label>
                                     <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.nombreCompletoDirector" [ngModelOptions]="{standalone: true}">
                                 </div>
     
@@ -545,7 +545,7 @@
                                                 <td style="padding:5px;"> <input type="checkbox" id="area-{{area.id}}" (change)="toggleArea(($event.target.checked), area.id)" [checked]="idAreaAccion.indexOf(area.id) >=0"></td>
                                                 <td>{{area.areaAccion}}</td>
                                                 <div *ngIf="area.id==13" >
-                                                    <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}"placeholder="" disabled>
+                                                    <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}"placeholder="" disabled>
                                                 </div>
                                             </tr>
                                         </tbody>
@@ -732,7 +732,7 @@
                     <div class="sm:grid grid-cols-2 gap-2">
                         <div class="relative mt-2">
                             <div>
-                                <label>Nombre del Director de la Institución*</label>
+                                <label>Nombre del Titular o Director de la Institución*</label>
                                 <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.nombreCompletoDirector" [ngModelOptions]="{standalone: true}">
                             </div>
 
@@ -910,7 +910,7 @@
                                             <td style="padding:5px;"> <input id="area-{{area.id}}" type="checkbox" (change)="toggleArea(($event.target.checked), area.id)" [checked]="idAreaAccion.indexOf(area.id) >=0"></td>
                                             <td>{{area.areaAccion}}</td>
                                             <div *ngIf="area.id==13" >
-                                                <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}"placeholder="" disabled>
+                                                <input type="text" class="input  w-full border mt-2 " id="areatext"  [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}"placeholder="" disabled>
                                             </div>
                                         </tr>
                                     </tbody>

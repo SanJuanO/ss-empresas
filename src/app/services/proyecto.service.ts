@@ -105,7 +105,11 @@ export class ProyectoService {
       return this.http.get(`${this.api}/ProyectosActividades/getByIdProyecto?idProyecto=${idProyecto}`);
     }
     getAlumnosInscritosByIdProyecto(idProyecto: string | number) {
-      return this.http.get(`${this.api}/AlumnosProyectosAsignados/getByIdProyecto?idProyecto=${idProyecto}`);
+
+
+      const tempo= this.http.get(`${this.api}/AlumnosProyectosAsignados/getByIdProyecto?idProyecto=${idProyecto}`);
+      console.log(tempo);
+  return tempo;
     }
   
     getPerfilesActividades() {

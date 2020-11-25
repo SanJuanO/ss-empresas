@@ -54,6 +54,7 @@ export class ProyectosVerComponent implements OnInit {
     this.obtenerSucesos();
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
+    console.log(this.alumnos);
     this.obtenerestadoalumnos();
   }
  

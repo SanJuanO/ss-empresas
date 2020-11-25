@@ -69,10 +69,11 @@ public validar=false;
   
   }
   ngOnInit(): void {
+    this.obtenerAreas();
+
     this.empresaModel.atiendeOtro="Otro";
     this.idobtenido = this.activatedRoute.snapshot.paramMap.get("id");
     this.getempresa(this.idobtenido);
-    this.obtenerAreas();
     this.obtenerRubros();
     this.obtenerUniversidades();
     this.obtenerTipo();
@@ -132,7 +133,7 @@ var valor= { "idRubro": id ,"activo": true};
       this.logrost=this.empresaModel.logros.split('\n');
       this.obejtivost=this.empresaModel.objetivo.split('\n');
       
-      //console.log(this.listaAreasAccion);
+      console.log(this.listaAreasAccion);
       this.idRubro =  this.listaRubros.map(({ idRubro }) => idRubro);
       this.idAreaAccion =  this.listaAreasAccion.map(({ idAreaAccion }) => idAreaAccion);
 
