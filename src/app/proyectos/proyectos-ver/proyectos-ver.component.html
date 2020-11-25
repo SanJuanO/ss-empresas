@@ -29,133 +29,134 @@
               Información General
             </h2>
           </div>
+       
 
           <div class="box">
             <br>
             <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
                 <a  style="margin-left: auto;" class="button text-white bg-theme-12 shadow-md mr-2">Estado: {{proyectoModel.estadoProyecto}}</a>
             </div>
-          <div class="grid grid-cols-12 gap-6 mt-5">
-            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+            <div class="grid grid-cols-12 gap-6 mt-5">
+              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                  <div class=" p-5">
+                    <div class="text-base text-gray-600 mt-1" align="center" >Nombre del proyecto:</div>
+                    <div class="text-base font-bold leading-8 mt-6" align="center"> {{proyectoModel.proyecto}} </div>
+                  </div>
+              </div>
+            </div>
+  
+            <div class="grid grid-cols-12 gap-6 mt-5">
+  
+              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                  <div class="text-base text-gray-600 mt-1" align="center" >Proyecto:</div>
-                  <div class="text-base font-bold leading-8 mt-6" align="center"> {{proyectoModel.proyecto}} </div>
-                </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-12 gap-6 mt-5">
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.modalidadDistancia}}</div>
+                  <div class="text-base text-gray-600 mt-1">
+                    ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.modalidadDistancia}}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Institución / Área:
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.organizacion}}</div>
+  
+              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Institución / Área:
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.organizacion}}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Nombre del Responsable del Proyecto:
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.nombreResponsable}}</div>
-              </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Puesto del Responsable del Proyecto:
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.puesto}}</div>
-              </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Área del Responsbale del Proyecto:
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.area}}</div>
-              </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Correo electrónico del responsable del proyecto:
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.correoResponsable}}</div>
-              </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Teléfono de responsable del proyecto:
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.telefono}}</div>
-              </div>
-            </div>
-
-            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">Descripciòn:</div>
-
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.descripcion}}</div>
-              </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Objetivo:
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.objetivo}}</div>
+  
+              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Nombre del Responsable del Proyecto:
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.nombreResponsable}}</div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Justifica el impacto social del proyecto:
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.justificacionImpactoSocial}}</div>
+  
+              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Puesto del Responsable del Proyecto:
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.puesto}}</div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Plazas de Servicio Social disponibles para el proyecto.
+  
+              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Área del Responsbale del Proyecto:
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.area}}</div>
+                </div>
+              </div>
+  
+              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Correo electrónico del responsable del proyecto:
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.correoResponsable}}</div>
+                </div>
+              </div>
+  
+              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Teléfono de responsable del proyecto:
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.telefono}}</div>
+                </div>
+              </div>
+  
+              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Plazas de Servicio Social disponibles para el proyecto
+                  </div>
                   <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas}}</div>
                 </div>
               </div>
-            </div>
-            <!--
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-              <div class=" p-5">
-                <div class="text-base text-gray-600 mt-1">
-                  Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 240 hrs.
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas240}}</div>
+  
+              <div routerLink="/proyectos" class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">Descripciòn del proyecto:</div>
+  
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.descripcion}}</div>
                 </div>
               </div>
-            </div>
-            -->
-          </div>
-
+  
+              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Objetivo del proyecto:
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.objetivo}}</div>
+                </div>
+              </div>
+  
+              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Justificaciòn del impacto social del proyecto:
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.justificacionImpactoSocial}}</div>
+                </div>
+              </div>
+              <!--
+    <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+      <div class=" p-5">
+        <div class="text-base text-gray-600 mt-1">
+          Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 240 hrs.
+          <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas240}}</div>
         </div>
+      </div>
+    </div>
+    -->
+            </div>
+  
+          </div>
       </div>
         </div>
 
@@ -271,7 +272,7 @@
                     <div *ngIf="proyectoModel.miercoles" class="text-base text-gray-600 mt-1">
                       <div class="flex items-center">
                         <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                        <span>Miercoles</span>
+                        <span>Miércoles</span>
                       </div>
                     </div>
                     <div *ngIf="proyectoModel.jueves" class="text-base text-gray-600 mt-1">
@@ -289,7 +290,7 @@
                     <div *ngIf="proyectoModel.sabado" class="text-base text-gray-600 mt-1">
                       <div class="flex items-center">
                         <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                        <span>Sabado</span>
+                        <span>Sábado</span>
                       </div>
                     </div>
                     <div *ngIf="proyectoModel.domingo" class="text-base text-gray-600 mt-1">
@@ -389,9 +390,7 @@
           <th class="border-b-2 text-center whitespace-no-wrap">Nombre</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Matrícula</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Correo</th>
-          <th class="border-b-2 text-center whitespace-no-wrap">Celular</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Carrera</th>
-          <th class="border-b-2 text-center whitespace-no-wrap">Facultad</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Universidad</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Estatus</th>
           <th class="border-b-2 text-center whitespace-no-wrap" >Cambiar Estatus</th>
@@ -412,17 +411,13 @@
             <div class="font-medium flex sm:justify-center items-center">{{alumno.matricula}}</div>
           </td>
           <td class="border-b">
-            <div class="font-medium flex sm:justify-center items-center">{{alumno.correo}}</div>
+            <div class="font-medium flex sm:justify-center items-center">{{alumno.correoInstitucional}}</div>
           </td>
-          <td class="border-b">
-            <div class="font-medium flex sm:justify-center items-center">{{alumno.celular}}</div>
-          </td>
+         
           <td class="border-b">
             <div class="font-medium flex sm:justify-center items-center">{{alumno.carrera}}</div>
           </td>
-          <td class="border-b">
-            <div class="font-medium flex sm:justify-center items-center">{{alumno.facultad}}</div>
-          </td>
+     
           <td class="border-b">
             <div class="font-medium flex sm:justify-center items-center">{{alumno.universidad}}</div>
           </td>

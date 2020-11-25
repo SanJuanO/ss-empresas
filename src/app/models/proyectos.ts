@@ -249,6 +249,7 @@ export class AlumnosProyectosAsignadosModel{
   public proyectoNombre: string;
   public matricula: string;
   public correo: string;
+  public correoInstitucional: string;
   public celular: string;
   public carrera: string;
   public estado: string;

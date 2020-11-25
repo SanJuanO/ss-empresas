@@ -63,15 +63,15 @@ public validar=false;
 
   public responsablemodel = new Responsablemodel("","","","","","","","",true,false)
   checkmodel = new check("false","false")
-  public empresaModel = new Empresa("","","","","",1,1,1,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
+  public empresaModel = new Empresa(0,"","Otro","","","","","",0,0,0,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
 
   constructor(private organizacionService: OrganizationService,private router: Router,private activatedRoute: ActivatedRoute) { 
   
   }
   ngOnInit(): void {
+    this.empresaModel.atiendeOtro="Otro";
     this.idobtenido = this.activatedRoute.snapshot.paramMap.get("id");
     this.getempresa(this.idobtenido);
-
     this.obtenerAreas();
     this.obtenerRubros();
     this.obtenerUniversidades();
@@ -120,6 +120,12 @@ var valor= { "idRubro": id ,"activo": true};
       this.listaAreasAccion=res['listaAreasAccion'];
       this.listaRubros=res['listaRubros'];
       this.logo ="data:image/jpeg;base64,"+ res['imagenArchivo'];
+
+      this.empresaModel.atiendeOtro=res['atiendeOtro'];
+
+      if(this.empresaModel.atiendeOtro==null){
+        this.empresaModel.atiendeOtro="Otro";
+      }
 
 
       this.reconocimientost=this.empresaModel.reconocimiento.split('\n');

@@ -29,6 +29,10 @@ export class escueladirecciones {
 }
 export class Empresa {
   constructor(
+    public noAtiendeOtro:number,
+    public areaOtro:string,
+    public atiendeOtro:string,
+
     public vision:string,
       public descripcionArea:string,
 
