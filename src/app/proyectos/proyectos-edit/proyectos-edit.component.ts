@@ -9,6 +9,7 @@ import { UniversidadService } from '../../services/universidad.service';
 import { ConvocatoriaServices } from '../../services/convocatoria.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { SessionService } from '../../services/session.service';
 
 declare var $: any;
 let now = new Date();
@@ -21,7 +22,8 @@ let now = new Date();
 export class ProyectosEditComponent implements OnInit {
   public idobtenido: number;
   public fechaMinima: Date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 90);
-
+  public idOrganizacion="";
+  public Organizacion="";
   public listaProyectosCompetencias = new Array<ProyectosCompetencias>();
   public listaProyectosCarreras = new Array<ProyectosCarreras>();
   public proyectoModel = new Proyecto("", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0,  this.listaProyectosCompetencias, this.listaProyectosCarreras);
@@ -43,11 +45,14 @@ export class ProyectosEditComponent implements OnInit {
     private universidadService: UniversidadService,
     private convocatoriaService: ConvocatoriaServices,
     private router: Router, private activatedRoute: ActivatedRoute,
-    private _location: Location) {
+    private _location: Location,
+    public session: SessionService) {
+      
   }
 
   ngOnInit(): void {
-
+    this.idOrganizacion= this.session.getToken();
+    this.Organizacion= this.session.getnombre();
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
     //this.proyectoService.getProyecto(this.idobtenido).subscribe((proyectoModel: Proyecto) => this.proyectoModel = proyectoModel);
     this.getProyecto(this.idobtenido);
