@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Alumno } from '../models/alumno';
+import { Alumno,alumnohoras } from '../models/alumno';
 import { environment } from "../../environments/environment";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
@@ -96,4 +96,34 @@ export class AlumnoService {
   getrespuesta(id: string | number) {
     return this.http.get(`${this.baseUrl}/RespuestasEvaluacionAlumno/getByIdAlumno?IdAlumno=${id}`);
   }
+  agregarhoras(id,no) {
+    var am = new alumnohoras();
+    am.idAlumnosProyectosAsignacion=Number(id);
+    am.noHoras=Number(no);
+    console.log(am);
+
+    const uri = `${this.baseUrl}/AlumnosProyectosAsignadosHoras`
+   return this.http.post(uri, am);
+  }
+  horas(id) {
+   
+    var i=Number(id);
+    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignadosHoras/getHorasByIdProyectoAsignado?idAlumnoProyectoAsignado=${i}`);
+
+  }
+
+  activadades(id) {
+   
+    var i=Number(id);
+    return this.http.get(`${this.baseUrl}/AlumnosActividades/getByIdAlumnoProyectoAsignado?idAlumnoProyectoAsignado=${i}`);
+
+  }
+
+  validaractivadades(id) {
+   
+    var i=Number(id);
+    return this.http.post(`${this.baseUrl}/AlumnosActividades/validaActividad?id=${i}`,id);
+
+  }
 }
+    

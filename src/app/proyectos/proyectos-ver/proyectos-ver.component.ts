@@ -8,6 +8,7 @@ import { Universidad } from "../../models/universidad";
 import { UniversidadService } from '../../services/universidad.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Estadosalumnos,Estadosalumnoscambio } from "../../models/estadosalumnoss";
+import { CookieService } from "ngx-cookie-service";
 
 
 
@@ -43,7 +44,7 @@ export class ProyectosVerComponent implements OnInit {
 
 
   constructor(private proyectoService: ProyectoService, private organizacionService: OrganizationService,
-    private universidadService: UniversidadService,private router: Router,private activatedRoute: ActivatedRoute) {
+    private universidadService: UniversidadService,private router: Router,private activatedRoute: ActivatedRoute,public cookies: CookieService) {
   }
 
   ngOnInit(): void {
@@ -208,4 +209,14 @@ console.log(this.estadoalumnocambio);
     })
 
   }
+
+  veralumno(idasignado,idalumno){
+
+    this.cookies.set("idasignado", idasignado);
+    this.cookies.set("idalumno", idalumno);
+console.log(idasignado+" "+idalumno);
+    this.router.navigate(['/alumnosver',idalumno]);
+
+  }
+
 }

@@ -129,5 +129,10 @@ export class ProyectoService {
       const uri = `${this.api}/AlumnosProyectosAsignados`
       return this.http.post(uri, model);
     }
+
+    alumnosempresa(id) {
+      const uri = `${this.api}/AlumnosProyectosAsignados/getByIdOrganizacion?idOrganizacion=${id}`
+      return this.http.get(uri);
+    }
   }
   

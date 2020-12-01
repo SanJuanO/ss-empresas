@@ -16,7 +16,6 @@ public logo="assets/images/aaa.jpg";
 public apellidos="";
   constructor(private organizacionService: OrganizationService, private router: Router,public session: SessionService) { 
     this.logo=session.getlogo();
-    console.log(this.logo);
     
     if(this.session.getToken()==""){
       this.router.navigate(['/'])    
@@ -36,7 +35,6 @@ public apellidos="";
 
   obtenerempresa() {
     this.organizacionService.getOrganizacion(this.session.getToken()).subscribe((res: any[])=>{     
-      console.log(res);
 
       var logg=res['imagenArchivo'];
 

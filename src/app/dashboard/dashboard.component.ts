@@ -10,6 +10,7 @@ import { ConstantPool } from '@angular/compiler';
 import { ProyectoService } from '../services/proyecto.service';
 import { Proyecto } from "../models/proyectos"
 import { SessionService } from '../services/session.service';
+import { alumnosasignados } from "../models/alumno"
 
 declare var $: any;
 @Component({
@@ -20,7 +21,8 @@ declare var $: any;
 export class DashboardComponent implements OnInit {
   public empresa: Empresa[] = [  ];
 
-  
+  public alumnos: alumnosasignados[] = [  ];
+
   public empresacantidad: number;
   public empresaactiva: Empresa[] = [  ];
   public empresadesaciva: Empresa[] = [  ];
@@ -37,6 +39,7 @@ export class DashboardComponent implements OnInit {
 
   dataTable:any;
   dataTable2:any;
+  public options = { year: 'numeric', month: 'long', day: 'numeric' };
 
   public convocatoriasf:Convocatoria [] = [ ];
   public convocatoriasalumnosf:Convocatoria [] = [ ];
@@ -63,7 +66,7 @@ export class DashboardComponent implements OnInit {
      this.convocatoriasalumnos = [ ];
      this.convocatoriasf = [ ];
      this.convocatoriasalumnosf = [ ];
-
+this.alumnoproyectos();
     this.obtenerempresa();
     this.obtenerConvocatoria1();
     this.obtenerConvocatoria2();
@@ -117,16 +120,22 @@ this.empresaactiva.push(this.empresa[i]);
     model.tipo=1;
     this.convocatoriaService.getConvocatoriatipo(model).subscribe((res: any[])=>{        
       var Fecha = new Date((this.d.toString()));
-           
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
+   console.log(res);
 this.convocatorias=res;
 for(var i=0;i<this.convocatorias.length;i++){
 
 
   var Fecha1 = new Date((this.convocatorias[i].fechaTermino.toString()));
+  var ini = new Date((this.convocatorias[i].fechaInicio.toString()));
+
 
 if(Fecha1> Fecha ){
   console.log(Fecha1);
-this.convocatoriasf.push(this.convocatorias[i]);
+  this.convocatorias[i].Termino=Fecha1.toLocaleDateString("es-ES", options);
+
+  this.convocatorias[i].Inicio=ini.toLocaleDateString("es-ES", options);
+  this.convocatoriasf.push(this.convocatorias[i]);
 
 }
 }
@@ -190,7 +199,8 @@ this.convocatoriasalumnosf.push(this.convocatorias[i]);
   });
 }
 
-  
+alumnoproyectos() {
 
-
+  this.proyectoService.alumnosempresa(this.session.getToken()).subscribe((alumnos: alumnosasignados[]) => this.alumnos = alumnos);
+}
 }

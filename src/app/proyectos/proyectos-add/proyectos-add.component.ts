@@ -7,10 +7,11 @@ import { OrganizationService } from '../../services/organization.service';
 import { Universidad } from "../../models/universidad";
 import { UniversidadService } from '../../services/universidad.service';
 import { ConvocatoriaServices } from '../../services/convocatoria.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { SessionService } from '../../services/session.service';
+import { ConstantPool } from '@angular/compiler';
 
 declare var $: any;
 let now = new Date();
@@ -30,7 +31,9 @@ export class ProyectosAddComponent implements OnInit {
   public proyectoModel = new Proyecto("", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false,false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0,"", 1, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
 public idOrganizacion="";
 public Organizacion="";
+public periodo="";
 
+public idPeriodorecibido="";
   public validar = false;
   public organizaciones: Empresa[] = [];
   public proyectosCompetencias: ProyectosCompetencias[] = [];
@@ -46,13 +49,15 @@ public Organizacion="";
     private convocatoriaService: ConvocatoriaServices,
     private router: Router,
     private _location: Location,
-    public session: SessionService) {
+    public session: SessionService,private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+
 this.idOrganizacion= this.session.getToken();
 this.Organizacion= this.session.getnombre();
-
+this.idPeriodorecibido = <any>(this.activatedRoute.snapshot.paramMap.get("id"));
+    
     this.obtenerOrganizaciones();
     this.obtenerCompetencias();
     this.obtenerCarreras();
@@ -60,6 +65,8 @@ this.Organizacion= this.session.getnombre();
     this.obtenerUniversidades();
     this.obtenerEstadosProyectos();
     this.obtenerPeriodos();
+    this.proyectoModel.capacitacion = "si"
+
     this.proyectoModel.horas = 240;
   }
   ngAfterViewInit() {
@@ -88,8 +95,19 @@ this.Organizacion= this.session.getnombre();
 
   obtenerPeriodos() {
     return this.convocatoriaService.getPeriodo()
-      .subscribe((periodos: PeriodosModel[]) => this.periodos = periodos);
+      .subscribe((res: any[])=>{
+console.log(res);
+for(var i=0;i<res.length;i++){
+
+  if((res[i]['id'])=this.idPeriodorecibido){
+    this.periodos = res[i];
+console.log(this.periodos);
+    this.periodo=res[i]['periodo'];
   }
+}
+
+      })
+    }
   obtenerUniversidades() {
     return this.universidadService
       .getUniversidades()
@@ -192,6 +210,7 @@ this.Organizacion= this.session.getnombre();
 
     let model = this.proyectoModel;
     model.activo = true;
+model.idPeriodo=<number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
 
     console.log(model)
     if (model.idOrganizacion == 0) {

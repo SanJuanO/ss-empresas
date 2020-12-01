@@ -7,8 +7,9 @@ import { FacultadService } from '../services/facultad.service';
 import { Universidad } from "../models/universidad";
 import { Carrera } from "../models/carrera";
 import { Facultad } from "../models/facultad";
-import { Alumno,AlumnoProyecto, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales } from '../models/alumno';
+import { Alumno,AlumnoProyecto, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales,alumnohoras,alumnosactividades} from '../models/alumno';
 import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile, DocumentosSubidosRequeridos } from "../models/documentosalumnos"
+import { CookieService } from "ngx-cookie-service";
 
 import {Location} from '@angular/common';
 
@@ -25,6 +26,8 @@ declare var $: any;
 })
 export class AlumnosverComponent implements OnInit {
   activo = true;
+  
+  public alumnosactividades: alumnosactividades[] = [];
 
   public universidades: Universidad[] = [];
   public carreras: Carrera[] = [];
@@ -34,6 +37,8 @@ export class AlumnosverComponent implements OnInit {
   public documentosfile = new Documentosfile()
   public idAlumno: string;
   public respuestas: string=""  ;
+  public horasalumno: alumnohoras[] = [];
+  public idasignado: string;
 
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
@@ -42,21 +47,29 @@ export class AlumnosverComponent implements OnInit {
   public DocumentosSubidos: DocumentosSubidosRequeridos[];
   public idDocumento: string = "";
   public fileToUpload: File = null;
+  public horastotales: number = 0;
+  public actividades: number = 0;
 
-  constructor(private route: ActivatedRoute, private router: Router, private facultadService: FacultadService, private carreraService: CarreraService, private universidadService: UniversidadService, private alumnoService: AlumnoService, private _location: Location) { }
+  constructor(private route: ActivatedRoute,public cookies: CookieService,  private router: Router, private facultadService: FacultadService, private carreraService: CarreraService, private universidadService: UniversidadService, private alumnoService: AlumnoService, private _location: Location) { }
 
 
 
   ngOnInit(): void {
-    this.idAlumno = this.route.snapshot.paramMap.get("id");
+   
+    this.idasignado=this.cookies.get("idasignado");
+
+    this.idAlumno = this.cookies.get("idasignado");
     this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) => this.alumno = alumno);
     this.obtenerUniversidades();
     this.obtenerCarreras();
     this.obtenerFacultades();
     this.obtenerproyectoalumno();
-    this.obtenerrespuesta();
     this.obtenerdocumentosRequeridos();
     this.obtenerdocumentosSubidosConRequeridos();
+    this.horas();
+    this.obtenerrespuesta();
+
+    this.obteneractividades();
     console.log(this.alumno);
   }
 
@@ -135,9 +148,7 @@ export class AlumnosverComponent implements OnInit {
   //TODO SERGIO
   obtenerrespuesta() {
 
- 
     this.alumnoService.getrespuesta(this.idAlumno).subscribe((res: any) => {
-      console.log(res[0]['fechaCreacion']);
 this.respuestas=res[0]['fechaCreacion'];
     });
   }
@@ -148,5 +159,57 @@ this.respuestas=res[0]['fechaCreacion'];
 
   }
 
+  reportedehoras() {
+
+var nohoras=$('#nohoras').val();
+console.log(nohoras);
+    this.alumnoService.agregarhoras(this.idasignado,nohoras).subscribe((res: any) => {
+location.reload();
+
+    });
+  }
+
+  horas() {
+
+        this.alumnoService.horas(this.idasignado).subscribe((res: any) => {
+this.horasalumno=res;
+console.log(res);
+          var a=0;
+        for(var i=0;i<this.horasalumno.length;i++){
+a+=this.horasalumno[i]['noHoras'];
+        }
+
+        console.log(a);
+        this.horastotales=a;
+              });
 }
 
+obteneractividades() {
+
+  this.alumnoService.activadades(this.idasignado).subscribe((res: any) => {
+    this.actividades=res;
+    console.log(res);
+            
+    
+
+  });
+}
+
+mostraractualizarestado(id){
+  var idact=Number(id);
+  console.log("dfdsfdsfds"+ idact);
+
+      $('#act-'+idact).modal('show');
+  
+}
+cambiarestado(id){
+  console.log(id);
+  this.alumnoService.validaractivadades(id).subscribe((res: any) => {
+    console.log(res);
+            
+    location.reload();
+
+
+  });
+}
+}

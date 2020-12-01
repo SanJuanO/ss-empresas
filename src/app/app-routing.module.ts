@@ -28,7 +28,7 @@ const routes: Routes = [
 },
   {path:'login',component:LoginComponent},
   {path:'dashboard',component:DashboardComponent},
-  { path: 'proyectos/add', component: ProyectosAddComponent },
+  { path: 'proyectos/add/:id', component: ProyectosAddComponent },
   { path: 'proyectos/edit/:id', component: ProyectosEditComponent },
   { path: 'proyectos/ver/:id', component: ProyectosVerComponent },
   { path: 'proyectos/actividades/:id', component: ProyectosActividadesAddComponent },

@@ -24,7 +24,45 @@ export class respuesta {
     ) { }
 
 }
+export class alumnosactividades {
+  public idAlumnoProyectoAsignado:number;
+public actividad:string;
+  public validaEmpresa: boolean;
+public fechaCreacion: Date;
+  constructor(
 
+      
+  ) { }
+
+}
+export class alumnohoras {
+  public idAlumnosProyectosAsignacion:number;
+  public idProyecto:number;
+
+  public noHoras: number;
+  public activo: boolean=true;
+public fechaCreacion: Date;
+  constructor(
+
+      
+  ) { }
+
+}
+export class alumnosasignados {
+  public idAlumno:number;
+  public noHoras: number;
+  public alumno:string;
+  public proyectoNombre:string;
+  public carrera:string;
+  public universidad:string;
+  public estado:string;
+public idEstado: number;
+  constructor(
+
+      
+  ) { }
+
+}
 export class Alumno {
   constructor(
     public nombre: string,
