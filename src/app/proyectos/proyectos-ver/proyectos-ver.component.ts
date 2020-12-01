@@ -210,10 +210,12 @@ console.log(this.estadoalumnocambio);
 
   }
 
-  veralumno(idasignado,idalumno){
+  veralumno(idasignado,idalumno,idEstado){
 
     this.cookies.set("idasignado", idasignado);
     this.cookies.set("idalumno", idalumno);
+    this.cookies.set("idEstado", idEstado);
+
 console.log(idasignado+" "+idalumno);
     this.router.navigate(['/alumnosver',idalumno]);
 

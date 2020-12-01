@@ -36,6 +36,7 @@ public fechaCreacion: Date;
 
 }
 export class alumnohoras {
+  public id?:number;
   public idAlumnosProyectosAsignacion:number;
   public idProyecto:number;
 
@@ -49,6 +50,8 @@ public fechaCreacion: Date;
 
 }
 export class alumnosasignados {
+  public horasRegistradas?: number;
+
   public idAlumno:number;
   public noHoras: number;
   public alumno:string;
@@ -57,6 +60,8 @@ export class alumnosasignados {
   public universidad:string;
   public estado:string;
 public idEstado: number;
+public idProyecto: number;
+
   constructor(
 
       

@@ -201,6 +201,13 @@ this.convocatoriasalumnosf.push(this.convocatorias[i]);
 
 alumnoproyectos() {
 
-  this.proyectoService.alumnosempresa(this.session.getToken()).subscribe((alumnos: alumnosasignados[]) => this.alumnos = alumnos);
+  this.proyectoService.alumnosempresa(this.session.getToken()).subscribe((res: any[])=>{
+    this.alumnos=res;
+   
+    console.log(res);
+  
+    
+    })
+
 }
 }

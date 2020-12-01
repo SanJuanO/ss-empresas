@@ -13,14 +13,14 @@
 
 
                     <div class="grid grid-cols-12 gap-6 mt-5">
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y " *ngFor="let a of alumnos">
+                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y " >
                             <div class="intro-y flex items-center h-10">
                                 <h2 class="text-lg font-medium truncate mr-5">
                                     Alumnos nuevos
                                 </h2>
                             </div>
                         </div>
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y " *ngFor="let a of alumnos">
+                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y ">
                             <div class="intro-y flex items-center h-10">
                                 <h2 class="text-lg font-medium truncate mr-5">
                                     Alumnos pendientes
@@ -30,7 +30,7 @@
 
 
 
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y" *ngFor="let a of alumnos">
+                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y" >
 
                             <div class="intro-y flex items-center h-10">
                                 <h2 class="text-lg font-medium truncate mr-5">
@@ -46,7 +46,8 @@
                     </div>
 
                     <div class="grid grid-cols-12 gap-6 mt-5">
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y " *ngFor="let a of alumnos">
+                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y " >
+                            <div *ngFor="let a of alumnos">
 
                             <div class=" zoom-in" *ngIf="a.idEstado==1">
                                 <a [routerLink]="[ '/proyectos/ver',a.idProyecto] ">
@@ -61,7 +62,7 @@
 
                                         </div>
 
-                                        <div class="text-2xl font-bold leading-8 mt-3 ">Horas: {{a.noHoras}} </div>
+                                        <div class="text-2xl font-bold leading-8 mt-3 ">Estado: {{a.estado}} </div>
                                         <div class="text-base text-gray-600 mt-1">Proyecto:{{a.proyectoNombre}}</div>
                                         <div class="text-base text-gray-600 mt-1">Campus: {{a.universidad}}</div>
                                         <div class="text-base text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
@@ -72,9 +73,11 @@
                                 <br>
                             </div>
                         </div>
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y " *ngFor="let a of alumnos">
+                        </div>
+                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y ">
+                            <div *ngFor="let a of alumnos">
 
-                            <div class=" zoom-in" *ngIf="a.idEstado==2">
+                            <div  class=" zoom-in" *ngIf="a.idEstado==2">
                                 <a [routerLink]="[ '/proyectos/ver',a.idProyecto] ">
                                     <div class="box p-5">
                                         <div class="flex">
@@ -87,7 +90,7 @@
 
                                         </div>
 
-                                        <div class="text-2xl font-bold leading-8 mt-3 ">Horas: {{a.noHoras}} </div>
+                                        <div class="text-2xl font-bold leading-8 mt-3 ">Estado: {{a.estado}} </div>
                                         <div class="text-base text-gray-600 mt-1">Proyecto:{{a.proyectoNombre}}</div>
                                         <div class="text-base text-gray-600 mt-1">Campus: {{a.universidad}}</div>
                                         <div class="text-base text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
@@ -98,9 +101,10 @@
                                 <br>
                             </div>
                         </div>
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y" *ngFor="let a of alumnos">
+                        </div>
+                        <div class="col-span-12 sm:col-span-4 xl:col-span-4 intro-y" >
 
-
+<div *ngFor="let a of alumnos">
 
                             <div class=" zoom-in" *ngIf="a.idEstado==3">
                                 <a [routerLink]="['/alumnosver', a.idAlumno]">
@@ -115,7 +119,7 @@
 
                                         </div>
 
-                                        <div class="text-2xl font-bold leading-8 mt-3 ">Horas: {{a.noHoras}} </div>
+                                        <div class="text-2xl font-bold leading-8 mt-3 ">Horas: {{a.horasRegistradas}} </div>
                                         <div class="text-base text-gray-600 mt-1">Proyecto:{{a.proyectoNombre}}</div>
                                         <div class="text-base text-gray-600 mt-1">Campus: {{a.universidad}}</div>
                                         <div class="text-base text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
@@ -125,8 +129,7 @@
                                 </a>
                                 <br>
                             </div>
-
-
+                        </div>
 
                         </div>
 

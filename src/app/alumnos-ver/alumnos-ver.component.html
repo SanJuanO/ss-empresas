@@ -98,42 +98,60 @@
     </div>
 
     <br>
-    <div class="intro-y flex items-center h-10">
+    <div class="intro-y flex items-center h-10" *ngIf="idEstado==3">
         <h2 class="text-lg font-medium truncate mr-5">
             Reportes de Horas
         </h2>
     </div>
 
 
-    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="idEstado==3">
         <div class="box p-5">
 
             <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                <a class="button text-white bg-theme-12 shadow-md mr-2">Horas cursadas: {{horastotales}}</a>
-            </div>
+                <a class="button text-white bg-theme-9 shadow-md mr-2">Horas cursadas: {{horastotales}}</a>
+               
+
+                  <a  align="right" (click)="abrirmodalhoras()"  class="button inline-block bg-theme-1 text-white">Agregar horas</a> </div>
+          
+         
             <div class="mt-3">
                 <div class="sm:grid grid-cols-2 gap-2">
                     <div class="relative mt-2">
                         <div>
 
-                            <label>Agregar Horas*</label>
-                            <input type="number" class="input  w-full border mt-2 " id="nohoras" placeholder="Horas que se agregaran al alumno" required>
-
                         </div>
 
                     </div>
                     <div class="relative mt-2">
-                        <div align="right">
+                      
+                            <div class="modal" id="horasmodal">
+                              <div class="modal__content">
+                                  <div class="p-5 text-center">
+                                      <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                                      <div class="text-base mt-5"> Agregar Horas</div>
+                                   
+                            <input type="number" class="input  w-full border mt-2 " id="nohoras" placeholder="Horas que se agregaran al alumno" required>
 
-                            <a (click)="reportedehoras()" data-toggle="modal" data-target="#subirreporte" class="button inline-block bg-theme-1 text-white">Agregar horas</a> </div>
-
+                                   
+                                  </div>
+    
+                                  <div class="px-5 pb-8 text-center">
+                                      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                                          <button (click)="reportedehoras()" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Aceptar</button> </div>
+    
+                                  </div>
+    
+    
+                              </div>
+                          </div>
                     </div>
                 </div>
 
             </div>
 
 
-            <table class="table table-report sm:mt-2">
+            <table class="table table-report sm:mt-2" *ngIf="idEstado==3">
                 <thead>
                     <tr>
 
@@ -148,6 +166,7 @@
                         <th class="whitespace-no-wrap"> {{h.fechaCreacion}}</th>
 
 
+                  
                     </tr>
 
                 </tbody>
@@ -166,14 +185,14 @@
     <br>
 
 
-    <div class="intro-y flex items-center h-10">
+    <div class="intro-y flex items-center h-10" *ngIf="idEstado==3">
         <h2 class="text-lg font-medium truncate mr-5">
             Reportes
         </h2>
     </div>
 
 
-    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="idEstado==3">
         <div class="box p-5">
 
             <table class="table table-report sm:mt-2">
@@ -291,14 +310,14 @@
 
 
 
-    <div class="intro-y flex items-center h-10">
+    <div class="intro-y flex items-center h-10" *ngIf="idEstado==3">
         <h2 class="text-lg font-medium truncate mr-5">
             Reportes desempeño
         </h2>
     </div>
 
 
-    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="idEstado==3">
         <div class="box p-5">
 
             <table class="table table-report sm:mt-2" *ngIf="respuestas!=''">

@@ -39,7 +39,7 @@ export class AlumnosverComponent implements OnInit {
   public respuestas: string=""  ;
   public horasalumno: alumnohoras[] = [];
   public idasignado: string;
-
+public idEstado:number;
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0);
@@ -57,6 +57,7 @@ export class AlumnosverComponent implements OnInit {
   ngOnInit(): void {
    
     this.idasignado=this.cookies.get("idasignado");
+    this.idEstado =Number(this.cookies.get("idEstado"));
 
     this.idAlumno = this.cookies.get("idasignado");
     this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) => this.alumno = alumno);
@@ -127,6 +128,11 @@ export class AlumnosverComponent implements OnInit {
 
   }
 
+  abrirmodalhoras(){
+    $('#horasmodal').modal('show');
+
+
+  }
   uploadFile(files: FileList) {
     this.fileToUpload = files.item(0);
   }
