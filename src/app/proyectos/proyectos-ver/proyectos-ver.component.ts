@@ -154,7 +154,6 @@ export class ProyectosVerComponent implements OnInit {
 
   mostraractualizarestado(id){
     this.idalum=Number(id);
-    console.log("dfdsfdsfds"+ id);
 
         $('#mostareditaralumno-'+this.idalum).modal('show');
     

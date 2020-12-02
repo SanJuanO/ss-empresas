@@ -359,27 +359,7 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
 } 
 
 
-//maximo
-    else if(model.descripcion.length>500){
-      this.mensajevalidacion="El campo de descripcion debe tener menos de 500 caracteres"
-      $('#validacion').modal('show');
-    } 
-    else if(model.razon.length>500){
-      this.mensajevalidacion="El campo de Razón de ser debe tener menos de 500 caracteres"
-      $('#validacion').modal('show');
-    } 
-    else if(model.mision.length>500){
-      this.mensajevalidacion="El campo de misión debe tener menos de 500 caracteres"
-      $('#validacion').modal('show');
-    } 
-    else if(model.vision.length>500){
-      this.mensajevalidacion="El campo de Visión debe tener menos de 500 caracteres"
-      $('#validacion').modal('show');
-    } 
-    else if(model.mision.length>500){
-      this.mensajevalidacion="El campo de misión debe tener menos de 500 caracteres"
-      $('#validacion').modal('show');
-    } 
+
 
     else if(model.nombreComun==""){
       this.mensajevalidacion="No puedes dejar el campo de Nombre Común de la Institución vacío"
@@ -402,7 +382,10 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
       this.mensajevalidacion="No puedes dejar el campo de  facebook vacío"
       $('#validacion').modal('show');
     }  
-
+    else if(model.vision=="" || model.vision==null){
+      this.mensajevalidacion="El campo de Visión no debe ir vacío"
+      $('#validacion').modal('show');
+    } 
 
     else if(model.mision==""){
       this.mensajevalidacion="No puedes dejar el campo de mision vacío"
@@ -490,7 +473,9 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
     //   $('#validacion').modal('show');
 
     // } 
-    
+    //maximo
+   
+   
     else if(this.listaAreasAccion.length==0 && this.listaAreasAccion.length < 4){
       this.mensajevalidacion="Debes selecciónar al menos una Area y maximo 3"
       $('#validacion').modal('show');

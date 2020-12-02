@@ -181,10 +181,21 @@ var valor= { "idRubro": id ,"activo": true};
   obtenerdocumentosSubidosConRequeridos() {
     return this.organizacionService
       .obtenerDocumentosSubidosConRequeridos(this.idobtenido)
-      .subscribe((documentosS: DocumentosSubidosRequeridos[]) => {
+      .subscribe(
+        
+        (documentosS: DocumentosSubidosRequeridos[]) => {
         this.DocumentosSubidos = documentosS;
-        //console.log("iddocumentos subidos "+this.idDocumentosSubidos);
-        console.log("requeridos " + this.DocumentosSubidos);
+        console.log("requeridos " + documentosS.length);
+        console.log("requeridos " + documentosS[0]['idEstado']);
+
+        for(var i=0;i<documentosS.length;i++)
+        {
+          if(documentosS[i]['idEstado']!=4){
+            $('#documentosfaltan').modal('show');
+return;
+          }
+        }
+
 
       });
   }

@@ -22,6 +22,19 @@
             <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
     </div>
+
+    <div class="modal" id="documentosfaltan">
+        <div class="modal__content">
+            <div class="p-5 text-center">
+                <i data-feather="x-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+                <div class="text-base mt-5">¡Falta documentación!</div>
+                <div class="text-basemt-2">¡Recuerda que para poder completar tu registro es necesario que tu documentacion este validada!</div>
+            </div>
+            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-9 text-white">Ok</button> </div>
+        </div>
+    </div>
+
+
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             Institución / Área
@@ -764,7 +777,7 @@
                     <th class="whitespace-no-wrap">SUBIR</th>
                     <th class="whitespace-no-wrap">ADJUNTO</th>
                     <th class="whitespace-no-wrap"> FECHA ENTREGA</th>
-                    <th class="whitespace-no-wrap">ENTREGADO</th>
+                    <th class="whitespace-no-wrap">ESTADO</th>
 
                 </tr>
             </thead>
@@ -792,10 +805,14 @@
                     <td>
                         <div class="text-base whitespace-no-wrap" *ngIf="d.id >0"> {{d.fechaCreacion.substr(0,10)}}</div>
                     </td>
-                    <td style="padding: 5px; background: #ffffff; " align="center">
-                        <input type="checkbox" id="1" onclick="entregadoDocumento(this.id,137994,35);" [checked]="d.id >0" ng-disabled="true">
+                    <td class="border-b" *ngIf="d.idEstado==0;else tem">
+                        <div class="font-medium flex ">Nuevo</div>
                     </td>
-
+                    <ng-template #tem>
+                        <td>
+                            <div class="font-medium flex ">{{d.estado}}</div>
+                        </td>
+                    </ng-template>
                     <div class="modal" id="abrirsubir-{{d.idDocumentoRequerido}}">
                         <div class="modal__content">
                             <form #form="ngForm" (ngSubmit)="subeArchivo()">
