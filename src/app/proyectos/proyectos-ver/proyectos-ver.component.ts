@@ -78,7 +78,7 @@ export class ProyectosVerComponent implements OnInit {
         console.log(this.estadosalumnos.length);
 
         for(var i=0;i<this.estadosalumnos.length;i++){
-          if(i<2 || i==4){
+          if(i<3 || i==6){
             this.estadosalumnoslimitado.push(this.estadosalumnos[i]);
 
 
@@ -179,15 +179,14 @@ export class ProyectosVerComponent implements OnInit {
 
 
   }
-  cambiarestatusalumno(){
+  cambiarestatusalumno(ide){
 
 
     this.estadoalumnocambio.idProyecto = Number(this.idobtenido);
     this.estadoalumnocambio.idAlumno = Number(this.idalum);   
-     var idf=  $( "#myselect option:selected" ).val();
 
-     console.log(idf);
-     var ultimoCaracter = idf.charAt(idf.length - 1);
+     console.log(ide);
+     var ultimoCaracter = ide;
 
 
     this.estadoalumnocambio.idEstado = Number(ultimoCaracter);
@@ -200,8 +199,8 @@ console.log(this.estadoalumnocambio);
 
 //camibo
      this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe(() => {
-      $('#success-modal-preview').modal('show');
-      location.reload();
+     $('#success-modal-preview').modal('show');
+       location.reload();
 //fincambio
 
     // }, error => {

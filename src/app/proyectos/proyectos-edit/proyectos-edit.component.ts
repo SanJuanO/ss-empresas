@@ -221,6 +221,7 @@ export class ProyectosEditComponent implements OnInit {
 
     let model = this.proyectoModel;
     model.activo = true;
+    model.idOrganizacion= Number(this.idOrganizacion);
 
     console.log(model)
     if (model.idOrganizacion == 0) {

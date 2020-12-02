@@ -210,8 +210,8 @@ console.log(this.periodos);
 
     let model = this.proyectoModel;
     model.activo = true;
-model.idPeriodo=<number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
-
+model.idPeriodo=Number(<number><any>(this.activatedRoute.snapshot.paramMap.get("id")));
+model.idOrganizacion= Number(this.idOrganizacion);
     console.log(model)
     if (model.idOrganizacion == 0) {
       this.mensajevalidacion = "No puedes dejar el campo de institucion vacío"
@@ -300,7 +300,7 @@ model.idPeriodo=<number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
       this.mensajevalidacion = "debe seleccionar un campus"
       $('#validacion').modal('show');
     } else {
-
+console.log(model);
       this.proyectoService.create(model).subscribe((res: any) => {
         $('#success-modal-preview').modal('show');
         this._location.back();

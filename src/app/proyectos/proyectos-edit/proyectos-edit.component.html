@@ -445,7 +445,7 @@
                                     <label>
                     Periodo
                   </label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idPeriodo" [ngModelOptions]="{standalone: true}">
+                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idPeriodo" [ngModelOptions]="{standalone: true}" disabled>
                     <option [ngValue]="periodo.id" *ngFor="let periodo of periodos">{{periodo.periodo}} </option>
                   </select>
                                 </div>
