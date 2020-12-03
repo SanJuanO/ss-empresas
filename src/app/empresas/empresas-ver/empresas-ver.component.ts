@@ -185,8 +185,7 @@ var valor= { "idRubro": id ,"activo": true};
         
         (documentosS: DocumentosSubidosRequeridos[]) => {
         this.DocumentosSubidos = documentosS;
-        console.log("requeridos " + documentosS.length);
-        console.log("requeridos " + documentosS[0]['idEstado']);
+   
 
         for(var i=0;i<documentosS.length;i++)
         {
