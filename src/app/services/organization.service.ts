@@ -177,4 +177,10 @@ console.log(estado);
          console.log(uri);
     return this.http.post(uri,p);
   }
+  
+  actualizarfechaalumno(fecha,id){
+    const uri = `${this.api}/AlumnosProyectosAsignados/actualizaFechaInicioInstitucionByIdAlumnoProyectoAsignado?idAlumnoProyectoAsignado=${id}&fecha=${fecha}`
+    return this.http.post(uri, fecha);
+  }
+
 }

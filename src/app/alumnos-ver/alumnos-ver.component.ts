@@ -58,8 +58,8 @@ public idEstado:number;
    
     this.idasignado=this.cookies.get("idasignado");
     this.idEstado =Number(this.cookies.get("idEstado"));
-
-    this.idAlumno = this.cookies.get("idasignado");
+console.log(this.idEstado);
+    this.idAlumno = this.cookies.get("idalumno");
     this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) => this.alumno = alumno);
     this.obtenerUniversidades();
     this.obtenerCarreras();

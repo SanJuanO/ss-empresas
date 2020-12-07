@@ -258,7 +258,10 @@ export class AlumnosProyectosAsignadosModel{
   public universidad: string;
   public fechaCreacion: string;
   public activo: boolean;
+  public fechaInicioInstitucion: string;
+
   constructor(
+    
   ) { }
 }
 
