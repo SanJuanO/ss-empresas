@@ -1,39 +1,39 @@
 <app-menu></app-menu>
 
+
+<div class="modal" id="success-modal-preview">
+    <div class="modal__content">
+        <div class="p-5 text-center">
+            <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+            <div class="text-base mt-5">Muy bien!</div>
+            <div class="text-basemt-2">Has editado una Institución / Área!</div>
+        </div>
+        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+</div>
+<div class="modal" id="success-modal-preview-file">
+    <div class="modal__content">
+        <div class="p-5 text-center">
+            <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+            <div class="text-base mt-5">Muy bien!</div>
+            <div class="text-basemt-2">¡Se subió el archivo de la Institución / Área!</div>
+        </div>
+        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+</div>
+
+<div class="modal" id="documentosfaltan">
+    <div class="modal__content">
+        <div class="p-5 text-center">
+            <i data-feather="x-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+            <div class="text-base mt-5">¡Falta documentación!</div>
+            <div class="text-basemt-2">¡Recuerda que para poder completar tu registro es necesario que tu documentacion este validada!</div>
+        </div>
+        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-9 text-white">Ok</button> </div>
+    </div>
+</div>
+
 <div class="content" *ngIf="responsablemodel.externa">
-
-    <div class="modal" id="success-modal-preview">
-        <div class="modal__content">
-            <div class="p-5 text-center">
-                <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-                <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">Has editado una Institución / Área!</div>
-            </div>
-            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-        </div>
-    </div>
-    <div class="modal" id="success-modal-preview-file">
-        <div class="modal__content">
-            <div class="p-5 text-center">
-                <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-                <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">¡Se subió el archivo de la Institución / Área!</div>
-            </div>
-            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-        </div>
-    </div>
-
-    <div class="modal" id="documentosfaltan">
-        <div class="modal__content">
-            <div class="p-5 text-center">
-                <i data-feather="x-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-                <div class="text-base mt-5">¡Falta documentación!</div>
-                <div class="text-basemt-2">¡Recuerda que para poder completar tu registro es necesario que tu documentacion este validada!</div>
-            </div>
-            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-9 text-white">Ok</button> </div>
-        </div>
-    </div>
-
 
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
@@ -111,19 +111,17 @@
             </div>
 
         </div>
-        <div class="grid grid-cols-12 gap-12 mt-5">
-            <div class="col-span-12 sm:col-span-8 xl:col-span-12 intro-y">
-                <div class=" p-5">
-                    <div class="text-base  text-gray-600 mt-1">Descripción introductoria de la Institución (Objeto o Finalidad de la Institución):</div>
+        <div class="col-span-12 sm:col-span-8 xl:col-span-12 intro-y">
+            <div class=" p-5">
+                <div class="text-base  text-gray-600 mt-1">Descripción introductoria de la Institución (Objeto o Finalidad de la Institución):</div>
 
-                    <div class="text-base font-bold leading-8 mt-6" style="text-align:justify;"> {{empresaModel.descripcion}} </div>
+                <div class="text-base font-bold leading-8 mt-6" style="text-align:justify;"> {{empresaModel.descripcion}} </div>
 
-                </div>
             </div>
-
-
-
         </div>
+
+
+
 
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
@@ -248,7 +246,7 @@
         </div>
         <br>
 
-        <div class="grid grid-cols-12 gap-4 mt-5">
+        <div class="grid grid-cols-12 gap-6 mt-5">
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
@@ -271,13 +269,13 @@
 
         </div>
         <br>
-        <div class="grid grid-cols-12 gap-12 mt-5">
+        <div class="grid grid-cols-12 gap-4 mt-5">
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
 
                 <div class=" p-5">
                     <div class="text-base text-gray-600 mt-1">Principales objetivos</div>
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class="text-base font-bold">
                         <h1 *ngFor="let a of obejtivost" style="text-align:justify;">
                             <p>{{a}}</p>
                         </h1>
@@ -292,7 +290,7 @@
 
 
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class="text-base font-bold">
                         <h1 *ngFor="let a of reconocimientost" style="text-align:justify;">
                             <p>{{a}}</p>
                         </h1>
@@ -306,7 +304,7 @@
         <br>
 
         <br>
-        <div class="grid grid-cols-12 gap-12 mt-5">
+        <div class="grid grid-cols-12 gap-4 mt-5">
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
@@ -314,7 +312,7 @@
 
 
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class="text-base font-bold">
                         <h1 *ngFor="let a of logrost">
                             <p>{{a}}</p>
                         </h1>
@@ -589,35 +587,6 @@
     <br>
 
 
-    <!-- 
-    <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
-            Rubro
-        </h2>
-    </div> -->
-    <!-- <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                        <h1 *ngFor="let a of rubros">
-                            <p *ngIf="idRubro!=undefined && idRubro.indexOf(a.id) >=0">{{a.rubro}}</p>
-                        </h1>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <br>
-    <br> -->
-
-
-
-
     <div class="intro-y flex items-center h-10">
         <h2 class="text-lg font-medium truncate mr-5">
             Institución Externa
@@ -726,35 +695,6 @@
 
     </section>
 
-
-    <!-- 
-
-
-    <br><br>
-
-
-
-    <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
-            Nodos de jerarquía institucional
-        </h2>
-    </div>
-    <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                        <h1 *ngFor="let a of universidades">
-                            <p *ngIf="a.id==empresaModel.id">{{a.universidad}}</p>
-                        </h1>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> -->
 
     <br>
     <br>
@@ -961,26 +901,9 @@
 
 <div class="content" *ngIf="!responsablemodel.externa">
 
-    <div class="modal" id="success-modal-preview">
-        <div class="modal__content">
-            <div class="p-5 text-center">
-                <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-                <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">Has editado una Institución / Área!</div>
-            </div>
-            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-        </div>
-    </div>
-    <div class="modal" id="success-modal-preview-file">
-        <div class="modal__content">
-            <div class="p-5 text-center">
-                <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-                <div class="text-base mt-5">Muy bien!</div>
-                <div class="text-basemt-2">¡Se subió el archivo de la Institución / Área!</div>
-            </div>
-            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-        </div>
-    </div>
+
+
+
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             Institución / Área
@@ -1261,35 +1184,6 @@
     <br>
     <br>
 
-
-    <!-- 
-
-
-    <br><br>
-
-
-
-    <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
-            Nodos de jerarquía institucional
-        </h2>
-    </div>
-    <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-            <div class="report-box ">
-                <div class="box p-5">
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                        <h1 *ngFor="let a of universidades">
-                            <p *ngIf="a.id==empresaModel.id">{{a.universidad}}</p>
-                        </h1>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> -->
 
 
 
