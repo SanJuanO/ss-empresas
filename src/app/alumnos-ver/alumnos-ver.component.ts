@@ -10,6 +10,9 @@ import { Facultad } from "../models/facultad";
 import { Alumno,AlumnoProyecto, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales,alumnohoras,alumnosactividades} from '../models/alumno';
 import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile, DocumentosSubidosRequeridos } from "../models/documentosalumnos"
 import { CookieService } from "ngx-cookie-service";
+import { OrganizationService } from '../services/organization.service';
+import { Estadosalumnos,Estadosalumnoscambio } from "../models/estadosalumnoss";
+import { SessionService } from '../services/session.service';
 
 import {Location} from '@angular/common';
 
@@ -28,7 +31,9 @@ export class AlumnosverComponent implements OnInit {
   activo = true;
   
   public alumnosactividades: alumnosactividades[] = [];
-
+  public estadosalumnos: Estadosalumnos[] = [];
+  public estadoalumnocambio: Estadosalumnoscambio = new Estadosalumnoscambio();
+  public estadosalumnoslimitado: Estadosalumnos[] = [];
   public universidades: Universidad[] = [];
   public carreras: Carrera[] = [];
   public facultades: Facultad[] = [];
@@ -40,6 +45,8 @@ export class AlumnosverComponent implements OnInit {
   public horasalumno: alumnohoras[] = [];
   public idasignado: string;
 public idEstado:number;
+public idProyecto:string;
+
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0);
@@ -50,12 +57,16 @@ public idEstado:number;
   public horastotales: number = 0;
   public actividades: number = 0;
 
-  constructor(private route: ActivatedRoute,public cookies: CookieService,  private router: Router, private facultadService: FacultadService, private carreraService: CarreraService, private universidadService: UniversidadService, private alumnoService: AlumnoService, private _location: Location) { }
+  constructor(private route: ActivatedRoute, private organizacionService: OrganizationService,
+    public cookies: CookieService,  private router: Router, private facultadService: FacultadService,
+     private carreraService: CarreraService, private universidadService: UniversidadService, 
+     private alumnoService: AlumnoService, private _location: Location ,public session: SessionService) { }
 
 
 
   ngOnInit(): void {
-   
+    this.idProyecto=this.cookies.get("idProyectoa");
+
     this.idasignado=this.cookies.get("idasignado");
     this.idEstado =Number(this.cookies.get("idEstado"));
 console.log(this.idEstado);
@@ -69,6 +80,7 @@ console.log(this.idEstado);
     this.obtenerdocumentosSubidosConRequeridos();
     this.horas();
     this.obtenerrespuesta();
+    this.obtenerestadoalumnos();
 
     this.obteneractividades();
     console.log(this.alumno);
@@ -155,7 +167,6 @@ console.log(this.idEstado);
   obtenerrespuesta() {
 
     this.alumnoService.getrespuesta(this.idAlumno).subscribe((res: any) => {
-this.respuestas=res[0]['fechaCreacion'];
     });
   }
 
@@ -208,6 +219,33 @@ mostraractualizarestado(id){
       $('#act-'+idact).modal('show');
   
 }
+
+actualizarestado(){
+
+      $('#mostareditaralumno').modal('show');
+  
+  
+    }
+    obtenerestadoalumnos() {
+      return this.organizacionService
+        .getestadosalumnos()
+        .subscribe((estadosalumnos: Estadosalumnos[]) => {this.estadosalumnos = estadosalumnos;
+          console.log(this.estadosalumnos.length);
+  
+          for(var i=0;i<this.estadosalumnos.length;i++){
+            if(i<3 || i==6){
+              this.estadosalumnoslimitado.push(this.estadosalumnos[i]);
+  
+  
+          }
+        }
+        console.log(this.estadosalumnoslimitado);
+        });
+  
+        
+    }
+    
+
 cambiarestado(id){
   console.log(id);
   this.alumnoService.validaractivadades(id).subscribe((res: any) => {
@@ -217,5 +255,32 @@ cambiarestado(id){
 
 
   });
+}
+
+cambiarestatusalumno(){
+
+
+  this.estadoalumnocambio.idProyecto = Number(this.idProyecto);
+  this.estadoalumnocambio.idAlumno = Number(this.idAlumno);   
+
+ 
+  this.estadoalumnocambio.idEstado =Number(this.idEstado);
+
+
+this.estadoalumnocambio.observacions=$('#observacionescambio').val();
+console.log(this.estadoalumnocambio);
+
+
+   this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe((res) => {
+     console.log(res);
+
+     $('#success').modal('show');
+
+//fincambio
+
+  // }, error => {
+  //   alert(error.error)
+  })
+
 }
 }

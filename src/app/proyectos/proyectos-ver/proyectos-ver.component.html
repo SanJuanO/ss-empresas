@@ -404,7 +404,7 @@
 
                                             <tr *ngFor="let alumno of alumnos">
                                                 <td class="border-b">
-                                                    <a (click)="veralumno(alumno.id,alumno.idAlumno,alumno.idEstado);">
+                                                    <a (click)="veralumno(alumno.id,alumno.idAlumno,alumno.idEstado,alumno.idProyecto);">
                                                         <div class="font-medium flex sm:justify-center items-center">{{alumno.alumno}}</div>
                                                     </a>
                                                 </td>
@@ -427,8 +427,8 @@
                                                     <div class="font-medium flex sm:justify-center items-center">{{alumno.estado}}</div>
                                                 </td>
                                                 <td>
-                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="fechaInicioInstitucion==null && alumno.idEstado==4"> <a (click)="mostrarfecha(alumno.id)"><button class="rounded-md text-center px-1 py-1 mb-2 bg-theme-21 text-white">Agregar Fecha de inicio</button></a></div>
-                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="fechaInicioInstitucion!=null"> <a><button class="rounded-md text-center px-1 py-1 mb-2 bg-theme-21 text-white">{{alumno.fechaInicioInstitucion}}</button></a></div>
+                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion==null && alumno.idEstado==4"> <a (click)="mostrarfecha(alumno.id)"><button class="rounded-md text-center px-1 py-1 mb-2 bg-theme-21 text-white">Agregar Fecha de inicio</button></a></div>
+                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion!=null && alumno.idEstado==4 "> {{alumno.fechaInicioInstitucion}}</div>
 
                                                 </td>
                                                 <td *ngIf="alumno.idEstado<4 ">

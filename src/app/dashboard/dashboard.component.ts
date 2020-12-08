@@ -11,6 +11,8 @@ import { ProyectoService } from '../services/proyecto.service';
 import { Proyecto } from "../models/proyectos"
 import { SessionService } from '../services/session.service';
 import { alumnosasignados } from "../models/alumno"
+import { CookieService } from "ngx-cookie-service";
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 @Component({
@@ -34,17 +36,16 @@ export class DashboardComponent implements OnInit {
   public proyectosrechazados: Proyecto[] = [];
   public proyectosactivos: Proyecto[] = [];
   public proyectospendientes: Proyecto[] = [];
-  @ViewChild('dataTable', {static: false}) table;
-  @ViewChild('dataTable2', {static: false}) table2;
 
-  dataTable:any;
-  dataTable2:any;
+
   public options = { year: 'numeric', month: 'long', day: 'numeric' };
 
   public convocatoriasf:Convocatoria [] = [ ];
   public convocatoriasalumnosf:Convocatoria [] = [ ];
 
-  constructor( private organizacionService: OrganizationService, private convocatoriaService: ConvocatoriaServices,private proyectoService: ProyectoService,public session: SessionService) { 
+  constructor( private organizacionService: OrganizationService, public cookies: CookieService, 
+    private convocatoriaService: ConvocatoriaServices,private proyectoService: ProyectoService,
+    private router: Router,public session: SessionService) { 
   
   }
 
@@ -71,9 +72,7 @@ this.alumnoproyectos();
     this.obtenerConvocatoria1();
     this.obtenerConvocatoria2();
 this.obtenerProyectos();
-this.dataTable.DataTable();
 
-this.dataTable2.DataTable();
 
 
   }
@@ -210,4 +209,16 @@ alumnoproyectos() {
     })
 
 }
+veralumno(idasignado,idalumno,idEstado,idProyecto){
+
+  this.cookies.set("idasignado", idasignado);
+  this.cookies.set("idalumno", idalumno);
+  this.cookies.set("idEstado", idEstado);
+  this.cookies.set("idProyectoa", idProyecto);
+
+console.log(idasignado+" "+idalumno);
+  this.router.navigate(['/alumnosver',idalumno]);
+
+}
+
 }

@@ -80,5 +80,7 @@ if(txt=="1"){
 
 
   }
-
+  setestado(token) {
+    this.cookies.set("idEstado", token);
+  }
 }

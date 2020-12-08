@@ -60,13 +60,13 @@
                                         </td>
                                         <td class="w-40 ">
 
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium " *ngIf="convocatoria.activo==true ">ACTIVA</div>
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium " *ngIf="convocatoria.activo==false ">DESACTIVA</div>
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white  font-medium " *ngIf="convocatoria.activo==true ">ACTIVA</div>
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white  font-medium " *ngIf="convocatoria.activo==false ">DESACTIVA</div>
 
                                         </td>
                                         <td class="table-report__action w-56 ">
                                             <div class="flex justify-center items-center ">
-                                                <a class="flex items-center mr-3 " [routerLink]="[ '/proyectos/add',convocatoria.idPeriodo] "> <i data-feather="check-square " class="w-4 h-4 mr-1 "></i> Agregar Proyecto </a>
+                                                <a style="cursor:pointer;" class="m-5 py-3 px-5 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer " [routerLink]="[ '/proyectos/add',convocatoria.idPeriodo] "> <i data-feather="check-square " class="w-4 h-4 mr-1 "></i> Agregar Proyecto </a>
 
                                             </div>
                                         </td>
@@ -82,14 +82,14 @@
                     </div>
 
                     <!-- BEGIN: Weekly Top Products -->
-                    <div class="col-span-12 mt-6 ">
+                    <div class="col-span-12 mt-6 " *ngIf="proyectos.length>0">
                         <div class="intro-y block sm:flex items-center h-10 ">
                             <h2 class="text-lg font-medium truncate mr-5 ">
                                 Proyectos
                             </h2>
 
                         </div>
-                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0 ">
+                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0 " *ngIf="proyectosactivos.length>0">
                             <table class="table table-report sm:mt-2 ">
                                 <thead>
                                     <tr>
@@ -135,7 +135,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="proyectospendientes.length>0">
                             <table class="table table-report sm:mt-2">
                                 <thead>
                                     <tr>
@@ -180,12 +180,36 @@
                     </div>
 
 
-                    <div class="grid grid-cols-12 gap-6 mt-5">
+                    <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="alumnos.length>0">
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
                             <div class="intro-y flex items-center h-10">
                                 <h2 class="text-lg font-medium truncate mr-5">
                                     Alumnos nuevos
                                 </h2>
+                            </div>
+                            <div *ngFor="let a of alumnos">
+
+                                <div class=" px-2 py-3  flex-1 " *ngIf="a.idEstado==1">
+                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto);">
+                                        <div class="box p-5 zoom-in">
+                                            <div class="flex">
+
+                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+                                                <div class="ml-auto">
+                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+
+                                        </div>
+                                    </a>
+                                    <br>
+                                </div>
                             </div>
                         </div>
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
@@ -196,7 +220,31 @@
                                 </h2>
 
                             </div>
+                            <div *ngFor="let a of alumnos">
 
+                                <div class=" px-2 py-3 flex-1" *ngIf="a.idEstado==2">
+                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto);">
+                                        <div class="box p-5 zoom-in">
+                                            <div class="flex">
+
+                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+                                                <div class="ml-auto">
+                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+
+
+                                        </div>
+                                    </a>
+                                    <br>
+                                </div>
+                            </div>
 
                         </div>
 
@@ -206,6 +254,31 @@
                                 <h2 class="text-lg font-medium truncate mr-5">
                                     Alumnos Aceptados
                                 </h2>
+                            </div>
+                            <div *ngFor="let a of alumnos">
+
+                                <div class=" px-3 py-3  flex-1 " *ngIf="a.idEstado==3">
+                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto);">
+                                        <div class="box p-5 zoom-in">
+                                            <div class="flex">
+
+                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+                                                <div class="ml-auto">
+                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+
+
+                                        </div>
+                                    </a>
+                                    <br>
+                                </div>
                             </div>
                         </div>
 
@@ -219,102 +292,10 @@
                                 </h2>
 
                             </div>
-
-
-                        </div>
-
-
-                    </div>
-
-                    <div class="grid grid-cols-12 gap-6 mt-5">
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-3  ">
                             <div *ngFor="let a of alumnos">
 
-                                <div class=" px-5 py-3 ml-4 flex-1 " *ngIf="a.idEstado==1">
-                                    <a [routerLink]="[ '/proyectos/ver',a.idProyecto] ">
-                                        <div class="box p-5 zoom-in">
-                                            <div class="flex">
-
-                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
-                                                <div class="ml-auto">
-                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
-
-
-                                        </div>
-                                    </a>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-3  ">
-                            <div *ngFor="let a of alumnos">
-
-                                <div class=" px-5 py-3 ml-4 flex-1" *ngIf="a.idEstado==2">
-                                    <a [routerLink]="[ '/proyectos/ver',a.idProyecto] ">
-                                        <div class="box p-5 zoom-in">
-                                            <div class="flex">
-
-                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
-                                                <div class="ml-auto">
-                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
-
-
-
-                                        </div>
-                                    </a>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-3 ">
-
-                            <div *ngFor="let a of alumnos">
-
-                                <div class=" px-5 py-3 ml-4 flex-1 " *ngIf="a.idEstado==3">
-                                    <a [routerLink]="[ '/proyectos/ver',a.idProyecto] ">
-                                        <div class="box p-5 zoom-in">
-                                            <div class="flex">
-
-                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
-                                                <div class="ml-auto">
-                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
-
-
-
-                                        </div>
-                                    </a>
-                                    <br>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-3 ">
-
-                            <div *ngFor="let a of alumnos">
-
-                                <div class=" px-5 py-3 ml-4 flex-1 " *ngIf="a.idEstado==4">
-                                    <a [routerLink]="['/alumnosver', a.idAlumno]">
+                                <div class=" px-3 py-3  flex-1 " *ngIf="a.idEstado==4">
+                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto);">
                                         <div class="box p-5 zoom-in">
                                             <div class="flex">
 
@@ -350,6 +331,7 @@
 
 
                     </div>
+
 
 
                     <!-- END: Convocatorias Abiertas -->

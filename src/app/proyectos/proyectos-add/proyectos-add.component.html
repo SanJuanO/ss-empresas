@@ -220,6 +220,11 @@
                                 <div>
                                     <label>Fecha de inicio*</label>
                                     <input type="date" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaInicio" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()" required>
+                                    <div style="margin-top:3px;">
+
+                                        * Indique a partir de qué fecha el estudiante podría comenzar su prestación de servicio social en el proyecto
+                                    </div>
+
                                 </div>
                             </div>
                             <!--
@@ -372,9 +377,11 @@
                     </div>
                     <br>
 
+
+                    <br>
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
                         <h2 class="font-medium text-base mr-auto">
-                            Competencias & Carreras
+                            Seleccione las competencias que el alumno podrá desarrollar por medio del proyecto:
                         </h2>
                     </div>
 
@@ -382,11 +389,7 @@
                         <div class="sm:grid grid-cols-1 gap-2">
 
                             <div class="relative mt-2">
-                                <div>
-                                    <label>
-                    Seleccione las competencias que el alumno podrá desarrollar por medio del proyecto:
-                  </label>
-                                </div>
+
                                 <div class="sm:grid grid-cols-3 gap-2">
                                     <div *ngFor="let competencia of listaProyectosCompetencias">
 
@@ -399,25 +402,27 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
-                                <div>
-                                    <label>
-                    Selecciones las carreras más afines según el perfil que requiera el proyecto:
-                  </label>
-                                </div>
-                                <div class="sm:grid grid-cols-3 gap-2">
-                                    <div *ngFor="let carrera of listaProyectosCarreras">
+                        </div>
+                        <br>
+                        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                            <h2 class="font-medium text-base mr-auto">
+                                Selecciones las carreras más afines según el perfil que requiera el proyecto:
+                            </h2>
+                        </div>
+                        <div class="relative mt-8">
 
-                                        <label>
+                            <div class="sm:grid grid-cols-3 gap-2">
+                                <div *ngFor="let carrera of listaProyectosCarreras">
+
+                                    <label>
                       <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
                       {{carrera.carrera}}
                     </label>
 
-                                    </div>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
                     <br>
 

@@ -125,6 +125,7 @@ export class ProyectosVerComponent implements OnInit {
       .getAlumnosInscritosByIdProyecto(this.idobtenido)
       .subscribe((alumnos: AlumnosProyectosAsignadosModel[]) =>{ this.alumnos = alumnos;
 console.log(this.alumnos);
+
       }
         );
   }
@@ -218,11 +219,12 @@ console.log(this.estadoalumnocambio);
 
   }
 
-  veralumno(idasignado,idalumno,idEstado){
+  veralumno(idasignado,idalumno,idEstado,idProyecto){
 
     this.cookies.set("idasignado", idasignado);
     this.cookies.set("idalumno", idalumno);
     this.cookies.set("idEstado", idEstado);
+    this.cookies.set("idProyectoa", idProyecto);
 
 console.log(idasignado+" "+idalumno);
     this.router.navigate(['/alumnosver',idalumno]);
@@ -230,17 +232,16 @@ console.log(idasignado+" "+idalumno);
   }
 
 
-  cambiarfecha(ide){
+  cambiarfecha(idasignado){
 
 
-    var fecharegistro= $("#fechadeinicio-"+ide).val();
+    var fecharegistro= $("#fechadeinicio-"+idasignado).val();
 
 console.log(fecharegistro);
-console.log(ide);
+console.log(idasignado);
 
-     this.organizacionService.actualizarfechaalumno(fecharegistro,ide).subscribe((res) => {
+     this.organizacionService.actualizarfechaalumno(fecharegistro,idasignado).subscribe((res) => {
      console.log(res);
-       location.reload();
 
     })
 

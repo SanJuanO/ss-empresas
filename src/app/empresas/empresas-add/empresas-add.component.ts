@@ -31,7 +31,7 @@ export class EmpresasAddComponent implements OnInit {
   public escueladirecciones: escueladirecciones[] = [];
   public cordinaciones: cordinaciones[] = [];
 
-  public responsablemodel = new Responsablemodel("","","","","","","","",true,false)
+  public responsablemodel = new Responsablemodel("","","","","","","","",false,false)
   public direcciones = new direcciones()
 
 public validar=false;
@@ -40,12 +40,12 @@ public validar=false;
   public listaAreasAccion = [];
   public listaRubros = [];
   public clasificacion: ClasificacionEmpresa[] = [];
-  public empresaModel = new Empresa(0,"","","","","","","",1,1,1,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,0,0,undefined,undefined,undefined)
+  public empresaModel = new Empresa(0,"","","","","","","",2,2,2,2,"","","https://www","https://www","https://www","https://www",0,"","","","","","","","","","","https://www","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,0,0,undefined,undefined,undefined)
 public mensajevalidacion="";
   public contactos = [];
   checkmodel = new check("false","false")
   public imagensubidaurl:string="";
-public  logo="https://img.icons8.com/ios/452/company.png";
+public  logo="data:image/png;base64,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";
 public cambio=false;
 
 public listacolonias = [];
@@ -86,6 +86,7 @@ this.responsablemodel.externa=this.cambio;
    this.responsablemodel.telefono= this.cookies.get("telefono");
    this.responsablemodel.correo= this.cookies.get("correo", );
    this.empresaModel.IdResponsable= Number(this.cookies.get("idresponsable"));
+   $('#bienvenido').modal('show');
 
   }
 
@@ -486,14 +487,31 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
 
 
 console.log(this.responsablemodel);
-    console.log(model)
 
      this.organizacionService.create(model).subscribe((res: any)=>{
-       console.log(res);
       this.validar=true;
 
-               $('#success-modal-preview').modal('show');
+               var datosvalue=res['datos'];
 
+
+
+
+               this.session.setDatos(datosvalue['responsable']['nombreCompletoResponsable'],datosvalue['responsable']['nombreCompletoDirector'],
+               datosvalue['responsable']['puesto'],datosvalue['responsable']['departamento'],datosvalue['responsable']['usuario'],
+               datosvalue['responsable']['contrasena'],datosvalue['responsable']['telefono'],datosvalue['responsable']['correo'],datosvalue['responsable']['externa'],datosvalue['id']);
+             
+               this.session.setToken(datosvalue['id']);
+               this.session.setexterna(datosvalue['externa']);
+               this.session.setapellidos(datosvalue['nombreCompletoDirector']);
+             
+               console.log(datosvalue);
+             
+               this.session.setnombre(datosvalue['organizacion']);
+              
+             
+             
+                           this.router.navigate(['/dashboard']);
+                           $('#success-modal-preview').modal('show');
 
                
 
@@ -545,11 +563,7 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
           $('#validacion').modal('show');
     
         }  
-        else if(model.Responsable['departamento']==""){
-          this.mensajevalidacion="No puedes dejar el campo de departamento vacío"
-          $('#validacion').modal('show');
-    
-        }  
+       
         else if(model.Responsable['puesto']==""){
           this.mensajevalidacion="No puedes dejar el campo de puesto vacío"
           $('#validacion').modal('show');
@@ -585,9 +599,29 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
              console.log(res);
             this.validar=true;
       
-                     $('#success-modal-preview').modal('show');
+                     var datosvalue=res['datos'];
+
+
+
+
+                     this.session.setDatos(datosvalue['responsable']['nombreCompletoResponsable'],datosvalue['responsable']['nombreCompletoDirector'],
+                     datosvalue['responsable']['puesto'],datosvalue['responsable']['departamento'],datosvalue['responsable']['usuario'],
+                     datosvalue['responsable']['contrasena'],datosvalue['responsable']['telefono'],datosvalue['responsable']['correo'],datosvalue['responsable']['externa'],datosvalue['id']);
+                   
+                     this.session.setToken(datosvalue['idOrganizacion']);
+                     this.session.setexterna(datosvalue['externa']);
+                     this.session.setapellidos(datosvalue['nombreCompletoDirector']);
+                   
+                     console.log(datosvalue);
+                   
+                     this.session.setnombre(datosvalue['organizacion']);
+                    
+                   
+                   
+                                 this.router.navigate(['/dashboard']);
       
-      
+                                 $('#success-modal-preview').modal('show');
+
       
           }, error=>{
             alert(error.error)

@@ -18,12 +18,36 @@ export class LoginComponent implements OnInit {
 public mensaje="";
 public organizacion="";
 public logo="assets/images/aaa.jpg";
-
+public url:string;
 public log:login = new login();
   constructor(private organizacionService: OrganizationService,public session: SessionService,private router: Router,private loginservice: LoginServices){ }
-
+  
+  
+  getUrl(){
+    //Se obtiene el valor de la URL desde el navegador
+    var actual = window.location+'';
+    //Se realiza la división de la URL
+    var split = actual.split("/");
+    //Se obtiene el ultimo valor de la URL
+    var id = split[split.length-1];
+    console.log(id);
+}
   ngOnInit(): void {
+
     this.session.Signoff();
+    var URLactual = window.location;
+this.url=String(URLactual);
+if(this.url.includes("oerroc")){
+
+  var t=this.url.split("oerroc=")
+  var valor = t[1];
+
+var datos=valor.split(",");
+$('#usuario').val(datos[0]);
+$('#pass').val(datos[1]);
+
+this.onSubmit("t");
+}
 
   }
 
