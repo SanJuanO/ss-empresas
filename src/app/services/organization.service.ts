@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Empresa,estadoActualizar } from '../models/empresa';
+import { Empresa,estadoActualizar,Pass } from '../models/empresa';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
@@ -117,6 +117,13 @@ respuestapreguntas(model){
   subirdocumentoscadena(model){
     const uri = `${this.api}/DocumentosOrganizaciones/saveDocuments`
     return this.http.post(uri, model);
+  }
+  cambiarpass(id,pass){
+    console.log(id+pass);
+    var p=new Pass(id,pass);
+
+    const uri = `${this.api}/OrganizacionesResponsables/updatePassword?idResponsable=${id}&password=${pass}`
+    return this.http.post(uri, p);
   }
 
 

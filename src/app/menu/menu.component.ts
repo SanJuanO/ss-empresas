@@ -37,11 +37,11 @@ public apellidos="";
     this.organizacionService.getOrganizacion(this.session.getToken()).subscribe((res: any[])=>{     
 
       var logg=res['imagenArchivo'];
-
+if(logg!=null){
       if(logg.length>0){
         this.logo ="data:image/jpeg;base64,"+ logg;
         this.session.setlogo(this.logo);
-      }  
+      }  }
 
     
 

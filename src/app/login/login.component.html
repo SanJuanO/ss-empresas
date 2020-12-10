@@ -8,9 +8,9 @@
         <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
     </div>
 </div>
-<form  #formAlumno="ngForm" (ngSubmit)="onSubmit(formAlumno)">
+<form #formAlumno="ngForm" (ngSubmit)="onSubmit(formAlumno)">
     <div class="login1" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
-          
+
         <section class="cover-user bg-white">
             <div class="container-fluid px-0">
                 <div class="row no-gutters position-relative">
@@ -25,28 +25,30 @@
                                             <button type="button" class="close" (click)="ocultar()" aria-label="Close">
                                               <span aria-hidden="true">&times;</span>
                                             </button>
-                                          </div>
+                                        </div>
                                         <div class="card-body p-0">
-                                            <h1 class="card-title text-center">Iniciar Sesión</h1>  
-                                            <form class="login-form mt-4"    #formAlumno="ngForm" (ngSubmit)="onSubmit(formAlumno)">
+                                            <h1 class="card-title text-center">Iniciar Sesión</h1>
+                                            <form class="login-form mt-4" #formAlumno="ngForm" (ngSubmit)="onSubmit(formAlumno)">
 
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="form-group position-relative">
                                                             <label>Correo <span class="text-danger">*</span></label>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user fea icon-sm icons"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                                            <input type="email" class="form-control pl-5" placeholder="correo@example.com" name="usuario"  id="usuario" required>
+                                                            <input type="email" class="form-control pl-5" placeholder="correo@example.com" name="usuario" id="usuario" required>
                                                         </div>
-                                                    </div><!--end col-->
-        
+                                                    </div>
+                                                    <!--end col-->
+
                                                     <div class="col-lg-12">
                                                         <div class="form-group position-relative">
                                                             <label>Contraseña <span class="text-danger">*</span></label>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key fea icon-sm icons"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
                                                             <input type="password" class="form-control pl-5" placeholder="Contraseña" name="pass" id="pass" required>
                                                         </div>
-                                                    </div><!--end col-->
-        
+                                                    </div>
+                                                    <!--end col-->
+
                                                     <div class="col-lg-12">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="form-group">
@@ -55,12 +57,17 @@
                                                             </div>
                                                             <p class="forgot-pass mb-0"><a routerLink="/pass" class="text-dark font-weight-bold">¿Olvidaste tu contraseña?</a></p>
                                                         </div>
-                                                    </div><!--end col-->
-    
+
+                                                    </div>
+                                                    <!--end col-->
+
                                                     <div class="col-lg-12 mb-0">
                                                         <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
-                                                    </div><!--end col-->
-    
+                                                    </div>
+                                                    <br>
+
+                                                    <!--end col-->
+
                                                     <!-- <div class="col-lg-12 mt-4 text-center">
                                                         <h6>Or Login With</h6>
                                                         <ul class="list-unstyled social-icon mb-0 mt-3">
@@ -75,28 +82,37 @@
                                                         <p class="mb-0 mt-3"><small class="text-dark mr-2">No tienes una cuenta ?</small> <a href="auth-cover-signup.html" class="text-dark font-weight-bold">Registrarse</a></p>
                                                     </div> -->
                                                 </div>
+                                                <br>
+                                                <div class="col-lg-12 mb-0 text-center">¿Aún no tienes cuenta? <a href="https://adam.anahuac.mx/serviciosocial/registrarse.html" target="_blank" class="text-dark font-weight-bold"> Registrate</a></div>
+
                                             </form>
                                         </div>
                                     </div>
-                                </div><!--end col-->
-                            </div><!--end row-->
-                        </div> <!-- end about detail -->
-                    </div> <!-- end col -->    
-    
-                    <div class="col-lg-8 offset-lg-4 padding-less img order-1" style="background-image:url('assets/images/mujer.png')" data-jarallax="{&quot;speed&quot;: 0.5}"></div><!-- end col -->    
-                </div><!--end row-->
-            </div><!--end container fluid-->
-        </section>
-              <!-- END: Login Form -->
-          </div>
-      
-        <div class="modal" id="success-modal-preview" data-toggle="modal">
-            <div class="modal__content">
-                <div class="p-5 text-center"> <i data-feather="alert-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-                    <div class="text-3xl mt-5">Algo salio mal!</div>
-                    <div class="text-gray-600 mt-2">{{mensaje}}</div>
+                                </div>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
+                        </div>
+                        <!-- end about detail -->
+                    </div>
+                    <!-- end col -->
+
+                    <div class="col-lg-8 offset-lg-4 padding-less img order-1" style="background-image:url('assets/images/mujer.png')" data-jarallax="{&quot;speed&quot;: 0.5}"></div>
+                    <!-- end col -->
                 </div>
-                <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+                <!--end row-->
             </div>
+            <!--end container fluid-->
+        </section>
+        <!-- END: Login Form -->
+    </div>
+
+    <div class="modal" id="success-modal-preview" data-toggle="modal">
+        <div class="modal__content">
+            <div class="p-5 text-center"> <i data-feather="alert-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+                <div class="text-3xl mt-5">Algo salio mal!</div>
+                <div class="text-gray-600 mt-2">{{mensaje}}</div>
+            </div>
+            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
-    
+    </div>

@@ -38,9 +38,9 @@ const routes: Routes = [
   { path:'alumnosver/:id',component:AlumnosverComponent},
   { path:'alumnosevaluar/:id',component:AlumnosevaluarComponent},
 
-  {path:'empresas/add',component:EmpresasAddComponent},
-  {path:'empresas/ver/:id',component:EmpresasverComponent},
-  {path:'empresas/Edit/:id',component:EmpresasEditComponent},
+  {path:'instituciones/add',component:EmpresasAddComponent},
+  {path:'instituciones/ver/:id',component:EmpresasverComponent},
+  {path:'instituciones/Edit/:id',component:EmpresasEditComponent},
   {path:'pass',component:passComponent},
 
 

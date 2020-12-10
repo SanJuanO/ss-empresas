@@ -32,6 +32,27 @@
         <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-9 text-white">Ok</button> </div>
     </div>
 </div>
+<div class="modal" id="cambiodecontraseña">
+    <div class="modal__content">
+        <form #form="ngForm">
+            <div class="p-5 text-center">
+                <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                <div class="text-base mt-5">¿Estas seguro de cambiar la contraseña?</div>
+                <br>
+                <input type="text" style="padding: 5px; background: #ffffff;" name="" id="nuevapass" value="{{responsablemodel.contrasena}}">
+            </div>
+
+            <div class="px-5 pb-8 text-center">
+                <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">
+Cancelar
+</button>
+                <button type="button" data-dismiss="modal" (click)="cambiarpass(responsablemodel.id,responsablemodel.contrasena)" class="button w-24 bg-theme-1 text-white">Cambiar</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
 
 <div class="content" *ngIf="responsablemodel.externa">
 
@@ -42,8 +63,9 @@
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0" *ngIf="empresaModel.idEstadoOrganizacion>2">
             <button (click)="permitir()" class="button text-white bg-theme-1 shadow-md mr-2">Solicitar Modificar Institución / Área</button>
         </div>
+
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0" *ngIf="empresaModel.idEstadoOrganizacion<3">
-            <a [routerLink]="['/empresas/Edit', idobtenido]">
+            <a [routerLink]="['/instituciones/Edit', idobtenido]">
                 <button class="button text-white bg-theme-1 shadow-md mr-2">Modificar Institucióm / Área</button>
             </a>
         </div>
@@ -84,6 +106,58 @@
             <a *ngIf="empresaModel.idEstadoOrganizacion==3" style="margin-left: auto;" class="button text-white bg-theme-9 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
             <a *ngIf="empresaModel.idEstadoOrganizacion==4" style="margin-left: auto;" class="button text-white bg-theme-6 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
         </div>
+
+        <div class="relative mt-2  text-center">
+            PROGRESO DE REGISTRO
+        </div>
+        <div class="sm:grid grid-cols-4 ml-3 mr-3">
+
+            <div class="relative mt-2 text-white bg-theme-9 text-center">
+                25%
+            </div>
+            <div class="relative mt-2 text-white bg-theme-9 text-center">
+                50%
+            </div>
+
+            <div class="relative mt-2 text-white bg-theme-9 text-center" *ngIf="documentosfaltan;else docf">
+                75% </div>
+            <ng-template #docf>
+                <div class="relative mt-2 text-white bg-theme-6 text-center">
+                    75%
+                </div>
+            </ng-template>
+
+            <div class="relative mt-2 text-white bg-theme-9 text-center" *ngIf="(documentosfaltan && empresaModel.idEstadoOrganizacion==3);else ide">
+                100%
+            </div>
+            <ng-template #ide>
+                <div class="relative mt-2 text-white bg-theme-6 text-center">
+                    100%
+                </div>
+            </ng-template>
+
+
+        </div>
+        <div class="sm:grid grid-cols-4   ml-3 mr-3">
+
+            <div class="relative mt-2 text-center">
+                REGISTRO
+            </div>
+            <div class="relative mt-2-center">
+                ACOMPLETAR TU INFORMACIÓN
+            </div>
+
+            <div class="relative mt-2 text-center">
+                DOCUMENTACIÓN VALIDADA
+            </div>
+
+            <div class="relative mt-2  text-center">
+                APROBADO
+            </div>
+
+
+        </div>
+
         <br>
         <div class="flex flex-1 px-5 items-center justify-center " align="center">
             <div class="w-0 h-20 sm:w-24 sm:h-24 flex-none lg:w-48 lg:h-48 image-fit relative">
@@ -209,8 +283,14 @@
                         Contraseña del Responsable de Servicio Social:
 
                         <div class="text-base font-bold leading-8 mt-6">
-                            <input type="password" style="padding: 5px; background: #ffffff;" disabled name="" id="" value="  {{responsablemodel.contrasena}} ">
+                            <input type="password" style="padding: 5px; background: #ffffff;" disabled name="" id="password" value="  {{responsablemodel.contrasena}} ">
                         </div>
+                    </div>
+
+                    <div style="margin-top:3px;">
+                        <input style="margin-left:20px;" type="checkbox" id="mostrar_contrasena" (change)="mostrarpass()" title="clic para mostrar contraseña" /> &nbsp;&nbsp;Mostrar Contraseña
+                        <button type="button" (click)="cambiodecontra()" class="button bg-theme-1 ml-5 text-white">Cambiar contraseña</button>
+
                     </div>
                 </div>
             </div>
@@ -626,12 +706,12 @@
         </div>
 
 
-        <div class="grid grid-cols-12 gap-12 mt-5 bg-primary">
+        <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class="report-box ">
                     <div class="box p-5">
 
-                        <div class="text-base font-bold leading-8 mt-6"> Campus : {{empresaModel.ancianos}} </div>
+                        <div class="text-base font-bold leading-8 mt-6"> Campus : {{empresaModel.universidad}} </div>
                     </div>
                 </div>
             </div>
@@ -641,21 +721,12 @@
                     <div class="box p-5">
 
                         <div class="text-base font-bold leading-8 mt-6">
-                            Vicerrectoría : {{empresaModel.indigenas}}
+                            Vicerrectoría : {{empresaModel.vicerrectoria}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box ">
-                    <div class="box p-5">
 
-                        <div class="text-base font-bold leading-8 mt-6">
-                            Dirección : {{empresaModel.discapacitados}}
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="grid grid-cols-12 gap-3 mt-5 bg-primary">
 
@@ -664,7 +735,7 @@
                     <div class="box p-5">
 
                         <div class="text-base font-bold leading-8 mt-6">
-                            Área/Coordinación : {{empresaModel.jovenes}}
+                            Área/Coordinación : {{empresaModel.cordinacion}}
                         </div>
                     </div>
                 </div>
@@ -674,7 +745,7 @@
                     <div class="box p-5">
 
                         <div class="text-base font-bold leading-8 mt-6">
-                            Descripción introductoria del área : {{empresaModel.mujeres}}
+                            Descripción introductoria del área : {{empresaModel.descripcionArea}}
                         </div>
                     </div>
                 </div>
@@ -684,7 +755,7 @@
                     <div class="box p-5">
 
                         <div class="text-base font-bold leading-8 mt-6">
-                            Principales Objetivos : {{empresaModel.ninos}}
+                            Principales Objetivos : {{empresaModel.objetivo}}
                         </div>
                     </div>
                 </div>
@@ -722,7 +793,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="intro-x" *ngFor="let d of DocumentosSubidos">
+                <tr class="intro-x" *ngFor="let d of DocumentosSubidos" data-toggle="tooltip" data-placement="top" title="{{d.descripcion}}">
 
                     <td>
                         <div class="ext-base text-xs whitespace-no-wrap"> {{d.documento}}</div>
@@ -912,7 +983,7 @@
             <button (click)="permitir()" class="button text-white bg-theme-1 shadow-md mr-2">Solicitar Modificar Institución / Área</button>
         </div>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0" *ngIf="empresaModel.idEstadoOrganizacion<3">
-            <a [routerLink]="['/empresas/Edit', idobtenido]">
+            <a [routerLink]="['/instituciones/Edit', idobtenido]">
                 <button class="button text-white bg-theme-1 shadow-md mr-2">Modificar Institucióm / Área</button>
             </a>
         </div>
@@ -952,9 +1023,58 @@
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a style="margin-left: auto;" class="button text-white bg-theme-12 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
         </div>
+        <br>
+        <div class="relative mt-2  text-center">
+            PROGRESO DE REGISTRO
+        </div>
+        <div class="sm:grid grid-cols-4 ml-3 mr-3">
+
+            <div class="relative mt-2 text-white bg-theme-9 text-center">
+                25%
+            </div>
+            <div class="relative mt-2 text-white bg-theme-9 text-center">
+                50%
+            </div>
+
+            <div class="relative mt-2 text-white bg-theme-9 text-center">
+                75% </div>
+
+
+            <div class="relative mt-2 text-white bg-theme-9 text-center" *ngIf="(empresaModel.idEstadoOrganizacion==3);else ide">
+                100%
+            </div>
+            <ng-template #ide>
+                <div class="relative mt-2 text-white bg-theme-6 text-center">
+                    100%
+                </div>
+            </ng-template>
+
+
+        </div>
+        <div class="sm:grid grid-cols-4   ml-3 mr-3">
+
+            <div class="relative mt-2 text-center">
+                REGISTRO
+            </div>
+            <div class="relative mt-2-center">
+                ACOMPLETAR TU INFORMACIÓN
+            </div>
+
+            <div class="relative mt-2 text-center">
+                DOCUMENTACIÓN VALIDADA
+            </div>
+
+            <div class="relative mt-2  text-center">
+                APROBADO
+            </div>
+
+
+        </div>
+
+        <br>
         <div class="grid grid-cols-12 gap-4 mt-5">
 
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
                     <div class="text-base text-gray-600 mt-1">
                         Campus
@@ -964,21 +1084,14 @@
                 </div>
             </div>
 
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
                     <div class="text-base text-gray-600 mt-1">Vicerrectoría</div>
 
                     <div class="text-base font-bold leading-8 mt-6">{{empresaModel.vicerrectoria}}</div>
                 </div>
             </div>
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Dirección</div>
 
-
-                    <div class="text-base font-bold leading-8 mt-6">{{empresaModel.direccion}}</div>
-                </div>
-            </div>
         </div>
         <br>
         <div class="grid grid-cols-12 gap-4 mt-5">
@@ -1106,8 +1219,13 @@
                         Contraseña del Responsable de Servicio Social:
 
                         <div class="text-base font-bold leading-8 mt-6">
-                            <input type="password" style="padding: 5px; background: #ffffff;" disabled name="" id="" value="  {{responsablemodel.contrasena}} ">
+                            <input type="password" id="password" style="padding: 5px; background: #ffffff;" disabled name="" value="  {{responsablemodel.contrasena}} ">
                         </div>
+                    </div>
+                    <div style="margin-top:3px;">
+                        <input style="margin-left:20px;" type="checkbox" id="mostrar_contrasena" (change)="mostrarpass()" title="clic para mostrar contraseña" /> &nbsp;&nbsp;Mostrar Contraseña
+                        <button type="button" (click)="cambiodecontra()" class="button bg-theme-1 ml-5 text-white">Cambiar contraseña</button>
+
                     </div>
                 </div>
             </div>

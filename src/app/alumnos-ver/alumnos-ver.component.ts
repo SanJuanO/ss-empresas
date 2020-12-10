@@ -46,6 +46,10 @@ export class AlumnosverComponent implements OnInit {
   public idasignado: string;
 public idEstado:number;
 public idProyecto:string;
+public Estado:string;
+
+public nohayfecha:boolean=true;
+
 
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
@@ -56,7 +60,7 @@ public idProyecto:string;
   public fileToUpload: File = null;
   public horastotales: number = 0;
   public actividades: number = 0;
-
+public fechaincr:string;
   constructor(private route: ActivatedRoute, private organizacionService: OrganizationService,
     public cookies: CookieService,  private router: Router, private facultadService: FacultadService,
      private carreraService: CarreraService, private universidadService: UniversidadService, 
@@ -66,12 +70,19 @@ public idProyecto:string;
 
   ngOnInit(): void {
     this.idProyecto=this.cookies.get("idProyectoa");
+    var fe = this.cookies.get("fechaInicioInstitucion");
+    if(fe!=null){
+    var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
+    var Fecha = new Date((fe.toString()));
+    this.fechaincr=Fecha.toLocaleDateString("es-ES", options);
+    this.nohayfecha=false;
+    }
     this.idasignado=this.cookies.get("idasignado");
     this.idEstado =Number(this.cookies.get("idEstado"));
 console.log(this.idEstado);
     this.idAlumno = this.cookies.get("idalumno");
-    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) => this.alumno = alumno);
+    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) =>{ this.alumno = alumno; console.log(this.alumno);});
     this.obtenerUniversidades();
     this.obtenerCarreras();
     this.obtenerFacultades();
@@ -233,6 +244,10 @@ actualizarestado(){
           console.log(this.estadosalumnos.length);
   
           for(var i=0;i<this.estadosalumnos.length;i++){
+
+            if(this.idEstado==this.estadosalumnos[i]['id']){
+              this.Estado=this.estadosalumnos[i]['estado'];
+            }
             if(i<3 || i==6){
               this.estadosalumnoslimitado.push(this.estadosalumnos[i]);
   
@@ -283,4 +298,27 @@ console.log(this.estadoalumnocambio);
   })
 
 }
+
+actualizarfecha(){
+
+      $('#mostrarfecha').modal('show');
+  
+  
+    }
+
+cambiarfecha(){
+
+
+  var fecharegistro= $("#fechadeinicio").val();
+
+console.log(fecharegistro);
+
+   this.organizacionService.actualizarfechaalumno(fecharegistro,this.idAlumno).subscribe((res) => {
+   console.log(res);
+
+  })
+
+}
+
+
 }

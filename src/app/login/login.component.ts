@@ -91,7 +91,7 @@ console.log(tempo);
 
 if( tempo == '0'){
 
-this.router.navigate(['/empresas/add']);
+this.router.navigate(['/instituciones/add']);
 
 }else{
   this.router.navigate(['/dashboard']);
@@ -142,7 +142,7 @@ this.router.navigate(['/empresas/add']);
       var tempo=id;
       console.log(tempo);
     if( tempo == '0'){
-      this.router.navigate(['/empresas/add']);
+      this.router.navigate(['/instituciones/add']);
     
     }else{
       this.router.navigate(['/dashboard']);

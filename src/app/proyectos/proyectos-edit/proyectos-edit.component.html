@@ -39,9 +39,9 @@
                         </h2>
                     </div>
                     <div class="mt-3 p-5">
-                        <div class="sm:grid grid-cols-3 gap-2">
+                        <div class="sm:grid grid-cols-4 gap-2">
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>Institución / Área*</label>
                                     <select class="input  w-full border mt-2 " [(ngModel)]="idOrganizacion" [ngModelOptions]="{standalone: true}" style="display: none;">
@@ -55,14 +55,14 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>Nombre del proyecto*</label>
                                     <input type="text" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.proyecto" [ngModelOptions]="{standalone: true}" ng-reflect-required="ejemplo nombre" maxlength="70" placeholder="Máximo 70 caracteres" required>
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>Descripción del proyecto*</label>
                                     <textarea type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.descripcion" [ngModelOptions]="{standalone: true}" placeholder="Máximo 500 caracteres" maxlength="500" rows="5" required>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Nombre del Responsable del Proyecto*
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Puesto del Responsable del Proyecto*
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Área del Responsbale del Proyecto*
@@ -97,7 +97,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Correo electrónico del responsable del proyecto*
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Teléfono de responsable del proyecto
@@ -115,7 +115,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     ¿Plazas de Servicio Social disponibles para el proyecto?*
@@ -135,19 +135,19 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?*
                   </label>
                                     <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.modalidadDistancia" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="'si'">Si</option>
+                    <option [ngValue]="'si'">Sí</option>
                     <option [ngValue]="'no'">No</option>
                   </select>
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Justifica el impacto social del proyecto*
@@ -160,7 +160,7 @@
 
 
 
-                            <!--<div class="relative mt-8">
+                            <!--<div class="relative mt-3">
                 <div>
                   <label>
                     ¿Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 240 hrs.?
@@ -180,10 +180,10 @@
                 </div>
               </div>-->
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
-                    Enlista los objetivos del proyecto máximo(7)*
+                    Enlista los objetivos del proyecto 
                   </label>
                                     <textarea type="text" rows="7" class="input  w-full border mt-2 " placeholder="Enlista máximo 7" [(ngModel)]="proyectoModel.objetivo" [ngModelOptions]="{standalone: true}" required>
               </textarea>
@@ -204,7 +204,7 @@
                     <div class="mt-8 p-5">
                         <div class="sm:grid grid-cols-2 gap-2">
 
-                            <!--<div class="relative mt-8">
+                            <!--<div class="relative mt-3">
                 <div>
                   <label>
                     ¿Cantidad de horas totales del proyecto?*
@@ -215,7 +215,7 @@
                   </select>
                 </div>
               </div>-->
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>Fecha de inicio*</label>
                                     <input type="date" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaInicio" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()" required>
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                             <!--
-              <div class="relative mt-8">
+              <div class="relative mt-3">
                 <div>
                   <label>Fecha de termino* </label>
                   <input type="date" class="input  w-full border mt-2 "
@@ -238,13 +238,13 @@
                 </div>
               </div>
               -->
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     ¿El alumno recibe capacitación/formación por parte de la Institución?*
                   </label>
                                     <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.capacitacion" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="'si'">Si</option>
+                    <option [ngValue]="'si'">Sí</option>
                     <option [ngValue]="'no'">No</option>
                   </select>
                                     <label *ngIf="proyectoModel.capacitacion=='si'">¿Que tipo de capacitacòn se ofrece?</label>
@@ -253,7 +253,7 @@
                   </textarea>
                                 </div>
                             </div>
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Días hábiles para la prestación de servicio social*
@@ -319,7 +319,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Horarios disponibles para la prestación de servicio social*
@@ -350,7 +350,7 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
                     Rol o función del prestador de servicio social (estudiante) dentro del proyecto:
@@ -360,10 +360,10 @@
                                 </div>
                             </div>
 
-                            <div class="relative mt-8">
+                            <div class="relative mt-3">
                                 <div>
                                     <label>
-                    Responsabilidades del prestador de servicio social máximo(7):
+                    Responsabilidades del prestador de servicio social:
                   </label>
                                     <textarea type="text" rows="7" class="input  w-full border mt-2 " placeholder="Enumere las principales responsabilidades que tendrá el estudiante. Máximo 7" [(ngModel)]="proyectoModel.responsabilidades" [ngModelOptions]="{standalone: true}" value="objetivo ejemplo"
                                         rows="5" required></textarea>
@@ -385,7 +385,7 @@
 
                             <div class="relative mt-2">
 
-                                <div class="sm:grid grid-cols-3 gap-2">
+                                <div class="sm:grid grid-cols-4 gap-2">
                                     <div *ngFor="let competencia of listaProyectosCompetencias">
 
                                         <label>
@@ -399,18 +399,412 @@
 
                         </div>
                         <br>
+
                         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
                             <h2 class="font-medium text-base mr-auto">
                                 Selecciones las carreras más afines según el perfil que requiera el proyecto:
                             </h2>
                         </div>
-                        <div class="relative mt-8">
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasA.length>0">
+                            <label> A </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
 
-                            <div class="sm:grid grid-cols-3 gap-2">
-                                <div *ngFor="let carrera of listaProyectosCarreras">
+                                <div *ngFor="let carrera of listaProyectosCarrerasA">
 
                                     <label>
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasB.length>0">
+                            <label> B </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasB">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasC.length>0">
+                            <label> C </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasC">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasD.length>0">
+                            <label> D </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasD">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasE.length>0">
+                            <label> E </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasE">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasF.length>0">
+                            <label> F </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasF">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasG.length>0">
+                            <label> G </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasG">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasH.length>0">
+                            <label> H </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasH">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasI.length>0">
+                            <label> I </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasI">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasJ.length>0">
+                            <label> J </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasJ">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasK.length>0">
+                            <label> K </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasK">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasL.length>0">
+                            <label> L </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasL">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasM.length>0">
+                            <label> M </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasM">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasN.length>0">
+                            <label> N </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasN">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasNN.length>0">
+                            <label> Ñ </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasNN">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasO.length>0">
+                            <label> O </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasO">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasP.length>0">
+                            <label> P </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasP">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasQ.length>0">
+                            <label> Q </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasQ">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasR.length>0">
+                            <label> R </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasR">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasS.length>0">
+                            <label> S </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasS">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasT.length>0">
+                            <label> T </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasT">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasU.length>0">
+                            <label>U </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasU">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasV.length>0">
+                            <label> V </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasV">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasW.length>0">
+                            <label> W </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasW">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasX.length>0">
+                            <label> X </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasX">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasY.length>0">
+                            <label> Y </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasY">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
+                      {{carrera.carrera}}
+                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasZ.length>0">
+                            <label> Z </label>
+                            <div class="sm:grid grid-cols-4 gap-2">
+
+                                <div *ngFor="let carrera of listaProyectosCarrerasZ">
+
+                                    <label>
+                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)" [checked]="idsCarreras.indexOf(carrera.id) >=0">
+
                       {{carrera.carrera}}
                     </label>
 

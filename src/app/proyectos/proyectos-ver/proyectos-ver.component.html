@@ -28,11 +28,13 @@
                     <h2 class="text-lg font-medium truncate mr-5">
                         Información General
                     </h2>
+
                 </div>
 
 
                 <div class="box">
                     <br>
+
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
                         <a style="margin-left: auto;" class="button text-white bg-theme-12 shadow-md mr-2">Estado: {{proyectoModel.estadoProyecto}}</a>
                     </div>
@@ -119,9 +121,9 @@
                             </div>
                         </div>
 
-                        <div routerLink="/proyectos" class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">Descripciòn del proyecto:</div>
+                                <div class="text-base text-gray-600 mt-1">Descripción del proyecto:</div>
 
                                 <div class="text-base font-bold leading-8 mt-6" style="text-align: justify;">{{proyectoModel.descripcion}}</div>
                             </div>
@@ -396,6 +398,7 @@
                                                 <th class="border-b-2 text-center whitespace-no-wrap">Estatus</th>
                                                 <th class="border-b-2 text-center whitespace-no-wrap">Fecha de ingreso</th>
                                                 <th class="border-b-2 text-center whitespace-no-wrap">Acción</th>
+                                                <th class="border-b-2 text-center whitespace-no-wrap">Detalle</th>
 
 
                                             </tr>
@@ -404,16 +407,15 @@
 
                                             <tr *ngFor="let alumno of alumnos">
                                                 <td class="border-b">
-                                                    <a (click)="veralumno(alumno.id,alumno.idAlumno,alumno.idEstado,alumno.idProyecto);">
-                                                        <div class="font-medium flex sm:justify-center items-center">{{alumno.alumno}}</div>
-                                                    </a>
+                                                    <div class="font-medium flex sm:justify-center items-center">{{alumno.alumno}}</div>
+
                                                 </td>
 
                                                 <td class="border-b">
                                                     <div class="font-medium flex sm:justify-center items-center">{{alumno.matricula}}</div>
                                                 </td>
                                                 <td class="border-b">
-                                                    <div class="font-medium flex sm:justify-center items-center">{{alumno.correoInstitucional}}</div>
+                                                    <div class="font-medium flex sm:justify-center items-center">{{alumno.correo}}</div>
                                                 </td>
 
                                                 <td class="border-b">
@@ -441,6 +443,11 @@
                                                 </td>
                                                 <td *ngIf="alumno.idEstado>4">
                                                     <div class="font-medium flex sm:justify-center items-center">Finalizado</div>
+                                                </td>
+                                                <td class="border-b">
+                                                    <a (click)="veralumno(alumno.id,alumno.idAlumno,alumno.idEstado,alumno.idProyecto,alumno.fechaInicioInstitucion);">
+                                                        <div class="button  bg-theme-1 text-white">Ver</div>
+                                                    </a>
                                                 </td>
                                                 <div class="modal" id="mostareditaralumno-{{alumno.idAlumno}}">
                                                     <div class="modal__content">
@@ -492,6 +499,8 @@
 
                                                     </div>
                                                 </div>
+
+
                                             </tr>
 
                                         </tbody>

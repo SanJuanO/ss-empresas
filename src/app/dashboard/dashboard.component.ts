@@ -209,12 +209,13 @@ alumnoproyectos() {
     })
 
 }
-veralumno(idasignado,idalumno,idEstado,idProyecto){
+veralumno(idasignado,idalumno,idEstado,idProyecto,fechaInicioInstitucion){
 
   this.cookies.set("idasignado", idasignado);
   this.cookies.set("idalumno", idalumno);
   this.cookies.set("idEstado", idEstado);
   this.cookies.set("idProyectoa", idProyecto);
+  this.cookies.set("fechaInicioInstitucion", fechaInicioInstitucion);
 
 console.log(idasignado+" "+idalumno);
   this.router.navigate(['/alumnosver',idalumno]);

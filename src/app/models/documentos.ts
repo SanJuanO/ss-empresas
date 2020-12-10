@@ -36,7 +36,9 @@ export class DocumentosSubidosRequeridos {
       public documento :string,
       public configuracion :number,
 
-      public file: any
+      public file: any,
+      public descripcion?:string
+
     ) { }
 }
 

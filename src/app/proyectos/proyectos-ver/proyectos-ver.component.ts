@@ -123,9 +123,19 @@ export class ProyectosVerComponent implements OnInit {
   obtenerAlumnosInscritos() {
     return this.proyectoService
       .getAlumnosInscritosByIdProyecto(this.idobtenido)
-      .subscribe((alumnos: AlumnosProyectosAsignadosModel[]) =>{ this.alumnos = alumnos;
-console.log(this.alumnos);
+      .subscribe((alumnos: AlumnosProyectosAsignadosModel[]) =>{ 
+        this.alumnos = alumnos;
+        console.log(this.alumnos);
 
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+for(var i=0;i<this.alumnos.length;i++)
+{
+  if(this.alumnos[i]['fechaInicioInstitucion']!=null){
+  var Fecha = new Date((this.alumnos[i]['fechaInicioInstitucion'].toString()));
+  this.alumnos[i]['fechaInicioInstitucion']=Fecha.toLocaleDateString("es-ES", options);
+  }
+
+}
       }
         );
   }
@@ -219,12 +229,13 @@ console.log(this.estadoalumnocambio);
 
   }
 
-  veralumno(idasignado,idalumno,idEstado,idProyecto){
+  veralumno(idasignado,idalumno,idEstado,idProyecto,fechaInicioInstitucion){
 
     this.cookies.set("idasignado", idasignado);
     this.cookies.set("idalumno", idalumno);
     this.cookies.set("idEstado", idEstado);
     this.cookies.set("idProyectoa", idProyecto);
+    this.cookies.set("fechaInicioInstitucion", fechaInicioInstitucion);
 
 console.log(idasignado+" "+idalumno);
     this.router.navigate(['/alumnosver',idalumno]);

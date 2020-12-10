@@ -110,20 +110,22 @@
 
 
                                         </td>
-                                        <td>
+                                        <td class="w-5">
 
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium " *ngIf="proyect.cantidadPendientes>0; else loading"> {{proyect.cantidadPendientes}}</div>
+                                            <div class=" rounded-full text-center  bg-theme-6 text-white   m-3" *ngIf="proyect.cantidadPendientes>0; else loading"> {{proyect.cantidadPendientes}}</div>
                                             <ng-template #loading>
-                                                <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer font-medium"> {{proyect.cantidadPendientes}}</div>
+                                                <div class=" rounded-full text-center  bg-theme-1 text-white m-3 "> {{proyect.cantidadPendientes}}</div>
                                             </ng-template>
 
                                         </td>
                                         <td class="w-40">
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium">ACTIVO</div>
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white  font-medium">ACTIVO</div>
                                         </td>
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
-                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/ver', proyect.id  ]"> Ver </a>
+                                                <a class="m-5 py-3 px-5 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/ver', proyect.id  ]">
+                                                    <p class="ml-5 mr-5"> Ver</p>
+                                                </a>
 
                                             </div>
                                         </td>
@@ -161,7 +163,10 @@
                                         </td>
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
-                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]">Editar </a>
+                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]">
+                                                    <p class="ml-5 mr-5"> Editar</p>
+
+                                                </a>
 
                                             </div>
                                         </td>
@@ -180,7 +185,7 @@
                     </div>
 
 
-                    <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="alumnos.length>0">
+                    <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="alumnos.length>0 ">
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
                             <div class="intro-y flex items-center h-10">
                                 <h2 class="text-lg font-medium truncate mr-5">
@@ -190,7 +195,7 @@
                             <div *ngFor="let a of alumnos">
 
                                 <div class=" px-2 py-3  flex-1 " *ngIf="a.idEstado==1">
-                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto);">
+                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
                                         <div class="box p-5 zoom-in">
                                             <div class="flex">
 
@@ -223,7 +228,7 @@
                             <div *ngFor="let a of alumnos">
 
                                 <div class=" px-2 py-3 flex-1" *ngIf="a.idEstado==2">
-                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto);">
+                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
                                         <div class="box p-5 zoom-in">
                                             <div class="flex">
 
@@ -258,7 +263,7 @@
                             <div *ngFor="let a of alumnos">
 
                                 <div class=" px-3 py-3  flex-1 " *ngIf="a.idEstado==3">
-                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto);">
+                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
                                         <div class="box p-5 zoom-in">
                                             <div class="flex">
 
@@ -295,7 +300,7 @@
                             <div *ngFor="let a of alumnos">
 
                                 <div class=" px-3 py-3  flex-1 " *ngIf="a.idEstado==4">
-                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto);">
+                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
                                         <div class="box p-5 zoom-in">
                                             <div class="flex">
 

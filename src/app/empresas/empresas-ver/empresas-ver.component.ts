@@ -11,6 +11,7 @@ import { GiroEmpresa } from "../../models/giroempresa"
 import { ClasificacionEmpresa } from "../../models/clasificacionempresa"
 import { EstadoEmpresa } from "../../models/estadoempresa"
 
+import { SessionService } from '../../services/session.service';
 
 
 import { Router,ActivatedRoute } from '@angular/router';
@@ -35,7 +36,7 @@ export class EmpresasverComponent implements OnInit {
 public idobtenido:string;
   public giro: GiroEmpresa[] = [];
   public documentos: Documentos[] = [];
-
+public documentosfaltan=true;
   public estado: EstadoEmpresa[] = [];
   public listaAreasAccion = [];
   public listaRubros = [];
@@ -65,7 +66,7 @@ public validar=false;
   checkmodel = new check("false","false")
   public empresaModel = new Empresa(0,"","Otro","","","","","",0,0,0,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
 
-  constructor(private organizacionService: OrganizationService,private router: Router,private activatedRoute: ActivatedRoute) { 
+  constructor(private organizacionService: OrganizationService,private router: Router,private activatedRoute: ActivatedRoute,public session: SessionService) { 
   
   }
   ngOnInit(): void {
@@ -185,12 +186,13 @@ var valor= { "idRubro": id ,"activo": true};
         
         (documentosS: DocumentosSubidosRequeridos[]) => {
         this.DocumentosSubidos = documentosS;
-   
+   console.log(this.DocumentosSubidos);
 
         for(var i=0;i<documentosS.length;i++)
         {
-          if(documentosS[i]['idEstado']!=4){
+          if(documentosS[i]['idEstado']!=4 && this.session.getexterna()){
             $('#documentosfaltan').modal('show');
+            this.documentosfaltan=false;
 return;
           }
         }
@@ -292,10 +294,26 @@ let model=this.estadoact;
   }
 
 
+  cambiodecontra(){
 
+    //console.log("dfdsfdsfds" + id);
+    $('#cambiodecontraseña').modal('show');
+  
+  }
 
+  cambiarpass(id,pass)
 
+{
+var passw=$('#nuevapass').val()
+  this.organizacionService.cambiarpass(id,passw).subscribe(data => {
+    console.log(data);
+        $('#success-modal-preview').modal('hide');
+    this.responsablemodel.contrasena=passw;
+    }, error => {
+      console.log(error);
+    });
 
+}
 
 
 
@@ -318,7 +336,16 @@ let model=this.estadoact;
     }
     
   
-
+    mostrarpass(){
+      console.log("cambioar");
+      if ($('#mostrar_contrasena').is(':checked')) {
+        $('#password').attr('type', 'text');
+      } else {
+        $('#password').attr('type', 'password');
+      }
+    
+    }
+  
 
 
 }

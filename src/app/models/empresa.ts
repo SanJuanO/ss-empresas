@@ -147,7 +147,8 @@ export class Responsablemodel {
       public activo: boolean,
 
       public externa: boolean,
-      public extension?:string
+      public extension?:string,
+      public id?:number
 
       
   ) { }    
@@ -172,7 +173,16 @@ export class check {
   ) { }    
 
 }
+export class Pass {
+  constructor(
+      public idResponsable
+      : number,
+      public password: string,
 
+      
+  ) { }    
+
+}
 export class OrganizacionesSucesosModel {
 public id: number;
 public idOrganizacion: number;
