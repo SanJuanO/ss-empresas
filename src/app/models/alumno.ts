@@ -28,7 +28,7 @@ export class alumnosactividades {
   public idAlumnoProyectoAsignado:number;
 public actividad:string;
   public validaEmpresa: boolean;
-public fechaCreacion: Date;
+public fechaCreacion: string;
   constructor(
 
       
@@ -42,7 +42,7 @@ export class alumnohoras {
 
   public noHoras: number;
   public activo: boolean=true;
-public fechaCreacion: Date;
+public fechaCreacion: string;
   constructor(
 
       

@@ -203,8 +203,16 @@ location.reload();
 this.horasalumno=res;
 console.log(res);
           var a=0;
+          var options = { year: 'numeric', month: 'long', day: 'numeric' };
+
         for(var i=0;i<this.horasalumno.length;i++){
+          var Fecha = new Date((this.horasalumno[i]['fechaCreacion'].toString()));
+          this.horasalumno[i]['fechaCreacion']=Fecha.toLocaleDateString("es-ES", options);
+
 a+=this.horasalumno[i]['noHoras'];
+
+
+
         }
 
         console.log(a);
@@ -215,9 +223,18 @@ a+=this.horasalumno[i]['noHoras'];
 obteneractividades() {
 
   this.alumnoService.activadades(this.idasignado).subscribe((res: any) => {
-    this.actividades=res;
+    this.alumnosactividades=res;
     console.log(res);
-            
+    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+    for(var i=0;i<this.horasalumno.length;i++){
+      var Fecha = new Date((this.alumnosactividades[i]['fechaCreacion'].toString()));
+      this.alumnosactividades[i]['fechaCreacion']=Fecha.toLocaleDateString("es-ES", options);
+
+
+
+    }
+ 
     
 
   });

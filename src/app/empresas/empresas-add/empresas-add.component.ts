@@ -602,15 +602,9 @@ console.log(this.responsablemodel);
   }
 
 }else{
-  var vic="";
   var cor="";
 
-  for(var v=0;v<this.vicerectorias.length;v++){
-    if(model.idVicerrectoria==this.vicerectorias[v]['id']){
-      vic=this.vicerectorias[v]['vicerrectoria'];
-    }
 
-  }
 
   for(var v=0;v<this.cordinaciones.length;v++){
     if(model.idVicerrectoria==this. cordinaciones[v]['id']){
@@ -618,7 +612,7 @@ console.log(this.responsablemodel);
     }
 
   }
-  model.organizacion=vic+"/"+cor;
+  model.organizacion=cor;
   model.nombreComun="Interna";
 
 console.log(model);

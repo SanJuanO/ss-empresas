@@ -519,7 +519,7 @@ if(this.responsablemodel.externa){
   }
 }
 else{
-  model.organizacion=model.vicerrectoria+"/"+model.cordinacion;
+  model.organizacion=model.cordinacion;
   model.nombreComun="Interna";
 
   console.log(model);
