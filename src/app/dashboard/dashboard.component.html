@@ -27,10 +27,16 @@
 
                     <!-- BEGIN: Convocatorias Abiertas -->
                     <div class="col-span-12 mt-6 ">
-                        <div class="intro-y block sm:flex items-center h-10 ">
-                            <h2 class="text-lg font-medium truncate mr-5 " style="font-size:35px;">
-                                CONVOCATORIAS
-                            </h2>
+                        <div class="grid grid-cols-12 gap-6 mt-5">
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                                <div class=" p-5">
+                                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">Convocatorias
+                                    </div>
+                                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+                                </div>
+
+                            </div>
 
                         </div>
                         <div class="intro-y  bg-light overflow-auto lg:overflow-visible mt-8 sm:mt-0">
@@ -94,10 +100,16 @@
                     <br>
                     <!-- BEGIN: Weekly Top Products -->
                     <div class="col-span-12 mt-6  " *ngIf="proyectos.length>0">
-                        <div class="intro-y block sm:flex items-center h-10 ">
-                            <h2 class="text-lg font-medium truncate mr-5 " style="font-size:35px;">
-                                Proyectos
-                            </h2>
+                        <div class="grid grid-cols-12 gap-6 mt-5">
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                                <div class=" p-5">
+                                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">Proyectos
+                                    </div>
+                                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+                                </div>
+
+                            </div>
 
                         </div>
                         <div class="intro-y  bg-light overflow-auto lg:overflow-visible mt-8 sm:mt-0">
@@ -190,21 +202,40 @@
                     </div>
 
 
+                    <div class="col-span-12 mt-6  " *ngIf="proyectos.length==0">
+                        <div class="grid grid-cols-12 gap-6 mt-5">
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                                <div class=" p-5">
+                                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">Proyectos
+                                    </div>
+                                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
-                    <!-- END: Convocatorias Abiertas -->
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="text-base-600 text-center leading-8 mt-6" style=" text-align:justify; font-size:35px; ">
+                            No has agregado ningún proyecto
+
+                        </div>
+
+
+
+                        <!-- END: Convocatorias Abiertas -->
+
+
+                    </div>
+
+
+
+
+
 
 
                 </div>
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
-</div>
 
-<!-- END: Content -->
+    <!-- END: Content -->

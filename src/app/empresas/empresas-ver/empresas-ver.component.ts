@@ -346,6 +346,9 @@ var passw=$('#nuevapass').val()
     
     }
   
-
+    mostrarmodal() {
+      console.log("adentro");
+      $('#warning-modal-preview').modal('show');
+    }
 
 }

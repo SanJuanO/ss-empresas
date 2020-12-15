@@ -85,10 +85,6 @@ this.obtenerProyectos();
   mostrarmodal() {
     console.log("adentro");
     $('#warning-modal-preview').modal('show');
-
-
-
-
   }
   obtenerempresa() {
     let model = this.tipoModel;
