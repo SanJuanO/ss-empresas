@@ -6,8 +6,19 @@
         <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-6">
             <!-- BEGIN: General Report -->
             <div class="col-span-12 mt-8">
-                <button class="ml-auto flex text-theme-1 dark:text-theme-10" (click)="ngOnInit()"> <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i>  Recargar </button>
 
+                <div class=" mr-5 " (click)="mostrarmodal()"> <i data-feather="alert-circle" class="w-8 h-8 mr-3" style="  position: absolute;
+                    right: 20px;   color:#FF8800"></i> </div>
+                <div class="modal" id="warning-modal-preview" style=" display: block; ">
+                    <div class="modal__content">
+                        <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                            <div class="text-3xl mt-5">Oops...</div>
+                            <div class="text-gray-600 mt-2">Something went wrong!</div>
+                        </div>
+                        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+                        <div class="p-5 text-center border-t border-gray-200 dark:border-dark-5"> <a href="" class="text-theme-1 dark:text-theme-10">Why do I have this issue?</a> </div>
+                    </div>
+                </div>
                 <!-- BEGIN: General Report -->
                 <div class="col-span-12 mt-8">
 
@@ -33,18 +44,31 @@
                     <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="alumnos.length>0 ">
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
                             <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5">
+                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:35px;">
                                     Alumnos nuevos
                                 </h2>
+
+
                             </div>
+                            <br>
+                            <hr style="color: #000000;" noshade="noshade" size="2" /><br>
                             <div *ngFor="let a of alumnos">
 
-                                <div class=" px-2 py-3  flex-1 " *ngIf="a.idEstado==1">
+                                <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==1">
                                     <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
-                                        <div class="box p-5 zoom-in">
-                                            <div class="flex">
+                                        <div class="box bg-light p-2 zoom-in ">
 
-                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+                                            <div class="flex">
+                                                <div class="text-white" style="	width: 2rem;
+                                                height: 2rem;
+                                                border-radius: 50%;
+                                                background: rgb(59, 59, 59);
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                text-align: center;
+                                              "> {{a.alumno.substring(0,1)}}</div>
+
                                                 <div class="ml-auto">
                                                     <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
 
@@ -52,8 +76,18 @@
 
                                             </div>
 
-                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+                                            <div class="">
+                                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+
+                                                <div class="ml-auto">
+                                                    <div class="text-2xl font-bold leading-8 mt-1 ">Horas: {{a.horasRegistradas}} </div>
+
+                                                </div>
+
+                                            </div>
 
 
                                         </div>
@@ -65,19 +99,30 @@
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
 
                             <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5">
+                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:35px;">
                                     Alumnos Entrevistados
                                 </h2>
 
                             </div>
+                            <br>
+                            <hr style="color: #000000;" noshade="noshade" size="2" /><br><br>
                             <div *ngFor="let a of alumnos">
 
-                                <div class=" px-2 py-3 flex-1" *ngIf="a.idEstado==2">
+                                <div class=" px-1 py-1 flex-1" *ngIf="a.idEstado==2">
                                     <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
-                                        <div class="box p-5 zoom-in">
-                                            <div class="flex">
+                                        <div class="box bg-light p-2 zoom-in ">
 
-                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+                                            <div class="flex">
+                                                <div class="text-white" style="	width: 2rem;
+                                                height: 2rem;
+                                                border-radius: 50%;
+                                                background: rgb(59, 59, 59);
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                text-align: center;
+                                              "> {{a.alumno.substring(0,1)}}</div>
+
                                                 <div class="ml-auto">
                                                     <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
 
@@ -85,9 +130,18 @@
 
                                             </div>
 
-                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
 
+                                            <div class="">
+                                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+
+                                                <div class="ml-auto">
+                                                    <div class="text-2xl font-bold leading-8 mt-1 ">Horas: {{a.horasRegistradas}} </div>
+
+                                                </div>
+
+                                            </div>
 
 
                                         </div>
@@ -101,18 +155,29 @@
 
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
                             <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5">
+                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:35px;">
                                     Alumnos Aceptados
                                 </h2>
                             </div>
+                            <br>
+                            <hr style="color: #000000;" noshade="noshade" size="2" /><br><br>
                             <div *ngFor="let a of alumnos">
 
                                 <div class=" px-3 py-3  flex-1 " *ngIf="a.idEstado==3">
                                     <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
-                                        <div class="box p-5 zoom-in">
-                                            <div class="flex">
+                                        <div class="box bg-light p-2 zoom-in ">
 
-                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+                                            <div class="flex">
+                                                <div class="text-white" style="	width: 2rem;
+                                                height: 2rem;
+                                                border-radius: 50%;
+                                                background: rgb(59, 59, 59);
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                text-align: center;
+                                              "> {{a.alumno.substring(0,1)}}</div>
+
                                                 <div class="ml-auto">
                                                     <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
 
@@ -120,9 +185,18 @@
 
                                             </div>
 
-                                            <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                            <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
 
+                                            <div class="">
+                                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+
+                                                <div class="ml-auto">
+                                                    <div class="text-2xl font-bold leading-8 mt-1 ">Horas: {{a.horasRegistradas}} </div>
+
+                                                </div>
+
+                                            </div>
 
 
                                         </div>
@@ -137,19 +211,30 @@
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
 
                             <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5">
+                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:35px;">
                                     Alumnos inscritos
                                 </h2>
 
                             </div>
+                            <br>
+                            <hr style="color: #000000;" noshade="noshade" size="2" /><br>
                             <div *ngFor="let a of alumnos">
 
-                                <div class=" px-3 py-3  flex-1 " *ngIf="a.idEstado==4">
+                                <div class=" px-1 py-1   " *ngIf="a.idEstado==4">
                                     <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
-                                        <div class="box p-5 zoom-in">
-                                            <div class="flex">
+                                        <div class="box bg-light p-2 zoom-in ">
 
-                                                <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+                                            <div class="flex">
+                                                <div class="text-white" style="	width: 2rem;
+                                                height: 2rem;
+                                                border-radius: 50%;
+                                                background: rgb(59, 59, 59);
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                text-align: center;
+                                              "> {{a.alumno.substring(0,1)}}</div>
+
                                                 <div class="ml-auto">
                                                     <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
 
@@ -158,7 +243,7 @@
                                             </div>
 
 
-                                            <div class="flex">
+                                            <div class="">
                                                 <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
                                                 <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
 

@@ -108,7 +108,7 @@ var valor= { "idAreaAccion": id ,"activo": true};
       }
       else {
         $("#area-" + id).prop("checked", false);
-        this.mensajevalidacion = "solo permite seleccionar como máximo 3 áreas de accion "
+        this.mensajevalidacion = "Sólo se permite seleccionar máximo 3 áreas de acción"
         $('#validacion').modal('show');
       }
     }
@@ -683,11 +683,11 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
        
        
         else if(model.objetivo==""){
-          this.mensajevalidacion="No puedes dejar el campo de  los objetivos n vacío"
+          this.mensajevalidacion="No puedes dejar el campo de  los objetivos  vacío"
           $('#objetivo').modal('show');
         }
         else if(model.descripcionArea==""){
-          this.mensajevalidacion="No puedes dejar el campo de  los objetivos n vacío"
+          this.mensajevalidacion="No puedes dejar el campo de descripcion de área  vacío"
           $('#descripcionArea').modal('show');
         }
      

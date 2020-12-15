@@ -247,8 +247,8 @@
                     <option [ngValue]="'si'">Sí</option>
                     <option [ngValue]="'no'">No</option>
                   </select>
-                                    <label *ngIf="proyectoModel.capacitacion=='si'">¿Que tipo de capacitacòn se ofrece?</label>
-                                    <label *ngIf="proyectoModel.capacitacion=='no'">¿Razòn por la que no ofrece capacitaciòn?</label>
+                                    <label *ngIf="proyectoModel.capacitacion=='si'">¿Qué tipo de capacitación se ofrece?</label>
+                                    <label *ngIf="proyectoModel.capacitacion=='no'">¿Razón por la que no ofrece capacitación?</label>
                                     <textarea type="text" class="input   w-full border mt-2 " placeholder="Máximo 500 caracteres" [(ngModel)]="proyectoModel.razonCapacitacion" [ngModelOptions]="{standalone: true}" maxlength="500" rows="7" required>
                   </textarea>
                                 </div>
@@ -353,7 +353,7 @@
                             <div class="relative mt-3">
                                 <div>
                                     <label>
-                    Rol o función del prestador de servicio social (estudiante) dentro del proyecto:
+                                        Rol o función principal del prestador de servicio social (estudiante) dentro del proyecto:
                   </label>
                                     <textarea type="text" class="input w-full border mt-2 " placeholder="Máximo 400 caracteres" [(ngModel)]="proyectoModel.rolPrestador" [ngModelOptions]="{standalone: true}" maxlength="400" rows="5" required>
               </textarea>

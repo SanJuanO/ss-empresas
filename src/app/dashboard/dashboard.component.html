@@ -2,12 +2,23 @@
 </app-menu>
 
 <div class="content">
+
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-6">
             <!-- BEGIN: General Report -->
             <div class="col-span-12 mt-8">
-                <button class="ml-auto flex text-theme-1 dark:text-theme-10" (click)="ngOnInit()"> <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i>  Recargar </button>
-
+                <div class=" mr-5 " (click)="mostrarmodal()"> <i data-feather="alert-circle" class="w-8 h-8 mr-3" style="  position: absolute;
+                    right: 20px;   color:#FF8800"></i> </div>
+                <div class="modal" id="warning-modal-preview" style=" display: block; ">
+                    <div class="modal__content">
+                        <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                            <div class="text-3xl mt-5">Oops...</div>
+                            <div class="text-gray-600 mt-2">Something went wrong!</div>
+                        </div>
+                        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+                        <div class="p-5 text-center border-t border-gray-200 dark:border-dark-5"> <a href="" class="text-theme-1 dark:text-theme-10">Why do I have this issue?</a> </div>
+                    </div>
+                </div>
                 <!-- BEGIN: General Report -->
                 <div class="col-span-12 mt-8">
 
@@ -17,56 +28,55 @@
                     <!-- BEGIN: Convocatorias Abiertas -->
                     <div class="col-span-12 mt-6 ">
                         <div class="intro-y block sm:flex items-center h-10 ">
-                            <h2 class="text-lg font-medium truncate mr-5 ">
-                                Convocatorias
+                            <h2 class="text-lg font-medium truncate mr-5 " style="font-size:35px;">
+                                CONVOCATORIAS
                             </h2>
 
                         </div>
-                        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible ">
-                            <table class="table table-report -mt-2 ">
+                        <div class="intro-y  bg-light overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                            <table class="table  sm:mt-2  bg-light ">
                                 <thead>
                                     <tr>
 
-                                        <th class="whitespace-no-wrap ">CONVOCATORIAS DE INSTITUCIÓN / ÁREA</th>
-                                        <th class="text-center whitespace-no-wrap ">PERÍODO</th>
-                                        <th class="text-center whitespace-no-wrap ">INICIA</th>
-                                        <th class="text-center whitespace-no-wrap ">TERMINA</th>
-                                        <th class="text-center whitespace-no-wrap ">STATUS</th>
-                                        <th class="text-center whitespace-no-wrap ">ACCIÓN</th>
+                                        <th class=" "></th>
+                                        <th class="text-center whitespace-no-wrap ">Inicia</th>
+                                        <th class="text-center whitespace-no-wrap ">Termina</th>
+                                        <th class="text-center whitespace-no-wrap ">Status</th>
+                                        <th class="text-center whitespace-no-wrap "></th>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let convocatoria of convocatoriasf ">
-                                    <tr class="intro-x " *ngIf="convocatoria.activo==true || (convocatoria.fechaTermino) < (d) ">
-                                        <td>
-                                            <a class="font-medium whitespace-no-wrap ">{{  convocatoria.convocatoria}} </a>
-                                            <div class="text-gray-600 text-xs whitespace-no-wrap ">Descripción {{convocatoria.descripcion}}</div>
+                                <tbody class=" bg-light " *ngFor="let convocatoria of convocatoriasf ">
+                                    <tr class="bg-light " *ngIf="convocatoria.activo==true || (convocatoria.fechaTermino) < (d) ">
+                                        <td class="w-5">
+                                            <a class="font-medium whitespace-no-wrap " style="font-size:20px;">{{  convocatoria.convocatoria}} </a>
+                                            <div class="text-gray-600 text-xs whitespace-no-wrap " style="font-size:15px;">Descripción {{convocatoria.descripcion}}</div>
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <div class="flex items-center justify-center text-theme-9 ">
                                                 {{convocatoria.periodo }}
                                             </div>
-                                        </td>
+                                        </td> -->
 
 
                                         <td class="W-56 ">
-                                            <div class="flex items-center justify-center text-theme-6 ">
+                                            <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:15px;">
                                                 {{convocatoria.Inicio }}
                                             </div>
                                         </td>
                                         <td class="W-56 ">
-                                            <div class="flex items-center justify-center text-theme-6 ">
+                                            <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:15px;">
                                                 {{convocatoria.Termino}}
                                             </div>
                                         </td>
                                         <td class="w-40 ">
 
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white  font-medium " *ngIf="convocatoria.activo==true ">ACTIVA</div>
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white  font-medium " *ngIf="convocatoria.activo==false ">DESACTIVA</div>
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white  font-medium mt-3" *ngIf="convocatoria.activo==true " style="font-size:15px;">ACTIVA</div>
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white  font-medium mt-3 " *ngIf="convocatoria.activo==false " style="font-size:15px;">DESACTIVA</div>
 
                                         </td>
                                         <td class="table-report__action w-56 ">
-                                            <div class="flex justify-center items-center ">
-                                                <a style="cursor:pointer;" class="m-5 py-3 px-5 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer " [routerLink]="[ '/proyectos/add',convocatoria.idPeriodo] "> <i data-feather="check-square " class="w-4 h-4 mr-1 "></i> Agregar Proyecto </a>
+                                            <div class="flex justify-center items-center mt-3">
+                                                <a class="py-1 px-2 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer " style="font-size:15px;" [routerLink]="[ '/proyectos/add',convocatoria.idPeriodo] ">  Agregar Proyecto </a>
 
                                             </div>
                                         </td>
@@ -81,95 +91,90 @@
 
                     </div>
 
+                    <br>
                     <!-- BEGIN: Weekly Top Products -->
-                    <div class="col-span-12 mt-6 " *ngIf="proyectos.length>0">
+                    <div class="col-span-12 mt-6  " *ngIf="proyectos.length>0">
                         <div class="intro-y block sm:flex items-center h-10 ">
-                            <h2 class="text-lg font-medium truncate mr-5 ">
+                            <h2 class="text-lg font-medium truncate mr-5 " style="font-size:35px;">
                                 Proyectos
                             </h2>
 
                         </div>
-                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0 " *ngIf="proyectosactivos.length>0">
-                            <table class="table table-report sm:mt-2 ">
+                        <div class="intro-y  bg-light overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                            <table class="table  sm:mt-2  bg-light ">
                                 <thead>
                                     <tr>
 
-                                        <th class="whitespace-no-wrap ">PROYECTOS ACTIVOS</th>
+                                        <th class="whitespace-no-wrap "></th>
+                                        <th class="text-center whitespace-no-wrap ">Aplicaciones</th>
+                                        <th class="text-center whitespace-no-wrap ">Inscritos</th>
 
-                                        <th class="text-center whitespace-no-wrap ">ALUMNOS INTERESADOS</th>
-                                        <th class="text-center whitespace-no-wrap ">STATUS</th>
-                                        <th class="text-center whitespace-no-wrap ">ACCIÓN</th>
+                                        <th class="text-center whitespace-no-wrap ">Plazas Disponibles
+                                        </th>
+                                        <th class="text-center whitespace-no-wrap ">Status</th>
+                                        <th class="text-center whitespace-no-wrap "></th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="intro-x " *ngFor="let proyect of proyectosactivos ">
-                                        <td>
-                                            <a class="font-medium whitespace-no-wrap ">{{proyect.proyecto}}</a>
-                                            <div class="text-gray-600 text-xs whitespace-no-wrap ">Responsable: {{proyect.nombreResponsable}}</div>
+                                    <tr class="intro-x  bg-light " *ngFor="let proyect of proyectos ">
+                                        <td class="w-56">
+                                            <a class="font-medium whitespace-no-wrap " style="font-size:20px;">{{proyect.proyecto}}</a>
+                                            <div class="text-gray-600 text-xs whitespace-no-wrap " style="font-size:15px;">Responsable: {{proyect.nombreResponsable}}</div>
 
 
                                         </td>
                                         <td class="w-5">
 
-                                            <div class=" rounded-full text-center  bg-theme-6 text-white   m-3" *ngIf="proyect.cantidadPendientes>0; else loading"> {{proyect.cantidadPendientes}}</div>
-                                            <ng-template #loading>
-                                                <div class=" rounded-full text-center  bg-theme-1 text-white m-3 "> {{proyect.cantidadPendientes}}</div>
-                                            </ng-template>
+                                            <div class=" font-weight-bold m-3  text-center" style="font-size:20px; color:#FF8800">
+                                                <h1> {{proyect.cantidadPendientes}} </h1>
+                                            </div>
+
 
                                         </td>
+
+                                        <td class="w-5">
+
+                                            <div class=" font-weight-bold m-3  text-center" style="font-size:20px; color:#FF8800">
+                                                {{proyect.plazasAutorizadas-proyect.plazasDisponibles}}</div>
+
+
+                                        </td>
+
+
+                                        <td class="w-5">
+
+                                            <div class=" font-weight-bold m-3  text-center" style="font-size:20px; color:#FF8800">
+                                                {{proyect.plazasDisponibles}}</div>
+
+
+                                        </td>
+
                                         <td class="w-40">
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white  font-medium">ACTIVO</div>
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white  font-medium mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==1">{{proyect.estadoProyecto}}</div>
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white  font-medium mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==2">{{proyect.estadoProyecto}}</div>
+                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-12 text-white  font-medium mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==3">{{proyect.estadoProyecto}}</div>
+
                                         </td>
                                         <td class="table-report__action w-56">
-                                            <div class="flex justify-center items-center">
-                                                <a class="m-5 py-3 px-5 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/ver', proyect.id  ]">
+                                            <div class="flex justify-center items-center mt-3" style="font-size:20px" *ngIf="proyect.idEstadoProyecto==3">
+                                                <a class=" py-1 px-2 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/ver', proyect.id  ]">
                                                     <p class="ml-5 mr-5"> Ver</p>
                                                 </a>
 
                                             </div>
-                                        </td>
-                                    </tr>
 
 
-
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="proyectospendientes.length>0">
-                            <table class="table table-report sm:mt-2">
-                                <thead>
-                                    <tr>
-
-                                        <th class="whitespace-no-wrap">PROYECTOS PENDIENTES</th>
-
-                                        <th class="text-center whitespace-no-wrap">STATUS</th>
-                                        <th class="text-center whitespace-no-wrap">ACCIÓN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="intro-x" *ngFor="let proyect of proyectospendientes">
-                                        <td>
-                                            <a class="font-medium whitespace-no-wrap">{{proyect.proyecto}}</a>
-                                            <div class="text-gray-600 text-xs whitespace-no-wrap">Responsable: {{proyect.nombreResponsable}}</div>
-
-
-
-                                        </td>
-
-                                        <td class="w-40">
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium">PENDIENTE</div>
-                                        </td>
-                                        <td class="table-report__action w-56">
-                                            <div class="flex justify-center items-center">
-                                                <a class="flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]">
+                                            <div class="flex justify-center items-center mt-3" style="font-size:20px" *ngIf="proyect.idEstadoProyecto<3">
+                                                <a class=" py-1 px-2 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]">
                                                     <p class="ml-5 mr-5"> Editar</p>
 
                                                 </a>
 
                                             </div>
+
                                         </td>
+
                                     </tr>
 
 

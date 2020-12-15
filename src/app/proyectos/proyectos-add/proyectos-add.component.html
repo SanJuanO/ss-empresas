@@ -4,8 +4,12 @@
         <div class="modal__content">
             <div class="p-5 text-center">
                 <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-                <div class="text-3xl mt-5">Muy bien!</div>
-                <div class="text-gray-600 mt-2">Has agregado un proyecto!</div>
+                <div class=" mt-5" style="color: red;">¡Proyecto agregado exitosamente!
+                </div>
+
+                <div class=" mt-1 text-blue">Ahora espera que se apruebe tu proyecto
+
+                </div>
             </div>
             <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
@@ -249,8 +253,8 @@
                 <option [ngValue]="'si'">Sí</option>
                 <option [ngValue]="'no'">No</option>
               </select>
-                                    <label *ngIf="proyectoModel.capacitacion=='si'">¿Que tipo de capacitacòn se ofrece?</label>
-                                    <label *ngIf="proyectoModel.capacitacion=='no'">¿Razòn por la que no ofrece capacitaciòn?</label>
+                                    <label *ngIf="proyectoModel.capacitacion=='si'">¿Qué tipo de capacitación se ofrece?</label>
+                                    <label *ngIf="proyectoModel.capacitacion=='no'">¿Razón por la que no ofrece capacitación?</label>
                                     <textarea type="text" class="input   w-full border mt-2 " placeholder="Máximo 500 caracteres" [(ngModel)]="proyectoModel.razonCapacitacion" id="razonCapacitacion" [ngModelOptions]="{standalone: true}" maxlength="500" rows="7" required>
               </textarea>
                                 </div>
@@ -356,7 +360,7 @@
                             <div class="relative mt-3">
                                 <div>
                                     <label>
-                    Rol o función del prestador de servicio social (estudiante) dentro del proyecto:
+                                        Rol o función principal del prestador de servicio social (estudiante) dentro del proyecto:
                   </label>
                                     <textarea type="text" class="input w-full border mt-2 " id="rolPrestador" placeholder="Máximo 400 caracteres" [(ngModel)]="proyectoModel.rolPrestador" [ngModelOptions]="{standalone: true}" maxlength="400" rows="5" required>
               </textarea>

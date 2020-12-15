@@ -67,7 +67,6 @@ export class DashboardComponent implements OnInit {
      this.convocatoriasalumnos = [ ];
      this.convocatoriasf = [ ];
      this.convocatoriasalumnosf = [ ];
-this.alumnoproyectos();
     this.obtenerempresa();
     this.obtenerConvocatoria1();
     this.obtenerConvocatoria2();
@@ -83,7 +82,14 @@ this.obtenerProyectos();
   }
 
 
+  mostrarmodal() {
+    console.log("adentro");
+    $('#warning-modal-preview').modal('show');
 
+
+
+
+  }
   obtenerempresa() {
     let model = this.tipoModel;
     model.tipo=1;
@@ -170,6 +176,7 @@ this.convocatoriasalumnosf.push(this.convocatorias[i]);
      this.proyectoService.getProyectoEmpresa(id).subscribe((res: any[])=>{        
      // this.proyectoService.getAll().subscribe((res: any[])=>{                    
       this.proyectos=res;
+      console.log(res);
 
 
 

@@ -90,6 +90,14 @@ alumnoproyectos() {
     })
 
 }
+mostrarmodal() {
+  console.log("adentro");
+  $('#warning-modal-preview').modal('show');
+
+
+
+
+}
 veralumno(idasignado,idalumno,idEstado,idProyecto,fechaInicioInstitucion){
 
   this.cookies.set("idasignado", idasignado);

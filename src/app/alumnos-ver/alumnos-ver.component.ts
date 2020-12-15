@@ -71,8 +71,11 @@ public fechaincr:string;
   ngOnInit(): void {
     this.idProyecto=this.cookies.get("idProyectoa");
     var fe = this.cookies.get("fechaInicioInstitucion");
-    if(fe!=null){
+    console.log(fe);
+
+    if(fe.length>5){
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
+    console.log(fe);
 
     var Fecha = new Date((fe.toString()));
     this.fechaincr=Fecha.toLocaleDateString("es-ES", options);
@@ -80,9 +83,8 @@ public fechaincr:string;
     }
     this.idasignado=this.cookies.get("idasignado");
     this.idEstado =Number(this.cookies.get("idEstado"));
-console.log(this.idEstado);
     this.idAlumno = this.cookies.get("idalumno");
-    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) =>{ this.alumno = alumno; console.log(this.alumno);});
+    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) =>{ this.alumno = alumno;});
     this.obtenerUniversidades();
     this.obtenerCarreras();
     this.obtenerFacultades();
@@ -94,7 +96,6 @@ console.log(this.idEstado);
     this.obtenerestadoalumnos();
 
     this.obteneractividades();
-    console.log(this.alumno);
   }
 
   obtenerUniversidades() {
@@ -139,13 +140,11 @@ console.log(this.idEstado);
       .subscribe((documentosS: DocumentosSubidosRequeridos[]) => {
         this.DocumentosSubidos = documentosS;
         //console.log("iddocumentos subidos "+this.idDocumentosSubidos);
-        console.log("requeridos " + this.DocumentosSubidos);
 
       });
   }
   abrirsubir(id) {
 
-    console.log("dfdsfdsfds" + id + " alumno " + this.idAlumno);
     this.idDocumento = id;
     $('#abrirsubir-' + id).modal('show');
 
@@ -161,7 +160,6 @@ console.log(this.idEstado);
   }
 
   subeArchivo() {
-    console.log("iddocumento" + this.idDocumento + " alumno " + this.idAlumno);
 
     
     this.alumnoService.postFileAlumno(this.fileToUpload, this.idDocumento, this.idAlumno).subscribe(data => {
@@ -190,7 +188,6 @@ console.log(this.idEstado);
   reportedehoras() {
 
 var nohoras=$('#nohoras').val();
-console.log(nohoras);
     this.alumnoService.agregarhoras(this.idasignado,nohoras).subscribe((res: any) => {
 location.reload();
 
@@ -201,7 +198,6 @@ location.reload();
 
         this.alumnoService.horas(this.idasignado).subscribe((res: any) => {
 this.horasalumno=res;
-console.log(res);
           var a=0;
           var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -215,7 +211,6 @@ a+=this.horasalumno[i]['noHoras'];
 
         }
 
-        console.log(a);
         this.horastotales=a;
               });
 }
@@ -224,10 +219,9 @@ obteneractividades() {
 
   this.alumnoService.activadades(this.idasignado).subscribe((res: any) => {
     this.alumnosactividades=res;
-    console.log(res);
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
-    for(var i=0;i<this.horasalumno.length;i++){
+    for(var i=0;i<this.alumnosactividades.length;i++){
       var Fecha = new Date((this.alumnosactividades[i]['fechaCreacion'].toString()));
       this.alumnosactividades[i]['fechaCreacion']=Fecha.toLocaleDateString("es-ES", options);
 
@@ -242,7 +236,6 @@ obteneractividades() {
 
 mostraractualizarestado(id){
   var idact=Number(id);
-  console.log("dfdsfdsfds"+ idact);
 
       $('#act-'+idact).modal('show');
   
@@ -258,7 +251,6 @@ actualizarestado(){
       return this.organizacionService
         .getestadosalumnos()
         .subscribe((estadosalumnos: Estadosalumnos[]) => {this.estadosalumnos = estadosalumnos;
-          console.log(this.estadosalumnos.length);
   
           for(var i=0;i<this.estadosalumnos.length;i++){
 
@@ -271,7 +263,6 @@ actualizarestado(){
   
           }
         }
-        console.log(this.estadosalumnoslimitado);
         });
   
         
@@ -279,9 +270,7 @@ actualizarestado(){
     
 
 cambiarestado(id){
-  console.log(id);
   this.alumnoService.validaractivadades(id).subscribe((res: any) => {
-    console.log(res);
             
     location.reload();
 
@@ -300,11 +289,9 @@ cambiarestatusalumno(){
 
 
 this.estadoalumnocambio.observacions=$('#observacionescambio').val();
-console.log(this.estadoalumnocambio);
 
 
    this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe((res) => {
-     console.log(res);
 
      $('#success').modal('show');
 
@@ -328,10 +315,8 @@ cambiarfecha(){
 
   var fecharegistro= $("#fechadeinicio").val();
 
-console.log(fecharegistro);
 
    this.organizacionService.actualizarfechaalumno(fecharegistro,this.idAlumno).subscribe((res) => {
-   console.log(res);
 
   })
 

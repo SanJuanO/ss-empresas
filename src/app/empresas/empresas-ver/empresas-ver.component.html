@@ -5,8 +5,8 @@
     <div class="modal__content">
         <div class="p-5 text-center">
             <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-            <div class="text-base mt-5">Muy bien!</div>
-            <div class="text-basemt-2">Has editado una Institución / Área!</div>
+            <div class=" mt-5">Muy bien!</div>
+            <div class="mt-2">Has editado una Institución / Área!</div>
         </div>
         <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
     </div>
@@ -15,8 +15,8 @@
     <div class="modal__content">
         <div class="p-5 text-center">
             <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-            <div class="text-base mt-5">Muy bien!</div>
-            <div class="text-basemt-2">¡Se subió el archivo de la Institución / Área!</div>
+            <div class=" mt-5">Muy bien!</div>
+            <div class="mt-2">¡Se subió el archivo de la Institución / Área!</div>
         </div>
         <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
     </div>
@@ -26,8 +26,8 @@
     <div class="modal__content">
         <div class="p-5 text-center">
             <i data-feather="x-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-            <div class="text-base mt-5">¡Falta documentación!</div>
-            <div class="text-basemt-2">¡Recuerda que para poder completar tu registro es necesario que tu documentacion este validada!</div>
+            <div class=" mt-5">¡Falta documentación!</div>
+            <div class="mt-2">¡Recuerda que para poder completar tu registro es necesario que tu documentacion este validada!</div>
         </div>
         <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-9 text-white">Ok</button> </div>
     </div>
@@ -37,7 +37,7 @@
         <form #form="ngForm">
             <div class="p-5 text-center">
                 <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                <div class="text-base mt-5">¿Estas seguro de cambiar la contraseña?</div>
+                <div class=" mt-5">¿Estas seguro de cambiar la contraseña?</div>
                 <br>
                 <input type="text" style="padding: 5px; background: #ffffff;" name="" id="nuevapass" value="{{responsablemodel.contrasena}}">
             </div>
@@ -53,13 +53,13 @@ Cancelar
 
     </div>
 </div>
+<br><br>
+<div class="" style="overflow: hidden " *ngIf="responsablemodel.externa">
 
-<div class="content" *ngIf="responsablemodel.externa">
-
-    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">
+    <div class=" flex flex-col sm:flex-row items-center mt-8">
+        <!-- <h2 class="text-lg font-medium mr-auto">
             Institución / Área
-        </h2>
+        </h2> -->
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0" *ngIf="empresaModel.idEstadoOrganizacion>2">
             <button (click)="permitir()" class="button text-white bg-theme-1 shadow-md mr-2">Solicitar Modificar Institución / Área</button>
         </div>
@@ -74,7 +74,7 @@ Cancelar
                 <form #form="ngForm" (ngSubmit)="obtenerpermisos()">
                     <div class="p-5 text-center">
                         <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                        <div class="text-base mt-5">Solicitar permiso para editar información</div>
+                        <div class=" mt-5">Solicitar permiso para editar información</div>
                         <br>
                     </div>
 
@@ -91,20 +91,22 @@ Cancelar
         </div>
     </div>
 
-    <div class="intro-y flex items-center h-10">
+    <!-- <div class="intro-y flex items-center h-10">
         <h2 class="text-lg font-medium truncate mr-5">
             Información General
         </h2>
 
-    </div>
+    </div> -->
 
 
-    <div class="box ">
+    <div class=" ">
         <br>
+
+
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a *ngIf="empresaModel.idEstadoOrganizacion<3" style="margin-left: auto;" class="button text-white bg-theme-12 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
-            <a *ngIf="empresaModel.idEstadoOrganizacion==3" style="margin-left: auto;" class="button text-white bg-theme-9 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
-            <a *ngIf="empresaModel.idEstadoOrganizacion==4" style="margin-left: auto;" class="button text-white bg-theme-6 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
+            <a *ngIf="empresaModel.idEstadoOrganizacion<3" style="margin-right: auto; border-radius: 15px;" class="button text-white bg-theme-12 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
+            <a *ngIf="empresaModel.idEstadoOrganizacion==3" style="margin-right: auto; border-radius: 15px; " class="button text-white bg-theme-9 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
+            <a *ngIf="empresaModel.idEstadoOrganizacion==4" style="margin-right: auto; border-radius: 15px;" class="button text-white bg-theme-6 shadow-md mr-2">Estado: {{empresaModel.estadoOrganizacion}}</a>
         </div>
 
         <div class="relative mt-2  text-center">
@@ -171,25 +173,25 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-center text-gray-600 mt-1" align="center">Nombre Oficial de la Institución (denominación o razón social):</div>
+                    <div class=" text-center text-gray-600 mt-1 font-weight-bold" style="font-size:20px; color:#FF8800" align="center">Nombre Oficial de la Institución (denominación o razón social):</div>
 
-                    <div class="text-base font-bold leading-8 mt-6" align="center"> {{empresaModel.organizacion}} </div>
+                    <div class=" font-bold leading-8 mt-6" align="center"> {{empresaModel.organizacion}} </div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-center text-gray-600 mt-1" align="center">Nombre Común de la Institución (nombre comercial):</div>
+                    <div class=" text-center text-gray-600 mt-1 font-weight-bold" align="center" style="font-size:20px; color:#FF8800">Nombre Común de la Institución (nombre comercial):</div>
 
-                    <div class="text-base font-bold leading-8 mt-6" align="center"> {{empresaModel.nombreComun}} </div>
+                    <div class=" font-bold leading-8 mt-6" align="center"> {{empresaModel.nombreComun}} </div>
                 </div>
             </div>
 
         </div>
         <div class="col-span-12 sm:col-span-8 xl:col-span-12 intro-y">
             <div class=" p-5">
-                <div class="text-base  text-gray-600 mt-1">Descripción introductoria de la Institución (Objeto o Finalidad de la Institución):</div>
+                <div class="  text-gray-600 mt-1 font-weight-bold" style=" font-size:20px; color:#FF8800">Descripción introductoria de la Institución (Objeto o Finalidad de la Institución):</div>
 
-                <div class="text-base font-bold leading-8 mt-6" style="text-align:justify;"> {{empresaModel.descripcion}} </div>
+                <div class=" font-bold leading-8 mt-6" style="text-align:justify;"> {{empresaModel.descripcion}} </div>
 
             </div>
         </div>
@@ -200,17 +202,21 @@ Cancelar
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-center text-gray-600 mt-1" align="center">Contacto</div>
+                    <div class="  text-gray-600 mt-1 font-weight-bold" style="font-size:30px; ">Contacto del Responsable de Servicio Social
+                    </div>
+                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
                 </div>
+
             </div>
 
         </div>
-        <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+        <div class="grid grid-cols-12 gap-6 mt-5 ">
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class="p-5">
-                    <div class="text-base text-gray-600 mt-1">Nombre del Titular o Director de la Institución:</div>
+                    <div class="  text-gray-600 mt-1 font-weight-bold" style=" font-size:20px; color:#FF8800">Nombre del Titular o Director de la Institución:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoDirector}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoDirector}} </div>
                 </div>
             </div>
 
@@ -219,72 +225,72 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         <div class="col-xs-1-12">
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Nombre del Responsable de Servicio Social en la Institución:</div>
+                    <div class="  text-gray-600 mt-1 font-weight-bold" style=" font-size:20px; color:#FF8800">Nombre del Responsable de Servicio Social en la Institución:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoResponsable}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoResponsable}} </div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Departamento o Área:</div>
+                    <div class="  text-gray-600 mt-1 font-weight-bold" style=" font-size:20px; color:#FF8800">Departamento o Área:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.departamento}}</div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.departamento}}</div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class="  text-gray-600 mt-1 font-weight-bold" style=" font-size:20px; color:#FF8800">
                         Puesto del Responsable de Servicio Social:
 
-                        <div class="text-base font-bold leading-8 mt-6">{{responsablemodel.puesto}} </div>
+                        <div class=" font-bold leading-8 mt-6">{{responsablemodel.puesto}} </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+        <div class="grid grid-cols-12 gap-6 mt-5 ">
 
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         <div class="col-xs-1-12">
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Número telefónico del Responsable de Servicio Social:</div>
+                    <div class="  text-gray-600 mt-1 font-weight-bold" style=" font-size:20px; color:#FF8800">Número telefónico del Responsable de Servicio Social:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.telefono}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.telefono}} </div>
                 </div>
             </div>
             <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Usuario del Responsable de Servicio Social:</div>
+                    <div class=" text-gray-600 mt-1">Usuario del Responsable de Servicio Social:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.usuario}}</div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.usuario}}</div>
                 </div>
             </div> -->
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Correo del Responsable de Servicio Social:</div>
+                    <div class="  text-gray-600 mt-1 font-weight-bold" style=" font-size:20px; color:#FF8800">Correo del Responsable de Servicio Social:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.correo}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.correo}} </div>
                 </div>
             </div>
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class="  text-gray-600 mt-1 font-weight-bold" style=" font-size:20px; color:#FF8800">
                         Contraseña del Responsable de Servicio Social:
+                    </div>
 
-                        <div class="text-base font-bold leading-8 mt-6">
-                            <input type="password" style="padding: 5px; background: #ffffff;" disabled name="" id="password" value="  {{responsablemodel.contrasena}} ">
-                        </div>
+                    <div class=" font-bold leading-8 mt-6">
+                        <input type="password" style="padding: 5px; background: #ffffff;" disabled name="" id="password" value="  {{responsablemodel.contrasena}} ">
                     </div>
 
                     <div style="margin-top:3px;">
@@ -307,19 +313,19 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-4 xl:col-span- intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Años de antigüedad
 
-                        <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.antiguedad}} </div>
+                        <div class=" font-bold leading-8 mt-6"> {{empresaModel.antiguedad}} </div>
                     </div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-8 xl:col-span-8 intro-y">
 
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">¿Cuál es la razón de ser de la Institución?</div>
+                    <div class=" text-gray-600 mt-1">¿Cuál es la razón de ser de la Institución?</div>
 
-                    <div class="text-base font-bold leading-8 mt-6">{{empresaModel.razon}}</div>
+                    <div class=" font-bold leading-8 mt-6">{{empresaModel.razon}}</div>
                 </div>
             </div>
 
@@ -330,19 +336,19 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Misíon
 
-                        <div class="text-base font-bold leading-8 mt-6" style="text-align:justify;"> {{empresaModel.mision}} </div>
+                        <div class=" font-bold leading-8 mt-6" style="text-align:justify;"> {{empresaModel.mision}} </div>
                     </div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Visión
 
-                        <div class="text-base font-bold leading-8 mt-6" style="text-align:justify;"> {{empresaModel.vision}} </div>
+                        <div class=" font-bold leading-8 mt-6" style="text-align:justify;"> {{empresaModel.vision}} </div>
                     </div>
                 </div>
             </div>
@@ -353,9 +359,9 @@ Cancelar
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
 
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Principales objetivos</div>
+                    <div class=" text-gray-600 mt-1">Principales objetivos</div>
 
-                    <div class="text-base font-bold">
+                    <div class=" font-bold">
                         <h1 *ngFor="let a of obejtivost" style="text-align:justify;">
                             <p>{{a}}</p>
                         </h1>
@@ -366,11 +372,11 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Reconocimientos y Certificaciones con los que cuenta la Institución: </div>
+                    <div class=" text-gray-600 mt-1">Reconocimientos y Certificaciones con los que cuenta la Institución: </div>
 
 
 
-                    <div class="text-base font-bold">
+                    <div class=" font-bold">
                         <h1 *ngFor="let a of reconocimientost" style="text-align:justify;">
                             <p>{{a}}</p>
                         </h1>
@@ -388,11 +394,11 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Principales Logros de la Institución: </div>
+                    <div class=" text-gray-600 mt-1">Principales Logros de la Institución: </div>
 
 
 
-                    <div class="text-base font-bold">
+                    <div class=" font-bold">
                         <h1 *ngFor="let a of logrost">
                             <p>{{a}}</p>
                         </h1>
@@ -403,8 +409,8 @@ Cancelar
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">¿La Institución pertenece a la Regnum Christi?</div>
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" text-gray-600 mt-1">¿La Institución pertenece a la Regnum Christi?</div>
+                    <div class=" font-bold leading-8 mt-6">
                         <p *ngIf="empresaModel.legionario==true"> Si</p>
                         <p *ngIf="empresaModel.legionario==false"> No</p>
                     </div>
@@ -414,14 +420,14 @@ Cancelar
 
             <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         <div class="col-xs-1-12">
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Giro</div>
+                    <div class=" text-gray-600 mt-1">Giro</div>
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         <h1 *ngFor="let gi of giro">
                             <p *ngIf="gi.id==empresaModel.idGiroOrganizacion"> {{gi.giro}}</p>
                         </h1>
@@ -430,9 +436,9 @@ Cancelar
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Clasificación</div>
+                    <div class=" text-gray-600 mt-1">Clasificación</div>
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         <h1 *ngFor="let gi of clasificacion">
                             <p *ngIf="gi.id==empresaModel.idGiroOrganizacion"> {{gi.clasificacion}}</p>
                         </h1>
@@ -460,11 +466,11 @@ Cancelar
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Pagina Web
 
                         <a href="{{empresaModel.web}}">
-                            <div class="text-base font-bold leading-8 mt-6">{{empresaModel.web}} </div>
+                            <div class=" font-bold leading-8 mt-6">{{empresaModel.web}} </div>
                         </a>
                     </div>
                 </div>
@@ -472,10 +478,10 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Facebook
                         <a href="{{empresaModel.facebook}}">
-                            <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.facebook}} </div>
+                            <div class=" font-bold leading-8 mt-6"> {{empresaModel.facebook}} </div>
                         </a>
                     </div>
                 </div>
@@ -487,36 +493,36 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Instagram
 
                         <a href="{{empresaModel.instagram}}">
 
-                            <div class="text-base font-bold leading-8 mt-6">{{empresaModel.instagram}} </div>
+                            <div class=" font-bold leading-8 mt-6">{{empresaModel.instagram}} </div>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Youtube
 
                         <a href="{{empresaModel.youtube}}">
 
-                            <div class="text-base font-bold leading-8 mt-6">{{empresaModel.youtube}} </div>
+                            <div class=" font-bold leading-8 mt-6">{{empresaModel.youtube}} </div>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Tiktok
 
                         <a href="{{empresaModel.tiktok}}">
 
-                            <div class="text-base font-bold leading-8 mt-6">{{empresaModel.tiktok}} </div>
+                            <div class=" font-bold leading-8 mt-6">{{empresaModel.tiktok}} </div>
                         </a>
                     </div>
                 </div>
@@ -539,9 +545,9 @@ Cancelar
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box ">
                 <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">País</div>
+                    <div class=" text-gray-600 mt-1">País</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.pais}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{empresaModel.pais}} </div>
                 </div>
             </div>
         </div>
@@ -550,33 +556,33 @@ Cancelar
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box ">
                 <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         <div class="col-xs-1-12">
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Ciudad</div>
+                    <div class=" text-gray-600 mt-1">Ciudad</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.ciudad}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{empresaModel.ciudad}} </div>
                 </div>
             </div>
         </div>
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box ">
                 <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Estado</div>
+                    <div class=" text-gray-600 mt-1">Estado</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.estado}}</div>
+                    <div class=" font-bold leading-8 mt-6"> {{empresaModel.estado}}</div>
                 </div>
             </div>
         </div>
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box ">
                 <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Municipio/Delegación
 
-                        <div class="text-base font-bold leading-8 mt-6">{{empresaModel.municipio}} </div>
+                        <div class=" font-bold leading-8 mt-6">{{empresaModel.municipio}} </div>
                     </div>
                 </div>
             </div>
@@ -587,9 +593,9 @@ Cancelar
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box ">
                 <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Colonia</div>
+                    <div class=" text-gray-600 mt-1">Colonia</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.colonia}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{empresaModel.colonia}} </div>
                 </div>
             </div>
         </div>
@@ -598,23 +604,23 @@ Cancelar
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box ">
                 <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         <div class="col-xs-1-12">
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Calle</div>
+                    <div class=" text-gray-600 mt-1">Calle</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.calle}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{empresaModel.calle}} </div>
                 </div>
             </div>
         </div>
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box ">
                 <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Num. Ext.</div>
+                    <div class=" text-gray-600 mt-1">Num. Ext.</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.noExt}}</div>
+                    <div class=" font-bold leading-8 mt-6"> {{empresaModel.noExt}}</div>
                 </div>
             </div>
         </div>
@@ -622,10 +628,10 @@ Cancelar
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box ">
                 <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Num. Int.
 
-                        <div class="text-base font-bold leading-8 mt-6">{{empresaModel.noInt}} </div>
+                        <div class=" font-bold leading-8 mt-6">{{empresaModel.noInt}} </div>
                     </div>
                 </div>
             </div>
@@ -648,7 +654,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         <h1 *ngFor="let a of areas">
                             <p *ngIf="idAreaAccion!=undefined && idAreaAccion.indexOf(a.id) >=0 && a.id<13">{{a.areaAccion}}</p>
 
@@ -678,11 +684,11 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6" *ngIf="responsablemodel.externa==true">
+                    <div class=" font-bold leading-8 mt-6" *ngIf="responsablemodel.externa==true">
                         Si
 
                     </div>
-                    <div class="text-base font-bold leading-8 mt-6" *ngIf="responsablemodel.externa==false">
+                    <div class=" font-bold leading-8 mt-6" *ngIf="responsablemodel.externa==false">
                         No
 
                     </div>
@@ -700,7 +706,7 @@ Cancelar
 
     <section *ngIf="cambio">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-            <h2 class="font-medium text-base mr-auto">
+            <h2 class="font-medium  mr-auto">
                 9. Campo de inf. áreas internas
             </h2>
         </div>
@@ -711,7 +717,7 @@ Cancelar
                 <div class="report-box ">
                     <div class="box p-5">
 
-                        <div class="text-base font-bold leading-8 mt-6"> Campus : {{empresaModel.universidad}} </div>
+                        <div class=" font-bold leading-8 mt-6"> Campus : {{empresaModel.universidad}} </div>
                     </div>
                 </div>
             </div>
@@ -720,7 +726,7 @@ Cancelar
                 <div class="report-box ">
                     <div class="box p-5">
 
-                        <div class="text-base font-bold leading-8 mt-6">
+                        <div class=" font-bold leading-8 mt-6">
                             Vicerrectoría : {{empresaModel.vicerrectoria}}
                         </div>
                     </div>
@@ -734,7 +740,7 @@ Cancelar
                 <div class="report-box ">
                     <div class="box p-5">
 
-                        <div class="text-base font-bold leading-8 mt-6">
+                        <div class=" font-bold leading-8 mt-6">
                             Área/Coordinación : {{empresaModel.cordinacion}}
                         </div>
                     </div>
@@ -744,7 +750,7 @@ Cancelar
                 <div class="report-box ">
                     <div class="box p-5">
 
-                        <div class="text-base font-bold leading-8 mt-6">
+                        <div class=" font-bold leading-8 mt-6">
                             Descripción introductoria del área : {{empresaModel.descripcionArea}}
                         </div>
                     </div>
@@ -754,7 +760,7 @@ Cancelar
                 <div class="report-box ">
                     <div class="box p-5">
 
-                        <div class="text-base font-bold leading-8 mt-6">
+                        <div class=" font-bold leading-8 mt-6">
                             Principales Objetivos : {{empresaModel.objetivo}}
                         </div>
                     </div>
@@ -814,7 +820,7 @@ Cancelar
                         </div>
                     </td>
                     <td>
-                        <div class="text-base whitespace-no-wrap" *ngIf="d.id >0"> {{d.fechaCreacion.substr(0,10)}}</div>
+                        <div class=" whitespace-no-wrap" *ngIf="d.id >0"> {{d.fechaCreacion.substr(0,10)}}</div>
                     </td>
                     <td class="border-b" *ngIf="d.idEstado==0;else tem">
                         <div class="font-medium flex ">Pendiente</div>
@@ -829,7 +835,7 @@ Cancelar
                             <form #form="ngForm" (ngSubmit)="subeArchivo()">
                                 <div class="p-5 text-center">
                                     <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                                    <div class="text-base mt-5">Subir Archivo del documento: {{d.documento}}</div>
+                                    <div class=" mt-5">Subir Archivo del documento: {{d.documento}}</div>
                                     <br>
                                     <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
                                 </div>
@@ -898,7 +904,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6"> Personas de la tercera edad : <br> {{empresaModel.ancianos}} </div>
+                    <div class=" font-bold leading-8 mt-6"> Personas de la tercera edad : <br> {{empresaModel.ancianos}} </div>
                 </div>
             </div>
         </div>
@@ -907,7 +913,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         Pueblos Indígenas : <br> {{empresaModel.indigenas}}
                     </div>
                 </div>
@@ -917,7 +923,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         Personas con discapacidad : <br> {{empresaModel.discapacitados}}
                     </div>
                 </div>
@@ -927,7 +933,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         Jóvenes : <br> {{empresaModel.jovenes}}
                     </div>
                 </div>
@@ -937,7 +943,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         Mujeres : <br> {{empresaModel.mujeres}}
                     </div>
                 </div>
@@ -947,7 +953,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         Niños : <br>{{empresaModel.ninos}}
                     </div>
                 </div>
@@ -957,7 +963,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         {{empresaModel.atiendeOtro}} : <br> {{empresaModel.noAtiendeOtro}}
                     </div>
                 </div>
@@ -992,7 +998,7 @@ Cancelar
                 <form #form="ngForm" (ngSubmit)="obtenerpermisos()">
                     <div class="p-5 text-center">
                         <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                        <div class="text-base mt-5">Solicitar permiso para editar información</div>
+                        <div class=" mt-5">Solicitar permiso para editar información</div>
                         <br>
                     </div>
 
@@ -1076,19 +1082,19 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Campus
 
-                        <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.universidad}} </div>
+                        <div class=" font-bold leading-8 mt-6"> {{empresaModel.universidad}} </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Vicerrectoría</div>
+                    <div class=" text-gray-600 mt-1">Vicerrectoría</div>
 
-                    <div class="text-base font-bold leading-8 mt-6">{{empresaModel.vicerrectoria}}</div>
+                    <div class=" font-bold leading-8 mt-6">{{empresaModel.vicerrectoria}}</div>
                 </div>
             </div>
 
@@ -1098,28 +1104,28 @@ Cancelar
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
 
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Área/Coordinación</div>
+                    <div class=" text-gray-600 mt-1">Área/Coordinación</div>
 
-                    <div class="text-base font-bold leading-8 mt-6">{{empresaModel.cordinacion}}</div>
+                    <div class=" font-bold leading-8 mt-6">{{empresaModel.cordinacion}}</div>
                 </div>
             </div>
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Descripción introductoria del área</div>
+                    <div class=" text-gray-600 mt-1">Descripción introductoria del área</div>
 
 
-                    <div class="text-base font-bold leading-8 mt-6">{{empresaModel.descripcionArea}}</div>
+                    <div class=" font-bold leading-8 mt-6">{{empresaModel.descripcionArea}}</div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
 
                         Principales Objetivos:</div>
 
 
-                    <div class="text-base font-bold leading-8 mt-6">{{empresaModel.objetivo}}</div>
+                    <div class=" font-bold leading-8 mt-6">{{empresaModel.objetivo}}</div>
                 </div>
             </div>
         </div>
@@ -1135,7 +1141,7 @@ Cancelar
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-center text-gray-600 mt-1" align="center">Contacto</div>
+                    <div class=" text-center text-gray-600 mt-1" align="center">Contacto</div>
                 </div>
             </div>
 
@@ -1144,9 +1150,9 @@ Cancelar
         <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class="p-5">
-                    <div class="text-base text-gray-600 mt-1">Nombre del Director de la Institución:</div>
+                    <div class=" text-gray-600 mt-1">Nombre del Director de la Institución:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoDirector}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoDirector}} </div>
                 </div>
             </div>
 
@@ -1155,29 +1161,29 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         <div class="col-xs-1-12">
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Nombre del Responsable de Servicio Social en la Institución:</div>
+                    <div class=" text-gray-600 mt-1">Nombre del Responsable de Servicio Social en la Institución:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoResponsable}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.nombreCompletoResponsable}} </div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Departamento o Área:</div>
+                    <div class=" text-gray-600 mt-1">Departamento o Área:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.departamento}}</div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.departamento}}</div>
                 </div>
             </div>
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Puesto del Responsable de Servicio Social:
 
-                        <div class="text-base font-bold leading-8 mt-6">{{responsablemodel.puesto}} </div>
+                        <div class=" font-bold leading-8 mt-6">{{responsablemodel.puesto}} </div>
                     </div>
                 </div>
             </div>
@@ -1188,37 +1194,37 @@ Cancelar
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         <div class="col-xs-1-12">
 
                         </div>
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Número telefónico del Responsable de Servicio Social:</div>
+                    <div class=" text-gray-600 mt-1">Número telefónico del Responsable de Servicio Social:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.telefono}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.telefono}} </div>
                 </div>
             </div>
             <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Usuario del Responsable de Servicio Social:</div>
+                    <div class=" text-gray-600 mt-1">Usuario del Responsable de Servicio Social:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.usuario}}</div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.usuario}}</div>
                 </div>
             </div> -->
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">Correo del Responsable de Servicio Social:</div>
+                    <div class=" text-gray-600 mt-1">Correo del Responsable de Servicio Social:</div>
 
-                    <div class="text-base font-bold leading-8 mt-6"> {{responsablemodel.correo}} </div>
+                    <div class=" font-bold leading-8 mt-6"> {{responsablemodel.correo}} </div>
                 </div>
             </div>
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
-                    <div class="text-base text-gray-600 mt-1">
+                    <div class=" text-gray-600 mt-1">
                         Contraseña del Responsable de Servicio Social:
 
-                        <div class="text-base font-bold leading-8 mt-6">
+                        <div class=" font-bold leading-8 mt-6">
                             <input type="password" id="password" style="padding: 5px; background: #ffffff;" disabled name="" value="  {{responsablemodel.contrasena}} ">
                         </div>
                     </div>
@@ -1254,7 +1260,7 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6">
+                    <div class=" font-bold leading-8 mt-6">
                         <h1 *ngFor="let a of areas">
                             <p *ngIf="idAreaAccion!=undefined && idAreaAccion.indexOf(a.id) >=0">{{a.areaAccion}}</p>
                         </h1>
@@ -1284,11 +1290,11 @@ Cancelar
             <div class="report-box ">
                 <div class="box p-5">
 
-                    <div class="text-base font-bold leading-8 mt-6" *ngIf="responsablemodel.externa==true">
+                    <div class=" font-bold leading-8 mt-6" *ngIf="responsablemodel.externa==true">
                         Si
 
                     </div>
-                    <div class="text-base font-bold leading-8 mt-6" *ngIf="responsablemodel.externa==false">
+                    <div class=" font-bold leading-8 mt-6" *ngIf="responsablemodel.externa==false">
                         No
 
                     </div>

@@ -1,97 +1,27 @@
-<!-- END: Mobile Menu -->
+<nav class="navbar  shadow-lg navbar-expand-md navbar-light fixed-top bg-white">
 
-<!-- BEGIN: Top Bar -->
-<div class="border-b border-theme-white -mt-10 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10">
-    <div class="top-bar-boxed flex items-center">
-        <!-- BEGIN: Logo -->
-        <a [routerLink]="['/dashboard']" class="-intro-x hidden md:flex">
-            <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="assets/images/logo.png">
-            <span class="text-white text-lg ml-3"> Universidad<span class="font-medium"> Anáhuac</span> </span>
-        </a>
-        <!-- END: Logo -->
-        <!-- BEGIN: Breadcrumb -->
-        <div class="-intro-x breadcrumb breadcrumb--light mr-auto border-theme-white"> <a [routerLink]="['/dashboard']" class="breadcrumb--active">Servicio Social</a> </div>
-        <!-- END: Breadcrumb -->
-        <!-- BEGIN: Search -->
+    <a class="navbar-brand">
+        <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png" width="300" height="100" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" ></span>
+    </button>
 
-        <!-- BEGIN: Notifications -->
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active" style="font-size:20px;">
+                <a class="nav-link" routerLink="/dashboard">Proyectos <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" style="font-size:20px;">
+                <a class="nav-link" [routerLink]="'/alumnos'">Alumnos</a>
+            </li>
+            <li class="nav-item" style="font-size:20px;">
+                <a class="nav-link disabled" [routerLink]="['/instituciones/ver',id]">Perfil</a>
+            </li>
+        </ul>
 
-        <!-- BEGIN: Account Menu -->
-        <div class="intro-x dropdown w-8 h-8 relative">
-            <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110">
-                <img alt="Servicio Social" src="{{logo}}">
-            </div>
-            <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
-                <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
-                    <div class="p-4 border-b border-theme-40 dark:border-dark-3">
-                        <div class="font-medium">{{nombre}} </div>
-                        <div class="text-xs text-theme-41 dark:text-gray-600">Empresa</div>
-                    </div>
-                    <div class="p-2">
-                        <a [routerLink]="['/instituciones/ver',id]" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Perfil </a>
-                        <a [routerLink]="['/alumnos']" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Ayuda </a>
-
-                        <a [routerLink]="['/dashboard']" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Ayuda </a>
-                    </div>
-                    <div class="p-2 border-t border-theme-40 dark:border-dark-3">
-                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END: Account Menu -->
     </div>
-</div>
-<!-- END: Top Bar -->
-
-
-<!-- BEGIN: Top Menu -->
-<nav class="top-nav">
-    <ul>
-        <li>
-            <a routerLink="/dashboard" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="layout"></i> </div>
-                <div class="top-menu__title"> Proyectos </div>
-            </a>
-        </li>
-        <li>
-            <a [routerLink]="'/alumnos'" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="user-plus"></i> </div>
-                <div class="top-menu__title"> Alumnos <i data-feather="chevron-down" class="top-menu__sub-icon"></i> </div>
-            </a>
-        </li>
-        <li>
-            <a [routerLink]="['/instituciones/ver',id]" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="briefcase"></i> </div>
-                <div class="top-menu__title"> Perfil <i data-feather="chevron-down" class="top-menu__sub-icon"></i> </div>
-            </a>
-        </li>
-        <!--
-        <li>
-            <a routerLink="/empresas" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="activity"></i> </div>
-                <div class="top-menu__title"> Empresas <i data-feather="chevron-down" class="top-menu__sub-icon"></i> </div>
-            </a>
-        </li>
-        <li>
-            <a routerLink="/proyectos" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="layout"></i> </div>
-                <div class="top-menu__title"> Proyectos <i data-feather="chevron-down" class="top-menu__sub-icon"></i> </div>
-            </a>
-        </li>
-        <li>
-            <a routerLink="/convocatorias" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="inbox"></i> </div>
-                <div class="top-menu__title"> Convocatorías <i data-feather="chevron-down" class="top-menu__sub-icon"></i> </div>
-            </a>
-        </li>
-        <li>
-            <a routerLink="/usuarios" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="sidebar"></i> </div>
-                <div class="top-menu__title"> Administración <i data-feather="chevron-down" class="top-menu__sub-icon"></i> </div>
-            </a>
-        </li> -->
-
-    </ul>
 </nav>
+<br><br>
+<br>
 <!-- END: Top Menu -->

@@ -405,11 +405,15 @@
 
             <div class="text-center col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
                 <div class=" p-5">
-                    <div class="text-lg font-medium truncate mr-5">
+                    <div class="text-lg font-medium truncate mr-5" *ngIf="nohayfecha==false; else fecham">
                         Fecha de ingreso : {{fechaincr}}
-                        <button (click)="actualizarfecha()" class="button text-center text-white bg-theme-1 shadow-md ml-5" *ngIf="nohayfecha">Cambiar fecha de ingreso</button>
 
                     </div>
+                    <ng-template #fecham>
+
+                        <button (click)="actualizarfecha()" class="button text-center text-white bg-theme-1 shadow-md ml-5">Cambiar fecha de ingreso</button>
+                    </ng-template>
+
                 </div>
             </div>
 
