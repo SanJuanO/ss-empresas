@@ -122,54 +122,41 @@ Cancelar
         <div class="relative mt-2  text-center">
             PROGRESO DE REGISTRO
         </div>
-        <div class="sm:grid grid-cols-4 ml-3 mr-3">
 
-            <div class="relative mt-2 text-white bg-theme-9 text-center">
-                25%
+        <div class="wizard flex flex-col lg:flex-row justify-center px-5 sm:px-20">
+            <div class="intro-x lg:text-center flex items-center lg:block flex-1 z-10">
+                <button class="w-10 h-10 rounded-full button text-white bg-theme-1">1</button>
+                <div class="lg:w-32 font-medium text-base lg:mt-3 ml-3 lg:mx-auto">REGISTRO</div>
             </div>
-            <div class="relative mt-2 text-white bg-theme-9 text-center">
-                50%
+            <div class="intro-x lg:text-center flex items-center lg:block flex-1 z-10">
+                <button class="w-10 h-10 rounded-full button text-white bg-theme-1">2</button>
+                <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-gray-700 dark:text-gray-600">ACOMPLETAR TU INFORMACIÓN </div>
+            </div>
+            <div class="intro-x lg:text-center flex items-center lg:block flex-1 z-10" *ngIf="documentosfaltan;else docf">
+                <button class="w-10 h-10 rounded-full button text-white bg-theme-1">3</button>
+                <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-gray-700 dark:text-gray-600">DOCUMENTACIÓN VALIDADA </div>
             </div>
 
-            <div class="relative mt-2 text-white bg-theme-9 text-center" *ngIf="documentosfaltan;else docf">
-                75% </div>
+
             <ng-template #docf>
-                <div class="relative mt-2 text-white bg-theme-6 text-center">
-                    75%
+                <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
+                    <button class="w-10 h-10 rounded-full button text-gray-600 bg-gray-200 dark:bg-dark-1">3</button>
+                    <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-gray-700 dark:text-gray-600">DOCUMENTACIÓN VALIDADA </div>
                 </div>
             </ng-template>
 
-            <div class="relative mt-2 text-white bg-theme-9 text-center" *ngIf="(documentosfaltan && empresaModel.idEstadoOrganizacion==3);else ide">
-                100%
+            <div class="intro-x lg:text-center flex items-center lg:block flex-1 z-10" *ngIf="(documentosfaltan && empresaModel.idEstadoOrganizacion==3);else ide">
+                <button class="w-10 h-10 rounded-full button text-white bg-theme-1">4</button>
+                <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-gray-700 dark:text-gray-600">APROBADO</div>
             </div>
             <ng-template #ide>
-                <div class="relative mt-2 text-white bg-theme-6 text-center">
-                    100%
+                <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
+                    <button class="w-10 h-10 rounded-full button text-gray-600 bg-gray-200 dark:bg-dark-1">4</button>
+                    <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-gray-700 dark:text-gray-600">APROBADO</div>
                 </div>
             </ng-template>
-
-
+            <div class="wizard__line hidden lg:block w-2/3 bg-gray-200 dark:bg-dark-1 absolute mt-5"></div>
         </div>
-        <div class="sm:grid grid-cols-4   ml-3 mr-3">
-
-            <div class="relative mt-2 text-center">
-                REGISTRO
-            </div>
-            <div class="relative mt-2-center">
-                ACOMPLETAR TU INFORMACIÓN
-            </div>
-
-            <div class="relative mt-2 text-center">
-                DOCUMENTACIÓN VALIDADA
-            </div>
-
-            <div class="relative mt-2  text-center">
-                APROBADO
-            </div>
-
-
-        </div>
-
         <br>
         <div class="flex flex-1 px-5 items-center justify-center " align="center">
             <div class="w-0 h-20 sm:w-24 sm:h-24 flex-none lg:w-48 lg:h-48 image-fit relative">
@@ -331,7 +318,7 @@ Cancelar
 
         <br>
         <div class="grid grid-cols-12 gap-6 mt-5 ">
-            <div class="col-span-12 sm:col-span-8 xl:col-span-4 intro-y box bg-light p-5 zoom-in">
+            <div class="col-span-12 sm:col-span-8 xl:col-span-4 intro-y box bg-light p-5 zoom-in" style="background: rgb(250, 250, 250);">
 
                 <div class=" p-5">
                     <div class="  mt-1 font-weight-bold" style=" font-size:25px; ">
@@ -342,7 +329,7 @@ Cancelar
                 <div class=" font-bold leading-8 mt-6" style="text-align:justify; font-size:15px;" style="font-size:20px; ">{{empresaModel.razon}}</div>
             </div>
 
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y box bg-light p-5 zoom-in">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y box bg-light p-5 zoom-in" style="background: rgb(250, 250, 250);">
                 <div class=" p-5">
                     <div class="  mt-1 font-weight-bold" style=" font-size:25px; ">
                         Misíon
@@ -351,7 +338,7 @@ Cancelar
                     <div class=" font-bold leading-8 mt-6" style="text-align:justify; font-size:15px" style="font-size:20px; "> {{empresaModel.mision}} </div>
                 </div>
             </div>
-            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y box bg-light p-5 zoom-in">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y box bg-light p-5 zoom-in" style="background: rgb(250, 250, 250);">
                 <div class=" p-5">
                     <div class="text-justify  mt-1 font-weight-bold" style=" font-size:25px; ">
                         Visión
@@ -799,11 +786,16 @@ Cancelar
         <table class="table table-report sm:mt-2">
 
             <tbody>
-                <tr class="intro-x" *ngFor="let d of DocumentosSubidos" data-toggle="tooltip" data-placement="top" title="{{d.descripcion}}">
+                <tr class="intro-x" *ngFor="let d of DocumentosSubidos">
 
                     <td>
                         <div class=" text-xs whitespace-no-wrap" style=" text-align:justify; font-size:20px; "> {{d.documento}}</div>
                     </td>
+                    <td>
+                        <button type="button" data-toggle="tooltip" data-placement="top" title="{{d.descripcion}}">
+                    <svg   xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" _ngcontent-jsl-c54="" style="color: #FF8800;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                 
+                       </button> </td>
                     <td>
                         <div class=" text-xs whitespace-no-wrap">
                             <a (click)="abrirsubir(d.idDocumentoRequerido)" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px; " class="button text-white bg-theme-12 shadow-md mr-2"> Subir Archivo </a>
@@ -949,7 +941,7 @@ Cancelar
                 </div>
             </div>
         </div>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
             <div class="report-box ">
                 <div class="box bg-light p-2 zoom-in">
                     <div class="  mt-3 font-weight-bold " style="text-align:justify; font-size:25px; color:#FF8800">
@@ -962,6 +954,47 @@ Cancelar
             </div>
         </div>
 
+
+    </div>
+
+
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class=" p-5 col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
+            <div class="box bg-light  p-5  zoom-in">
+                <div class="  mt-3 font-weight-bold " style="text-align:justify; font-size:25px; color:#FF8800">
+                    Observaciones
+                </div>
+            </div>
+
+            <textarea style="font-size:20px; " class="mt-3 w-full" style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones" rows="5"></textarea>
+
+
+        </div>
+
+
+
+
+
+        <div class="grid grid-cols-12 gap-6 mt-5 ">
+            <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+            <div class="p-5">
+                <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                        Estado
+                    </h2>
+                </div>
+                <textarea class="mt-3 w-full " style="padding: 5px;" name="textarea" [(ngModel)]="empresaModel.estadoOrganizacion" name="estadoOrganizacion" rows="1"></textarea>
+                 </div>
+           
+        </div> -->
+
+
+            <br>
+        </div>
+
+    </div>
+    <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
         <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
             <div class="report-box ">
                 <div class="box bg-light p-2 zoom-in">
@@ -977,12 +1010,7 @@ Cancelar
 
 
         </div>
-    </div>
 
-
-
-
-    <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
         <div class="box bg-light ">
 
 
@@ -992,9 +1020,9 @@ Cancelar
         </div>
 
     </div>
+ -->
 
-
-    <br><br><br>
+    <br>
 
 </div>
 
@@ -1363,3 +1391,4 @@ Cancelar
         </div>
 
     </div>
+</div>

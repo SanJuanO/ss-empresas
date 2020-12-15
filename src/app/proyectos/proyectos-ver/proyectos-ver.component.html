@@ -11,11 +11,7 @@
             <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
     </div>
-    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">
-            Proyecto
-        </h2>
-    </div>
+
 
     <form #formEmpresa="ngForm">
 
@@ -24,157 +20,170 @@
         <div class="" id="horizontal-form">
             <div class="preview">
 
-                <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                        Información General
-                    </h2>
+
+                <div class="grid grid-cols-12 gap-6 mt-5">
+                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                        <div class=" p-5">
+                            <div class="   mt-1 font-weight-bold" style="font-size:35px; ">Información General de la Institución
+
+                            </div>
+                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-
-                <div class="box">
+                <div class="" style="font-size: 20px;">
                     <br>
 
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
                         <a style="margin-left: auto;" class="button text-white bg-theme-12 shadow-md mr-2">Estado: {{proyectoModel.estadoProyecto}}</a>
                     </div>
-                    <div class="grid grid-cols-12 gap-6 mt-5">
-                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                            <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1" align="center">Nombre del proyecto:</div>
-                                <div class="text-base font-bold leading-8 mt-6" align="center"> {{proyectoModel.proyecto}} </div>
-                            </div>
+                    <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+                        <div class=" p-5">
+                            <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
+
+                                Nombre del proyecto:</div>
+                            <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.proyecto}} </div>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-12 gap-6 mt-5">
 
-                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
+
                                     ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?
-                                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.modalidadDistancia}}</div>
                                 </div>
+
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.modalidadDistancia}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
+
                                     Institución / Área:
-                                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.organizacion}}</div>
                                 </div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.organizacion}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
+
                                     Nombre del Responsable del Proyecto:
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.nombreResponsable}}</div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.nombreResponsable}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
                                     Puesto del Responsable del Proyecto:
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.puesto}}</div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.puesto}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
                                     Área del Responsbale del Proyecto:
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.area}}</div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.area}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
                                     Correo electrónico del responsable del proyecto:
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.correoResponsable}}</div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.correoResponsable}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
                                     Teléfono de responsable del proyecto:
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.telefono}}</div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.telefono}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
                                     Plazas de Servicio Social disponibles para el proyecto
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas}}</div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.plazas}}</div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+                            <div class=" p-5">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
+                                    Descripción del proyecto:</div>
+
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.descripcion}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">Descripción del proyecto:</div>
-
-                                <div class="text-base font-bold leading-8 mt-6" style="text-align: justify;">{{proyectoModel.descripcion}}</div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                            <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
                                     Objetivo del proyecto:
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6" style="text-align: justify;"> {{proyectoModel.objetivo}}</div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.objetivo}}</div>
                             </div>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
                             <div class=" p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
                                     Justificaciòn del impacto social del proyecto:
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6" style="text-align: justify;"> {{proyectoModel.justificacionImpactoSocial}}</div>
+                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.justificacionImpactoSocial}}</div>
                             </div>
                         </div>
-                        <!--
-    <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-      <div class=" p-5">
-        <div class="text-base text-gray-600 mt-1">
-          Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 240 hrs.
-          <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas240}}</div>
-        </div>
-      </div>
-    </div>
-    -->
+
+
                     </div>
 
                 </div>
             </div>
         </div>
+        <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
+                        Información referente al Prestador de Servicio Social Estudiante)
+
+                    </div>
+                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+                </div>
+
+            </div>
+
+        </div>
 
         <div class="" id="horizontal-form">
             <div class="preview">
-                <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                        Información referente al Prestador de Servicio Social Estudiante)
-                    </h2>
-                </div>
+
                 <div class="grid grid-cols-12 gap-6 mt-5">
 
                     <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y text-center">
+                            <div class="p-5">
+                                <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     Rol o función del prestador de servicio social (estudiante) dentro del proyecto:
                                 </div>
                                 <div class="text-base font-bold leading-8 mt-6" style="text-align: justify;">{{proyectoModel.rolPrestador}}</div>
@@ -182,9 +191,9 @@
                         </div>
                     </div>
                     <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y text-center">
+                            <div class="p-5">
+                                <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     Responsabilidades del prestador de servicio social:
                                 </div>
                                 <div class="text-base font-bold leading-8 mt-6" style="text-align: justify;">{{proyectoModel.responsabilidades}}</div>
@@ -193,9 +202,9 @@
                     </div>
 
                     <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y text-center">
+                            <div class="p-5">
+                                <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     ¿El alumno recibe capacitación/formación por parte de la Institución?
                                 </div>
                                 <div *ngIf="proyectoModel.capacitacion; else elseBlock" class="text-base font-bold leading-8 mt-6">Si</div>
@@ -207,9 +216,9 @@
                     </div>
 
                     <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y text-center">
+                            <div class="p-5">
+                                <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     Según la naturaleza del proyecto, ¿a cuál de los siguientes objetivos de la ONU contribuye?
                                 </div>
                                 <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.objetivoOnu}}</div>
@@ -219,9 +228,9 @@
 
 
                     <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y text-center">
+                            <div class="p-5">
+                                <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     ¿Cantidad de horas totales del proyecto?
                                 </div>
                                 <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.horas}} </div>
@@ -230,9 +239,9 @@
                     </div>
 
                     <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y text-center">
+                            <div class="p-5">
+                                <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     Inicio de la prestación de servicio social
                                 </div>
                                 <div class="text-base font-bold leading-8 mt-6">Fecha inicio: {{proyectoModel.fechaInicio}} Fecha termino: {{proyectoModel.fechaTermino}}</div>
@@ -241,9 +250,9 @@
                     </div>
 
                     <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y text-center">
+                            <div class="p-5">
+                                <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     Horarios disponibles para la prestación de servicio social
                                 </div>
                                 <div class="text-base font-bold leading-8 mt-6">Hora entrada: {{proyectoModel.horaEntrada}} Hora salida: {{proyectoModel.horaSalida}}</div>
@@ -254,9 +263,9 @@
 
 
                     <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="text-base text-gray-600 mt-1">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-12 intro-y text-center">
+                            <div class="p-5">
+                                <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     Días hábiles para la prestación de servicio social
                                 </div>
 
@@ -311,19 +320,27 @@
                 </div>
             </div>
         </div>
-
-        <div class="" id="horizontal-form">
-            <div class="preview">
-                <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
+        <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
                         Carreras
-                    </h2>
+                    </div>
+                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
                 </div>
-                <div class="grid grid-cols-12 gap-6 mt-5">
+
+            </div>
+
+        </div>
+        <div class="" id="horizontal-form">
+            <div class="">
+
+                <div class="grid grid-cols-12 gap-6 ">
 
                     <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
+                        <div class=" ">
+                            <div class=" p-5">
                                 <div *ngFor="let carrera of proyectoModel.carrerasList" class="text-base text-gray-600 mt-1">
                                     <div class="flex items-center">
                                         <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
@@ -337,19 +354,27 @@
                 </div>
             </div>
         </div>
+        <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
+                        Competencias
+                    </div>
+                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
+                </div>
+
+            </div>
+
+        </div>
         <div class="" id="horizontal-form">
             <div class="preview">
-                <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                        Competencias
-                    </h2>
-                </div>
+
                 <div class="grid grid-cols-12 gap-6 mt-5">
 
                     <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
+                        <div class="">
+                            <div class=" p-5">
                                 <div *ngFor="let competencia of proyectoModel.competenciasList" class="text-base text-gray-600 mt-1">
                                     <div class="flex items-center">
                                         <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
@@ -363,31 +388,33 @@
                 </div>
             </div>
         </div>
+        <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
+                        Alumnos
+                    </div>
+                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
+                </div>
+
+            </div>
+
+        </div>
 
         <div class="" id="horizontal-form">
             <div class="preview">
-                <div class="grid grid-cols-12 gap-6 mt-5">
+                <div class="grid grid-cols-12 gap-6 ">
 
                     <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-                                <div class="intro-y flex items-center h-10">
-                                    <h2 class="text-lg font-medium truncate mr-5">
-
-                                        Alumnos
-                                    </h2>
-                                    <br>
-
-
-
-                                </div>
+                        <div class=" ">
+                            <div class=" pl-5 pr-5">
 
                                 <br>
 
                                 <!-- BEGIN: Datatable -->
-                                <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
-                                    <table id="tablaAlumnos" class="table table-report -mt-2">
+                                <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                                    <table class="table table-report sm:mt-2">
                                         <thead>
                                             <tr>
                                                 <th class="border-b-2 text-center whitespace-no-wrap">Nombre</th>
@@ -429,12 +456,12 @@
                                                     <div class="font-medium flex sm:justify-center items-center">{{alumno.estado}}</div>
                                                 </td>
                                                 <td>
-                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion==null && alumno.idEstado==4"> <a (click)="mostrarfecha(alumno.id)"><button class="rounded-md text-center px-1 py-1 mb-2 bg-theme-21 text-white">Agregar Fecha de inicio</button></a></div>
+                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion==null && alumno.idEstado==4"> <a (click)="mostrarfecha(alumno.id)" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px; " class="button text-white bg-theme-12 shadow-md mr-2">Agregar Fecha de inicio</a></div>
                                                     <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion!=null && alumno.idEstado==4 "> {{alumno.fechaInicioInstitucion}}</div>
 
                                                 </td>
                                                 <td *ngIf="alumno.idEstado<4 ">
-                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center"> <a (click)="mostraractualizarestado(alumno.idAlumno)"><button class="rounded-md text-center px-1 py-1 mb-2 bg-theme-12 text-white"> Cambiar Estado</button></a></div>
+                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center"> <a (click)="mostraractualizarestado(alumno.idAlumno)" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px; " class="button text-white bg-theme-12 shadow-md mr-2">Cambiar Estado</a></div>
 
 
                                                 </td>
@@ -444,9 +471,8 @@
                                                 <td *ngIf="alumno.idEstado>4">
                                                     <div class="font-medium flex sm:justify-center items-center">Finalizado</div>
                                                 </td>
-                                                <td class="border-b">
-                                                    <a (click)="veralumno(alumno.id,alumno.idAlumno,alumno.idEstado,alumno.idProyecto,alumno.fechaInicioInstitucion);">
-                                                        <div class="button  bg-theme-1 text-white">Ver</div>
+                                                <td class="w-5 border-b">
+                                                    <a (click)="veralumno(alumno.id,alumno.idAlumno,alumno.idEstado,alumno.idProyecto,alumno.fechaInicioInstitucion);" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Ver
                                                     </a>
                                                 </td>
                                                 <div class="modal" id="mostareditaralumno-{{alumno.idAlumno}}">
@@ -517,23 +543,30 @@
         </div>
 
 
+        <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
+                        Observaciones
+                    </div>
+                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
+                </div>
+
+            </div>
+
+        </div>
         <div class="" id="horizontal-form">
             <div class="preview">
                 <div class="grid grid-cols-12 gap-6 mt-5">
 
                     <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class="report-box ">
-                            <div class="box p-5">
-
-                                <div class="intro-y flex items-center h-10">
-                                    <h2 class="text-lg font-medium truncate mr-5">
-                                        Observaciones
-                                    </h2>
-                                </div>
+                        <div class="">
+                            <div class=" p-5">
 
 
-                                <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+
+                                <div class="grid grid-cols-12 gap-6 mt-5 ">
 
 
 
@@ -559,7 +592,7 @@
                 </div>
             </div>
         </div>
-
+        <br><br><br>
 
         <!--</div>-->
     </form>

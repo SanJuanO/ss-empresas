@@ -67,7 +67,9 @@ export class ProyectosEditComponent implements OnInit {
   public mensajevalidacion = "";
   public idsCarreras :any
   public idsCompetencias:any
+  public periodo="";
 
+  public idPeriodorecibido="";
   constructor(private proyectoService: ProyectoService,
     private organizacionService: OrganizationService,
     private universidadService: UniversidadService,
@@ -79,6 +81,8 @@ export class ProyectosEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.idPeriodorecibido = <any>(this.activatedRoute.snapshot.paramMap.get("id"));
+    
     this.idOrganizacion= this.session.getToken();
     this.Organizacion= this.session.getnombre();
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
@@ -386,10 +390,22 @@ this.listaProyectosCarrerasZ.push(carreras[i]);
   }
 
 
+ 
   obtenerPeriodos() {
     return this.convocatoriaService.getPeriodo()
-      .subscribe((periodos: PeriodosModel[]) => this.periodos = periodos);
+      .subscribe((res: any[])=>{
+console.log(res);
+for(var i=0;i<res.length;i++){
+
+  if((res[i]['id'])=this.idPeriodorecibido){
+    this.periodos = res[i];
+console.log(this.periodos);
+    this.periodo=res[i]['periodo'];
   }
+}
+
+      })
+    }
 
   onSubmit() {
 
