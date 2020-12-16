@@ -1,7 +1,7 @@
 <app-menu>
 </app-menu>
 
-<div class="content">
+<div class="" style="font-family:Helvetica;">
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-6">
             <!-- BEGIN: General Report -->
@@ -10,13 +10,17 @@
                 <div class=" mr-5 " (click)="mostrarmodal()"> <i data-feather="alert-circle" class="w-8 h-8 mr-3" style="  position: absolute;
                     right: 20px;   color:#FF8800"></i> </div>
                 <div class="modal" id="warning-modal-preview" style=" display: block; ">
-                    <div class="modal__content">
-                        <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                            <div class="text-3xl mt-5">Oops...</div>
-                            <div class="text-gray-600 mt-2">Something went wrong!</div>
+                    <div class="modal__content modal__content--xl p-10 text-center">
+                        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+                        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Alumnos</div>
+                        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Administra tus aplicaciones!</div>
+
+
+                        <div class=" mt-1 " style="font-size: 20px;">En esta sección podrás administrar todas las aplicaciones de alumnos interesados en tus proyectos.
                         </div>
-                        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-                        <div class="p-5 text-center border-t border-gray-200 dark:border-dark-5"> <a href="" class="text-theme-1 dark:text-theme-10">Why do I have this issue?</a> </div>
+                        <div class=" text-center">
+                            <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white bg-theme-12 shadow-md w-35 ">Continuar</a> </div>
                     </div>
                 </div>
                 <!-- BEGIN: General Report -->
@@ -44,7 +48,7 @@
                     <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="alumnos.length>0 ">
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
                             <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:35px;">
+                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:25px;">
                                     Alumnos nuevos
                                 </h2>
 
@@ -99,7 +103,7 @@
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
 
                             <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:35px;">
+                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:25px;">
                                     Alumnos Entrevistados
                                 </h2>
 
@@ -155,7 +159,7 @@
 
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
                             <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:35px;">
+                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:25px;">
                                     Alumnos Aceptados
                                 </h2>
                             </div>
@@ -211,7 +215,7 @@
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
 
                             <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:35px;">
+                                <h2 class="text-lg font-medium truncate mr-5" style="font-size:25px;">
                                     Alumnos inscritos
                                 </h2>
 

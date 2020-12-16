@@ -350,5 +350,8 @@ var passw=$('#nuevapass').val()
       console.log("adentro");
       $('#warning-modal-preview').modal('show');
     }
+    mostrarmodalinfo() {
+      $('#infodoc').modal('show');
+    }
 
 }

@@ -1,7 +1,7 @@
 <app-menu>
 </app-menu>
 
-<div class="content">
+<div class="" style="font-family:Helvetica;">
 
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-6">
@@ -10,13 +10,19 @@
                 <div class=" mr-5 " (click)="mostrarmodal()"> <i data-feather="alert-circle" class="w-8 h-8 mr-3" style="  position: absolute;
                     right: 20px;   color:#FF8800"></i> </div>
                 <div class="modal" id="warning-modal-preview" style=" display: block; ">
-                    <div class="modal__content">
-                        <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                            <div class="text-3xl mt-5">Oops...</div>
-                            <div class="text-gray-600 mt-2">Something went wrong!</div>
+                    <div class="modal__content modal__content--xl p-10 text-center">
+                        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+                        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Proyectos</div>
+                        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Agrega un proyecto!</div>
+
+
+                        <div class=" mt-1 " style="font-size: 20px;">En esta sección podrás ver las convocatorias activas para inscribir proyectos. Una vez agregado será evaluado para su aprobación.
+
+
                         </div>
-                        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-                        <div class="p-5 text-center border-t border-gray-200 dark:border-dark-5"> <a href="" class="text-theme-1 dark:text-theme-10">Why do I have this issue?</a> </div>
+                        <div class=" text-center">
+                            <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white bg-theme-12 shadow-md w-35 ">Continuar</a> </div>
                     </div>
                 </div>
                 <!-- BEGIN: General Report -->
@@ -30,7 +36,7 @@
                         <div class="grid grid-cols-12 gap-6 mt-5">
                             <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                                 <div class=" p-5">
-                                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">Convocatorias
+                                    <div class="   mt-1 font-weight-bold" style="font-size:25px; ">Convocatorias
                                     </div>
                                     <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
@@ -39,10 +45,10 @@
                             </div>
 
                         </div>
-                        <div class="intro-y  bg-light overflow-auto lg:overflow-visible mt-8 sm:mt-0" style="background: rgb(250, 250, 250);">
-                            <table class="table  sm:mt-2  bg-light ">
+                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                            <table class="table table-report sm:mt-2">
                                 <thead>
-                                    <tr>
+                                    <tr class="font-weight-bold" style=" font-family:Helvetica; font-size: 18px;">
 
                                         <th class=" "></th>
                                         <th class="text-center whitespace-no-wrap ">Inicia</th>
@@ -53,9 +59,9 @@
                                 </thead>
                                 <tbody class=" bg-light " *ngFor="let convocatoria of convocatoriasf ">
                                     <tr class="bg-light " *ngIf="convocatoria.activo==true || (convocatoria.fechaTermino) < (d) ">
-                                        <td class="w-5">
-                                            <a class="font-medium whitespace-no-wrap " style="font-size:20px;">{{  convocatoria.convocatoria}} </a>
-                                            <div class="text-gray-600 text-xs whitespace-no-wrap " style="font-size:15px;">Descripción {{convocatoria.descripcion}}</div>
+                                        <td class="w-5" style="background: rgb(250, 250, 250);">
+                                            <a class=" whitespace-no-wrap " style="font-size:20px;">{{  convocatoria.convocatoria}} </a>
+                                            <div class="text-gray-600  whitespace-no-wrap " style="font-size:17px;">Descripción {{convocatoria.descripcion}}</div>
                                         </td>
                                         <!-- <td>
                                             <div class="flex items-center justify-center text-theme-9 ">
@@ -64,25 +70,25 @@
                                         </td> -->
 
 
-                                        <td class="W-56 ">
-                                            <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:15px;">
+                                        <td class="W-56 " style="background: rgb(250, 250, 250);">
+                                            <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:17px;">
                                                 {{convocatoria.Inicio }}
                                             </div>
                                         </td>
-                                        <td class="W-56 ">
-                                            <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:15px;">
+                                        <td class="W-56 " style="background: rgb(250, 250, 250);">
+                                            <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:17px;">
                                                 {{convocatoria.Termino}}
                                             </div>
                                         </td>
-                                        <td class="w-40 ">
+                                        <td class="w-40 " style="background: rgb(250, 250, 250);">
 
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white  font-medium mt-3" *ngIf="convocatoria.activo==true " style="font-size:15px;">ACTIVA</div>
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white  font-medium mt-3 " *ngIf="convocatoria.activo==false " style="font-size:15px;">DESACTIVA</div>
+                                            <div class="py-1 px-2 rounded-full text-center  bg-theme-9 text-white  mt-3" style="font-size: 15px;" *ngIf="convocatoria.activo==true " style="font-size:17px;">ACTIVA</div>
+                                            <div class="py-1 px-2 rounded-full text-center  bg-theme-6 text-white   mt-3 " style="font-size: 15px;" *ngIf="convocatoria.activo==false " style="font-size:17px;">DESACTIVA</div>
 
                                         </td>
-                                        <td class="table-report__action w-56 ">
+                                        <td class="table-report__action w-56 " style="background: rgb(250, 250, 250);">
                                             <div class="flex justify-center items-center mt-3">
-                                                <a class="py-1 px-2 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer " style="font-size:15px;" [routerLink]="[ '/proyectos/add',convocatoria.idPeriodo] ">  Agregar Proyecto </a>
+                                                <a class="py-1 px-2 rounded-full text-center bg-theme-1 text-white cursor-pointer " style="font-size: 15px;" style="font-size:17px;" [routerLink]="[ '/proyectos/add',convocatoria.idPeriodo] ">  Agregar Proyecto </a>
 
                                             </div>
                                         </td>
@@ -103,7 +109,7 @@
                         <div class="grid grid-cols-12 gap-6 mt-5">
                             <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                                 <div class=" p-5">
-                                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">Proyectos
+                                    <div class="   mt-1 font-weight-bold" style="font-size:25px; ">Proyectos
                                     </div>
                                     <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
@@ -112,10 +118,11 @@
                             </div>
 
                         </div>
-                        <div class="intro-y  bg-light overflow-auto lg:overflow-visible mt-8 sm:mt-0" style="background: rgb(250, 250, 250);">
-                            <table class="table  sm:mt-2  bg-light ">
+                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                            <table class="table table-report sm:mt-2">
+
                                 <thead>
-                                    <tr>
+                                    <tr class="font-weight-bold" style="font-family:Helvetica; font-size: 18px;">
 
                                         <th class="whitespace-no-wrap "></th>
                                         <th class="text-center whitespace-no-wrap ">Aplicaciones</th>
@@ -129,14 +136,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="intro-x  bg-light " *ngFor="let proyect of proyectos ">
-                                        <td class="w-56">
-                                            <a class="font-medium whitespace-no-wrap " style="font-size:20px;">{{proyect.proyecto}}</a>
-                                            <div class="text-gray-600 text-xs whitespace-no-wrap " style="font-size:15px;">Responsable: {{proyect.nombreResponsable}}</div>
+                                    <tr class=" " *ngFor="let proyect of proyectos ">
+                                        <td class="w-56" style="background: rgb(250, 250, 250);">
+                                            <a class=" whitespace-no-wrap " style="font-size:20px;">{{proyect.proyecto}}</a>
+                                            <div class="text-gray-600  whitespace-no-wrap " style="font-size:17px;">Responsable: {{proyect.nombreResponsable}}</div>
 
 
                                         </td>
-                                        <td class="w-5">
+                                        <td class="w-5" style="background: rgb(250, 250, 250);">
 
                                             <div class=" font-weight-bold m-3  text-center" style="font-size:20px; color:#FF8800">
                                                 <h1> {{proyect.cantidadPendientes}} </h1>
@@ -145,7 +152,7 @@
 
                                         </td>
 
-                                        <td class="w-5">
+                                        <td class="w-5" style="background: rgb(250, 250, 250);">
 
                                             <div class=" font-weight-bold m-3  text-center" style="font-size:20px; color:#FF8800">
                                                 {{proyect.plazasAutorizadas-proyect.plazasDisponibles}}</div>
@@ -154,7 +161,7 @@
                                         </td>
 
 
-                                        <td class="w-5">
+                                        <td class="w-5" style="background: rgb(250, 250, 250);">
 
                                             <div class=" font-weight-bold m-3  text-center" style="font-size:20px; color:#FF8800">
                                                 {{proyect.plazasDisponibles}}</div>
@@ -162,15 +169,15 @@
 
                                         </td>
 
-                                        <td class="w-40">
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white  font-medium mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==1">{{proyect.estadoProyecto}}</div>
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white  font-medium mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==2">{{proyect.estadoProyecto}}</div>
-                                            <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-12 text-white  font-medium mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==3">{{proyect.estadoProyecto}}</div>
+                                        <td class="w-40" style="background: rgb(250, 250, 250);">
+                                            <div class="py-1 px-2 rounded-full text-center  bg-theme-9 text-white   mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==1">{{proyect.estadoProyecto}}</div>
+                                            <div class="py-1 px-2 rounded-full text-center  bg-theme-6 text-white   mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==2">{{proyect.estadoProyecto}}</div>
+                                            <div class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white   mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="proyect.idEstadoProyecto==3">{{proyect.estadoProyecto}}</div>
 
                                         </td>
-                                        <td class="table-report__action w-56">
+                                        <td class="table-report__action w-56" style="background: rgb(250, 250, 250);">
                                             <div class="flex justify-center items-center mt-3" style="font-size:20px" *ngIf="proyect.idEstadoProyecto==3">
-                                                <a class=" py-1 px-2 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/ver', proyect.id  ]">
+                                                <a class=" py-1 px-2 rounded-full text-center  bg-theme-1 text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/ver', proyect.id  ]">
                                                     <p class="ml-5 mr-5"> Ver</p>
                                                 </a>
 
@@ -178,7 +185,7 @@
 
 
                                             <div class="flex justify-center items-center mt-3" style="font-size:20px" *ngIf="proyect.idEstadoProyecto<3">
-                                                <a class=" py-1 px-2 rounded-full text-center text-xs bg-theme-1 text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]">
+                                                <a class=" py-1 px-2 rounded-full text-center  bg-theme-12 text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]">
                                                     <p class="ml-5 mr-5"> Editar</p>
 
                                                 </a>
@@ -206,7 +213,7 @@
                         <div class="grid grid-cols-12 gap-6 mt-5">
                             <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                                 <div class=" p-5">
-                                    <div class="   mt-1 font-weight-bold" style="font-size:35px; ">Proyectos
+                                    <div class="   mt-1 font-weight-bold" style="font-size:25px; ">Proyectos
                                     </div>
                                     <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
@@ -215,7 +222,7 @@
                             </div>
 
                         </div>
-                        <div class="text-base-600 text-center leading-8 mt-6" style=" text-align:justify; font-size:35px; ">
+                        <div class="text-base-600 text-center leading-8 mt-6" style=" text-align:justify; font-size:25px; ">
                             No has agregado ningún proyecto
 
                         </div>
