@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 
 
-<div class="content" style=" font-family:Helvetica;">
+<div class="container" style=" font-family:Helvetica;">
 
     <div class="modal" id="success">
         <div class="modal__content">
@@ -27,9 +27,47 @@
         </div>
 
     </div>
+    <div class=" p-5 text center" *ngIf="idEstado!=4">
+        <div class="grid grid-cols-12 gap-12 mt-5">
+
+            <div class="text-center col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                    <div class="text-lg font-medium truncate mr-5">
+                        Estado: {{Estado}}
+                        <button (click)="actualizarestado()" class="button text-center text-white bg-theme-1 shadow-md ml-5">Cambiar estado del alumno</button>
+
+                    </div>
+                </div>
+            </div>
 
 
-    <div class=" " style="font-size: 17px;">
+        </div>
+
+    </div>
+    <br><br>
+    <div class=" p-5 text center" *ngIf="idEstado==4" style="font-size: 17px;">
+        <div class="grid grid-cols-12 gap-12 mt-5">
+
+            <div class="text-center col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                    <div class="text-lg font-medium truncate mr-5" *ngIf="nohayfecha==false; else fecham">
+                        Fecha de ingreso : {{fechaincr}}
+
+                    </div>
+                    <ng-template #fecham>
+
+                        <button (click)="actualizarfecha()" class="button text-center text-white bg-theme-1 shadow-md ml-5">Cambiar fecha de ingreso</button>
+                    </ng-template>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="container " style="font-size: 17px;">
         <div class="grid grid-cols-12 gap-6 ">
 
             <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y text-center">
@@ -131,7 +169,7 @@
     </div>
 
     <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
-        <div class="box p-5">
+        <div class=" p-5">
 
             <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
                 <a class="button text-white bg-theme-9 shadow-md mr-2">Horas cursadas: {{horastotales}}</a>
@@ -175,28 +213,28 @@
 
             </div>
 
+            <div class="intro-y overflow-auto lg:overflow-visible mt-5 sm:mt-0">
+                <table class="table table-report sm:mt-2" *ngIf="idEstado==4">
+                    <thead>
+                        <tr>
 
-            <table class="table table-report sm:mt-2" *ngIf="idEstado==4">
-                <thead>
-                    <tr>
+                            <th class="whitespace-no-wrap">HORAS AGREGADAS</th>
+                            <th class="whitespace-no-wrap">FECHA</th>
 
-                        <th class="whitespace-no-wrap">HORAS AGREGADAS</th>
-                        <th class="whitespace-no-wrap">FECHA</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="intro-x" *ngFor="let h of horasalumno">
-                        <th class="whitespace-no-wrap"> {{h.noHoras}}</th>
-                        <th class="whitespace-no-wrap"> {{h.fechaCreacion}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="intro-x" *ngFor="let h of horasalumno">
+                            <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap"> {{h.noHoras}}</th>
+                            <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap"> {{h.fechaCreacion}}</th>
 
 
 
-                    </tr>
+                        </tr>
 
-                </tbody>
-            </table>
-
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
@@ -226,83 +264,80 @@
         </div>
 
     </div>
+    <div class="intro-y overflow-auto lg:overflow-visible mt-5 sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
+        <table class="table table-report sm:mt-2">
 
-    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
-        <div class="box p-5">
+            <thead>
+                <tr>
 
-            <table class="table table-report sm:mt-2">
-                <thead>
-                    <tr>
-
-                        <th class="whitespace-no-wrap">ACTIVIDADES</th>
-                        <th class="whitespace-no-wrap">FECHA</th>
-                        <th class="whitespace-no-wrap">VALIDADO</th>
-                        <th class="whitespace-no-wrap">Detalles</th>
+                    <th class="whitespace-no-wrap">ACTIVIDADES</th>
+                    <th class="whitespace-no-wrap">FECHA</th>
+                    <th class="whitespace-no-wrap">VALIDADO</th>
+                    <th class="whitespace-no-wrap">Detalles</th>
 
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="intro-x" *ngFor="let h of alumnosactividades">
-                        <th class="whitespace-no-wrap"> {{h.actividad.substring(0,30)}}...</th>
-                        <th class="whitespace-no-wrap"> {{h.fechaCreacion}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="intro-x" *ngFor="let h of alumnosactividades">
+                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap"> {{h.actividad.substring(0,30)}}...</th>
+                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap"> {{h.fechaCreacion}}</th>
 
-                        <th class="w-5 whitespace-no-wrap " *ngIf="h.validaEmpresa==true">
-                            <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">VALIDADO</div>
-                        </th>
-                        <th class="w-5 whitespace-no-wrap " *ngIf="h.validaEmpresa==false">
-                            <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">PENDIENTE</div>
-                        </th>
+                    <th style="background: rgb(250, 250, 250);" class="w-5 whitespace-no-wrap " *ngIf="h.validaEmpresa==true">
+                        <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">VALIDADO</div>
+                    </th>
+                    <th style="background: rgb(250, 250, 250);" class="w-5 whitespace-no-wrap " *ngIf="h.validaEmpresa==false">
+                        <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">PENDIENTE</div>
+                    </th>
 
-                        <th class="w-5">
-                            <div class="ext-base text-xs whitespace-no-wrap">
-                                <a (click)="mostraractualizarestado(h.id)">
-                                    <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-12 shadow-md mr-2"> Ver detalle</div>
-                                </a>
-                            </div>
-                        </th>
+                    <th style="background: rgb(250, 250, 250);" class="w-5">
+                        <div class="ext-base text-xs whitespace-no-wrap">
+                            <a (click)="mostraractualizarestado(h.id)">
+                                <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-12 shadow-md mr-2"> Ver detalle</div>
+                            </a>
+                        </div>
+                    </th>
 
-                        <div class="modal" id="act-{{h.id}}">
-                            <div class="modal__content">
-                                <div class="p-5 text-center">
-                                    <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                                    <div class="text-base mt-5"> Actividades:</div>
-                                    <br>
-                                    <textarea rows="10">
+                    <div class="modal" id="act-{{h.id}}">
+                        <div class="modal__content">
+                            <div class="p-5 text-center">
+                                <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                                <div class="text-base mt-5"> Actividades:</div>
+                                <br>
+                                <textarea rows="10">
 
                                             {{h.actividad}}
                                         </textarea>
-                                    <br>
-                                    <label class="sm:w-32 sm:text-right sm:mr-5">Validar:</label>
-                                    <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="h.validaEmpresa" [ngModelOptions]="{standalone: true}" id="myselect">
+                                <br>
+                                <label class="sm:w-32 sm:text-right sm:mr-5">Validar:</label>
+                                <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="h.validaEmpresa" [ngModelOptions]="{standalone: true}" id="myselect">
         
         <option [ngValue]="true" >SI</option>
         
         <option [ngValue]="false" >NO </option>
                                         </select>
-                                </div>
+                            </div>
 
-                                <div class="px-5 pb-8 text-center">
-                                    <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-                                        <button (click)="cambiarestado(h.id)" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Cambiar Estado</button> </div>
-
-                                </div>
-
+                            <div class="px-5 pb-8 text-center">
+                                <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                                    <button (click)="cambiarestado(h.id)" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Cambiar Estado</button> </div>
 
                             </div>
+
+
                         </div>
+                    </div>
 
 
-                    </tr>
+                </tr>
 
 
 
-                </tbody>
-            </table>
-
-        </div>
+            </tbody>
+        </table>
 
     </div>
+
 
     <br>
     <br>
@@ -325,97 +360,58 @@
 
     </div>
 
-    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
-        <div class="box p-5">
 
-            <table class="table table-report sm:mt-2" *ngIf="respuestas!=''">
-                <thead>
-                    <tr>
+    <div class="intro-y overflow-auto lg:overflow-visible mt-5 sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
+        <table class="table table-report sm:mt-2" *ngIf="respuestas!=''">
+            <thead>
+                <tr>
 
-                        <th class="whitespace-no-wrap">Reporte</th>
-                        <th class="whitespace-no-wrap">Fecha registro</th>
-                        <th class="whitespace-no-wrap">Realizado</th>
-
-
-                    </tr>
+                    <th class="whitespace-no-wrap">Reporte</th>
+                    <th class="whitespace-no-wrap">Fecha registro</th>
+                    <th class="whitespace-no-wrap">Realizado</th>
 
 
-                </thead>
-                <tbody>
-                    <tr class="intro-x">
-
-                        <td>
-                            <div class="ext-base text-xs whitespace-no-wrap">Entregado</div>
-                        </td>
-                        <td>
-                            <div class="ext-base text-xs whitespace-no-wrap"> {{respuestas}} </div>
-                        </td>
-                        <td>
-                            <div class="ext-base text-xs whitespace-no-wrap"> SI </div>
-                        </td>
+                </tr>
 
 
-                    </tr>
+            </thead>
+            <tbody>
+                <tr class="intro-x">
+
+                    <td style="background: rgb(250, 250, 250);">
+                        <div class="ext-base text-xs whitespace-no-wrap">Entregado</div>
+                    </td>
+                    <td style="background: rgb(250, 250, 250);">
+                        <div class="ext-base text-xs whitespace-no-wrap"> {{respuestas}} </div>
+                    </td>
+                    <td style="background: rgb(250, 250, 250);">
+                        <div class="ext-base text-xs whitespace-no-wrap"> SI </div>
+                    </td>
 
 
-
-                </tbody>
-            </table>
-
-            <br>
-
-            <br>
+                </tr>
 
 
 
-            <br>
+            </tbody>
+        </table>
 
-            <button [routerLink]="['/alumnosevaluar', alumno.id]" class="button text-center text-white bg-theme-1 shadow-md mr-2" *ngIf="respuestas==''">Evaluar alumno</button>
+        <br>
 
-        </div>
+        <br>
+
+
+
+        <br>
+
+        <button [routerLink]="['/alumnosevaluar', alumno.id]" class="button text-center text-white bg-theme-1 shadow-md mr-2" *ngIf="respuestas==''">Evaluar alumno</button>
+
 
     </div>
     <br>
     <br>
-    <div class=" p-5 text center" *ngIf="idEstado!=4">
-        <div class="grid grid-cols-12 gap-12 mt-5">
-
-            <div class="text-center col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
-                <div class=" p-5">
-                    <div class="text-lg font-medium truncate mr-5">
-                        Estado: {{Estado}}
-                        <button (click)="actualizarestado()" class="button text-center text-white bg-theme-1 shadow-md ml-5">Cambiar estado del alumno</button>
-
-                    </div>
-                </div>
-            </div>
 
 
-        </div>
-
-    </div>
-    <br><br>
-    <div class=" p-5 text center" *ngIf="idEstado==4" style="font-size: 17px;">
-        <div class="grid grid-cols-12 gap-12 mt-5">
-
-            <div class="text-center col-span-12 sm:col-span-6 xl:col-span-12 intro-y">
-                <div class=" p-5">
-                    <div class="text-lg font-medium truncate mr-5" *ngIf="nohayfecha==false; else fecham">
-                        Fecha de ingreso : {{fechaincr}}
-
-                    </div>
-                    <ng-template #fecham>
-
-                        <button (click)="actualizarfecha()" class="button text-center text-white bg-theme-1 shadow-md ml-5">Cambiar fecha de ingreso</button>
-                    </ng-template>
-
-                </div>
-            </div>
-
-
-        </div>
-
-    </div>
 
 
     <div class="modal" id="mostareditaralumno">
@@ -450,24 +446,25 @@
     </div>
 
 
-</div>
 
-<div class="modal" id="mostrarfecha">
-    <div class="modal__content">
-        <form #form="ngForm" (ngSubmit)="cambiarfecha()">
-            <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+    <div class="modal" id="mostrarfecha">
+        <div class="modal__content">
+            <form #form="ngForm" (ngSubmit)="cambiarfecha()">
+                <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
 
-                <label>Fecha de inicio del servicio social</label>
-                <input type="date" class="input  w-full border mt-2 " id="fechadeinicio" required>
-
+                    <label>Fecha de inicio del servicio social</label>
+                    <input type="date" class="input  w-full border mt-2 " id="fechadeinicio" required>
 
 
-            </div>
+
+                </div>
 
 
-            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-                <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button> </div>
-        </form>
+                <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                    <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button> </div>
+            </form>
 
+        </div>
     </div>
+
 </div>
