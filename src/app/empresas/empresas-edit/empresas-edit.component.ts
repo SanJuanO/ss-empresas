@@ -107,7 +107,14 @@ $('#abrirsubir').modal('hide');
   
   ngOnInit(): void {
 
+    if(this.activatedRoute.snapshot.paramMap.get("externa")=="1"){
+      this.cambio=true;
 
+    }
+    else{
+      this.cambio=false;
+    }
+console.log(this.cambio);
 
     this.idobtenido=this.activatedRoute.snapshot.paramMap.get("id");
     this.getempresa(this.idobtenido);
@@ -199,7 +206,6 @@ var valor= { "idAreaAccion": id ,"activo": true};
 
       this.responsablemodel=res['responsable'];
       console.log(this.responsablemodel);
-      this.externa();
       this.listaAreasAccion=res['listaAreasAccion'];
       this.listaRubros=res['listaRubros'];
 
@@ -208,10 +214,8 @@ var valor= { "idAreaAccion": id ,"activo": true};
 
       this.logo ="data:image/jpeg;base64,"+ res['imagenArchivo'];
       this.imagensubidaurl=res['imagen'];
-      this.cambio=res['externa'];
       var cp=res['cp'];
       this.obtenerdirecciones(cp);
-      console.log(this.cambio);
 
       
     })
@@ -625,9 +629,7 @@ $('#correo').css("border", "red solid 1px");
 
   externa(){
 
-    console.log(this.responsablemodel.externa);
-     this.cambio=this.responsablemodel.externa;
- 
+  
   }
 
   obtenerdirecciones(cp) {

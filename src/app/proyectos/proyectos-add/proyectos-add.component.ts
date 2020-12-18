@@ -85,6 +85,7 @@ public idPeriodorecibido="";
 
 this.idOrganizacion= this.session.getToken();
 this.Organizacion= this.session.getnombre();
+console.log(this.Organizacion);
 this.idPeriodorecibido = <any>(this.activatedRoute.snapshot.paramMap.get("id"));
     
     this.obtenerOrganizaciones();
@@ -97,6 +98,11 @@ this.idPeriodorecibido = <any>(this.activatedRoute.snapshot.paramMap.get("id"));
     this.proyectoModel.capacitacion = "si"
 
     this.proyectoModel.horas = 240;
+  }
+  show(){
+console.log("adddd");
+    $( "#datepicker" ).datepicker('show'); //Show on click of button
+
   }
   ngAfterViewInit() {
     Feather.replace();

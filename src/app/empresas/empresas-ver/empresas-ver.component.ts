@@ -186,15 +186,24 @@ var valor= { "idRubro": id ,"activo": true};
         
         (documentosS: DocumentosSubidosRequeridos[]) => {
         this.DocumentosSubidos = documentosS;
-   console.log(this.DocumentosSubidos);
-
-        for(var i=0;i<documentosS.length;i++)
+ var mostrar=false;
+   var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        for(var i=0;i<this.DocumentosSubidos.length;i++)
         {
-          if(documentosS[i]['idEstado']!=4 && this.session.getexterna()){
-            $('#documentosfaltan').modal('show');
-            this.documentosfaltan=false;
-return;
+
+          if(this.DocumentosSubidos[i]['archivo']!=null){
+            var Fecha1 = new Date((this.DocumentosSubidos[i]['fechaCreacion'].toString()));
+            this.DocumentosSubidos[i]['fechaCreacion']=Fecha1.toLocaleDateString("es-ES", options);
+
           }
+          if(documentosS[i]['idEstado']!=4 && this.session.getexterna()){
+            this.documentosfaltan=false;
+            mostrar=true;
+          }
+        }
+        if(mostrar){
+          $('#documentosfaltan').modal('show');
+
         }
 
 
@@ -236,8 +245,9 @@ if(this.validar){
   //TODO SERGIO
   abrirsubir(id){
 
-    //console.log("dfdsfdsfds" + id);
+    console.log("dfdsfdsfds" + id);
     this.idDocumento = id;
+
     $('#abrirsubir-'+id).modal('show');
 
   }
@@ -256,7 +266,7 @@ if(this.validar){
   }
   
   subeArchivo() {
-    
+    console.log(this.idDocumento);
     this.organizacionService.postFile(this.fileToUpload, this.idDocumento, this.idobtenido).subscribe(data => {
       if (data.resultado == 1) {
         $('#abrirsubir-' + this.idDocumento).modal('hide');

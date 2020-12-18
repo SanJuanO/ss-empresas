@@ -47,7 +47,7 @@
 
 
 
-                    <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="alumnos.length>0 ">
+                    <div class="grid grid-cols-12 gap-6" *ngIf="alumnos.length>0 ">
                         <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
                             <div class="intro-y flex items-center h-10">
                                 <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
@@ -238,16 +238,21 @@
 
                                             </div>
 
-
-                                            <div class="">
+                                            <div class="flex">
                                                 <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
 
 
                                                 <div class="ml-auto">
-                                                    <div class="text-2xl font-bold leading-8 mt-1 ">Horas: {{a.horasRegistradas}} </div>
+                                                    <div class="font-bold leading-8 ">Horas: {{a.horasRegistradas}} </div>
 
                                                 </div>
+                                            </div>
+                                            <div class="">
+                                                <div class=" text-gray-600 ">Carrera: {{a.carrera}}</div>
+
+                                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
+
+
 
                                             </div>
 

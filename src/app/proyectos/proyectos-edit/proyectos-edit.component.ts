@@ -132,7 +132,11 @@ export class ProyectosEditComponent implements OnInit {
   obtenerCompetencias() {
     return this.proyectoService
       .getCompetencias()
-      .subscribe((competencias: ProyectosCompetencias[]) => this.listaProyectosCompetencias = competencias);
+      .subscribe((competencias: ProyectosCompetencias[]) =>{ this.listaProyectosCompetencias = competencias
+      console.log(this.listaProyectosCompetencias);
+      
+      }
+      );
   }
   obtenerCarreras() {
     return this.proyectoService

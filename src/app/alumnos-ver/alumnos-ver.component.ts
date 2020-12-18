@@ -47,7 +47,7 @@ export class AlumnosverComponent implements OnInit {
 public idEstado:number;
 public idProyecto:string;
 public Estado:string;
-
+public validar=false;
 public nohayfecha:boolean=true;
 
 
@@ -151,6 +151,7 @@ public fechaincr:string;
   }
 
   abrirmodalhoras(){
+this.validar==false;
     $('#horasmodal').modal('show');
 
 
@@ -186,13 +187,17 @@ public fechaincr:string;
   }
 
   reportedehoras() {
-
+document.getElementById("advertencia").style.display = "block";
+if(this.validar){
 var nohoras=$('#nohoras').val();
     this.alumnoService.agregarhoras(this.idasignado,nohoras).subscribe((res: any) => {
 location.reload();
 
     });
   }
+  this.validar=true;
+  }
+  
 
   horas() {
 
@@ -294,6 +299,7 @@ this.estadoalumnocambio.observacions=$('#observacionescambio').val();
    this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe((res) => {
 
      $('#success').modal('show');
+     location.reload();
 
 //fincambio
 

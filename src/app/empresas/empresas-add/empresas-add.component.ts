@@ -330,7 +330,7 @@ listapaist.forEach(el => {
 
 
   create(){
-    
+  
     $('#NombreResponsable').css("border", "#dee2e6 solid 1px");
     $('#telefono').css("border", "#dee2e6 solid 1px");
     $('#correo').css("border", "#dee2e6 solid 1px");
@@ -365,11 +365,12 @@ listapaist.forEach(el => {
 model.Responsable = this.responsablemodel;
 model.listaAreasAccion = this.listaAreasAccion;
 model.listaRubros = this.listaRubros ;
-
+if(this.imagensubidaurl==""){
+  this.mensajevalidacion="Es necesario subir una imagen de tu empresa"
+      $('#validacion').modal('show');
+}
 model.Imagen=this.imagensubidaurl;
 
-console.log(this.responsablemodel.externa);
-console.log(this.responsablemodel.telefono.length);
 
 if(model.Responsable.externa){
      if(model.organizacion==""){
@@ -392,7 +393,19 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
 
 } 
 
+else if(model.instagram=='https://www'){
+  this.empresaModel.instagram="";
 
+}
+
+else if(model.youtube=='https://www'){
+  this.empresaModel.youtube="";
+
+}
+else if(model.tiktok=='https://www'){
+  this.empresaModel.tiktok="";
+
+}
 
 
     else if(model.nombreComun==""){
@@ -421,12 +434,14 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
 
     }
 
-    else if(model.facebook==""){
-      this.mensajevalidacion="No puedes dejar el campo de  facebook vacío"
+    else if(model.facebook=="" || model.facebook=="https://www"){
+      this.mensajevalidacion="No puedes dejar el campo de  facebook vacío o incompleto"
       $('#validacion').modal('show');
       $('#facebook').css("border", "red solid 1px");
 
-    }  
+    }
+
+
     else if(model.vision=="" || model.vision==null){
       this.mensajevalidacion="El campo de Visión no debe ir vacío"
       $('#validacion').modal('show');
@@ -452,8 +467,8 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
       $('#logros').css("border", "red solid 1px");
 
     }
-    else if(model.web==""){
-      this.mensajevalidacion="No puedes dejar el campo de web vacío"
+    else if(model.web=="" || model.web=="https://www"){
+      this.mensajevalidacion="No puedes dejar el campo de web vacío o incompleto"
       $('#validacion').modal('show');
       $('#web').css("border", "red solid 1px");
 
