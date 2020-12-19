@@ -798,36 +798,63 @@ Cancelar
                                 <div class=" text-xs whitespace-no-wrap" style=" text-align:justify; font-size:15px; "> {{d.documento}}</div>
                             </th>
                             <th style="background: rgb(250, 250, 250);">
-                                <div class="text-center tooltip top" style="text-align: center;">
+                                <div class="tooltip top">
+                                    <span class="tiptext">{{d.descripcion}}</span>
+
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" _ngcontent-jsl-c54="" style="color: #FF8800;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
 
-                                    <span class="tiptext">{{d.descripcion}}</span>
                                 </div>
 
 
                             </th>
                             <th style="background: rgb(250, 250, 250);">
                                 <div class=" text-xs whitespace-no-wrap">
-                                    <a (click)="abrirsubir(d.idDocumento)" style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-12 shadow-md mr-2"> Subir Archivo </a>
+                                    <a (click)="abrirsubir(d.idDocumento)" style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px;background-color: #FF8300;  " class="button text-white   mr-2"> Subir Archivo </a>
                                 </div>
                             </th>
                             <th style="background: rgb(250, 250, 250);">
-                                <div class="  text-xs whitespace-no-wrap" *ngIf="d.id >0">
-                                    <a (click)="descargar(d.archivo)" style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">  Ver Archivo 
+                                <div class="  text-xs whitespace-no-wrap" *ngIf="d.id >0;else up">
+                                    <a (click)="descargar(d.archivo)" style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; background-color: #FF8300; " class="button text-white  mr-2">  Ver Archivo 
                             </a>
                                 </div>
+                                <ng-template #up>
+                                    <div class="  text-xs whitespace-no-wrap">
+                                        <a style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; background-color: #FF8300;" class="button text-white  mr-2">  Ver Archivo 
+                                </a>
+                                    </div>
+
+                                </ng-template>
                             </th>
                             <th style="background: rgb(250, 250, 250);">
-                                <div class=" whitespace-no-wrap" *ngIf="d.id >0"> {{d.fechaCreacion}}</div>
+                                <div class="text-center" style="color: #E60505; " *ngIf="d.id >0;else ett">
+                                    <div style="font-size: 15px; color: black;  font-weight: bold;"> {{d.fechaCreacion}}</div>
+                                    Última actualización
+                                </div>
+                                <ng-template #ett>
+
+                                    <div class="text-center" style="color: #E60505; ">
+                                        <div style="font-size: 15px; color: black;  font-weight: bold;">-</div>
+                                        Última actualización
+                                    </div>
+                                </ng-template>
                             </th>
-                            <th style="background: rgb(250, 250, 250);" class="w-5 border-b" *ngIf="d.idEstado==0;else tem">
-                                <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
+                            <th style="background: rgb(250, 250, 250);" class="w-5 border-b" *ngIf="d.idEstado==0">
+                                <div class="tooltip top">
+                                    <span class="tiptext text-left">Estatus del documento: <a style="font-size: 20px; ">PENDIENTE</a><br> El documento aún no ha sido entregado para su revisióon y validación. Favor de subir un documento pronto.<br> Cualquier duda contactar a la Coord. de Servicio Social. </span>
+
+                                    <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
+                                </div>
                             </th>
-                            <ng-template #tem>
-                                <th class="w-5 border-b" style="background: rgb(250, 250, 250);">
-                                    <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-12 shadow-md mr-2">{{d.estado}}</div>
-                                </th>
-                            </ng-template>
+                            <th class="w-5 border-b" style="background: rgb(250, 250, 250);" *ngIf="d.idEstado==2">
+                                <div class="tooltip top">
+                                    <span class="tiptext text-left">Estatus del documento: <a style="font-size: 20px; ">REVISIÓN</a><br> El documento ha sido entregado y será visible para su revisión y validación por parte del Comité Interdiciplinario de Servicio Social.<br> Cualquier duda contactar a la Coord. de Servicio Social. </span>
+
+                                    <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">{{d.estado}}</div>
+                                </div>
+                            </th>
+                            <th class="w-5 border-b" style="background: rgb(250, 250, 250);" *ngIf="d.idEstado==3">
+                                <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">{{d.estado}}</div>
+                            </th>
                             <div class="modal" id="abrirsubir-{{d.idDocumento}}">
                                 <div class="modal__content modal__content--xl p-10 text-center">
                                     <form #form="ngForm" (ngSubmit)="subeArchivo()">
@@ -895,9 +922,9 @@ Cancelar
                 <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                     <div class="report-box ">
                         <div class="box bg-light p-2 zoom-in" style="background: rgb(250, 250, 250);">
-                            <div class="  mt-3 font-weight-bold " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
+                            <div class="  mt-3 font-weight-bold " style="  font-size:19px; color:#FF8800; font-weight: bold;">
 
-                                “Personas de población indígena :</div>
+                                Personas de población indígena:</div>
 
                             <div class=" font-bold leading-8 mt-6" style=" text-align:justify; font-size:15px; "> {{empresaModel.indigenas}}
                             </div>

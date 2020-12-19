@@ -87,6 +87,8 @@ this.responsablemodel.externa=this.cambio;
    this.responsablemodel.correo= this.cookies.get("correo", );
    this.empresaModel.IdResponsable= Number(this.cookies.get("idresponsable"));
    $('#superlarge-modal-size-preview').modal('show');
+   this.cookies.set("mostraralumno", "1");
+   this.cookies.set("mostrarproyectos", "1");
 
   }
 
@@ -365,15 +367,16 @@ listapaist.forEach(el => {
 model.Responsable = this.responsablemodel;
 model.listaAreasAccion = this.listaAreasAccion;
 model.listaRubros = this.listaRubros ;
-if(this.imagensubidaurl==""){
-  this.mensajevalidacion="Es necesario subir una imagen de tu empresa"
-      $('#validacion').modal('show');
-}
+
 model.Imagen=this.imagensubidaurl;
 
 
 if(model.Responsable.externa){
-     if(model.organizacion==""){
+  if(this.imagensubidaurl==""){
+    this.mensajevalidacion="Es necesario subir una imagen de tu empresa"
+        $('#validacion').modal('show');
+  } 
+     else if(model.organizacion==""){
 this.mensajevalidacion="No puedes dejar el campo de Nombre Oficial de la Institución vacío"
       $('#validacion').modal('show');
       $('#organizacion').css("border", "red solid 1px");
@@ -393,19 +396,6 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
 
 } 
 
-else if(model.instagram=='https://www'){
-  this.empresaModel.instagram="";
-
-}
-
-else if(model.youtube=='https://www'){
-  this.empresaModel.youtube="";
-
-}
-else if(model.tiktok=='https://www'){
-  this.empresaModel.tiktok="";
-
-}
 
 
     else if(model.nombreComun==""){
@@ -576,7 +566,20 @@ else if(model.tiktok=='https://www'){
     } 
     
     else{
-
+       if(model.instagram=='https://www'){
+        this.empresaModel.instagram="";
+      
+      }
+      
+       if(model.youtube=='https://www'){
+        this.empresaModel.youtube="";
+      
+      }
+       if(model.tiktok=='https://www'){
+        this.empresaModel.tiktok="";
+      
+      }
+      
 
 console.log(this.responsablemodel);
 

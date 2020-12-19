@@ -68,7 +68,10 @@ export class Alumnos implements OnInit {
      this.convocatoriasalumnosf = [ ];
 this.alumnoproyectos();
 
-
+if(this.cookies.get("mostraralumno")){
+  this.cookies.delete("mostraralumno");
+this.mostrarmodal();
+}
 
   }
 

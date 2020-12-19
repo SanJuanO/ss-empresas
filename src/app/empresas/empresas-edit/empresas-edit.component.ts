@@ -205,7 +205,7 @@ var valor= { "idAreaAccion": id ,"activo": true};
       this.empresaModel = <Empresa><any>res;
 
       this.responsablemodel=res['responsable'];
-      console.log(this.responsablemodel);
+      console.log(this.empresaModel);
       this.listaAreasAccion=res['listaAreasAccion'];
       this.listaRubros=res['listaRubros'];
 
@@ -312,7 +312,11 @@ var valor= { "idAreaAccion": id ,"activo": true};
 console.log(model);
    
     model.Responsable = this.responsablemodel;
+
+model.Responsable['extension']=this.responsablemodel.extension;
 model.Imagen=this.imagensubidaurl;
+console.log(model.Responsable);
+console.log(this.responsablemodel);
 model.listaAreasAccion = this.listaAreasAccion ;
 
     model.listaRubros = this.listaRubros ;

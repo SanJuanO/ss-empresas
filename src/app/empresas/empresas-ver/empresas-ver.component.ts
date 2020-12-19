@@ -129,6 +129,9 @@ var valor= { "idRubro": id ,"activo": true};
         this.empresaModel.atiendeOtro="Otro";
       }
 
+      if(this.empresaModel.observaciones==null || this.empresaModel.observaciones=="null"){
+        this.empresaModel.observaciones="";
+      }
 
       this.reconocimientost=this.empresaModel.reconocimiento.split('\n');
       this.logrost=this.empresaModel.logros.split('\n');

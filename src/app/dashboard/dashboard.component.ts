@@ -72,6 +72,11 @@ export class DashboardComponent implements OnInit {
     this.obtenerConvocatoria2();
 this.obtenerProyectos();
 
+if(this.cookies.get("mostrarproyectos")){
+  this.cookies.delete("mostrarproyectos");
+this.mostrarmodal();
+}
+
 
 
   }
