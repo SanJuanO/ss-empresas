@@ -71,7 +71,7 @@ respuestapreguntas(model){
     return this.http.get(uri);
   }
   getUniversidades(){
-    const uri = `${this.api}/Universidades`;
+    const uri = `${this.api}/Universidades2`;
     return this.http.get(uri);
   }
   getTipo(){

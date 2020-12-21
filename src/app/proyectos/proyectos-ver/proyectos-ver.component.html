@@ -207,7 +207,7 @@
                                 <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     ¿El alumno recibe capacitación/formación por parte de la Institución?
                                 </div>
-                                <div *ngIf="proyectoModel.capacitacion; else elseBlock" class="text-base font-bold leading-8 mt-6">Si</div>
+                                <div *ngIf="proyectoModel.capacitacion; else elseBlock" class="text-base font-bold leading-8 mt-6">Sí</div>
                                 <ng-template #elseBlock>
                                     <div class="text-base font-bold leading-8 mt-6">No</div>
                                 </ng-template>
@@ -244,7 +244,10 @@
                                 <div class="   mt-1 font-weight-bold " style=" font-size:25px; color:#FF8800">
                                     Inicio de la prestación de servicio social
                                 </div>
-                                <div class="text-base font-bold leading-8 mt-6">Fecha inicio: {{proyectoModel.fechaInicio}} Fecha termino: {{proyectoModel.fechaTermino}}</div>
+                                <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.fechaInicio}}
+
+                                    <!-- Fecha termino: {{proyectoModel.fechaTermino}} -->
+                                </div>
                             </div>
                         </div>
                     </div>

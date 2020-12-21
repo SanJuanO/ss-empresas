@@ -86,6 +86,7 @@ public validar=false;
 
     this.externa();
 
+
   }
  
   toggleArea(checked, id){
@@ -270,15 +271,21 @@ if(this.validar){
   
   subeArchivo() {
     console.log(this.idDocumento);
+    document.getElementById("carg").style.display = "block";
+
     this.organizacionService.postFile(this.fileToUpload, this.idDocumento, this.idobtenido).subscribe(data => {
       if (data.resultado == 1) {
         $('#abrirsubir-' + this.idDocumento).modal('hide');
         $('#success-modal-preview-file').modal('show');
         console.log(data);
+        document.getElementById("carg").style.display = "none";
+
         location.reload();
       }
     }, error => {
       console.log(error);
+      document.getElementById("carg").style.display = "none";
+
     });
   }
   //TODO SERGIO

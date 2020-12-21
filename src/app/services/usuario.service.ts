@@ -28,7 +28,7 @@ export class UsuarioServices {
     return this.http.delete(uri);
   }
   getUniversidad(){
-    const uri = `${this.api}/Universidades`;
+    const uri = `${this.api}/Universidades2`;
     console.log(uri);
     return this.http.get(uri);
   }

@@ -3,6 +3,7 @@ import * as Feather from 'feather-icons';
 import { OrganizationService } from '../../services/organization.service';
 import { Empresa,Responsablemodel,check,escueladirecciones,cordinaciones,vicerrectorias  } from "../../models/empresa"
 import { AreaAccion } from "../../models/areaaccion"
+import { SessionService } from '../../services/session.service';
 
 import { RubroEmpresa } from "../../models/rubrosempresa"
 import { Universidad } from "../../models/universidad"
@@ -59,7 +60,7 @@ public validar=false;
   public empresaModel = new Empresa(0,"","","","","","","",0,0,0,0,"","","","","","",0,"","","","","","","","","","","","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,1,0,undefined,undefined,undefined)
 
 
-  constructor(private organizacionService: OrganizationService,private router: Router,private activatedRoute: ActivatedRoute,private _location: Location) { 
+  constructor(private organizacionService: OrganizationService,private router: Router,private activatedRoute: ActivatedRoute,private _location: Location,public session: SessionService) { 
   
   }
   
@@ -106,8 +107,10 @@ $('#abrirsubir').modal('hide');
   }
   
   ngOnInit(): void {
-
-    if(this.activatedRoute.snapshot.paramMap.get("externa")=="1"){
+    
+    var tempo=this.session.getexterna()
+    console.log(tempo);
+    if(tempo){
       this.cambio=true;
 
     }
@@ -115,6 +118,7 @@ $('#abrirsubir').modal('hide');
       this.cambio=false;
     }
 console.log(this.cambio);
+
 
     this.idobtenido=this.activatedRoute.snapshot.paramMap.get("id");
     this.getempresa(this.idobtenido);

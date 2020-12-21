@@ -2,24 +2,86 @@
 <br><br>
 
 <div class="modal" id="success-modal-preview">
-    <div class="modal__content">
-        <div class="p-5 text-center">
-            <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-            <div class=" mt-5">Muy bien!</div>
-            <div class="mt-2">Has editado una Institución / Área!</div>
+
+    <div class="modal__content modal__content--xl p-10 text-center">
+        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Muy bien</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Has editado una Institución / Área!</div>
+
+
+
+        <div class=" text-center">
+            <br>
+            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">
+                <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
+
         </div>
-        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+
+</div>
+
+<div class="modal" id="listo">
+
+    <div class="modal__content modal__content--xl p-10 text-center">
+        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Muy bien</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Tu solicitud fue enviada!</div>
+
+
+
+        <div class=" text-center">
+            <br>
+            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">
+                <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="modal" id="abrirsubir">
+    <div class="modal__content modal__content--xl p-10 text-center">
+        <form #form="ngForm" (ngSubmit)="obtenerpermisos()">
+            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Solicitar permiso para editar información</div>
+
+
+
+            <br><br>
+            <div class="px-5 pb-8 text-center">
+                <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style=" border-radius: 15px;font-weight: bold;">
+Cancelar
+</button>
+                <button type="submit" data-dismiss="modal" class="button w-24 text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold;">Aceptar</button>
+            </div>
+        </form>
+
+
     </div>
 </div>
+
 <div class="modal" id="success-modal-preview-file">
-    <div class="modal__content">
-        <div class="p-5 text-center">
-            <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-            <div class=" mt-5">Muy bien!</div>
-            <div class="mt-2">¡Se subió el archivo de la Institución / Área!</div>
+
+
+    <div class="modal__content modal__content--xl p-10 text-center">
+        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Muy bien</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Se subió el archivo de la Institución / Área!</div>
+
+
+
+        <div class=" text-center">
+            <br>
+            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">
+                <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
+
         </div>
-        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
     </div>
+
 </div>
 
 <div class="modal" id="infodoc">
@@ -41,6 +103,7 @@
         </div>
     </div>
 </div>
+<div class="cargador" id="carg" style="display:none;"></div>
 
 
 <div class="modal" id="documentosfaltan">
@@ -849,7 +912,7 @@ Cancelar
                                 <div class="tooltip top">
                                     <span class="tiptext text-left">Estatus del documento: <a style="font-size: 20px; ">REVISIÓN</a><br> El documento ha sido entregado y será visible para su revisión y validación por parte del Comité Interdiciplinario de Servicio Social.<br> Cualquier duda contactar a la Coord. de Servicio Social. </span>
 
-                                    <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">{{d.estado}}</div>
+                                    <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">REVISION</div>
                                 </div>
                             </th>
                             <th class="w-5 border-b" style="background: rgb(250, 250, 250);" *ngIf="d.idEstado==3">
