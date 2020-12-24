@@ -98,6 +98,8 @@ this.idPeriodorecibido = <any>(this.activatedRoute.snapshot.paramMap.get("id"));
     this.proyectoModel.capacitacion = "si"
 
     this.proyectoModel.horas = 240;
+    this.proyectoModel.idUniversidad = 1;
+
   }
   show(){
 console.log("adddd");
@@ -530,8 +532,8 @@ model.idOrganizacion= Number(this.idOrganizacion);
 
     } 
     else if (model.idUniversidad == 0) {
-      this.mensajevalidacion = "Debe seleccionar un campus"
-      $('#validacion').modal('show');
+      //this.mensajevalidacion = "Debe seleccionar un campus"
+      //$('#validacion').modal('show');
       
     } else {
 console.log(model);

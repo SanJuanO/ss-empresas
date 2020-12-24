@@ -68,6 +68,9 @@ export class ProyectosVerComponent implements OnInit {
     this.proyectoService.getProyecto(id).subscribe((res: any[]) => {
 
       this.proyectoModel = <Proyecto><any>res;
+      var Fecha = new Date((this.proyectoModel.fechaInicio));
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
+      this.proyectoModel.fechaInicio = Fecha.toLocaleDateString("es-ES", options);
       console.log(this.proyectoModel);
     })
   }

@@ -30,7 +30,7 @@
 
 .tooltip.top .tiptext {
     margin-left: -455px;
-    top: -95px;
+    /*top: -95px;TODO*/
     right: 110%;
     padding: 1.55rem;
     z-index: 1;

@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   // baseUrl: "https://serviciosocial.gesdesapplication.com/api"
-baseUrl:  'https://adam.anahuac.mx/appis-serviciosocial/api'
+//baseUrl:  'https://adam.anahuac.mx/appis-serviciosocial/api'
+  baseUrl:  'https://localhost:44330/api'
+
 };
 
 /*

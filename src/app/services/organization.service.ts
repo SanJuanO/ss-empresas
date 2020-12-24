@@ -71,6 +71,10 @@ respuestapreguntas(model){
     return this.http.get(uri);
   }
   getUniversidades(){
+    const uri = `${this.api}/Universidades`;
+    return this.http.get(uri);
+  }
+  getUniversidades2(){
     const uri = `${this.api}/Universidades2`;
     return this.http.get(uri);
   }
@@ -107,7 +111,7 @@ respuestapreguntas(model){
   }
   obtenerDocumentosSubidosConRequeridos(id: string | number) {
     const uri = `${this.api}/DocumentosOrganizaciones/getDocumentoByIdOrganizacionWithRequeridos?idOrganizacion=${id}`
-    return this.http.get(uri);
+    return this.http.post(uri,null);
   }
   subirdocumentos(model){
     const uri = `${this.api}/DocumentosOrganizaciones/UploadFile`

@@ -84,9 +84,9 @@ public validar=false;
     this.obtenerdocumentosSubidosConRequeridos();
     this.obtenerSucesos();
 
-    this.externa();
-
-
+    //this.externa();
+    
+    
   }
  
   toggleArea(checked, id){
@@ -116,10 +116,13 @@ var valor= { "idRubro": id ,"activo": true};
   getempresa(id){
     this.organizacionService.getOrganizacion(id).subscribe((res: any[])=>{
       this.horasAlumno = res;
+      console.log(res['responsable']);
       this.empresaModel = <Empresa><any>res;
 
       //console.log(this.horasAlumno);
-      this.responsablemodel=res['responsable'];
+      this.responsablemodel = res['responsable'];
+      
+      this.externa();
       this.listaAreasAccion=res['listaAreasAccion'];
       this.listaRubros=res['listaRubros'];
       this.logo ="data:image/jpeg;base64,"+ res['imagenArchivo'];
@@ -140,9 +143,13 @@ var valor= { "idRubro": id ,"activo": true};
       
       console.log(this.listaAreasAccion);
       this.idRubro =  this.listaRubros.map(({ idRubro }) => idRubro);
-      this.idAreaAccion =  this.listaAreasAccion.map(({ idAreaAccion }) => idAreaAccion);
+      this.idAreaAccion = this.listaAreasAccion.map(({ idAreaAccion }) => idAreaAccion);
+      if (this.cambio) {
+        setTimeout(function () {
 
-
+          location.href = "#arriba";
+        }, 1000);
+      }
       
     })
   }
@@ -208,8 +215,8 @@ var valor= { "idRubro": id ,"activo": true};
         if(mostrar){
           $('#documentosfaltan').modal('show');
 
-        }
-
+          }
+          console.log(documentosS);
 
       });
   }
@@ -256,13 +263,13 @@ if(this.validar){
 
   }
   descargar(id){
-
+    
     let pdfWindow = window.open("")
     pdfWindow.document.write(
         "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
         encodeURI(id) + "'></iframe>"
     )
-
+    
   }
 
   uploadFile(files: FileList) {
@@ -280,7 +287,8 @@ if(this.validar){
         console.log(data);
         document.getElementById("carg").style.display = "none";
 
-        location.reload();
+        //location.reload();
+        this.obtenerdocumentosSubidosConRequeridos();
       }
     }, error => {
       console.log(error);

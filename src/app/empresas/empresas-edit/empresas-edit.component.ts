@@ -112,7 +112,6 @@ $('#abrirsubir').modal('hide');
     console.log(tempo);
     if(tempo){
       this.cambio=true;
-
     }
     else{
       this.cambio=false;
@@ -208,7 +207,11 @@ var valor= { "idAreaAccion": id ,"activo": true};
       this.horasAlumno = res;
       this.empresaModel = <Empresa><any>res;
 
-      this.responsablemodel=res['responsable'];
+      this.responsablemodel = res['responsable'];
+      console.log(this.responsablemodel.externa);
+      this.cambio = this.responsablemodel.externa;
+
+      
       console.log(this.empresaModel);
       this.listaAreasAccion=res['listaAreasAccion'];
       this.listaRubros=res['listaRubros'];

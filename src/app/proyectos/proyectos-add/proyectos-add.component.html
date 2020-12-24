@@ -216,7 +216,8 @@
                         </div>
                         <br>
                         <div class="sm:grid grid-cols-2 gap-2">
-                            <div class="relative mt-3">
+                            <!--TODO_SERGIO_OCULTO_TEMPORAL
+                              <div class="relative mt-3">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Campus:</label>
                                     <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idUniversidad" [ngModelOptions]="{standalone: true}">
@@ -224,7 +225,7 @@
                       </select>
                                 </div>
 
-                            </div>
+                            </div>-->
                             <div class="relative mt-3" style="display: none;">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Estado:</label>
@@ -233,7 +234,7 @@
                       </select>
                                 </div>
                             </div>
-                            <div class="relative mt-3">
+                            <div class="relative mt-3 col-span-12 lg:col-span-12 sm:col-span-12 xl:col-span-12">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Observaciones:</label>
                                     <textarea type="text" class="input  w-full border mt-2 " row="5" placeholder="" [(ngModel)]="proyectoModel.observaciones" [ngModelOptions]="{standalone: true}" required>
@@ -246,10 +247,9 @@
                     <br>
                     <div class="grid grid-cols-12 gap-6 mt-5">
                         <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                            <div class=" p-5">
+                            <div class="p-5 pb-1">
                                 <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
                                     Información referente al Prestador de Servicio Social (Estudiante)
-
                                 </div>
                                 <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
@@ -260,7 +260,7 @@
                     </div>
 
 
-                    <div class="mt-8 p-5 bg-light" style="font-size: 20px; background: rgb(255, 255, 255);">
+                    <div class="p-5 pt-1 bg-light" style="font-size: 20px; background: rgb(255, 255, 255);">
                         <div class="sm:grid grid-cols-2 gap-2">
 
                             <!--<div class="relative mt-3">
@@ -274,7 +274,7 @@
             </select>
           </div>
         </div>-->
-                            <div class="relative mt-3">
+                            <div class="relative">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Fecha de inicio*</label>
 
@@ -299,7 +299,7 @@
           </div>
         </div>
         -->
-                            <div class="relative mt-3">
+                            <div class="relative">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                 ¿El alumno recibe capacitación/formación por parte de la Institución?*
@@ -875,7 +875,7 @@
                     <br>
                     <div class="grid grid-cols-12 gap-6 mt-5">
                         <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                            <div class=" p-5">
+                            <div class=" p-5 pb-1">
                                 <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
                                     Objetivos de Desarrollo Sostenibles (ODS)
 
@@ -889,10 +889,10 @@
 
                     </div>
 
-                    <div class="mt-8 p-5 bg-light" style="font-size: 20px;">
+                    <div class="p-5 pt-1 bg-light" style="font-size: 20px;">
                         <div class="sm:grid grid-cols-2 gap-2">
 
-                            <div class="relative mt-2">
+                            <div class="relative">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Según la naturaleza del proyecto, ¿a cuál de los siguientes objetivos de la ONU contribuye?

@@ -86,7 +86,7 @@ this.responsablemodel.externa=this.cambio;
    this.responsablemodel.telefono= this.cookies.get("telefono");
    this.responsablemodel.correo= this.cookies.get("correo", );
    this.empresaModel.IdResponsable= Number(this.cookies.get("idresponsable"));
-   $('#superlarge-modal-size-preview').modal('show');
+    $('#superlarge-modal-size-preview').modal('show');
    this.cookies.set("mostraralumno", "1");
    this.cookies.set("mostrarproyectos", "1");
 

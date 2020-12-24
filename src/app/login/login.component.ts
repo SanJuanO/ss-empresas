@@ -77,7 +77,7 @@ if(res['resultado']==1){
   this.session.setexterna(datosvalue['externa']);
   this.session.setnombre(datosvalue['organizacion']);
 
-  this.session.setapellidos(datosvalue['nombreCompletoDirector']);
+  this.session.setapellidos(datosvalue['nombreCompletoResponsable']);
 
   console.log(datosvalue);
 
@@ -85,10 +85,9 @@ if(res['resultado']==1){
 
 
 
-var tempo=datosvalue['idOrganizacion'];
+  var tempo = datosvalue['idOrganizacion'];
+  
 console.log(tempo);
-
-
 
 if( tempo == '0'){
 
@@ -142,6 +141,7 @@ this.router.navigate(['/instituciones/add']);
     
       var tempo=id;
       console.log(tempo);
+
     if( tempo == '0'){
       this.router.navigate(['/instituciones/add']);
     

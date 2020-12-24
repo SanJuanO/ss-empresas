@@ -331,7 +331,7 @@
                                     <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="" id="web" [(ngModel)]="empresaModel.web" [ngModelOptions]="{standalone: true}" required>
                                     <div style="margin-top:3px;">
 
-                                        Pega el link la Institución ej: (https://www.anahuac.mx/)
+                                        Pega el link ej: (https://www.anahuac.mx/)
 
                                     </div>
 
@@ -346,7 +346,7 @@
 
                                     <div style="margin-top:3px;">
 
-                                        Pega el link la Institución ej: (https://www.facebook.com)
+                                        Pega el link ej: (https://www.facebook.com)
 
                                     </div>
                                 </div>
@@ -368,7 +368,7 @@
 
                                     <div style="margin-top:3px;">
 
-                                        Pega el link la Institución ej: (https://www.instagram.com)
+                                        Pega el link ej: (https://www.instagram.com)
 
                                     </div>
                                 </div>
@@ -381,7 +381,7 @@
 
                                     <div style="margin-top:3px;">
 
-                                        Pega el link la Institución ej: (https://www.youtube.com)
+                                        Pega el link ej: (https://www.youtube.com)
 
                                     </div>
                                 </div>
@@ -395,7 +395,7 @@
 
                                     <div style="margin-top:3px;">
 
-                                        Pega el link la Institución ej: (https://www.tiktok.com)
+                                        Pega el link ej: (https://www.tiktok.com)
 
                                     </div>
                                 </div>
@@ -611,20 +611,20 @@
                             <div class="relative mt-2">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Calle*</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="calle" [(ngModel)]="empresaModel.calle" [ngModelOptions]="{standalone: true}">
+                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="calle" [(ngModel)]="empresaModel.calle" [ngModelOptions]="{standalone: true}" maxlength="1900">
                                 </div>
 
                             </div>
                             <div class="relative mt-2">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Num. Ext.*</label>
-                                    <input type="text" class="input  w-full border mt-2" placeholder="" id="noExt" [(ngModel)]="empresaModel.noExt" [ngModelOptions]="{standalone: true}">
+                                    <input type="text" class="input  w-full border mt-2" placeholder="" id="noExt" [(ngModel)]="empresaModel.noExt" [ngModelOptions]="{standalone: true}" maxlength="400">
                                 </div>
                             </div>
                             <div class="relative mt-2">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Num. Int.*</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="noInt" [(ngModel)]="empresaModel.noInt" [ngModelOptions]="{standalone: true}">
+                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="noInt" [(ngModel)]="empresaModel.noInt" [ngModelOptions]="{standalone: true}" maxlength="400">
                                 </div>
                             </div>
                         </div>
@@ -670,7 +670,7 @@
 
                                                 </td>
                                                 <div *ngIf="area.id==13">
-                                                    <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}" placeholder="" disabled>
+                                                    <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}" placeholder="" maxlength="900" disabled>
                                                 </div>
 
                                             </tr>
@@ -772,7 +772,7 @@
 
                                     <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Otros.</label>
                                     <div>
-                                        <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.atiendeOtro" [ngModelOptions]="{standalone: true}" placeholder="">
+                                        <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.atiendeOtro" [ngModelOptions]="{standalone: true}" placeholder="" maxlength="900">
                                     </div>
                                 </div>
                             </div>

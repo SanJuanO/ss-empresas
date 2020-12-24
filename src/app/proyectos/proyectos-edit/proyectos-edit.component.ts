@@ -98,6 +98,8 @@ export class ProyectosEditComponent implements OnInit {
 
     console.log(this.proyectoModel);
     console.log(this.idsCarreras);
+    this.proyectoModel.idUniversidad = 1;
+
   }
   
   ngAfterViewInit() {
@@ -132,8 +134,9 @@ export class ProyectosEditComponent implements OnInit {
   obtenerCompetencias() {
     return this.proyectoService
       .getCompetencias()
-      .subscribe((competencias: ProyectosCompetencias[]) =>{ this.listaProyectosCompetencias = competencias
-      console.log(this.listaProyectosCompetencias);
+      .subscribe((competencias: ProyectosCompetencias[]) => {
+      this.proyectosCompetencias = competencias
+        console.log(this.proyectosCompetencias);
       
       }
       );
@@ -150,137 +153,137 @@ export class ProyectosEditComponent implements OnInit {
 
         if(carreras[i]['carrera'].substr(0,1)=="A"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasA.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="B"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasB.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="C"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasC.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="D"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasD.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="E"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasE.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="F"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasF.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="G"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasG.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="H"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasH.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="I"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasI.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="J"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasJ.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="K"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasK.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="L"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasL.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="M"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasM.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="N"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasN.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="Ñ"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasNN.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="O"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasO.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="P"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasP.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="Q"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasQ.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="R"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasR.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="S"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasS.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="T"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasT.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="U"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasU.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="V"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasV.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="W"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasW.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="X"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasX.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="Y"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasY.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="Z"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasZ.push(carreras[i]);
         }
       }

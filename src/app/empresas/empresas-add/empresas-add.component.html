@@ -28,10 +28,14 @@
             <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por tu registro! </div>
 
 
-            <div class=" mt-1 " style="font-size: 20px;">A continuación, completa el registro de la Institución que representas
-
-
+            <div class="mt-1" style="font-size: 20px;" *ngIf="cambio">
+              A continuación, completa el registro de la Institución que representas
             </div>
+            
+            <div class="mt-1 text-justify" style="font-size: 20px;" *ngIf="!cambio">
+              A continuación, completa el registro del área interna de la universidad que representas
+            </div>
+
             <div class=" text-center">
                 <br>
                 <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
@@ -45,13 +49,13 @@
             <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
 
             <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Perfil Actualizado</div>
-            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por registrar a la Institución! </div>
+            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;"><div *ngIf="cambio">¡Gracias por registrar a la Institución!</div><div *ngIf="!cambio">¡Gracias por registrar a tu área!</div> </div>
 
 
-            <div class=" mt-1 " style="font-size: 20px;">A continuación, completa el perfil de la Institución subiendo la documentación solicitada.
+            <div class=" mt-1 " style="font-size: 20px;">A continuación, <div *ngIf="cambio"> completa el perfil de la Institución subiendo la documentación solicitada.</div><div *ngIf="!cambio"> dirígete a Proyectos y registra tu proyecto(s)</div>
 
 
-            </div>
+</div>
             <div class=" text-center">
 
                 <br>
@@ -646,20 +650,20 @@
                             <div class="relative mt-2">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Calle*</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="calle" [(ngModel)]="empresaModel.calle" [ngModelOptions]="{standalone: true}">
+                                    <input type="text" class="input w-full border mt-2" placeholder="" id="calle" [(ngModel)]="empresaModel.calle" [ngModelOptions]="{standalone: true}" maxlength="1900">
                                 </div>
 
                             </div>
                             <div class="relative mt-2">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Num. Ext.*</label>
-                                    <input type="text" class="input  w-full border mt-2" placeholder="" id="noExt" [(ngModel)]="empresaModel.noExt" [ngModelOptions]="{standalone: true}">
+                                    <input type="text" class="input  w-full border mt-2" placeholder="" id="noExt" [(ngModel)]="empresaModel.noExt" [ngModelOptions]="{standalone: true}" maxlength="400">
                                 </div>
                             </div>
                             <div class="relative mt-2">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Num. Int.</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="noInt" [(ngModel)]="empresaModel.noInt" [ngModelOptions]="{standalone: true}">
+                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="noInt" [(ngModel)]="empresaModel.noInt" [ngModelOptions]="{standalone: true}" maxlength="400">
                                 </div>
                             </div>
                         </div>
@@ -705,7 +709,7 @@
 
                                                 </td>
                                                 <div *ngIf="area.id==13">
-                                                    <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}" placeholder="" disabled>
+                                                    <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}" placeholder="" maxlength="900" disabled>
                                                 </div>
 
                                             </tr>
@@ -814,7 +818,7 @@
 
                                     <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Otros.</label>
                                     <div>
-                                        <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.atiendeOtro" [ngModelOptions]="{standalone: true}" placeholder="">
+                                        <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.atiendeOtro" [ngModelOptions]="{standalone: true}" placeholder="" maxlength="900">
                                     </div>
                                 </div>
                             </div>
