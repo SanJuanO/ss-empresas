@@ -12,6 +12,7 @@ import { ClasificacionEmpresa } from "../../models/clasificacionempresa"
 import { EstadoEmpresa } from "../../models/estadoempresa"
 
 import { SessionService } from '../../services/session.service';
+import { environment } from "../../../environments/environment";
 
 
 import { Router,ActivatedRoute } from '@angular/router';
@@ -25,6 +26,7 @@ declare var $: any;
   styleUrls: ['./empresas-ver.component.scss']
 })
 export class EmpresasverComponent implements OnInit {
+  baseUrl = environment.baseUrl;
   public areas: AreaAccion[] = [];
   public estadoact = new estadoActualizar(0,"",0)
   public  logo="https://img.icons8.com/ios/452/company.png";
@@ -263,12 +265,13 @@ if(this.validar){
 
   }
   descargar(id){
-    
+
+    window.open(this.baseUrl + "/DocumentosOrganizaciones/GetFile?id=" + id, '_blank');
+    /*
     let pdfWindow = window.open("")
     pdfWindow.document.write(
-        "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
-        encodeURI(id) + "'></iframe>"
-    )
+        "<iframe width='100%' height='100%' src='"+this.baseUrl+"/DocumentosOrganizaciones/GetFile?id="+id+"'></iframe>"
+    )*/
     
   }
 
