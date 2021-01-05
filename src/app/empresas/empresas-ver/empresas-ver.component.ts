@@ -204,9 +204,11 @@ var valor= { "idRubro": id ,"activo": true};
         for(var i=0;i<this.DocumentosSubidos.length;i++)
         {
 
-          if(this.DocumentosSubidos[i]['archivo']!=null){
+          if(this.DocumentosSubidos[i]['estado']!=null){
+
             var Fecha1 = new Date((this.DocumentosSubidos[i]['fechaCreacion'].toString()));
             this.DocumentosSubidos[i]['fechaCreacion']=Fecha1.toLocaleDateString("es-ES", options);
+
 
           }
           if(documentosS[i]['idEstado']!=4 && this.session.getexterna()){
