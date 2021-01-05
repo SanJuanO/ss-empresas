@@ -54,7 +54,7 @@ export class ProyectosEditComponent implements OnInit {
   public listaProyectosCarrerasW = new Array<ProyectosCarreras>();
   public listaProyectosCarrerasY = new Array<ProyectosCarreras>();
   public listaProyectosCarrerasZ = new Array<ProyectosCarreras>();
-  public proyectoModel = new Proyecto("", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0,  this.listaProyectosCompetencias, this.listaProyectosCarreras);
+  public proyectoModel = new Proyecto(0,"", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, 0,  this.listaProyectosCompetencias, this.listaProyectosCarreras);
 
   public validar = false;
   public organizaciones: Empresa[] = [];

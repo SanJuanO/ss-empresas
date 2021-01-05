@@ -57,7 +57,7 @@ export class ProyectosAddComponent implements OnInit {
   public listaProyectosCarrerasY = new Array<ProyectosCarreras>();
   public listaProyectosCarrerasZ = new Array<ProyectosCarreras>();
 
-  public proyectoModel = new Proyecto("", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false,false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0,"", 1, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
+  public proyectoModel = new Proyecto(0,"", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false,false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0,"", 1, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
 public idOrganizacion="";
 public Organizacion="";
 public periodo="";
