@@ -4,9 +4,13 @@ import { AlumnoService } from '../services/alumno.service';
 import { UniversidadService } from '../services/universidad.service';
 import { CarreraService } from '../services/carrera.service';
 import { FacultadService } from '../services/facultad.service';
+import { ProyectoService } from '../services/proyecto.service';
+
 import { Universidad } from "../models/universidad";
 import { Carrera } from "../models/carrera";
 import { Facultad } from "../models/facultad";
+import { Proyecto } from "../models/proyectos";
+
 import { Alumno,AlumnoProyecto, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales,alumnohoras,alumnosactividades} from '../models/alumno';
 import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile, DocumentosSubidosRequeridos } from "../models/documentosalumnos"
 import { CookieService } from "ngx-cookie-service";
@@ -49,10 +53,13 @@ public idProyecto:string;
 public Estado:string;
 public validar=false;
 public nohayfecha:boolean=true;
-
+public plazasAutorizadas=0;
+public plazasDisponibles=0;
 
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
+  public proyectoModel = new Proyecto(0,"", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, undefined,undefined);
+
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0);
   public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", true, true, this.listaAreasUniversidadParticipadoNew, this.listaAreasUniversidadActualesNew, 0, "", "");
   public DocumentosSubidos: DocumentosSubidosRequeridos[];
@@ -64,7 +71,8 @@ public fechaincr:string;
   constructor(private route: ActivatedRoute, private organizacionService: OrganizationService,
     public cookies: CookieService,  private router: Router, private facultadService: FacultadService,
      private carreraService: CarreraService, private universidadService: UniversidadService, 
-     private alumnoService: AlumnoService, private _location: Location ,public session: SessionService) { }
+     private alumnoService: AlumnoService, private _location: Location ,public session: SessionService,
+     public proyect:ProyectoService) { }
 
 
 
@@ -92,8 +100,9 @@ public fechaincr:string;
     this.obtenerdocumentosRequeridos();
     this.obtenerdocumentosSubidosConRequeridos();
     this.horas();
+    this.obtenerproyecto();
+
     this.obtenerrespuesta();
-    this.obtenerestadoalumnos();
 
     this.obteneractividades();
   }
@@ -107,7 +116,18 @@ public fechaincr:string;
   }
   obtenerproyectoalumno() {
 
-    return this.alumnoService.getProyectoAlumno(this.idAlumno).subscribe((alumnoproyecto: AlumnoProyecto) => this.alumnoproyecto = alumnoproyecto);
+    return this.alumnoService.getProyectoAlumno(this.idAlumno).subscribe((alumnoproyecto: AlumnoProyecto) => {this.alumnoproyecto = alumnoproyecto;
+    });
+
+  }
+  obtenerproyecto() {
+
+    return this.proyect.getProyecto(this.idProyecto).subscribe((proyectoModel: Proyecto) =>{this.proyectoModel = proyectoModel;
+  
+    this.plazasDisponibles=this.proyectoModel.plazasDisponibles;
+    this.obtenerestadoalumnos();
+
+  });
 
   }
 
@@ -262,10 +282,16 @@ actualizarestado(){
             if(this.idEstado==this.estadosalumnos[i]['id']){
               this.Estado=this.estadosalumnos[i]['estado'];
             }
-            if(i<3 || i==6){
+
+            if(this.plazasDisponibles==0 ){
+
+if(i==6 ){
+              this.estadosalumnoslimitado.push(this.estadosalumnos[6]);}
+            }else{
+            if(i<3 || i==6 ){
               this.estadosalumnoslimitado.push(this.estadosalumnos[i]);
   
-  
+            }
           }
         }
         });

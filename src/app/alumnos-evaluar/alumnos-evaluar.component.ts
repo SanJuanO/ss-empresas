@@ -16,6 +16,7 @@ import { OrganizationService } from '../services/organization.service';
 
 import {Location} from '@angular/common';
 
+import { CookieService } from "ngx-cookie-service";
 
 import { Router,ActivatedRoute } from '@angular/router';
 import { Binary } from '@angular/compiler';
@@ -67,12 +68,12 @@ public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[]
   public respuestas13: respuesta = new respuesta(1,1,"","");
   public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", true,true, this.listaAreasUniversidadParticipadoNew, this.listaAreasUniversidadActualesNew,0,"","");
 
-  constructor(private org: OrganizationService,private route: ActivatedRoute, private router: Router, private facultadService: FacultadService, private carreraService: CarreraService, private universidadService: UniversidadService, private alumnoService: AlumnoService, private _location: Location) { }
+  constructor(private org: OrganizationService,private route: ActivatedRoute, public cookies: CookieService,   private router: Router, private facultadService: FacultadService, private carreraService: CarreraService, private universidadService: UniversidadService, private alumnoService: AlumnoService, private _location: Location) { }
 
 
 
   ngOnInit(): void {
-    this.idAlumno = this.route.snapshot.paramMap.get("id");
+    this.idAlumno = this.cookies.get("idalumno");
     this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) => this.alumno = alumno);
     this.obtenerUniversidades();
     this.obtenerCarreras();

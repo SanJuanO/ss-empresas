@@ -2,6 +2,7 @@
 export class Proyecto {
 
   constructor(
+    public plazasDisponibles:number,
     public proyecto: string,
     public descripcion: string,
     public objetivo: string,

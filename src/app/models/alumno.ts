@@ -51,6 +51,7 @@ public fechaCreacion: string;
 }
 export class alumnosasignados {
   public horasRegistradas?: number;
+  public plazasAutorizadas:number;
 
   public idAlumno:number;
   public noHoras: number;
