@@ -625,12 +625,12 @@ console.log(this.responsablemodel);
 
 
   for(var v=0;v<this.cordinaciones.length;v++){
-    if(model.idVicerrectoria==this. cordinaciones[v]['id']){
+    if(model.idCordinacion==this. cordinaciones[v]['id']){
       cor=this.cordinaciones[v]['cordinacion'];
     }
 
   }
-  model.organizacion=cor;
+  model.organizacion =  cor;
   model.nombreComun="Interna";
 
 console.log(model);

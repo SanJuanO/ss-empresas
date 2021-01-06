@@ -8,10 +8,7 @@
     <h2 class="text-lg font-medium mr-auto">
 Evaluación
     </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <a [routerLink]="['/alumnosver', alumno.id]" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
-      <button type="submit"  class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
-    </div>
+
   </div>
 
     <div class="grid grid-cols-12 gap-6">
@@ -70,7 +67,7 @@ Evaluación
             </div>
             <div class="grid grid-cols-12 gap-6 mt-5">
 
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class="report-box zoom-in">
                   <div class="box p-5">
                     <div class="text-base text-gray-600 mt-1">
@@ -84,9 +81,9 @@ Evaluación
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class="report-box zoom-in">
                   <div class="box p-5">
                     <div class="text-base text-gray-600 mt-1">Facultad</div>
@@ -99,7 +96,7 @@ Evaluación
                   </div>
                 </div>
               </div>
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                 <div class="report-box zoom-in">
                   <div class="box p-5">
                     <div class="text-base text-gray-600 mt-1">Carrera</div>
@@ -116,7 +113,7 @@ Evaluación
 
 
 
-
+<!-- 
 
             <div class="grid grid-cols-12 gap-6 mt-5">
 
@@ -146,7 +143,7 @@ Evaluación
 
 
 
-            </div>
+            </div> -->
 
 
 
@@ -166,7 +163,7 @@ Evaluación
               </div>
   
   
-              <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+              <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0"  *ngIf="version==0">
                 <div class="box p-5">
   
                   <table class="table table-report sm:mt-2">
@@ -397,17 +394,125 @@ Evaluación
                 <br>
                 <br>
     
-    
+                <div *ngIf="version!=0">
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      {{pregunta1}}              </h2>
+                  </div>
+                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                    <div class="box p-5">
+            
+                      <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="uno" >
+                    
+                      </div>
+            
+                    </div>
+            
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      {{pregunta2}}                 </h2>
+                  </div>
+                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                    <div class="box p-5">
+            
+                      <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="dos" >
+                    
+                      </div>
+            
+                    </div>
+            
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      {{pregunta3}}             </h2>
+                  </div>
+                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                    <div class="box p-5">
+            
+                      <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="tres" >
+                    
+                      </div>
+            
+                    </div>
+            
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      {{pregunta4}}            </h2>
+                  </div>
+                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                    <div class="box p-5">
+            
+                      <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="cuatro" >
+                    
+                      </div>
+            
+                    </div>
+            
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      {{pregunta5}}               </h2>
+                  </div>
+                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                    <div class="box p-5">
+            
+                      <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="cinco" >
+                    
+                      </div>
+            
+                    </div>
+            
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      {{pregunta6}}               </h2>
+                  </div>
+                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                    <div class="box p-5">
+            
+                      <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="seis" >
+                    
+                      </div>
+            
+                    </div>
+            
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      {{pregunta7}}               </h2>
+                  </div>
+                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                    <div class="box p-5">
+            
+                      <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="siete" >
+                    
+                      </div>
+            
+                    </div>
+            
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      {{pregunta8}}              </h2>
+                  </div>
+                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                    <div class="box p-5">
+            
+                      <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="ocho" >
+                    
+                      </div>
+            
+                    </div>
+                  
+            
+                </div>
+                 
+
                 <div class="intro-y flex items-center h-10">
                   <h2 class="text-lg font-medium truncate mr-5">
-                    9.- ¿Cuál fue tu experiencia con el alumno durante su servicio social en tu  Institución / Área?                  </h2>
+                    {{pregunta9}}             </h2>
                 </div>
     
     
                 <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
                   <div class="box p-5">
     
-                    <input type="text" class="input w-full border mt-2" placeholder="" requerid id="nueve" >
+                    <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="nueve" >
                   
                     </div>
 
@@ -418,8 +523,7 @@ Evaluación
                   <br>
                   <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">
-                      10.- ¿Te gustaría seguir recibiendo alumnos de la Universidad Anáhuac para la prestación del servicio social en tu  Institución / Área?
-                    </h2>
+                      {{pregunta10}}                     </h2>
                   </div>
       
       
@@ -427,7 +531,7 @@ Evaluación
                     <div class="box p-5">
       
                       <div>
-                        <input type="text" class="input w-full border mt-2" placeholder="" requerid id="diez" >
+                        <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="diez" >
 
                      
                     </div>                    
@@ -441,7 +545,8 @@ Evaluación
                     <div class="intro-y flex items-center h-10">
                       <h2 class="text-lg font-medium truncate mr-5">
                    
-11.- ¿Recomendarías el Programa de Servicio Social de la Universidad Anáhuac a otras  Institución / Área?            </h2>
+                        {{pregunta11}}
+</h2>
                     </div>
         
         
@@ -449,7 +554,7 @@ Evaluación
                       <div class="box p-5">
         
                         <div>
-                          <input type="text" class="input w-full border mt-2" placeholder="" requerid id="once" >
+                          <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="once" >
 
                        
                       </div>                         
@@ -462,14 +567,15 @@ Evaluación
                       <br>
                       <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">
-                          12.- Comentarios generales:              </h2>
+                          {{pregunta12}}
+                                                     </h2>
                       </div>
           
           
                       <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
                         <div class="box p-5">
           
-                          <input type="text" class="input w-full border mt-2" placeholder="" requerid id="doce" >
+                          <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="doce" >
                         
                           </div>
       
@@ -480,14 +586,15 @@ Evaluación
                         <br>
                         <div class="intro-y flex items-center h-10">
                           <h2 class="text-lg font-medium truncate mr-5">
-                            13.- ¿Cuál fue tu experiencia con el alumno durante su servicio social en tu  Institución / Área?                  </h2>
+                            {{pregunta13}}
+                                                                    </h2>
                         </div>
             
             
                         <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
                           <div class="box p-5">
             
-                            <input type="text" class="input w-full border mt-2" placeholder="" requerid id="trece" >
+                            <input type="text" class="input w-full border mt-2" placeholder="" requerid [attr.disabled]="version!=0 ? '' : null" id="trece" >
                           
                             </div>
         
@@ -497,10 +604,21 @@ Evaluación
                           <br>
                           <br>
 
+
             </div>
         </div>
     
 
     </div>
+    <br>  <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+      <h2 class="text-lg font-medium mr-auto">
+  
+      </h2>
+      <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <a [routerLink]="['/alumnosver', alumno.id]" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+        <button type="submit"  class="button text-white  shadow-md mr-2" style="background-color: #FF8800;" >Guardar</button>
+      </div>
+    </div>
+    <br>
   </form>
 </div>

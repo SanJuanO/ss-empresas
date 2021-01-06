@@ -30,8 +30,11 @@
 
             <a class=" text-success" style="color: #9FC720;">       {{Estado}}
             </a> </div>
-        <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarestado()" *ngIf="idEstado<4" class="button text-center text-white  ml-5">Cambiar estado del alumno</button>
-        <div class="">
+        <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarestado()" *ngIf="idEstado<4" class="button text-center text-white  ml-5">Cambiar Estado del Alumno</button>
+        <br>
+        <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarfecha()" *ngIf="fechaincr==null" class="button text-center text-white  ml-5">Confirmar Fecha de Inicio </button>
+  
+        <div class="" *ngIf="fechaincr!=null">
             <a class="text-center" style="color: #6B3F23;">  Fecha de ingreso : </a>
 
 
@@ -161,9 +164,10 @@
     <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
         <div class=" p-5">
 
-            <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                <a class="button text-white bg-theme-9 shadow-md mr-2" style="border-radius: 15px;">Horas cursadas: {{horastotales}}</a>
+            <div class="">
+                <a class="button text-white bg-theme-9 shadow-md mr-2" style="border-radius: 15px; cursor:default">Horas Acumuladas: {{horastotales}}</a>
 
+                <a class="button text-white bg-theme-1 shadow-md mr-2" style="border-radius: 15px; cursor:default">Horas a cumplir: {{noHoras}}</a>
 
                 <a align="right" (click)="abrirmodalhoras()" style=" background-color:#FF8800;border-radius: 15px;" class="button inline-block  text-white">Agregar horas</a> </div>
 
@@ -184,9 +188,9 @@
                                     <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
                                     <div class="text-base mt-5"> Agregar Horas</div>
 
-                                    <input type="number" class="input  w-full border mt-2 " id="nohoras" placeholder="Horas que se agregaran al alumno" required>
+                                    <input type="number" max="80" maxlength="80" class="input  w-full border mt-2 " id="nohoras" placeholder="Horas que se agregaran al alumno" required>
 
-                                    <div class="text-base mt-5" style="display: none;color: red;" id="advertencia"> Advertencia estas por agregarle horas al alumno <br> ¿Estas seguro?</div>
+                                    <div class="text-base mt-5" style="display: none;color: red;" id="advertencia"> {{mensajeh}}</div>
 
                                 </div>
 
@@ -244,7 +248,7 @@
         <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
             <div class=" p-5">
                 <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold;">
-                    Reportes
+                    Seguimiento de Reportes Mensuales
 
 
                 </div>
@@ -260,19 +264,25 @@
 
             <thead>
                 <tr>
-
-                    <th class="whitespace-no-wrap">ACTIVIDADES</th>
-                    <th class="whitespace-no-wrap">FECHA</th>
-                    <th class="whitespace-no-wrap">VALIDADO</th>
-                    <th class="whitespace-no-wrap">Detalles</th>
+              
 
 
                 </tr>
             </thead>
             <tbody>
                 <tr class="intro-x" *ngFor="let h of alumnosactividades">
-                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap"> {{h.actividad.substring(0,30)}}...</th>
-                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap"> {{h.fechaCreacion}}</th>
+                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap"> {{h.titulo }}</th>
+                    <!-- <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap"> {{h.actividad }}</th> -->
+                    <th style="background: rgb(250, 250, 250);">
+                        <div class="text-center" style="color: #E60505; ">
+                            <div style="font-size: 14px; color: black;  font-weight: bold;">Fecha</div>
+                            {{h.fechaCreacion}}
+                        </div>
+                    
+                    </th>
+
+
+             
 
                     <th style="background: rgb(250, 250, 250);" class="w-5 whitespace-no-wrap " *ngIf="h.validaEmpresa==true">
                         <div style="margin-right: auto; border-radius: 15px;  font-size:15px; cursor: default;" class="button text-white bg-theme-9 mr-2">VALIDADO</div>
@@ -295,18 +305,29 @@
                                 <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
                                 <div class="text-base mt-5"> Actividades:</div>
                                 <br>
-                                <textarea rows="10" cols="50" disabled>
-
-                                            {{h.actividad}}
-                                        </textarea>
+                                <textarea rows="10" cols="50" disabled style="text-align: justify;">{{h.actividad}}</textarea>
                                 <br>
+                                <div *ngIf="h.archivo!=null && h.archivo!=''">
+                                  </div>
+                                  <div *ngIf="h.archivo!=null && h.archivo!=''">
+                                    <div >
+                                      <div class="text-base text-gray-600 mt-5">
+                                        
+                                        <a href="javascript:;" (click)="descargarCartaEnded(h.archivo)" class="button inline-block bg-theme-12 text-white">Archivo Adjunto</a>
+                    
+                                      </div>
+                                    </div>
+                                  </div>
+
                                 <label class="text-center " *ngIf="h.validaEmpresa">Validado</label>
 
                             </div>
 
                             <div class="px-5 pb-8 text-center">
                                 <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" style="background-color:#FF8800" class="button text-white border  mr-1" *ngIf="h.validaEmpresa">Aceptar</button>
-                                    <button (click)="cambiarestado(h.id)" data-dismiss="modal" style="background-color:#FF8800" class="button text-white" *ngIf="h.validaEmpresa==false">Validar</button> </div>
+                                    <button (click)="cambiarestado(h.id)" data-dismiss="modal" style="background-color:#FF8800" class="button text-white" *ngIf="h.validaEmpresa==false">Validar</button> 
+                                    <button data-dismiss="modal"  class="button text-white bg-theme-1 ml-4" >Cancelar</button> 
+                                </div>
 
                             </div>
 
@@ -348,13 +369,11 @@
 
 
     <div class="intro-y overflow-auto lg:overflow-visible mt-5 sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
-        <table class="table table-report sm:mt-2" *ngIf="respuestas!=''">
+        <table class="table table-report sm:mt-2" >
             <thead>
                 <tr>
 
-                    <th class="whitespace-no-wrap">Reporte</th>
-                    <th class="whitespace-no-wrap">Fecha registro</th>
-                    <th class="whitespace-no-wrap">Realizado</th>
+             
 
 
                 </tr>
@@ -362,18 +381,27 @@
 
             </thead>
             <tbody>
-                <tr class="intro-x">
+                <tr class="intro-x" *ngFor="let version of versiona;  let i=index"  >
 
-                    <td style="background: rgb(250, 250, 250);">
-                        <div class="ext-base text-xs whitespace-no-wrap">Entregado</div>
-                    </td>
-                    <td style="background: rgb(250, 250, 250);">
-                        <div class="ext-base text-xs whitespace-no-wrap"> {{respuestas}} </div>
-                    </td>
-                    <td style="background: rgb(250, 250, 250);">
-                        <div class="ext-base text-xs whitespace-no-wrap"> SI </div>
+                 
+                    <td style="background: rgb(250, 250, 250);" *ngIf="i==0">
+                        <div class="ext-base text-xs whitespace-no-wrap" > Reporte de evaluación intermedio  </div>
                     </td>
 
+                    <td style="background: rgb(250, 250, 250);" *ngIf="i==1">
+                        <div class="ext-base text-xs whitespace-no-wrap" > Reporte de evaluación Final  </div>
+                    </td>
+            
+                    <td style="background: rgb(250, 250, 250);" class="w-15" *ngIf="i==0">
+                        <a (click)="mostrarreporte(1)">
+                            <div style="margin-right: auto; border-radius: 15px;  font-size:15px;background-color:#FF8800" class="button text-white  mr-2"> Ver detalle</div>
+                        </a>
+                                        </td>
+                    <td style="background: rgb(250, 250, 250);" class="w-15" *ngIf="i==1">
+                        <a (click)="mostrarreporte(2)">
+                            <div style="margin-right: auto; border-radius: 15px;  font-size:15px;background-color:#FF8800" class="button text-white  mr-2"> Ver detalle</div>
+                        </a>
+                                        </td>
 
                 </tr>
 
@@ -390,8 +418,9 @@
 
         <br>
 
-        <button [routerLink]="['/alumnosevaluar', alumno.id]" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="respuestas==''">Evaluar alumno</button>
+        <button [routerLink]="['/alumnosevaluar', alumno.id]" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras/2) && versiona.length==0">Evaluar alumno</button>
 
+        <button [routerLink]="['/alumnosevaluar', alumno.id]" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras) && versiona.length==1">Evaluar alumno</button>
 
     </div>
     <br>

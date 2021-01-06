@@ -10,7 +10,7 @@ import { Facultad } from "../models/facultad";
 import { Alumno, AreasVidaUniversitaria, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales,AlumnoProyecto } from '../models/alumno';
 import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile } from "../models/documentosalumnos";
 
-import { respuesta } from "../models/alumno";
+import { respuesta,Preguntas } from "../models/alumno";
 import { OrganizationService } from '../services/organization.service';
 
 
@@ -50,40 +50,94 @@ public listaAreasUniversidadParticipado: AlumnosAreasVidaUniversitariaParticipad
 public listaAreasUniversidadActuales: AlumnosAreasVidaUniversitariaActuales[] = [];
 public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
 public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
-
+public idp=0;
+public version=0;
   public idAlumno: string;
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0);
-  public respuestas: respuesta = new respuesta(1,1,"","");
-  public respuestas2: respuesta = new respuesta(1,1,"","");
-  public respuestas3: respuesta = new respuesta(1,1,"","");
-  public respuestas4: respuesta = new respuesta(1,1,"","");
-  public respuestas5: respuesta = new respuesta(1,1,"","");
-  public respuestas6: respuesta = new respuesta(1,1,"","");
-  public respuestas7: respuesta = new respuesta(1,1,"","");
-  public respuestas8: respuesta = new respuesta(1,1,"","");
-  public respuestas9: respuesta = new respuesta(1,1,"","");
-  public respuestas10: respuesta = new respuesta(1,1,"","");
-  public respuestas11: respuesta = new respuesta(1,1,"","");
-  public respuestas12: respuesta = new respuesta(1,1,"","");
-  public respuestas13: respuesta = new respuesta(1,1,"","");
-  public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", true,true, this.listaAreasUniversidadParticipadoNew, this.listaAreasUniversidadActualesNew,0,"","");
+  public preguntasevaluacion:Preguntas=new Preguntas();
+public pregunta1="";
+public pregunta2="";
+public pregunta3="";
+public pregunta4="";
+public pregunta5="";
+public pregunta6="";
+public pregunta7="";
+public pregunta8="";
+public pregunta9="";
+public pregunta10="";
+public pregunta11="";
+public pregunta12="";
+public pregunta13="";
 
+
+
+  public respuestas: respuesta = new respuesta(1,1,"","",0);
+  public respuestas2: respuesta = new respuesta(1,1,"","",0);
+  public respuestas3: respuesta = new respuesta(1,1,"","",0);
+  public respuestas4: respuesta = new respuesta(1,1,"","",0);
+  public respuestas5: respuesta = new respuesta(1,1,"","",0);
+  public respuestas6: respuesta = new respuesta(1,1,"","",0);
+  public respuestas7: respuesta = new respuesta(1,1,"","",0);
+  public respuestas8: respuesta = new respuesta(1,1,"","",0);
+  public respuestas9: respuesta = new respuesta(1,1,"","",0);
+  public respuestas10: respuesta = new respuesta(1,1,"","",0);
+  public respuestas11: respuesta = new respuesta(1,1,"","",0);
+  public respuestas12: respuesta = new respuesta(1,1,"","",0);
+  public respuestas13: respuesta = new respuesta(1,1,"","",0);
+  public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", true,true, this.listaAreasUniversidadParticipadoNew, this.listaAreasUniversidadActualesNew,0,"","");
+public ocultar="";
   constructor(private org: OrganizationService,private route: ActivatedRoute, public cookies: CookieService,   private router: Router, private facultadService: FacultadService, private carreraService: CarreraService, private universidadService: UniversidadService, private alumnoService: AlumnoService, private _location: Location) { }
 
 
 
   ngOnInit(): void {
     this.idAlumno = this.cookies.get("idalumno");
-    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) => this.alumno = alumno);
+    this.version =Number(this.cookies.get("version"));
+    this.idp =Number(this.cookies.get("idasignado"));
+    console.log(this.idp);
+    console.log(this.version);
+    this.obtenerpreguntas();
+
+    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) => {this.alumno = alumno;
+    console.log(this.alumno);
+
+    });
     this.obtenerUniversidades();
     this.obtenerCarreras();
     this.obtenerFacultades();
     this.obtenerproyectoalumno();
     this.obtenerdocumentosRequeridos();
-    console.log(this.alumno);
+
+
+    if(this.version!=0){
+      this.obtenerencuesta();
+this.ocultar="disabled";
+    }
+   
     this.onchage();
   }
+  obtenerpreguntas() {
 
+    return this.alumnoService.getpreguntas().subscribe((res:any) =>{ this.preguntasevaluacion = res;
+    console.log(this.preguntasevaluacion);
+      this.pregunta1=res[0]['pregunta'];
+      this.pregunta2=res[1]['pregunta'];
+      this.pregunta3=res[2]['pregunta'];
+      this.pregunta4=res[3]['pregunta'];
+      this.pregunta5=res[4]['pregunta'];
+      this.pregunta6=res[5]['pregunta'];
+      this.pregunta7=res[6]['pregunta'];
+      this.pregunta8=res[7]['pregunta'];
+      this.pregunta9=res[8]['pregunta'];
+      this.pregunta10=res[9]['pregunta'];
+      this.pregunta11=res[10]['pregunta'];
+      this.pregunta12=res[11]['pregunta'];
+      this.pregunta13=res[12]['pregunta'];
+
+    
+    });
+
+  }
   obtenerUniversidades() {
 
     return this.universidadService
@@ -96,7 +150,84 @@ public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[]
     return this.alumnoService.getProyectoAlumno(this.idAlumno).subscribe((alumnoproyecto: AlumnoProyecto) => this.alumnoproyecto = alumnoproyecto);
 
   }
+  obtenerencuesta() {
 
+    return this.alumnoService.getencuesta(this.idp,this.version).subscribe((res:any) => {
+    console.log(res);  
+  for(var i=0;i<res.length;i++){
+    if(i==0){
+      $("#uno").val(res[i]['respuesta']);
+ 
+ 
+     }
+    if(i==1){
+      $("#dos").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==2){
+      $("#tres").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==3){
+      $("#cuatro").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==4){
+      $("#cinco").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==5){
+      $("#seis").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==6){
+      $("#siete").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==7){
+      $("#ocho").val(res[i]['respuesta']);
+ 
+ 
+     }
+
+    if(i==8){
+     $("#nueve").val(res[i]['respuesta']);
+
+
+    }
+    if(i==9){
+      $("#diez").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==10){
+      $("#once").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==11){
+      $("#doce").val(res[i]['respuesta']);
+ 
+ 
+     }
+     if(i==12){
+      $("#trece").val(res[i]['respuesta']);
+ 
+ 
+     }
+    
+  }
+ 
+    
+    });
+
+  }
   obtenerCarreras() {
 
     return this.carreraService
@@ -219,66 +350,79 @@ crearform(){
 
 
   model1.idPregunta=1;
+  model1.idAlumnoProyectoAsignado=this.idp;
   model1.idAlumno=Number(this.idAlumno);
   model1.respuesta=this.uno;
   model1.pregunta="1.- El alumno mostro compromiso en tiempo y forma con las actividades y responsabilidades encomendadas.";
 
   model2.idPregunta=2;
+  model2.idAlumnoProyectoAsignado=this.idp;
   model2.idAlumno=Number(this.idAlumno);
   model2.respuesta=this.dos;
   model2.pregunta="2.- El alumno estableció relaciones interpersonales que favorecieron el trabajo en equipo y el desarrollo de su liderazgo de servicio, de una forma empática y respetuosa en diferentes ambientes sociales y culturales, comprometiéndose en el desarrollo social sustentable y eficiente de su entorno.";
 
   model3.idPregunta=3;
+  model3.idAlumnoProyectoAsignado=this.idp;
   model3.idAlumno=Number(this.idAlumno);
   model3.respuesta=this.tres;
   model3.pregunta="3.- El alumno mostro habilidad para hacer frente al cambio y buscar alternativas de acción.";
 
   model4.idPregunta=4;
+  model4.idAlumnoProyectoAsignado=this.idp;
   model4.idAlumno=Number(this.idAlumno);
   model4.respuesta=this.cuatro;
   model4.pregunta="4.- El alumno resolvió de forma satisfactoria las actividades desarrolladas, aun ante circunstancias totalmente adversas.";
 
   model5.idPregunta=5;
+  model5.idAlumnoProyectoAsignado=this.idp;
   model5.idAlumno=Number(this.idAlumno);
   model5.respuesta=this.cinco;
   model5.pregunta="5.- El alumno mostro interés y entusiasmo en el trabajo, reaccionó constructivamente a la retroalimentación y mantuvo una actitud positiva.";
 
   model6.idPregunta=6;
+  model6.idAlumnoProyectoAsignado=this.idp;
   model6.idAlumno=Number(this.idAlumno);
   model6.respuesta=this.seis;
   model6.pregunta="6.- El alumno asistió de manera regular y puntual a sus labores.";
 
   model7.idPregunta=7;
+  model7.idAlumnoProyectoAsignado=this.idp;
   model7.idAlumno=Number(this.idAlumno);
   model7.respuesta=this.siete;
   model7.pregunta="7.- El alumno mostro capacidad para generar nuevas ideas.";
 
   model8.idPregunta=8;
+  model8.idAlumnoProyectoAsignado=this.idp;
   model8.idAlumno=Number(this.idAlumno);
   model8.respuesta=this.ocho;
   model8.pregunta="8.- El alumno mostro apego en actividades de interés social.";
 
   model9.idPregunta=9;
+  model9.idAlumnoProyectoAsignado=this.idp;
   model9.idAlumno=Number(this.idAlumno);
   model9.respuesta=$('#nueve').val();
   model9.pregunta="9.- ¿Cuál fue tu experiencia con el alumno durante su servicio social en tu Institución";
 
   model10.idPregunta=10;
+  model10.idAlumnoProyectoAsignado=this.idp;
   model10.idAlumno=Number(this.idAlumno);
   model10.respuesta=$('#diez').val();
   model10.pregunta="10.- ¿Te gustaría seguir recibiendo alumnos de la Universidad Anáhuac para la prestación del servicio social en tu Institución?";
 
   model11.idPregunta=11;
+  model11.idAlumnoProyectoAsignado=this.idp;
   model11.idAlumno=Number(this.idAlumno);
   model11.respuesta=$('#once').val();
   model11.pregunta="11.- ¿Recomendarías el Programa de Servicio Social de la Universidad Anáhuac a otras Instituciones? ";
 
   model12.idPregunta=12;
+  model12.idAlumnoProyectoAsignado=this.idp;
   model12.idAlumno=Number(this.idAlumno);
   model12.respuesta=$('#doce').val();
   model12.pregunta="12.- Comentarios generales";
 
   model13.idPregunta=13;
+  model13.idAlumnoProyectoAsignado=this.idp;
   model13.idAlumno=Number(this.idAlumno);
   model13.respuesta=$('#trece').val();
   model13.pregunta="13.- ¿Cuál fue tu experiencia con el alumno durante su servicio social en tu Institución?  ";

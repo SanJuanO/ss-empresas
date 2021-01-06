@@ -8,18 +8,29 @@ export class AlumnoProyecto {
         public idProyecto: number,
         public idAlumno: number,
         public id: number,
-      
-        
     ) { }
 
 }
+
+
+export class Preguntas {
+  public fechaCreacion:string;
+  public pregunta: string;
+  public id: number
+  constructor(
+
+  ) { }
+
+}
+
 export class respuesta {
     constructor(
         public idAlumno:number,
         public idPregunta: number,
         public pregunta: string,
         public respuesta: string,
-      
+        public idAlumnoProyectoAsignado: number
+
         
     ) { }
 
@@ -29,6 +40,11 @@ export class alumnosactividades {
 public actividad:string;
   public validaEmpresa: boolean;
 public fechaCreacion: string;
+public archivo: string;
+public ruta: string;
+public titulo: string;
+
+
   constructor(
 
       

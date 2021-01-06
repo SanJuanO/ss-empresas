@@ -5,3 +5,11 @@ export class Facultad {
     ) { }
 
 }
+
+export class Version {
+    public version: string;
+    constructor(
+       
+    ) { }
+
+}

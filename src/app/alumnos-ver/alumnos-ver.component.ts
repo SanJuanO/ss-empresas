@@ -33,7 +33,8 @@ declare var $: any;
 })
 export class AlumnosverComponent implements OnInit {
   activo = true;
-  
+  public mensajeh="Advertencia estas por agregarle horas al alumno ¿Estas seguro?";
+
   public alumnosactividades: alumnosactividades[] = [];
   public estadosalumnos: Estadosalumnos[] = [];
   public estadoalumnocambio: Estadosalumnoscambio = new Estadosalumnoscambio();
@@ -55,6 +56,7 @@ public validar=false;
 public nohayfecha:boolean=true;
 public plazasAutorizadas=0;
 public plazasDisponibles=0;
+public versiona = new Array(); 
 
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
@@ -66,6 +68,8 @@ public plazasDisponibles=0;
   public idDocumento: string = "";
   public fileToUpload: File = null;
   public horastotales: number = 0;
+  public noHoras: number = 0;
+
   public actividades: number = 0;
 public fechaincr:string;
   constructor(private route: ActivatedRoute, private organizacionService: OrganizationService,
@@ -78,21 +82,13 @@ public fechaincr:string;
 
   ngOnInit(): void {
     this.idProyecto=this.cookies.get("idProyectoa");
-    var fe = this.cookies.get("fechaInicioInstitucion");
-    console.log(fe);
+    this.cookies.set("version","0");
 
-    if(fe.length>5){
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    console.log(fe);
-
-    var Fecha = new Date((fe.toString()));
-    this.fechaincr=Fecha.toLocaleDateString("es-ES", options);
-    this.nohayfecha=false;
-    }
     this.idasignado=this.cookies.get("idasignado");
     this.idEstado =Number(this.cookies.get("idEstado"));
     this.idAlumno = this.cookies.get("idalumno");
-    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) =>{ this.alumno = alumno;});
+    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) =>{ this.alumno = alumno;
+    });
     this.obtenerUniversidades();
     this.obtenerCarreras();
     this.obtenerFacultades();
@@ -117,6 +113,18 @@ public fechaincr:string;
   obtenerproyectoalumno() {
 
     return this.alumnoService.getProyectoAlumno(this.idAlumno).subscribe((alumnoproyecto: AlumnoProyecto) => {this.alumnoproyecto = alumnoproyecto;
+      console.log(this.alumnoproyecto);
+
+this.noHoras=this.alumnoproyecto['noHoras'];
+console.log(this.noHoras);
+var fe =this.alumnoproyecto['fechaInicioInstitucion'];
+if(fe!=null){
+var options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+var Fecha = new Date((fe.toString()));
+this.fechaincr=Fecha.toLocaleDateString("es-ES", options);
+this.nohayfecha=false;
+}
     });
 
   }
@@ -195,8 +203,25 @@ this.validar==false;
   }
   //TODO SERGIO
   obtenerrespuesta() {
-
     this.alumnoService.getrespuesta(this.idAlumno).subscribe((res: any) => {
+      console.log(res);
+
+      for(var i=0;i<res.length;i++){
+
+        var version=res[i]['version'];
+        if(i!=0){
+        if(!this.versiona.includes(version)){
+          this.versiona.push(version);
+
+        }
+      }else{
+        this.versiona.push(version);
+
+
+      }
+
+      }
+      console.log(this.versiona);
     });
   }
 
@@ -207,13 +232,28 @@ this.validar==false;
   }
 
   reportedehoras() {
+     this.mensajeh="Advertencia estas por agregarle horas al alumno ¿Estas seguro?";
+
 document.getElementById("advertencia").style.display = "block";
 if(this.validar){
-var nohoras=$('#nohoras').val();
-    this.alumnoService.agregarhoras(this.idasignado,nohoras).subscribe((res: any) => {
-location.reload();
+  document.getElementById("advertencia").style.display = "display";
 
-    });
+var nohoras=$('#nohoras').val();
+console.log(nohoras);
+if(Number(nohoras)>80){
+  
+  document.getElementById("advertencia").style.display = "block";
+   this.mensajeh="Máximo 80 horas";
+
+}else{
+     this.alumnoService.agregarhoras(this.idasignado,nohoras).subscribe((res: any) => {
+ location.reload();
+
+     });
+
+}
+
+
   }
   this.validar=true;
   }
@@ -244,6 +284,8 @@ obteneractividades() {
 
   this.alumnoService.activadades(this.idasignado).subscribe((res: any) => {
     this.alumnosactividades=res;
+    console.log(res);
+
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
     for(var i=0;i<this.alumnosactividades.length;i++){
@@ -265,7 +307,13 @@ mostraractualizarestado(id){
       $('#act-'+idact).modal('show');
   
 }
+mostrarreporte(id){
+this.cookies.set("version",id);
 
+ this.router.navigate(['/alumnosevaluar', this.idAlumno]);
+
+  
+}
 actualizarestado(){
 
       $('#mostareditaralumno').modal('show');
@@ -324,13 +372,11 @@ this.estadoalumnocambio.observacions=$('#observacionescambio').val();
 
    this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe((res) => {
 
-     $('#success').modal('show');
-     location.reload();
+    location.reload();
 
-//fincambio
 
-  // }, error => {
-  //   alert(error.error)
+   }, error => {
+  alert(error.error)
   })
 
 }
@@ -349,10 +395,21 @@ cambiarfecha(){
 
 
    this.organizacionService.actualizarfechaalumno(fecharegistro,this.idAlumno).subscribe((res) => {
+    location.reload();
 
   })
 
 }
+
+descargarCartaEnded(archivo) {
+
+  let pdfWindow = window.open("")
+  pdfWindow.document.write(
+    "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
+    encodeURI(archivo) + "'></iframe>"
+  )
+}
+
 
 
 }

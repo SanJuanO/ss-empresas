@@ -211,7 +211,7 @@ var valor= { "idRubro": id ,"activo": true};
 
 
           }
-          if(documentosS[i]['idEstado']!=4 && this.session.getexterna()){
+          if(documentosS[i]['ruta']==null && this.session.getexterna()){
             this.documentosfaltan=false;
             mostrar=true;
           }
