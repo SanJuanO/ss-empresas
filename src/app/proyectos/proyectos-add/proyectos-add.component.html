@@ -14,7 +14,7 @@
             <div class=" text-center">
                 <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
                 "> <br>
-                    <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
+                    <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
 
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class=" text-center">
                 <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
                 "> <br>
-                    <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
+                    <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
 
             </div>
         </div>
@@ -39,6 +39,7 @@
     </div>
 
     <div class="container mt-8">
+        <div class="cargador" id="carg" style="display:none;"></div>
 
         <div class="mt-5">
             <br>
@@ -955,7 +956,7 @@
                     </h2>
                     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
                         <a routerLink="/dashboard" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
-                        <button (click)="create()" class="button text-white mr-2" style="background-color:#FF8800;">Guardar</button>
+                        <button (click)="create()" class="button text-white mr-2" style="background-color:#FF8800;" id="gg">Guardar</button>
                     </div>
                 </div>
                 <br><br>

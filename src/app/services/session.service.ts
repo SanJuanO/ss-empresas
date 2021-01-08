@@ -48,9 +48,20 @@ export class SessionService {
   setapellidos(token) {
     this.cookies.set("apellidos", token);
   }
+  setdocuemntos() {
+    this.cookies.set("documentos", "1");
+  }
+  setdocuemntos0() {
+    this.cookies.set("documentos", "0");
+  }
+  getdocumentos() {
+    return this.cookies.get("documentos");
+  }
+
   setlogo(logo) {
     this.cookies.set("logo", logo);
   }
+  
   getapellidos() {
     return this.cookies.get("apellidos");
   } 

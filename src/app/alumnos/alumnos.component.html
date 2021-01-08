@@ -19,7 +19,7 @@
                         </div>
                         <br>
                         <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                        "> <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+                        "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
 
                     </div>
                 </div>
@@ -109,7 +109,7 @@
 
                             </div>
                             <br>
-                            <hr style="color: #000000;" noshade="noshade" size="2" /><br><br>
+                            <hr style="color: #000000;" noshade="noshade" size="2" /><br>  
                             <div *ngFor="let a of alumnos">
 
                                 <div class=" px-1 py-1 flex-1" *ngIf="a.idEstado==2">
@@ -161,10 +161,10 @@
                                 </h2>
                             </div>
                             <br>
-                            <hr style="color: #000000;" noshade="noshade" size="2" /><br><br>
+                            <hr style="color: #000000;" noshade="noshade" size="2" /><br>
                             <div *ngFor="let a of alumnos">
 
-                                <div class=" px-3 py-3  flex-1 " *ngIf="a.idEstado==3">
+                                <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==3">
                                     <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
                                         <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
 
@@ -219,7 +219,7 @@
                             <hr style="color: #000000;" noshade="noshade" size="2" /><br>
                             <div *ngFor="let a of alumnos">
 
-                                <div class=" px-1 py-1   " *ngIf="a.idEstado==4">
+                                <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==4">
                                     <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
                                         <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
 

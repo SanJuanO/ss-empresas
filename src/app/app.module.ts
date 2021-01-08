@@ -27,6 +27,7 @@ import { AlumnosverComponent } from './alumnos-ver/alumnos-ver.component';
 import { AlumnosevaluarComponent } from './alumnos-evaluar/alumnos-evaluar.component';
 import { passComponent } from './pass/pass.component';
 import { Alumnos } from './alumnos/alumnos.component';
+import { RecaptchaModule } from "ng-recaptcha";
 
 
 import { CookieService } from 'ngx-cookie-service';
@@ -60,6 +61,7 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     HttpClientModule,
     DataTablesModule,
+    RecaptchaModule,
     ReactiveFormsModule,
   ],
   providers: [CookieService],

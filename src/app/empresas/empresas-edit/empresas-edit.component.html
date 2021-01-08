@@ -17,7 +17,7 @@
             <div class=" text-center">
                 <br>
                 <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br><a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
+                "> <br><a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
 
                 <br>
                 <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+                "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
             <div class=" text-center">
                 <br>
                 <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br><a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
+                "> <br><a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
             </div>
         </div>
 
@@ -72,6 +72,7 @@
         <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
 
         <div class="container">
+            <div class="cargador" id="carg" style="display:none;"></div>
 
 
             <div class="" style="display: none;">
@@ -147,7 +148,7 @@
                                 <br>
                                 <br>
                                 <div class="px-5 pb-8 text-center">
-                                    <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">
+                                    <button data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">
                     Cancelar
                   </button>
                                     <button type="submit" data-dismiss="modal" class="button w-24 text-white" style="background-color: #FF8800;">Subir</button>
@@ -1073,7 +1074,7 @@
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a [routerLink]="[ '/instituciones/ver',idobtenido] " class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
-            <button (click)="onSubmit()" class="button text-white  shadow-md mr-2" style="background-color:#FF8800;">Guardar</button>
+            <button (click)="onSubmit()" class="button text-white  shadow-md mr-2" style="background-color:#FF8800;" id="gg">Guardar</button>
         </div>
     </div>
     <br>

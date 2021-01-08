@@ -86,6 +86,7 @@ public fechaincr:string;
 
     this.idasignado=this.cookies.get("idasignado");
     this.idEstado =Number(this.cookies.get("idEstado"));
+    console.log(this.idEstado);
     this.idAlumno = this.cookies.get("idalumno");
     this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) =>{ this.alumno = alumno;
     });
@@ -292,7 +293,7 @@ obteneractividades() {
       var Fecha = new Date((this.alumnosactividades[i]['fechaCreacion'].toString()));
       this.alumnosactividades[i]['fechaCreacion']=Fecha.toLocaleDateString("es-ES", options);
 
-
+this.alumnosactividades[i]['titulo']=this.alumnosactividades[i]['titulo'].slice(1, -1); 
 
     }
  
@@ -329,6 +330,7 @@ actualizarestado(){
 
             if(this.idEstado==this.estadosalumnos[i]['id']){
               this.Estado=this.estadosalumnos[i]['estado'];
+              console.log(this.Estado);
             }
 
             if(this.plazasDisponibles==0 ){
@@ -350,7 +352,8 @@ if(i==6 ){
 
 cambiarestado(id){
   this.alumnoService.validaractivadades(id).subscribe((res: any) => {
-            
+    
+
     location.reload();
 
 
@@ -363,7 +366,6 @@ cambiarestatusalumno(){
   this.estadoalumnocambio.idProyecto = Number(this.idProyecto);
   this.estadoalumnocambio.idAlumno = Number(this.idAlumno);   
 
- 
   this.estadoalumnocambio.idEstado =Number(this.idEstado);
 
 
@@ -371,14 +373,27 @@ this.estadoalumnocambio.observacions=$('#observacionescambio').val();
 
 
    this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe((res) => {
+console.log(res);
+this.cookies.set("idEstado",String(this.idEstado));
+for(var i=0;i<this.estadosalumnos.length;i++){
 
-    location.reload();
+  if( this.estadoalumnocambio.idEstado==this.estadosalumnos[i]['id']){
+    this.Estado=this.estadosalumnos[i]['estado'];
+    console.log(this.Estado);
+  }
+}
+  
+if(this.estadoalumnocambio.idEstado==3){
+  $('#tipo3').modal('show');
+
+}
+this.obtenerproyectoalumno();
 
 
    }, error => {
   alert(error.error)
   })
-
+ 
 }
 
 actualizarfecha(){

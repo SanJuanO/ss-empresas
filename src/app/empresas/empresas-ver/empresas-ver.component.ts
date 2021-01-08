@@ -38,7 +38,7 @@ export class EmpresasverComponent implements OnInit {
 public idobtenido:string;
   public giro: GiroEmpresa[] = [];
   public documentos: Documentos[] = [];
-public documentosfaltan=true;
+public documentosfaltan=false;
   public estado: EstadoEmpresa[] = [];
   public listaAreasAccion = [];
   public listaRubros = [];
@@ -61,6 +61,7 @@ public validar=false;
   public obejtivost:any;
   public documentosfile = new Documentosfile();
   public cambio=false;
+  public puedemostrar=false;
 
 
 
@@ -72,8 +73,14 @@ public validar=false;
   
   }
   ngOnInit(): void {
-    this.obtenerAreas();
+    document.getElementById("carg").style.display = "block";
 
+    this.obtenerAreas();
+    var docs= this.session.getdocumentos();
+if(docs=="1"){
+this.puedemostrar=true;
+
+}
     this.empresaModel.atiendeOtro="Otro";
     this.idobtenido = this.activatedRoute.snapshot.paramMap.get("id");
     this.getempresa(this.idobtenido);
@@ -117,6 +124,9 @@ var valor= { "idRubro": id ,"activo": true};
   }
   getempresa(id){
     this.organizacionService.getOrganizacion(id).subscribe((res: any[])=>{
+      document.getElementById("carg").style.display = "none";
+      document.getElementById("interna").style.display = "block";
+
       this.horasAlumno = res;
       console.log(res['responsable']);
       this.empresaModel = <Empresa><any>res;
@@ -201,6 +211,8 @@ var valor= { "idRubro": id ,"activo": true};
         this.DocumentosSubidos = documentosS;
  var mostrar=false;
    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+   this.documentosfaltan=true;
+
         for(var i=0;i<this.DocumentosSubidos.length;i++)
         {
 
@@ -211,15 +223,28 @@ var valor= { "idRubro": id ,"activo": true};
 
 
           }
+          if(this.DocumentosSubidos[i]['estado']!="Validada"){
+            this.documentosfaltan=false;
+
+       
+          }
           if(documentosS[i]['ruta']==null && this.session.getexterna()){
             this.documentosfaltan=false;
             mostrar=true;
           }
+        
+
         }
+
+        if(this.puedemostrar){
+
         if(mostrar){
           $('#documentosfaltan').modal('show');
+this.puedemostrar=false;
+this.session.setdocuemntos0();
 
           }
+        }
           console.log(documentosS);
 
       });

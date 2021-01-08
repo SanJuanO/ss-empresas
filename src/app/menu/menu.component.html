@@ -1,4 +1,5 @@
 <!-- END: Top Menu -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <div class="mobile-menu md:hidden">
     <div class="mobile-menu-bar">
         <a [routerLink]="['/dashboard']" class="flex mr-auto ">
@@ -68,7 +69,7 @@ position: fixed;
                         <div class="font-medium">{{nombre}}</div>
                     </div>
                     <div class="p-2">
-                        <a [routerLink]="['/perfil']" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Perfil </a>
+                        <a [routerLink]="['/instituciones/ver',id]" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Perfil </a>
                     </div>
                     <div class="p-2 border-t border-white dark:border-dark-3">
                         <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:-bgtheme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Salir </a>

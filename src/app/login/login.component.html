@@ -5,7 +5,7 @@
             <div class="text-3xl mt-5">Muy bien!</div>
             <div class="text-gray-600 mt-2">Has terminado tu registro, ingresa de nuevo!</div>
         </div>
-        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+        <div class="px-5 pb-8 text-center"> <button data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
     </div>
 </div>
 <form #formAlumno="ngForm" (ngSubmit)="onSubmit(formAlumno)">
@@ -60,8 +60,14 @@
 
                                                     </div>
                                                     <!--end col-->
-
-                                                    <div class="col-lg-12 mb-0">
+<br>
+<re-captcha
+    (resolved)="resolved($event)"
+    siteKey="6Le9pyMaAAAAAODV-YeRp83aqXZWPP6Bu5BGpKIj"
+  ></re-captcha>
+  <br>  <br>
+ 
+                                                    <div class="col-lg-12 mb-0 mt-5">
                                                         <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                                                     </div>
                                                     <br>
@@ -113,6 +119,6 @@
                 <div class="text-3xl mt-5">Algo salio mal!</div>
                 <div class="text-gray-600 mt-2">{{mensaje}}</div>
             </div>
-            <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+            <div class="px-5 pb-8 text-center"> <button data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
         </div>
     </div>

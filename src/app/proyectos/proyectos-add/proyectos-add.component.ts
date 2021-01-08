@@ -83,6 +83,7 @@ public idPeriodorecibido="";
 
   ngOnInit(): void {
 
+  
 this.idOrganizacion= this.session.getToken();
 this.Organizacion= this.session.getnombre();
 console.log(this.Organizacion);
@@ -390,6 +391,7 @@ console.log(this.periodos);
   }
   
   create() {
+
     $('#proyecto').css("border", "#dee2e6 solid 1px");
     $('#descripcion').css("border", "#dee2e6 solid 1px");
     $('#nombreResponsable').css("border", "#dee2e6 solid 1px");
@@ -536,12 +538,19 @@ model.idOrganizacion= Number(this.idOrganizacion);
       //$('#validacion').modal('show');
       
     } else {
+      (<HTMLInputElement> document.getElementById("gg")).disabled = true;
+      document.getElementById("carg").style.display = "block";
+
 console.log(model);
       this.proyectoService.create(model).subscribe((res: any) => {
         $('#success-modal-preview').modal('show');
+        document.getElementById("carg").style.display = "none";
+
         this._location.back();
       }, error => {
         alert(error.error)
+        document.getElementById("carg").style.display = "none";
+
       })
     }
 

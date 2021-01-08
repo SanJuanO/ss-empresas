@@ -14,7 +14,46 @@
             </div>
             <br>
             <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br> <a type="button" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+                "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+        </div>
+
+    </div>
+    <div class="modal" id="tipo3">
+            <div class="modal__content modal__content--xl p-10 text-center">
+
+            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Alumno Aceptado</div>
+            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Espera su confirmación!</div>
+            <div class=" mt-1 " style="font-size: 20px;">
+                Ha aceptado este alumno, ahora deberás esperar a que confirme su aceptación. Al confirmarla, podrás ingresar su fecha de inicio, validar sus reprotes mensuales y agregar sus horas cada mes.
+
+            </div>
+        <br>
+        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Aceptar</a> </div>
+ 
+            
+
+        </div>
+
+
+    </div>
+
+
+    <div class="modal" id="tipokk3">
+        <div class="modal" id="warning-modal-preview" style=" display: block; ">
+            <div class="modal__content modal__content--xl p-10 text-center">
+                <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+                <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Alumno Aceptado</div>
+                <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Espera su confir!</div>
+                <div class=" mt-1 " style="font-size: 20px;">
+                    Ha aceptado este alumno, ahora deberás esperar a que confirme su aceptación. Al confirmarla, podrás ingresar su fecha de inicio, validar sus reprotes mensuales y agregar sus horas cada mes.
+
+                </div>
+            </div>
+            <br>
+            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
         </div>
 
     </div>
@@ -30,9 +69,9 @@
 
             <a class=" text-success" style="color: #9FC720;">       {{Estado}}
             </a> </div>
-        <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarestado()" *ngIf="idEstado<4" class="button text-center text-white  ml-5">Cambiar Estado del Alumno</button>
+        <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarestado()" *ngIf="idEstado<4"  class="button text-center text-white  ml-5">Cambiar Estado del Alumno</button>
         <br>
-        <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarfecha()" *ngIf="fechaincr==null" class="button text-center text-white  ml-5">Confirmar Fecha de Inicio </button>
+        <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarfecha()" *ngIf="fechaincr==null && idEstado==4" class="button text-center text-white  ml-5">Confirmar Fecha de Inicio </button>
   
         <div class="" *ngIf="fechaincr!=null">
             <a class="text-center" style="color: #6B3F23;">  Fecha de ingreso : </a>
@@ -195,7 +234,7 @@
                                 </div>
 
                                 <div class="px-5 pb-8 text-center">
-                                    <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                                    <div class="px-5 pb-8 text-center"> <button data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
                                         <button (click)="reportedehoras()" class="button w-24 bg-theme-1 text-white">Aceptar</button> </div>
 
                                 </div>
@@ -300,40 +339,43 @@
                     </th>
 
                     <div class="modal" id="act-{{h.id}}">
-                        <div class="modal__content">
-                            <div class="p-5 text-center">
-                                <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                                <div class="text-base mt-5"> Actividades:</div>
-                                <br>
-                                <textarea rows="10" cols="50" disabled style="text-align: justify;">{{h.actividad}}</textarea>
+                        <div class="modal__content modal__content--xl p-10 text-center">
+                    
+                            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Reporte mensual</div>
+                            <br><br>
+
+                            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">{{h.titulo}}</div>
+                    
+                                <textarea rows="10" cols="80" disabled style="text-align: justify;">{{h.actividad}}</textarea>
                                 <br>
                                 <div *ngIf="h.archivo!=null && h.archivo!=''">
                                   </div>
                                   <div *ngIf="h.archivo!=null && h.archivo!=''">
                                     <div >
-                                      <div class="text-base text-gray-600 mt-5">
-                                        
+                                      <div class="text-base text-gray-600">
+                                        <br><br>
+
                                         <a href="javascript:;" (click)="descargarCartaEnded(h.archivo)" class="button inline-block bg-theme-12 text-white">Archivo Adjunto</a>
                     
                                       </div>
                                     </div>
                                   </div>
+                                  <br><br>
 
                                 <label class="text-center " *ngIf="h.validaEmpresa">Validado</label>
 
-                            </div>
-
+<br><br>
                             <div class="px-5 pb-8 text-center">
-                                <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" style="background-color:#FF8800" class="button text-white border  mr-1" *ngIf="h.validaEmpresa">Aceptar</button>
+                                <div class="px-5 pb-8 text-center"> <button data-dismiss="modal" style="background-color:#FF8800" class="button text-white border  mr-1" *ngIf="h.validaEmpresa">Aceptar</button>
                                     <button (click)="cambiarestado(h.id)" data-dismiss="modal" style="background-color:#FF8800" class="button text-white" *ngIf="h.validaEmpresa==false">Validar</button> 
                                     <button data-dismiss="modal"  class="button text-white bg-theme-1 ml-4" >Cancelar</button> 
                                 </div>
 
                             </div>
 
+                        </div>
 
                         </div>
-                    </div>
 
 
                 </tr>
@@ -352,7 +394,7 @@
 
     <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="idEstado==4">
         <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-            <div class=" p-5">
+            <div class=" pl-5 pr-5">
                 <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
                     Reportes desempeño
 
@@ -368,7 +410,7 @@
     </div>
 
 
-    <div class="intro-y overflow-auto lg:overflow-visible mt-5 sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
+    <div class="intro-y overflow-auto lg:overflow-visible sm:mt-0" *ngIf="idEstado==4" style="font-size: 17px;">
         <table class="table table-report sm:mt-2" >
             <thead>
                 <tr>
@@ -410,13 +452,7 @@
             </tbody>
         </table>
 
-        <br>
-
-        <br>
-
-
-
-        <br>
+       
 
         <button [routerLink]="['/alumnosevaluar', alumno.id]" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras/2) && versiona.length==0">Evaluar alumno</button>
 
@@ -456,7 +492,7 @@
                 </div>
 
 
-                <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                <div class="px-5 pb-8 text-center"> <button data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
                     <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Cambiar Estado</button> </div>
             </form>
 
@@ -478,7 +514,7 @@
                 </div>
 
 
-                <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                <div class="px-5 pb-8 text-center"> <button data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
                     <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button> </div>
             </form>
 

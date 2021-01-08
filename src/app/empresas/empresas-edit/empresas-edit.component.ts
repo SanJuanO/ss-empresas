@@ -285,7 +285,7 @@ var valor= { "idAreaAccion": id ,"activo": true};
 
 
   onSubmit() {
-        
+
     $('#NombreResponsable').css("border", "#dee2e6 solid 1px");
     $('#telefono').css("border", "#dee2e6 solid 1px");
     $('#correo').css("border", "#dee2e6 solid 1px");
@@ -523,18 +523,32 @@ if(this.responsablemodel.externa){
 
           else{
       
-    
+            document.getElementById("carg").style.display = "block";
+            (<HTMLInputElement> document.getElementById("gg")).disabled = true;
+
     this.organizacionService.updateempresa(this.idobtenido,model).subscribe(() => {
           $('#success-modal-preview').modal('show');
+          this.session.setnombre(model.organizacion);
+
+          document.getElementById("carg").style.display = "none";
 
     this._location.back();
+    (<HTMLInputElement> document.getElementById("gg")).disabled = false;
 
      
     })
   }
 }
 else{
-  model.organizacion=model.cordinacion;
+  var cor="";
+
+  for(var v=0;v<this.cordinaciones.length;v++){
+    if(model.idCordinacion==this. cordinaciones[v]['id']){
+      cor=this.cordinaciones[v]['cordinacion'];
+    }
+
+  }
+  model.organizacion =  cor;
   model.nombreComun="Interna";
 
   console.log(model);
@@ -618,17 +632,27 @@ $('#correo').css("border", "red solid 1px");
    $('#validacion').modal('show');
 
         }else{
+          document.getElementById("carg").style.display = "block";
+          (<HTMLInputElement> document.getElementById("gg")).disabled = true;
+
 
           console.log(model);
       
           this.organizacionService.updateempresa(this.idobtenido,model).subscribe(() => {
+            this.session.setnombre(model.organizacion);
+
             $('#success-modal-preview').modal('show');
+            document.getElementById("carg").style.display = "none";
+
+
   
       this._location.back();
       
       
           }, error=>{
-            alert(error.error)
+            alert(error.error);
+            (<HTMLInputElement> document.getElementById("gg")).disabled = false;
+
       
           }) 
 

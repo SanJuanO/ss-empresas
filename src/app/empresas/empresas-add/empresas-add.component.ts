@@ -323,9 +323,9 @@ listapaist.forEach(el => {
   mostrarpass(){
     console.log("cambioar");
     if ($('#mostrar_contrasena').is(':checked')) {
-      $('#password').attr('type', 'text');
+      $('#contrasena').attr('type', 'text');
     } else {
-      $('#password').attr('type', 'password');
+      $('#contrasena').attr('type', 'password');
     }
   
   }
@@ -359,7 +359,8 @@ listapaist.forEach(el => {
      $('#departamento').css("border", "#dee2e6 solid 1px");
      $('#puesto').css("border", "#dee2e6 solid 1px");
      $('#contrasena').css("border", "#dee2e6 solid 1px");
-   
+     $('#descripcionArea').css("border", "#dee2e6 solid 1px");
+
     this.responsablemodel.usuario=this.responsablemodel.correo;
 
     let model = this.empresaModel;
@@ -702,11 +703,16 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
        
         else if(model.objetivo==""){
           this.mensajevalidacion="No puedes dejar el campo de  los objetivos  vacío"
-          $('#objetivo').modal('show');
+          $('#validacion').modal('show');
+          $('#objetivo').css("border", "red solid 1px");
+
         }
         else if(model.descripcionArea==""){
-          this.mensajevalidacion="No puedes dejar el campo de descripcion de área  vacío"
-          $('#descripcionArea').modal('show');
+          this.mensajevalidacion="No puedes dejar el campo de descripción de área  vacío"
+          $('#validacion').modal('show');
+          $('#descripcionArea').css("border", "red solid 1px");
+
+
         }
      
         else if(this.listaAreasAccion.length==0 && this.listaAreasAccion.length < 4){
