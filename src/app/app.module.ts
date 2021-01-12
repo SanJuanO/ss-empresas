@@ -28,11 +28,15 @@ import { AlumnosevaluarComponent } from './alumnos-evaluar/alumnos-evaluar.compo
 import { passComponent } from './pass/pass.component';
 import { Alumnos } from './alumnos/alumnos.component';
 import { RecaptchaModule } from "ng-recaptcha";
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 
 
 import { CookieService } from 'ngx-cookie-service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,7 @@ import { CookieService } from 'ngx-cookie-service';
     MenuComponent,
     passComponent,
     Alumnos,
+    
     AlumnosevaluarComponent,
     PerfilComponent,
     ProyectosAddComponent,
@@ -62,9 +67,13 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     DataTablesModule,
     RecaptchaModule,
+    MatDatepickerModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,NgxMaterialTimepickerModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,MatDatepickerModule,MatNativeDateModule,NgxMaterialTimepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
