@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Empresa,estadoActualizar,Pass } from '../models/empresa';
+import { Empresa,estadoActualizar,Pass,tt } from '../models/empresa';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
@@ -190,6 +190,7 @@ console.log(estado);
   }
   
   actualizarfechaalumno(fecha,id){
+    
     const uri = `${this.api}/AlumnosProyectosAsignados/actualizaFechaInicioInstitucionByIdAlumnoProyectoAsignado?idAlumnoProyectoAsignado=${id}&fecha=${fecha}`
     return this.http.post(uri, fecha);
   }

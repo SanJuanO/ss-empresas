@@ -82,7 +82,7 @@
                             <div class="relative ">
                                 <div>
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del proyecto*</label>
-                                    <input type="text" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.proyecto" id="proyecto" [ngModelOptions]="{standalone: true}" ng-reflect-required="ejemplo nombre" maxlength="70" placeholder="Máximo 70 caracteres" required>
+                                    <input type="text" class="input  w-full border mt-2 " max="500" [(ngModel)]="proyectoModel.proyecto" id="proyecto" [ngModelOptions]="{standalone: true}" ng-reflect-required="ejemplo nombre" maxlength="70" placeholder="Máximo 70 caracteres" required>
                                 </div>
                             </div>
 
@@ -99,7 +99,7 @@
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Nombre del Responsable del Proyecto*
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="nombreResponsable" [(ngModel)]="proyectoModel.nombreResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                                    <input type="text" class="input  w-full border mt-2 " max="500" placeholder="" id="nombreResponsable" [(ngModel)]="proyectoModel.nombreResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
                                 </div>
                             </div>
 
@@ -108,7 +108,7 @@
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Puesto del Responsable del Proyecto*
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="puesto" [(ngModel)]="proyectoModel.puesto" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                                    <input type="text" class="input  w-full border mt-2 " placeholder="" max="500" id="puesto" [(ngModel)]="proyectoModel.puesto" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
                                 </div>
                             </div>
 
@@ -117,7 +117,7 @@
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Área del Responsbale del Proyecto*
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="area" [(ngModel)]="proyectoModel.area" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                                    <input type="text" class="input  w-full border mt-2 " placeholder="" max="1500" id="area" [(ngModel)]="proyectoModel.area" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
                                 </div>
                             </div>
 
@@ -126,7 +126,7 @@
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Correo electrónico del responsable del proyecto*
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="correoResponsable" [(ngModel)]="proyectoModel.correoResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                                    <input type="text" class="input  w-full border mt-2 " max="200" placeholder="" id="correoResponsable" [(ngModel)]="proyectoModel.correoResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
                                 </div>
                             </div>
 
@@ -135,7 +135,7 @@
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Teléfono de responsable del proyecto
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="telefono" [(ngModel)]="proyectoModel.telefono" [ngModelOptions]="{standalone: true}" required>
+                                    <input type="text" class="input  w-full border mt-2 " max="30" placeholder="" id="telefono" [(ngModel)]="proyectoModel.telefono" [ngModelOptions]="{standalone: true}" required>
                                 </div>
                             </div>
 
@@ -282,13 +282,13 @@
                                <div class="sm:grid grid-cols-2 gap-2">
                                 <div class="relative mt-2">
 
-                                   <input matInput [matDatepicker]="picker" id="fechaInicio" placeholder="02/01/2021" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaInicio" id="fechaInicio" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()" required>
+                                   <input matInput [matDatepicker]="picker" id="fechaInicio" max="10" placeholder="02/01/2021" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaInicio" id="fechaInicio" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()" required>
                                      <mat-datepicker #picker></mat-datepicker>
                                 </div>
 
                                    <div class="relative mt-3">
                                     <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                                    "> <a (click)="picker.open()" style=" border-radius: 10px; font-size: 15px;" class="button text-white  p-2">Ver Calendar</a> </div>
+                                    "> <a (click)="picker.open()" style=" border-radius: 10px; font-size: 15px;" class="button text-white  p-2">Ver Calendario</a> </div>
 
 
                                 </div>
@@ -319,7 +319,7 @@
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                 ¿El alumno recibe capacitación/formación por parte de la Institución?*
               </label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.capacitacion" id="capacitacion" [ngModelOptions]="{standalone: true}">
+                                    <select class="input  w-full border mt-2 " max="50" [(ngModel)]="proyectoModel.capacitacion" id="capacitacion" [ngModelOptions]="{standalone: true}">
                 <option [ngValue]="'si'">Sí</option>
                 <option [ngValue]="'no'">No</option>
               </select>
@@ -442,7 +442,7 @@
                                     <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                                         Rol o principal posición del prestador de servicio social (estudiante) dentro del proyecto:
                   </label>
-                                    <textarea type="text" class="input w-full border mt-2 " id="rolPrestador" placeholder="Máximo 400 caracteres" [(ngModel)]="proyectoModel.rolPrestador" [ngModelOptions]="{standalone: true}" maxlength="400" rows="5" required>
+                                    <textarea type="text" class="input w-full border mt-2 " max="400" id="rolPrestador" placeholder="Máximo 400 caracteres" [(ngModel)]="proyectoModel.rolPrestador" [ngModelOptions]="{standalone: true}" maxlength="400" rows="5" required>
               </textarea>
                                 </div>
                             </div>

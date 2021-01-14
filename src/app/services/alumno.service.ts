@@ -64,7 +64,7 @@ export class AlumnoService {
   getProyectoAlumno(id: string | number) {
     let idalumno=Number(id);
     console.log(idalumno);
-    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/${idalumno}`);
+    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/getByIdAlumno?idAlumno=${idalumno}`);
   }
   getencuesta(id,version) {
     return this.http.get(`${this.baseUrl}/RespuestasEvaluacionAlumno/getByIdAlumnoProyectoAsignadoAndVersion?IdAlumnoProyectoAsignado=${id}&version=${version}`);

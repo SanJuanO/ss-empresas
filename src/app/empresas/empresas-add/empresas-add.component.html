@@ -1,91 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<div class="" style=" font-family:Helvetica; font-size: 17px;">
-    <div class="modal" id="solo3">
-
-
-        <div class="modal__content modal__content--xl p-10 text-center">
-            <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
-
-            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
-            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Sólo se permite seleccionar máximo 3 áreas de acción </div>
-
-
-
-
-            <div class=" text-center">
-                <br>
-                <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br><a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
-            </div>
-        </div>
-
-
-    </div>
-    <div class="modal" id="superlarge-modal-size-preview">
-        <div class="modal__content modal__content--xl p-10 text-center">
-            <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
-
-            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Bienvenid@!</div>
-            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por tu registro! </div>
-
-
-            <div class="mt-1" style="font-size: 20px;" *ngIf="cambio">
-              A continuación, completa el registro de la Institución que representas
-            </div>
-            
-            <div class="mt-1 text-justify" style="font-size: 20px;" *ngIf="!cambio">
-              A continuación, completa el registro del área interna de la universidad que representas
-            </div>
-
-            <div class=" text-center">
-                <br>
-                <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br><a  data-dismiss="modal" style="background: #FF8300; border-radius: 15px; font-size: 17px;" class=" text-white  p-2">Continuar</a> </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="success-modal-preview" style="border-radius: 25px;">
-        <div class="modal__content modal__content--xl p-10 text-center">
-            <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
-
-            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Perfil Actualizado</div>
-            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;"><div *ngIf="cambio">¡Gracias por registrar a la Institución!</div><div *ngIf="!cambio">¡Gracias por registrar a tu área!</div> </div>
-
-
-            <div class=" mt-1 " style="font-size: 20px;">A continuación, <div *ngIf="cambio"> completa el perfil de la Institución subiendo la documentación solicitada.</div><div *ngIf="!cambio"> dirígete a Proyectos y registra tu proyecto(s)</div>
-
-
-</div>
-            <div class=" text-center">
-
-                <br>
-                <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br> <a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="validacion">
-
-        <div class="modal__content modal__content--xl p-10 text-center">
-            <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-            <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
-
-            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
-            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">{{mensajevalidacion}}</div>
-
-
-
-
-            <div class=" text-center">
-                <br>
-                <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br><a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
-            </div>
-        </div>
-
-
-    </div>
+<div class="container" style=" font-family:Helvetica; font-size: 17px;">
+  
 
     <nav class="top-nav  shadow-lg navbar-expand-md navbar-light fixed-top bg-white " style="top:0;left: 0;  width: 100%;
     position: fixed;
@@ -110,8 +25,89 @@
 
         <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
 
-        <div class="container">
-
+            <div class="modal" id="solo3">
+                <div class="modal__content modal__content--xl p-10 text-center">
+                    <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+        
+                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
+                    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Sólo se permite seleccionar máximo 3 áreas de acción </div>
+        
+        
+        
+        
+                    <div class=" text-center">
+                        <br>
+                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <br><a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
+                    </div>
+                </div>
+        
+        
+            </div>
+            <div class="modal" id="superlarge-modal-size-preview">
+                <div class="modal__content modal__content--xl p-10 text-center">
+        
+                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Bienvenid@!</div>
+                    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por tu registro! </div>
+        
+        
+                    <div class="mt-1" style="font-size: 20px;" *ngIf="cambio">
+                      A continuación, completa el registro de la Institución que representas
+                    </div>
+                    
+                    <div class="mt-1 text-justify" style="font-size: 20px;" *ngIf="!cambio">
+                      A continuación, completa el registro del área interna de la universidad que representas
+                    </div>
+        
+                    <div class=" text-center">
+                        <br>
+                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <br><a  data-dismiss="modal" style="background: #FF8300; border-radius: 15px; font-size: 17px;" class=" text-white  p-2">Continuar</a> </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="modal" id="success-modal-preview" style="border-radius: 25px;">
+                <div class="modal__content modal__content--xl p-10 text-center">
+                    <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+        
+                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Perfil Actualizado</div>
+                    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;"><div *ngIf="cambio">¡Gracias por registrar a la Institución!</div><div *ngIf="!cambio">¡Gracias por registrar a tu área!</div> </div>
+        
+        
+                    <div class=" mt-1 " style="font-size: 20px;">A continuación, <div *ngIf="cambio"> completa el perfil de la Institución subiendo la documentación solicitada.</div><div *ngIf="!cambio"> dirígete a Proyectos y registra tu proyecto(s)</div>
+        
+        
+        </div>
+                    <div class=" text-center">
+        
+                        <br>
+                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <br> <a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="validacion">
+        
+                <div class="modal__content modal__content--xl p-10 text-center">
+                    <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                    <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+        
+                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
+                    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">{{mensajevalidacion}}</div>
+        
+        
+        
+        
+                    <div class=" text-center">
+                        <br>
+                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <br><a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
+                    </div>
+                </div>
+        
+        
+            </div>
 
             <div class="" style="display: none;">
                 <div class="sm:grid grid-cols-1 gap-2">
@@ -582,8 +578,9 @@
                                         </div>
 
                                         <div class="relative mt-3">
+                                            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                                            "> <br><a (click)="obtenerdireccion()" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
 
-                                            <button  (click)="obtenerdireccion()" data-dismiss="modal" class="button w-35  text-white" style="background-color:#FF8800;">Buscar CP</button>
 
                                         </div>
 
@@ -1114,7 +1111,6 @@
                 </div>
 
             </section>
-        </div>
     </form>
 
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">

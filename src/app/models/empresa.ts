@@ -212,3 +212,10 @@ export class direcciones {
   constructor(
   ) { }
 }
+export class tt {
+  constructor(
+      public fecha: string,
+      public idAlumnoProyectoAsignado?: number,
+  ) { }
+
+}

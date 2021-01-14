@@ -507,9 +507,23 @@
                 <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
 
                     <label>Fecha de inicio del servicio social</label>
-                    <input type="date" class="input  w-full border mt-2 " id="fechadeinicio" required>
+
+    
+                    <div class="sm:grid grid-cols-2 gap-2">
+                        <div class="relative mt-2">
+
+                           <input matInput [matDatepicker]="picker" id="fechadeinicio" placeholder="02/01/2021" class="input  w-full border mt-2 "    >
+                             <mat-datepicker #picker></mat-datepicker>
+                        </div>
+
+                           <div class="relative mt-3">
+                            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                            "> <a (click)="picker.open()" style=" border-radius: 10px; font-size: 15px;" class="button text-white  p-2">Ver Calendario</a> </div>
 
 
+                        </div>
+
+                       </div>
 
                 </div>
 

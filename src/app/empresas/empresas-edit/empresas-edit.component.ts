@@ -620,12 +620,15 @@ $('#correo').css("border", "red solid 1px");
 
  else if(model.objetivo==""){
    this.mensajevalidacion="No puedes dejar el campo de  los objetivos  vacío"
-   $('#objetivo').modal('show');
- }
+   $('#validacion').modal('show');
+   $('#objetivos').css("border", "red solid 1px");
+   }
  else if(model.descripcionArea==""){
    this.mensajevalidacion="No puedes dejar el campo de descripcion de área vacío"
-   $('#descripcionArea').modal('show');
- }
+   $('#validacion').modal('show');
+   $('#descripcionArea').css("border", "red solid 1px");
+  
+  }
 
  else if(this.listaAreasAccion.length==0 && this.listaAreasAccion.length < 4){
    this.mensajevalidacion="Debes selecciónar al menos una Area y maximo 3"

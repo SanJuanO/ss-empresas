@@ -146,7 +146,6 @@ var valor= { "idRubro": id ,"activo": true};
   }
   obtenerdirecciones(cp) {
     this.organizacionService.obtenerdirecciones(cp).subscribe((re: any[])=>{
-      console.log(re);
       if(re.length>0){
         this.listacolonias=[];
 
@@ -238,11 +237,6 @@ listapaist.forEach(el => {
           }
         })
 
-
-  console.log(this.listapais);
-  console.log(this.listaciudad);
-  console.log(this.listaestados);
-  console.log(this.listacolonias);
 
 
       }else{

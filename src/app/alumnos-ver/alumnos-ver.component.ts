@@ -24,12 +24,53 @@ import {Location} from '@angular/common';
 import { Router,ActivatedRoute } from '@angular/router';
 import { Binary } from '@angular/compiler';
 import { NgModel } from '@angular/forms';
-declare var $: any;
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
+// Depending on whether rollup is used, moment needs to be imported differently.
+// Since Moment.js doesn't have a default export, we normally need to import using the `* as`
+// syntax. However, rollup creates a synthetic default module and we thus need to import it using
+// the `default as` syntax.
+
+
+
+declare var $: any;
+let now = new Date();
+export const MY_FORMATS = {
+  parse: {
+    dateInput: "LL"
+  },
+  display: {
+    dateInput: "DD/MM/YYYY",
+    monthYearLabel: "YYYY",
+    dateA11yLabel: "LL",
+    monthYearA11yLabel: "YYYY"
+  }
+};
 @Component({
   selector: 'app-organization-ver',
   templateUrl: './alumnos-ver.component.html',
-  styleUrls: ['./alumnos-ver.component.scss']
+  styleUrls: ['./alumnos-ver.component.scss'],
+  providers: [
+    // The locale would typically be provided on the root module of your application. We do it at
+    // the component level here, due to limitations of our example generation script.
+    {provide: MAT_DATE_LOCALE, useValue: 'es-MX'},
+
+    // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
+    // `MatMomentDateModule` in your applications root module. We provide it at the component level
+    // here, due to limitations of our example generation script.
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
+
 })
 export class AlumnosverComponent implements OnInit {
   activo = true;
@@ -112,10 +153,10 @@ public fechaincr:string;
 
   }
   obtenerproyectoalumno() {
-
+console.log(this.idAlumno);
     return this.alumnoService.getProyectoAlumno(this.idAlumno).subscribe((alumnoproyecto: AlumnoProyecto) => {this.alumnoproyecto = alumnoproyecto;
       console.log(this.alumnoproyecto);
-
+      this.alumnoproyecto=this.alumnoproyecto[0];
 this.noHoras=this.alumnoproyecto['noHoras'];
 console.log(this.noHoras);
 var fe =this.alumnoproyecto['fechaInicioInstitucion'];
@@ -406,9 +447,10 @@ actualizarfecha(){
 cambiarfecha(){
 
 
-  var fecharegistro= $("#fechadeinicio").val();
+  var fecharegistro= $("#fechadeinicio").val().toString();
+  console.log(fecharegistro.length);
 
-
+console.log(fecharegistro);
    this.organizacionService.actualizarfechaalumno(fecharegistro,this.idAlumno).subscribe((res) => {
     location.reload();
 

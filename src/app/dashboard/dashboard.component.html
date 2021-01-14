@@ -67,17 +67,17 @@
 
 
                                     <th class="W-56 " style="background: rgb(250, 250, 250);">
-                                        <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:17px;">
+                                        <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:17px;" align="center">
                                             <div class="text-center" style="color: #E60505; ">
-                                                <div style="font-size: 18px; color: black;  font-weight: bold;">Inicia</div>
+                                                <div style="font-size: 18px; color: black;  font-weight: bold;"  >Inicia</div>
                                                 <br> {{convocatoria.Inicio }}
                                             </div>
                                         </div>
                                     </th>
                                     <th class="W-56 " style="background: rgb(250, 250, 250);">
-                                        <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:17px;">
+                                        <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:17px;" align="center">
                                             <div class="text-center" style="color: #E60505; ">
-                                                <div style="font-size: 18px; color: black;  font-weight: bold;">Termina</div>
+                                                <div style="font-size: 18px; color: black;  font-weight: bold;"  >Termina</div>
                                                 <br> {{convocatoria.Termino}}
                                             </div>
                                         </div>
@@ -236,10 +236,9 @@
                                         <div class="flex justify-center items-center mt-3" style="font-size:20px" *ngIf="proyect.idEstadoProyecto<3">
                                             <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px;
                                                 ">
-                                                <a class=" py-1 px-2 rounded-full text-center   text-white cursor-pointer flex items-center mr-3" [routerLink]="['/proyectos/edit', proyect.id  ]">
-                                                    <p class=" text-center"> Editar</p>
+                                                    <a class="py-1 px-3 rounded-full text-center  text-white cursor-pointer " style="font-size: 15px; " style="font-size:17px;" [routerLink]="['/proyectos/edit', proyect.id  ]">  Editar </a>
 
-                                                </a>
+
                                             </div>
                                         </div>
 
