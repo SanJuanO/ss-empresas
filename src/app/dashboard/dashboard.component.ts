@@ -96,10 +96,8 @@ this.mostrarmodal();
     model.tipo=1;
     this.organizacionService.getOrganizacion(this.session.getToken()).subscribe((res: any[])=>{     
 
-this.empresacantidad= res.length;
-this.empresa= res; 
-
-
+      this.empresacantidad= res.length;
+      this.empresa= res;
 
 for(var i=0;i<this.empresacantidad;i++){
 
@@ -131,19 +129,20 @@ this.empresaactiva.push(this.empresa[i]);
 this.convocatorias=res;
 for(var i=0;i<this.convocatorias.length;i++){
 
-
-  var Fecha1 = new Date((this.convocatorias[i].fechaTermino.toString()));
+  //console.log(this.convocatorias[i].fechaTermino.toString().split("T")[0].split("T")[0]+"T"+"23:59:59");
+  var Fecha1 = new Date((this.convocatorias[i].fechaTermino.toString().split("T")[0]+"T"+"23:59:59"));
   var ini = new Date((this.convocatorias[i].fechaInicio.toString()));
 
+  //console.log(Fecha1 + " actual " + Fecha);
 
-if(Fecha1> Fecha ){
+if(Fecha1>= Fecha ){
   console.log(Fecha1);
   this.convocatorias[i].Termino=Fecha1.toLocaleDateString("es-ES", options);
 
   this.convocatorias[i].Inicio=ini.toLocaleDateString("es-ES", options);
   this.convocatoriasf.push(this.convocatorias[i]);
-
-}
+  }
+  //console.log(this.convocatoriasf.length);
 }
 
 

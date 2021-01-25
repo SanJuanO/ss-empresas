@@ -55,7 +55,6 @@ export class ProyectosVerComponent implements OnInit {
     this.obtenerSucesos();
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
-    console.log(this.alumnos);
     this.obtenerestadoalumnos();
   }
  
@@ -128,6 +127,8 @@ export class ProyectosVerComponent implements OnInit {
       .getAlumnosInscritosByIdProyecto(this.idobtenido)
       .subscribe((alumnos: AlumnosProyectosAsignadosModel[]) =>{ 
         this.alumnos = alumnos;
+
+        console.log("alumnos");
         console.log(this.alumnos);
 
         var options = { year: 'numeric', month: 'long', day: 'numeric' };

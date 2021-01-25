@@ -29,7 +29,7 @@ export class escueladirecciones {
 }
 export class Empresa {
   constructor(
-    public noAtiendeOtro:number,
+    public noAtiendeOtro:string,
     public areaOtro:string,
     public atiendeOtro:string,
 
@@ -87,13 +87,14 @@ export class Empresa {
       public idTipoOrganizacion: number,
       public idGiroOrganizacion: number,
       public idClasificacionOrganizacion: number,
-      public indigenas: number,
-      public jovenes: number,
-      public mujeres: number,
-      public ninos: number,
 
-      public ancianos: number,
-      public discapacitados: number,
+      public ancianos: string,
+    public discapacitados: string,
+    public indigenas: string,
+    public jovenes: string,
+    public mujeres: string,
+    public ninos: string,
+
 public listaAreasAccion:any,
 public listaRubros: any,
 public Responsable:any

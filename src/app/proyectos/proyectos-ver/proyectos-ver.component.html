@@ -518,7 +518,7 @@
                                                                 </div>
                                                                 <div class="flex flex-col sm:flex-row items-center mt-3">
                                                                     <label class="sm:w-32 sm:text-right sm:mr-5">Observaciones:</label>
-                                                                    <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="estadoalumnocambio.observacions" required style="background: rgb(250, 250, 250);">
+                                                                    <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="estadoalumnocambio.observacions" required style="background: rgb(250, 250, 250);" [ngModelOptions]="{standalone: true}">
 
 
                                                                 </div>
@@ -540,7 +540,7 @@
                                                             <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
 
                                                                 <label>Fecha de inicio del servicio social</label>
-                                                                <input type="date" class="input  w-full border mt-2 " id="fechadeinicio-{{alumno.id}}" required>
+                                                                <input type="date" class="input  w-full border mt-2 " id="fechadeinicio-{{alumno.id}}" required [ngModelOptions]="{standalone: true}">
 
 
 

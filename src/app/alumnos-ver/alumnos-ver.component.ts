@@ -29,7 +29,9 @@ import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { environment } from "../../environments/environment";
+
 
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
@@ -73,6 +75,7 @@ export const MY_FORMATS = {
 
 })
 export class AlumnosverComponent implements OnInit {
+  baseUrl = environment.baseUrl;
   activo = true;
   public mensajeh="Advertencia estas por agregarle horas al alumno ¿Estas seguro?";
 
@@ -122,12 +125,12 @@ public fechaincr:string;
 
 
   ngOnInit(): void {
-    this.idProyecto=this.cookies.get("idProyectoa");
+    this.idProyecto = this.cookies.get("idProyectoa");
     this.cookies.set("version","0");
 
     this.idasignado=this.cookies.get("idasignado");
     this.idEstado =Number(this.cookies.get("idEstado"));
-    console.log(this.idEstado);
+    //console.log(this.idEstado);
     this.idAlumno = this.cookies.get("idalumno");
     this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) =>{ this.alumno = alumno;
     });
@@ -153,10 +156,14 @@ public fechaincr:string;
 
   }
   obtenerproyectoalumno() {
-console.log(this.idAlumno);
-    return this.alumnoService.getProyectoAlumno(this.idAlumno).subscribe((alumnoproyecto: AlumnoProyecto) => {this.alumnoproyecto = alumnoproyecto;
+    //console.log(this.idProyecto);
+    return this.alumnoService.getAlumnoProyectoAsignado(this.idasignado).subscribe((alumnoproyecto: AlumnoProyecto) => {this.alumnoproyecto = alumnoproyecto;
+      //this.alumnoproyecto=this.alumnoproyecto[0];
+      this.alumnoproyecto = alumnoproyecto;
+
+      console.log("proyecto");
       console.log(this.alumnoproyecto);
-      this.alumnoproyecto=this.alumnoproyecto[0];
+
 this.noHoras=this.alumnoproyecto['noHoras'];
 console.log(this.noHoras);
 var fe =this.alumnoproyecto['fechaInicioInstitucion'];
@@ -246,7 +253,7 @@ this.validar==false;
   //TODO SERGIO
   obtenerrespuesta() {
     this.alumnoService.getrespuesta(this.idAlumno).subscribe((res: any) => {
-      console.log(res);
+      //console.log(res);
 
       for(var i=0;i<res.length;i++){
 
@@ -263,7 +270,7 @@ this.validar==false;
       }
 
       }
-      console.log(this.versiona);
+      //console.log(this.versiona);
     });
   }
 
@@ -281,7 +288,7 @@ if(this.validar){
   document.getElementById("advertencia").style.display = "display";
 
 var nohoras=$('#nohoras').val();
-console.log(nohoras);
+//console.log(nohoras);
 if(Number(nohoras)>80){
   
   document.getElementById("advertencia").style.display = "block";
@@ -326,7 +333,7 @@ obteneractividades() {
 
   this.alumnoService.activadades(this.idasignado).subscribe((res: any) => {
     this.alumnosactividades=res;
-    console.log(res);
+    //console.log(res);
 
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -371,7 +378,7 @@ actualizarestado(){
 
             if(this.idEstado==this.estadosalumnos[i]['id']){
               this.Estado=this.estadosalumnos[i]['estado'];
-              console.log(this.Estado);
+              //console.log(this.Estado);
             }
 
             if(this.plazasDisponibles==0 ){
@@ -414,13 +421,13 @@ this.estadoalumnocambio.observacions=$('#observacionescambio').val();
 
 
    this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe((res) => {
-console.log(res);
+//console.log(res);
 this.cookies.set("idEstado",String(this.idEstado));
 for(var i=0;i<this.estadosalumnos.length;i++){
 
   if( this.estadoalumnocambio.idEstado==this.estadosalumnos[i]['id']){
     this.Estado=this.estadosalumnos[i]['estado'];
-    console.log(this.Estado);
+    //console.log(this.Estado);
   }
 }
   
@@ -447,10 +454,11 @@ actualizarfecha(){
 cambiarfecha(){
 
 
-  var fecharegistro= $("#fechadeinicio").val().toString();
-  console.log(fecharegistro.length);
+  var fecharegistro = $("#fechadeinicio").val().toString();
+  fecharegistro = fecharegistro.split("/")[2] + "-" + fecharegistro.split("/")[1] + "-" + fecharegistro.split("/")[0];
+  //console.log(fecharegistro.length);
 
-console.log(fecharegistro);
+//console.log(fecharegistro);
    this.organizacionService.actualizarfechaalumno(fecharegistro,this.idAlumno).subscribe((res) => {
     location.reload();
 
@@ -465,7 +473,18 @@ descargarCartaEnded(archivo) {
     "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
     encodeURI(archivo) + "'></iframe>"
   )
-}
+  }
+
+  descargar(id) {
+
+    window.open(this.baseUrl + "/DocumentosAlumnos/GetFile?id=" + id, '_blank');
+    /*
+    let pdfWindow = window.open("")
+    pdfWindow.document.write(
+        "<iframe width='100%' height='100%' src='"+this.baseUrl+"/DocumentosOrganizaciones/GetFile?id="+id+"'></iframe>"
+    )*/
+
+  }
 
 
 

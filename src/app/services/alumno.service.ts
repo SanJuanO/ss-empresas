@@ -131,5 +131,10 @@ export class AlumnoService {
     return this.http.post(`${this.baseUrl}/AlumnosActividades/validaActividad?id=${i}`,id);
 
   }
+
+  getAlumnoProyectoAsignado(idAlumnoProyectoAsignado: string | number) {
+    let idalumno = Number(idAlumnoProyectoAsignado);
+    console.log(idalumno);
+    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/  ${idAlumnoProyectoAsignado}`);
+  }
 }
-    

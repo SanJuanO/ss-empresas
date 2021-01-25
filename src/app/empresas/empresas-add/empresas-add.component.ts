@@ -40,7 +40,7 @@ public validar=false;
   public listaAreasAccion = [];
   public listaRubros = [];
   public clasificacion: ClasificacionEmpresa[] = [];
-  public empresaModel = new Empresa(0,"","","","","","","",2,2,2,2,"","","https://www","https://www","https://www","https://www",0,"","","","","","","","","","","https://www","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,0,0,0,0,0,0,undefined,undefined,undefined)
+  public empresaModel = new Empresa("0","","","","","","","",2,2,2,2,"","","https://www","https://www","https://www","https://www",0,"","","","","","","","","","","https://www","","","","","","","","","",true,0,"",0,false,1,1,1,1,1,"0","0","0","0","0","0",undefined,undefined,undefined)
 public mensajevalidacion="";
   public contactos = [];
   checkmodel = new check("false","false")
@@ -359,11 +359,10 @@ listapaist.forEach(el => {
 
     let model = this.empresaModel;
     model.Imagen="";
-model.Responsable = this.responsablemodel;
-model.listaAreasAccion = this.listaAreasAccion;
-model.listaRubros = this.listaRubros ;
-
-model.Imagen=this.imagensubidaurl;
+    model.Responsable = this.responsablemodel;
+    model.listaAreasAccion = this.listaAreasAccion;
+    model.listaRubros = this.listaRubros ;
+    model.Imagen=this.imagensubidaurl;
 
 
 if(model.Responsable.externa){
@@ -576,8 +575,6 @@ else if(!this.validarEmail(this.responsablemodel.correo)){
       }
       
 
-console.log(this.responsablemodel);
-
      this.organizacionService.create(model).subscribe((res: any)=>{
       this.validar=true;
 
@@ -606,7 +603,8 @@ console.log(this.responsablemodel);
                
 
     }, error=>{
-      alert(error.error)
+         alert(error.error)
+         console.log(error.error);
 
     }) 
   
