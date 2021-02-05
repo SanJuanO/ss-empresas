@@ -1,5 +1,6 @@
 
 export class Proyecto {
+  public plazasDisponiblesAprobar?: number;
 
   constructor(
     public plazasDisponibles:number,

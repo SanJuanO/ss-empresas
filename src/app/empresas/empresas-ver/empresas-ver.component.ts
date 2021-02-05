@@ -304,11 +304,30 @@ if(this.validar){
 
   uploadFile(files: FileList) {
     this.fileToUpload = files.item(0);
+    var fileSize = this.fileToUpload.size;
+    if (fileSize > 2000000) {
+      alert('El archivo no debe superar los 2MB');
+      this.fileToUpload = null;
+      $("#file-" + this.idDocumento).val("");
+    }
   }
   
   subeArchivo() {
     console.log(this.idDocumento);
     document.getElementById("carg").style.display = "block";
+
+    if (this.fileToUpload == null) {
+      document.getElementById("carg").style.display = "none";
+      return false;
+    }
+    var fileSize = this.fileToUpload.size;
+    if (fileSize > 2000000) {
+      alert('El archivo no debe superar los 2MB');
+      this.fileToUpload = null;
+      document.getElementById("carg").style.display = "none";
+
+      return false;
+    }
 
     this.organizacionService.postFile(this.fileToUpload, this.idDocumento, this.idobtenido).subscribe(data => {
       if (data.resultado == 1) {

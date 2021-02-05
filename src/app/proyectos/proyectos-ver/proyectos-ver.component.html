@@ -482,12 +482,12 @@
                                                     <div class="font-medium flex sm:justify-center items-center">{{alumno.estado}}</div>
                                                 </td>
                                                 <td style="background: rgb(250, 250, 250);">
-                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion==null && alumno.idEstado==4"> <a (click)="mostrarfecha(alumno.id)" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px; " class="button text-white  mr-2" style="background-color: #FF8800;">Agregar Fecha de inicio</a></div>
+                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion==null && alumno.idEstado==4"> <a (click)="mostrarfecha(alumno.id)" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px; background-color: #FF8800;" class="button text-white  mr-2">Agregar Fecha de inicio</a></div>
                                                     <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion!=null && alumno.idEstado==4 "> {{alumno.fechaInicioInstitucion}}</div>
 
                                                 </td>
                                                 <td *ngIf="alumno.idEstado<4 " style="background: rgb(250, 250, 250);">
-                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center"> <a (click)="mostraractualizarestado(alumno.idAlumno)" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px; " class="button text-white  mr-2" style="background-color: #FF8800;">Cambiar Estado</a></div>
+                                                    <div class="ext-base text-xs whitespace-no-wrap" align="center"> <a (click)="mostraractualizarestado(alumno.idAlumno)" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px;background-color: #FF8800; " class="button text-white  mr-2" >Cambiar Estado</a></div>
 
 
                                                 </td>

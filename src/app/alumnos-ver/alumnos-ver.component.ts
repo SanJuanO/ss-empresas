@@ -11,17 +11,17 @@ import { Carrera } from "../models/carrera";
 import { Facultad } from "../models/facultad";
 import { Proyecto } from "../models/proyectos";
 
-import { Alumno,AlumnoProyecto, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales,alumnohoras,alumnosactividades} from '../models/alumno';
+import { Alumno, AlumnoProyecto, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales, alumnohoras, alumnosactividades } from '../models/alumno';
 import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile, DocumentosSubidosRequeridos } from "../models/documentosalumnos"
 import { CookieService } from "ngx-cookie-service";
 import { OrganizationService } from '../services/organization.service';
-import { Estadosalumnos,Estadosalumnoscambio } from "../models/estadosalumnoss";
+import { Estadosalumnos, Estadosalumnoscambio } from "../models/estadosalumnoss";
 import { SessionService } from '../services/session.service';
 
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Binary } from '@angular/compiler';
 import { NgModel } from '@angular/forms';
 import {
@@ -60,7 +60,7 @@ export const MY_FORMATS = {
   providers: [
     // The locale would typically be provided on the root module of your application. We do it at
     // the component level here, due to limitations of our example generation script.
-    {provide: MAT_DATE_LOCALE, useValue: 'es-MX'},
+    { provide: MAT_DATE_LOCALE, useValue: 'es-MX' },
 
     // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
     // `MatMomentDateModule` in your applications root module. We provide it at the component level
@@ -70,14 +70,15 @@ export const MY_FORMATS = {
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 
 })
 export class AlumnosverComponent implements OnInit {
   baseUrl = environment.baseUrl;
   activo = true;
-  public mensajeh="Advertencia estas por agregarle horas al alumno ¿Estas seguro?";
+  public mensajeh = "Advertencia estas por agregarle horas al alumno ¿Estas seguro?";
+  public mensajeh0 = "*Máximo se pueden registrar 80 hrs. por mes";
 
   public alumnosactividades: alumnosactividades[] = [];
   public estadosalumnos: Estadosalumnos[] = [];
@@ -90,21 +91,22 @@ export class AlumnosverComponent implements OnInit {
   public documentoscadena = new DocumentosAlumno();
   public documentosfile = new Documentosfile()
   public idAlumno: string;
-  public respuestas: string=""  ;
+  public respuestas: string = "";
   public horasalumno: alumnohoras[] = [];
   public idasignado: string;
-public idEstado:number;
-public idProyecto:string;
-public Estado:string;
-public validar=false;
-public nohayfecha:boolean=true;
-public plazasAutorizadas=0;
-public plazasDisponibles=0;
-public versiona = new Array(); 
+  public idEstado: number;
+  public idProyecto: string;
+  public Estado: string;
+  public validar = false;
+  public nohayfecha: boolean = true;
+  public plazasAutorizadas = 0;
+  public plazasDisponibles = 0;
+  public plazasDisponiblesAprobar = 0;
+  public versiona = new Array();
 
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
-  public proyectoModel = new Proyecto(0,"", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, undefined,undefined);
+  public proyectoModel = new Proyecto(0, "", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false, false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0, "", 0, "", "", "", true, undefined, undefined);
 
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0);
   public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", true, true, this.listaAreasUniversidadParticipadoNew, this.listaAreasUniversidadActualesNew, 0, "", "");
@@ -115,24 +117,25 @@ public versiona = new Array();
   public noHoras: number = 0;
 
   public actividades: number = 0;
-public fechaincr:string;
+  public fechaincr: string;
   constructor(private route: ActivatedRoute, private organizacionService: OrganizationService,
-    public cookies: CookieService,  private router: Router, private facultadService: FacultadService,
-     private carreraService: CarreraService, private universidadService: UniversidadService, 
-     private alumnoService: AlumnoService, private _location: Location ,public session: SessionService,
-     public proyect:ProyectoService) { }
+    public cookies: CookieService, private router: Router, private facultadService: FacultadService,
+    private carreraService: CarreraService, private universidadService: UniversidadService,
+    private alumnoService: AlumnoService, private _location: Location, public session: SessionService,
+    public proyect: ProyectoService) { }
 
 
 
   ngOnInit(): void {
     this.idProyecto = this.cookies.get("idProyectoa");
-    this.cookies.set("version","0");
+    this.cookies.set("version", "0");
 
-    this.idasignado=this.cookies.get("idasignado");
-    this.idEstado =Number(this.cookies.get("idEstado"));
+    this.idasignado = this.cookies.get("idasignado");
+    this.idEstado = Number(this.cookies.get("idEstado"));
     //console.log(this.idEstado);
     this.idAlumno = this.cookies.get("idalumno");
-    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) =>{ this.alumno = alumno;
+    this.alumnoService.getAlumno(this.idAlumno).subscribe((alumno: Alumno) => {
+    this.alumno = alumno;
     });
     this.obtenerUniversidades();
     this.obtenerCarreras();
@@ -157,34 +160,37 @@ public fechaincr:string;
   }
   obtenerproyectoalumno() {
     //console.log(this.idProyecto);
-    return this.alumnoService.getAlumnoProyectoAsignado(this.idasignado).subscribe((alumnoproyecto: AlumnoProyecto) => {this.alumnoproyecto = alumnoproyecto;
+    return this.alumnoService.getAlumnoProyectoAsignado(this.idasignado).subscribe((alumnoproyecto: AlumnoProyecto) => {
+    this.alumnoproyecto = alumnoproyecto;
       //this.alumnoproyecto=this.alumnoproyecto[0];
       this.alumnoproyecto = alumnoproyecto;
 
       console.log("proyecto");
       console.log(this.alumnoproyecto);
 
-this.noHoras=this.alumnoproyecto['noHoras'];
-console.log(this.noHoras);
-var fe =this.alumnoproyecto['fechaInicioInstitucion'];
-if(fe!=null){
-var options = { year: 'numeric', month: 'long', day: 'numeric' };
+      this.noHoras = this.alumnoproyecto['noHoras'];
+      console.log(this.noHoras);
+      var fe = this.alumnoproyecto['fechaInicioInstitucion'];
+      if (fe != null) {
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
-var Fecha = new Date((fe.toString()));
-this.fechaincr=Fecha.toLocaleDateString("es-ES", options);
-this.nohayfecha=false;
-}
+        var Fecha = new Date((fe.toString()));
+        this.fechaincr = Fecha.toLocaleDateString("es-ES", options);
+        this.nohayfecha = false;
+      }
     });
 
   }
   obtenerproyecto() {
 
-    return this.proyect.getProyecto(this.idProyecto).subscribe((proyectoModel: Proyecto) =>{this.proyectoModel = proyectoModel;
-  
-    this.plazasDisponibles=this.proyectoModel.plazasDisponibles;
-    this.obtenerestadoalumnos();
+    return this.proyect.getProyecto(this.idProyecto).subscribe((proyectoModel: Proyecto) => {
+    this.proyectoModel = proyectoModel;
 
-  });
+      this.plazasDisponibles = this.proyectoModel.plazasDisponibles;
+      this.plazasDisponiblesAprobar = this.proyectoModel.plazasDisponiblesAprobar;
+      this.obtenerestadoalumnos();
+
+    });
 
   }
 
@@ -197,7 +203,7 @@ this.nohayfecha=false;
   }
 
   obtenerFacultades() {
-     
+
     return this.facultadService
       .getFacultades()
       .subscribe((facultades: Facultad[]) => this.facultades = facultades);
@@ -227,10 +233,11 @@ this.nohayfecha=false;
 
   }
 
-  abrirmodalhoras(){
-this.validar==false;
+  abrirmodalhoras() {
+    this.validar = false;
     $('#horasmodal').modal('show');
-
+    document.getElementById("advertencia0").style.display = "block";
+    document.getElementById("advertencia").style.display = "none";
 
   }
   uploadFile(files: FileList) {
@@ -239,7 +246,7 @@ this.validar==false;
 
   subeArchivo() {
 
-    
+
     this.alumnoService.postFileAlumno(this.fileToUpload, this.idDocumento, this.idAlumno).subscribe(data => {
       if (data.resultado == 1) {
         $('#abrirsubir-' + this.idDocumento).modal('hide');
@@ -255,19 +262,19 @@ this.validar==false;
     this.alumnoService.getrespuesta(this.idAlumno).subscribe((res: any) => {
       //console.log(res);
 
-      for(var i=0;i<res.length;i++){
+      for (var i = 0; i < res.length; i++) {
 
-        var version=res[i]['version'];
-        if(i!=0){
-        if(!this.versiona.includes(version)){
+        var version = res[i]['version'];
+        if (i != 0) {
+          if (!this.versiona.includes(version)) {
+            this.versiona.push(version);
+
+          }
+        } else {
           this.versiona.push(version);
 
+
         }
-      }else{
-        this.versiona.push(version);
-
-
-      }
 
       }
       //console.log(this.versiona);
@@ -281,203 +288,207 @@ this.validar==false;
   }
 
   reportedehoras() {
-     this.mensajeh="Advertencia estas por agregarle horas al alumno ¿Estas seguro?";
+    this.mensajeh = "Advertencia estas por agregarle horas al alumno ¿Estas seguro?";
 
-document.getElementById("advertencia").style.display = "block";
-if(this.validar){
-  document.getElementById("advertencia").style.display = "display";
+    document.getElementById("advertencia").style.display = "block";
+    if (this.validar) {
+      document.getElementById("advertencia").style.display = "none";
 
-var nohoras=$('#nohoras').val();
-//console.log(nohoras);
-if(Number(nohoras)>80){
-  
-  document.getElementById("advertencia").style.display = "block";
-   this.mensajeh="Máximo 80 horas";
+      var nohoras = $('#nohoras').val();
+      //console.log(nohoras);
+      if (Number(nohoras) > 80) {
 
-}else{
-     this.alumnoService.agregarhoras(this.idasignado,nohoras).subscribe((res: any) => {
- location.reload();
+        document.getElementById("advertencia").style.display = "block";
+        document.getElementById("advertencia0").style.display = "none";
+        this.mensajeh = "Máximo 80 horas";
 
-     });
+      } else {
+        this.alumnoService.agregarhoras(this.idasignado, nohoras).subscribe((res: any) => {
+          location.reload();
 
-}
+        });
+
+      }
 
 
+    }
+    this.validar = true;
   }
-  this.validar=true;
-  }
-  
+
 
   horas() {
 
-        this.alumnoService.horas(this.idasignado).subscribe((res: any) => {
-this.horasalumno=res;
-          var a=0;
-          var options = { year: 'numeric', month: 'long', day: 'numeric' };
+    this.alumnoService.horas(this.idasignado).subscribe((res: any) => {
+      this.horasalumno = res;
+      var a = 0;
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
-        for(var i=0;i<this.horasalumno.length;i++){
-          var Fecha = new Date((this.horasalumno[i]['fechaCreacion'].toString()));
-          this.horasalumno[i]['fechaCreacion']=Fecha.toLocaleDateString("es-ES", options);
+      for (var i = 0; i < this.horasalumno.length; i++) {
+        var Fecha = new Date((this.horasalumno[i]['fechaCreacion'].toString()));
+        this.horasalumno[i]['fechaCreacion'] = Fecha.toLocaleDateString("es-ES", options);
 
-a+=this.horasalumno[i]['noHoras'];
+        a += this.horasalumno[i]['noHoras'];
 
 
 
-        }
+      }
 
-        this.horastotales=a;
-              });
-}
+      this.horastotales = a;
+    });
+  }
 
-obteneractividades() {
+  obteneractividades() {
 
-  this.alumnoService.activadades(this.idasignado).subscribe((res: any) => {
-    this.alumnosactividades=res;
-    //console.log(res);
+    this.alumnoService.activadades(this.idasignado).subscribe((res: any) => {
+      this.alumnosactividades = res;
+      //console.log(res);
 
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
-    for(var i=0;i<this.alumnosactividades.length;i++){
-      var Fecha = new Date((this.alumnosactividades[i]['fechaCreacion'].toString()));
-      this.alumnosactividades[i]['fechaCreacion']=Fecha.toLocaleDateString("es-ES", options);
+      for (var i = 0; i < this.alumnosactividades.length; i++) {
+        var Fecha = new Date((this.alumnosactividades[i]['fechaCreacion'].toString()));
+        this.alumnosactividades[i]['fechaCreacion'] = Fecha.toLocaleDateString("es-ES", options);
 
-this.alumnosactividades[i]['titulo']=this.alumnosactividades[i]['titulo'].slice(1, -1); 
+        this.alumnosactividades[i]['titulo'] = this.alumnosactividades[i]['titulo'].slice(1, -1);
 
-    }
- 
-    
+      }
 
-  });
-}
 
-mostraractualizarestado(id){
-  var idact=Number(id);
 
-      $('#act-'+idact).modal('show');
-  
-}
-mostrarreporte(id){
-this.cookies.set("version",id);
+    });
+  }
 
- this.router.navigate(['/alumnosevaluar', this.idAlumno]);
+  mostraractualizarestado(id) {
+    var idact = Number(id);
 
-  
-}
-actualizarestado(){
+    $('#act-' + idact).modal('show');
 
-      $('#mostareditaralumno').modal('show');
-  
-  
-    }
-    obtenerestadoalumnos() {
-      return this.organizacionService
-        .getestadosalumnos()
-        .subscribe((estadosalumnos: Estadosalumnos[]) => {this.estadosalumnos = estadosalumnos;
-  
-          for(var i=0;i<this.estadosalumnos.length;i++){
+  }
+  mostrarreporte(id) {
+    this.cookies.set("version", id);
 
-            if(this.idEstado==this.estadosalumnos[i]['id']){
-              this.Estado=this.estadosalumnos[i]['estado'];
-              //console.log(this.Estado);
+    this.router.navigate(['/alumnosevaluar', this.idAlumno]);
+
+
+  }
+  actualizarestado() {
+
+    $('#mostareditaralumno').modal('show');
+
+
+  }
+  obtenerestadoalumnos() {
+    return this.organizacionService
+      .getestadosalumnos()
+      .subscribe((estadosalumnos: Estadosalumnos[]) => {
+      this.estadosalumnos = estadosalumnos;
+
+        for (var i = 0; i < this.estadosalumnos.length; i++) {
+
+          if (this.idEstado == this.estadosalumnos[i]['id']) {
+            this.Estado = this.estadosalumnos[i]['estado'];
+            //console.log(this.Estado);
+          }
+
+          //if(this.plazasDisponibles==0 ){
+          if (this.plazasDisponiblesAprobar <= 0) {
+
+            if (i == 6) {
+              this.estadosalumnoslimitado.push(this.estadosalumnos[6]);
             }
-
-            if(this.plazasDisponibles==0 ){
-
-if(i==6 ){
-              this.estadosalumnoslimitado.push(this.estadosalumnos[6]);}
-            }else{
-            if(i<3 || i==6 ){
+          } else {
+            if (i < 3 || i == 6) {
               this.estadosalumnoslimitado.push(this.estadosalumnos[i]);
-  
+
             }
           }
         }
-        });
-  
-        
-    }
-    
-
-cambiarestado(id){
-  this.alumnoService.validaractivadades(id).subscribe((res: any) => {
-    
-
-    location.reload();
+      });
 
 
-  });
-}
-
-cambiarestatusalumno(){
-
-
-  this.estadoalumnocambio.idProyecto = Number(this.idProyecto);
-  this.estadoalumnocambio.idAlumno = Number(this.idAlumno);   
-
-  this.estadoalumnocambio.idEstado =Number(this.idEstado);
-
-
-this.estadoalumnocambio.observacions=$('#observacionescambio').val();
-
-
-   this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe((res) => {
-//console.log(res);
-this.cookies.set("idEstado",String(this.idEstado));
-for(var i=0;i<this.estadosalumnos.length;i++){
-
-  if( this.estadoalumnocambio.idEstado==this.estadosalumnos[i]['id']){
-    this.Estado=this.estadosalumnos[i]['estado'];
-    //console.log(this.Estado);
   }
-}
-  
-if(this.estadoalumnocambio.idEstado==3){
-  $('#tipo3').modal('show');
-
-}
-this.obtenerproyectoalumno();
 
 
-   }, error => {
-  alert(error.error)
-  })
- 
-}
-
-actualizarfecha(){
-
-      $('#mostrarfecha').modal('show');
-  
-  
-    }
-
-cambiarfecha(){
+  cambiarestado(id) {
+    this.alumnoService.validaractivadades(id).subscribe((res: any) => {
 
 
-  var fecharegistro = $("#fechadeinicio").val().toString();
-  fecharegistro = fecharegistro.split("/")[2] + "-" + fecharegistro.split("/")[1] + "-" + fecharegistro.split("/")[0];
-  //console.log(fecharegistro.length);
+      location.reload();
 
-//console.log(fecharegistro);
-   this.organizacionService.actualizarfechaalumno(fecharegistro,this.idAlumno).subscribe((res) => {
-    location.reload();
 
-  })
+    });
+  }
 
-}
+  cambiarestatusalumno() {
 
-descargarCartaEnded(archivo) {
 
-  let pdfWindow = window.open("")
-  pdfWindow.document.write(
-    "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
-    encodeURI(archivo) + "'></iframe>"
-  )
+    this.estadoalumnocambio.idProyecto = Number(this.idProyecto);
+    this.estadoalumnocambio.idAlumno = Number(this.idAlumno);
+
+    this.estadoalumnocambio.idEstado = Number(this.idEstado);
+
+
+    this.estadoalumnocambio.observacions = $('#observacionescambio').val();
+
+
+    this.organizacionService.updateestadoalumno(this.estadoalumnocambio).subscribe((res) => {
+      //console.log(res);
+      this.cookies.set("idEstado", String(this.idEstado));
+      for (var i = 0; i < this.estadosalumnos.length; i++) {
+
+        if (this.estadoalumnocambio.idEstado == this.estadosalumnos[i]['id']) {
+          this.Estado = this.estadosalumnos[i]['estado'];
+          //console.log(this.Estado);
+        }
+      }
+
+      if (this.estadoalumnocambio.idEstado == 3) {
+        $('#tipo3').modal('show');
+
+      }
+      this.obtenerproyectoalumno();
+
+
+    }, error => {
+      alert(error.error)
+    })
+
+  }
+
+  actualizarfecha() {
+
+    $('#mostrarfecha').modal('show');
+
+
+  }
+
+  cambiarfecha() {
+
+
+    var fecharegistro = $("#fechadeinicio").val().toString();
+    fecharegistro = fecharegistro.split("/")[2] + "-" + fecharegistro.split("/")[1] + "-" + fecharegistro.split("/")[0];
+    //console.log(fecharegistro.length);
+
+    //console.log(fecharegistro);
+    this.organizacionService.actualizarfechaalumno(fecharegistro, this.idasignado).subscribe((res) => {
+      location.reload();
+
+    })
+
+  }
+
+  descargarCartaEnded(archivo) {
+
+    let pdfWindow = window.open("")
+    pdfWindow.document.write(
+      "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
+      encodeURI(archivo) + "'></iframe>"
+    )
   }
 
   descargar(id) {
 
-    window.open(this.baseUrl + "/DocumentosAlumnos/GetFile?id=" + id, '_blank');
+    window.open(this.baseUrl + "/AlumnosActividades/GetFile?id=" + id, '_blank');
     /*
     let pdfWindow = window.open("")
     pdfWindow.document.write(

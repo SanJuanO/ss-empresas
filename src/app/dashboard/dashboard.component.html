@@ -38,11 +38,11 @@
               <br><br>
 
                 <!-- BEGIN: Convocatorias Abiertas -->
-                <div class="col-span-12 " *ngIf="convocatoriasf.length>0">
+                <div class="col-span-12 " *ngIf="convocatoriasf.length>0 && empresa!=null && empresa.idEstadoOrganizacion!=4">
                   <div class="grid grid-cols-12 gap-6 ">
                     <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                       <div class=" pl-5 pl-5">
-                        <div class="font-weight-bold" style="  font-weight: bold;font-size:25px; ">
+                        <div class="font-weight-bold" style="font-weight: bold;font-size:25px; ">
                           Convocatorias
                         </div>
                         <hr style="color: #000000;" noshade="noshade" size="3" /><br>
@@ -107,11 +107,11 @@
                 </div>
 
 
-                <div class="col-span-12 mt-6  " *ngIf="convocatoriasf.length==0">
+                <div class="col-span-12 mt-6  " *ngIf="convocatoriasf.length==0 || (empresa!=null && empresa.idEstadoOrganizacion==4)">
                   <div class="grid grid-cols-12 gap-6 mt-5">
                     <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                      <div class=" p-5">
-                        <div class="   mt-1 font-weight-bold" style="font-size:25px; ">
+                      <div class="p-5">
+                        <div class="mt-1 font-weight-bold" style="font-weight: bold; font-size:25px; ">
                           Convocatorias
                         </div>
                         <hr style="color: #000000;" noshade="noshade" size="3" /><br>
@@ -135,7 +135,7 @@
                   <div class="grid grid-cols-12 gap-6 mt-5">
                     <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                       <div class=" p-5">
-                        <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold;">
+                        <div class="mt-1 font-weight-bold" style="font-size:25px; font-weight: bold;">
                           Proyectos
                         </div>
                         <hr style="color: #000000;" noshade="noshade" size="3" /><br>
@@ -256,11 +256,11 @@
                 </div>
 
 
-                <div class="col-span-12 mt-6  " *ngIf="proyectos.length==0">
+                <div class="col-span-12 mt-6" *ngIf="proyectos.length==0">
                   <div class="grid grid-cols-12 gap-6 mt-5">
                     <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                       <div class=" p-5">
-                        <div class="   mt-1 font-weight-bold" style="font-size:25px; ">
+                        <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight:bold;">
                           Proyectos
                         </div>
                         <hr style="color: #000000;" noshade="noshade" size="3" /><br>

@@ -21,7 +21,7 @@ declare var $: any;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  public empresa: Empresa[] = [  ];
+  public empresa: Empresa = null;
 
   public alumnos: alumnosasignados[] = [  ];
 
@@ -57,7 +57,6 @@ export class DashboardComponent implements OnInit {
     this.proyectosactivos=[];
     this.proyectosrechazados=[];
     this.proyectospendientes=[];
-     this.empresa=[];
      this.empresacantidad=0;
      this.empresaactiva = [  ];
      this.empresadesaciva = [  ];
@@ -93,26 +92,13 @@ this.mostrarmodal();
   }
   obtenerempresa() {
     let model = this.tipoModel;
-    model.tipo=1;
-    this.organizacionService.getOrganizacion(this.session.getToken()).subscribe((res: any[])=>{     
+    model.tipo = 1;
+    this.organizacionService.getOrganizacion(this.session.getToken()).subscribe((res: Empresa) => {
 
-      this.empresacantidad= res.length;
-      this.empresa= res;
-
-for(var i=0;i<this.empresacantidad;i++){
-
- if(this.empresa[i].idEstadoOrganizacion==2){
-this.empresaactiva.push(this.empresa[i]);
- }
- if(this.empresa[i].idEstadoOrganizacion<2){
-   this.empresadesaciva.push(this.empresa[i]);
+      this.empresa = res;
 
 
- }
-
-}
-
-})
+    })
 
   }
 
