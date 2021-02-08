@@ -246,7 +246,7 @@
 
                 <div class="px-5 pb-8 text-center">
                   <div class="px-5 pb-8 text-center">
-                    <button data-dismiss="modal" class="button w-24 border text-white dark:border-dark-5 mr-1">Cancelar</button>
+                    <button data-dismiss="modal" class="button w-24 border dark:border-dark-5 mr-1">Cancelar</button>
                     <button (click)="reportedehoras()" class="button w-24 bg-theme-1 text-white" style="background-color:#FF8800">Aceptar</button>
                   </div>
 
@@ -401,6 +401,104 @@
 
   <br>
   <br>
+  <div *ngIf="alumnoproyecto!=null && idEstado==4" class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+    <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+      Cartas del proyecto
+    </h2>
+  </div>
+
+  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="alumnoproyecto!=null && idEstado==4">
+    <div class=" p-5">
+
+      <table class="table table-report sm:mt-2">
+        <thead>
+        </thead>
+        <tbody>
+          <tr class="intro-x">
+            <td style="background: rgb(250, 250, 250);">
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">1</div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de inicio</div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+              <div>
+                <div *ngIf="alumnoproyecto.validaCartaInicio==0 || alumnoproyecto.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    PENDIENTE
+                </div>
+                <div *ngIf="alumnoproyecto.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
+                    REVISIÓN
+                </div>
+                <div *ngIf="alumnoproyecto.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    RECHAZADO
+                </div>
+                <div *ngIf="alumnoproyecto.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
+                    VALIDADO
+                </div>
+              </div>
+            </td>
+            <!--
+            <td style="background: rgb(250, 250, 250);">
+              <a *ngIf="alumnoproyecto.rutaCartaInicio==null || alumnoproyecto.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+              <a *ngIf="alumnoproyecto.rutaCartaInicio!=null && alumnoproyecto.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
+            </td>
+              -->
+            <td style="background: rgb(250, 250, 250);" *ngIf="alumnoproyecto.rutaCartaInicio!=null && alumnoproyecto.rutaCartaInicio!=''">
+              <a href="javascript:;" (click)="descargarCarta(alumnoproyecto.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostar</a>
+            </td>
+            <!--<td>
+              <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+            </td>-->
+          </tr>
+          <tr class="intro-x" *ngIf="alumnoproyecto!=null && alumnoproyecto.horasRegistradas >= noHoras && noHoras>0">
+            <td style="background: rgb(250, 250, 250);">
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">2</div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de termino</div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+              <div>
+                <div *ngIf="alumnoproyecto.validaCartaTermino==0 || alumnoproyecto.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                    PENDIENTE
+                  </div>
+                </div>
+                <div *ngIf="alumnoproyecto.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
+                    REVISIÓN
+                </div>
+                <div *ngIf="alumnoproyecto.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    RECHAZADO
+                </div>
+                <div *ngIf="alumnoproyecto.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
+                    VALIDADO
+                </div>
+              </div>
+            </td>
+            <!--
+            <td style="background: rgb(250, 250, 250);">
+              <a *ngIf="alumnoproyecto.rutaCartaTermino==null || alumnoproyecto.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+              <a *ngIf="alumnoproyecto.rutaCartaTermino!=null && alumnoproyecto.rutaCartaTermino!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Volver a cargar</a>
+            </td>
+              -->
+            <td *ngIf="alumnoproyecto.rutaCartaTermino!=null && alumnoproyecto.rutaCartaTermino!=''" style="background: rgb(250, 250, 250);">
+              <a href="javascript:;" (click)="descargarCarta(alumnoproyecto.id,1)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Mostrar</a>
+            </td>
+            <!--<td>
+              <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+            </td>-->
+          </tr>
+        </tbody>
+      </table>
+      <!--<div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar carta</a> </div>-->
+    </div>
+
+  </div>
+  <br>
+  <br>
 
 
   <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="idEstado==4">
@@ -430,25 +528,29 @@
 
       </thead>
       <tbody>
-        <tr class="intro-x" *ngFor="let version of versiona;  let i=index">
+        <tr class="intro-x" *ngIf="RespuestasEvaluaciones1.length>0">
 
 
-          <td style="background: rgb(250, 250, 250);" *ngIf="i==0">
+          <td style="background: rgb(250, 250, 250);">
             <div class="ext-base text-xs whitespace-no-wrap"> Reporte de evaluación intermedio  </div>
           </td>
 
-          <td style="background: rgb(250, 250, 250);" *ngIf="i==1">
+          <td style="background: rgb(250, 250, 250);" class="w-15">
+            <a>
+              <div style="margin-right: auto; border-radius: 15px;  font-size:15px;" class="button bg-theme-1 text-white  mr-2">Evaluación Completada</div>
+            </a>
+          </td>
+          
+        </tr>
+        <tr class="intro-x" *ngIf="RespuestasEvaluaciones2.length>0">
+
+          <td style="background: rgb(250, 250, 250);">
             <div class="ext-base text-xs whitespace-no-wrap"> Reporte de evaluación Final  </div>
           </td>
 
-          <td style="background: rgb(250, 250, 250);" class="w-15" *ngIf="i==0">
-            <a (click)="mostrarreporte(1)">
-              <div style="margin-right: auto; border-radius: 15px;  font-size:15px;background-color:#FF8800" class="button text-white  mr-2"> Ver detalle</div>
-            </a>
-          </td>
-          <td style="background: rgb(250, 250, 250);" class="w-15" *ngIf="i==1">
-            <a (click)="mostrarreporte(2)">
-              <div style="margin-right: auto; border-radius: 15px;  font-size:15px;background-color:#FF8800" class="button text-white  mr-2"> Ver detalle</div>
+          <td style="background: rgb(250, 250, 250);" class="w-15" >
+            <a>
+              <div style="margin-right: auto; border-radius: 15px;  font-size:15px;" class="button text-white bg-theme-1 mr-2">Evaluación Completada</div>
             </a>
           </td>
 
@@ -461,9 +563,9 @@
 
 
 
-    <button [routerLink]="['/alumnosevaluar', alumno.id]" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras/2) && versiona.length==0">Evaluar alumno</button>
+    <button (click)="contestarEncuesta(1)" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras/2) && RespuestasEvaluaciones1.length==0">Evaluación intermedia del alumno</button>
 
-    <button [routerLink]="['/alumnosevaluar', alumno.id]" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras) && versiona.length==1">Evaluar alumno</button>
+    <button (click)="contestarEncuesta(2)" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras) && RespuestasEvaluaciones2.length==0">Evaluación final del alumno</button>
 
   </div>
   <br>

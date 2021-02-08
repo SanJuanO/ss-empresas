@@ -72,6 +72,9 @@ export class AlumnoService {
   getpreguntas() {
     return this.http.get(`${this.baseUrl}/PreguntasEvaluacionAlumno`);
   }
+  getPreguntasEvaluacionAlumnoWhitAnswers(idAlumnoProyectoAsignado: string | number, configuracion: string | number) {
+    return this.http.get(`${this.baseUrl}/PreguntasEvaluacionAlumno/GetListWithIdAlumnoProyectoAsignadoAndAnswers?idAlumnoProyectoAsignado=${idAlumnoProyectoAsignado}&configuracion=${configuracion}`);
+  }
   addAlumno(alumno: Alumno) {
     return this.http.post(`${this.baseUrl}/Alumnos`, alumno);
   }
@@ -137,4 +140,11 @@ export class AlumnoService {
     console.log(idalumno);
     return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/${idAlumnoProyectoAsignado}`);
   }
+
+  addRespuestasPreguntas(model) {
+    const uri = `${this.baseUrl}/RespuestasEvaluacionAlumno/addRespuestas`;
+    //console.log(uri);
+    return this.http.post(uri, model);
+  }
+
 }

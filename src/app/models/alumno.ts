@@ -1,6 +1,17 @@
 
 
 export class AlumnoProyecto {
+  public horasRegistradas?: number;
+  public rutaCartaInicio?: string;
+  public rutaCartaTermino?: string;
+  public archivoCartaInicio?: string;
+  public archivoCartaTermino?: string;
+  public validaCartaInicio?: number;
+  public validaCartaTermino?: number;
+  public estadoValidaCartaInicio?: string;
+  public estadoValidaCartaTermino?: string;
+  public fechaInicioInstitucion?: string;
+
     constructor(
         public fechaCreacion:string,
         public alumno: string,
@@ -168,6 +179,20 @@ export class ModalidadesTrabajo {
     public activo: boolean,
     public id: number,
     ) { }
+}
+
+
+
+export class RespuestasOrganizacion{
+  constructor(
+    public idAlumnoProyectoAsignado: number,
+    public idAlumno: number,
+    public idPregunta: number,
+    public activo: boolean = true,
+    public respuesta: string,
+    public version: number,
+    public pregunta?: string,
+  ) { }
 }
 
 

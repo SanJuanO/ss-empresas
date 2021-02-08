@@ -8,7 +8,7 @@ import { ProyectoService } from '../services/proyecto.service';
 
 import { Universidad } from "../models/universidad";
 import { Carrera } from "../models/carrera";
-import { Facultad } from "../models/facultad";
+import { Facultad, Version } from "../models/facultad";
 import { Proyecto } from "../models/proyectos";
 
 import { Alumno, AlumnoProyecto, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales, alumnohoras, alumnosactividades } from '../models/alumno';
@@ -115,6 +115,11 @@ export class AlumnosverComponent implements OnInit {
   public fileToUpload: File = null;
   public horastotales: number = 0;
   public noHoras: number = 0;
+
+
+  public RespuestasEvaluaciones1: any = [];
+  public RespuestasEvaluaciones2: any = [];
+
 
   public actividades: number = 0;
   public fechaincr: string;
@@ -259,28 +264,20 @@ export class AlumnosverComponent implements OnInit {
   }
   //TODO SERGIO
   obtenerrespuesta() {
-    this.alumnoService.getrespuesta(this.idAlumno).subscribe((res: any) => {
-      //console.log(res);
-
-      for (var i = 0; i < res.length; i++) {
-
-        var version = res[i]['version'];
-        if (i != 0) {
-          if (!this.versiona.includes(version)) {
-            this.versiona.push(version);
-
-          }
-        } else {
-          this.versiona.push(version);
-
-
-        }
-
-      }
-      //console.log(this.versiona);
+      //1 al cubrir la mitad de horas a cumplir
+    this.alumnoService.getencuesta(this.idasignado, 1).subscribe((res: any) => {
+      this.RespuestasEvaluaciones1 = res;      
+    });
+    //2 al cubrir el total de horas a cumplir
+    this.alumnoService.getencuesta(this.idasignado, 2).subscribe((res: any) => {
+      this.RespuestasEvaluaciones2 = res;
     });
   }
+  contestarEncuesta(version) {
+    this.cookies.set("version", version);
+    this.router.navigate(['/alumnosevaluar', this.idAlumno]);
 
+  }
   regresar() {
 
     this._location.back();
@@ -349,7 +346,7 @@ export class AlumnosverComponent implements OnInit {
         var Fecha = new Date((this.alumnosactividades[i]['fechaCreacion'].toString()));
         this.alumnosactividades[i]['fechaCreacion'] = Fecha.toLocaleDateString("es-ES", options);
 
-        this.alumnosactividades[i]['titulo'] = this.alumnosactividades[i]['titulo'].slice(1, -1);
+        //this.alumnosactividades[i]['titulo'] = this.alumnosactividades[i]['titulo'].slice(1, -1);
 
       }
 
@@ -497,6 +494,9 @@ export class AlumnosverComponent implements OnInit {
 
   }
 
+  descargarCarta(id, opc) {
+    window.open(this.baseUrl + "/AlumnosProyectosAsignados/GetFile?idAlumnoProyectoAsignado=" + id + "&opc=" + opc, '_blank');
+  }
 
 
 }
