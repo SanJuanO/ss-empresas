@@ -936,7 +936,8 @@ Cancelar
 
                                     <div style="margin-right: auto; border-radius: 25px; text-align:justify; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
                                 </div>                               </th>
-                            <div class="modal" id="abrirsubir-{{d.idDocumento}}">
+
+                            <div class="modal" id="abrirsubir-{{d.idDocumento}}" *ngIf="d.idDocumento!=6"><!--id:6  Acta constitutiva-->
                                 <div class="modal__content modal__content--xl p-10 text-center">
                                   <form #form="ngForm" (ngSubmit)="subeArchivo()">
 
@@ -947,6 +948,32 @@ Cancelar
 
                                     <br>
                                     <b>*Peso máximo 2mb</b>
+                                    <br>
+                                    <br>
+                                    <br>
+
+                                    <div class="px-5 pb-8 text-center">
+                                      <button data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">
+                                        Cancelar
+                                      </button>
+                                      <button type="submit" data-dismiss="modal" class="button w-24 text-white" style="background: #FF8800;">Subir</button>
+                                    </div>
+                                  </form>
+
+
+                                </div>
+                            </div>
+                          <div class="modal" id="abrirsubir-{{d.idDocumento}}" *ngIf="d.idDocumento==6"><!--id:6  Acta constitutiva peso maximo solo para este documento aumenta a 5mb-->
+                                <div class="modal__content modal__content--xl p-10 text-center">
+                                  <form #form="ngForm" (ngSubmit)="subeArchivo6()">
+
+
+                                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Subir Archivo del documento: {{d.documento}}</div>
+                                    <br>
+                                    <input type="file" id="file-{{d.idDocumento}}" name="file-{{d.idDocumento}}" accept="application/pdf,.doc,.docx" (change)="uploadFile6($event.target.files)">
+
+                                    <br>
+                                    <b>*Peso máximo 5mb</b>
                                     <br>
                                     <br>
                                     <br>

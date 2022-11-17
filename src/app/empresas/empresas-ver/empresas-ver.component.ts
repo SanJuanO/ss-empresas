@@ -311,6 +311,16 @@ if(this.validar){
       $("#file-" + this.idDocumento).val("");
     }
   }
+
+  uploadFile6(files: FileList) {
+    this.fileToUpload = files.item(0);
+    var fileSize = this.fileToUpload.size;
+    if (fileSize > 5000000) {
+      alert('El archivo no debe superar los 5MB');
+      this.fileToUpload = null;
+      $("#file-" + this.idDocumento).val("");
+    }
+  }
   
   subeArchivo() {
     console.log(this.idDocumento);
@@ -323,6 +333,40 @@ if(this.validar){
     var fileSize = this.fileToUpload.size;
     if (fileSize > 2000000) {
       alert('El archivo no debe superar los 2MB');
+      this.fileToUpload = null;
+      document.getElementById("carg").style.display = "none";
+
+      return false;
+    }
+
+    this.organizacionService.postFile(this.fileToUpload, this.idDocumento, this.idobtenido).subscribe(data => {
+      if (data.resultado == 1) {
+        $('#abrirsubir-' + this.idDocumento).modal('hide');
+        $('#success-modal-preview-file').modal('show');
+        console.log(data);
+        document.getElementById("carg").style.display = "none";
+
+        //location.reload();
+        this.obtenerdocumentosSubidosConRequeridos();
+      }
+    }, error => {
+      console.log(error);
+      document.getElementById("carg").style.display = "none";
+
+    });
+  }
+
+  subeArchivo6() {
+    console.log(this.idDocumento);
+    document.getElementById("carg").style.display = "block";
+
+    if (this.fileToUpload == null) {
+      document.getElementById("carg").style.display = "none";
+      return false;
+    }
+    var fileSize = this.fileToUpload.size;
+    if (fileSize > 5000000) {
+      alert('El archivo no debe superar los 5MB');
       this.fileToUpload = null;
       document.getElementById("carg").style.display = "none";
 

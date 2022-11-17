@@ -28,6 +28,7 @@ export class EmpresasEditComponent implements OnInit {
   public responsable: Responsablemodel[] = [];
   public rubros: RubroEmpresa[] = [];
   public universidades: Universidad[] = [];
+  public universidades2: Universidad[] = [];
   public tipo: TipoEmpresa[] = [];
 public idobtenido:string;
   public giro: GiroEmpresa[] = [];
@@ -122,6 +123,7 @@ console.log(this.cambio);
     this.idobtenido=this.activatedRoute.snapshot.paramMap.get("id");
     this.getempresa(this.idobtenido);
     this.obtenerUniversidades();
+    this.obtenerUniversidades2();
     this.obtenerTipo();
     this.obtenerGiro();
     this.obtenerClasificacion();
@@ -241,6 +243,11 @@ var valor= { "idAreaAccion": id ,"activo": true};
     return this.organizacionService
       .getUniversidades()
       .subscribe((universidades: Universidad[]) => this.universidades = universidades );
+  }
+  obtenerUniversidades2() {
+    return this.organizacionService
+      .getUniversidades2()
+      .subscribe((universidades: Universidad[]) => this.universidades2 = universidades);
   }
   obtenerTipo() {
     return this.organizacionService

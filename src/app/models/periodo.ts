@@ -3,6 +3,7 @@ export class Periodos {
         public periodo: string,
         public descripcion: string,
         public activo: boolean,
+        public convocatoria?:string,
         public id?: number
 
 

@@ -159,12 +159,13 @@
 
                             <div class="relative mt-3">
                                 <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                    ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?*
-                  </label>
+                                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                                    Selecciona el esquema bajo el cual los alumnos pueden realizar la prestación de su servicio social en este proyecto*
+                                  </label>
                                     <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.modalidadDistancia" id="modalidadDistancia" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="'si'">Sí</option>
-                    <option [ngValue]="'no'">No</option>
+                    <option [ngValue]="'presencial'">Presencial</option>
+                    <option [ngValue]="'distancia'">A distancia (virtual)</option>
+                    <option [ngValue]="'hibrido'">Híbrido (presencial y a distancia)</option>
                   </select>
                                 </div>
                             </div>

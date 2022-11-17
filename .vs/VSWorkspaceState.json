@@ -3,11 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\alumnos-ver",
+    "\\src\\app\\empresas",
     "\\src\\app\\empresas\\empresas-ver",
-    "\\src\\app\\proyectos",
-    "\\src\\environments"
+    "\\src\\app\\proyectos\\proyectos-add",
+    "\\src\\app\\proyectos\\proyectos-edit",
+    "\\src\\app\\proyectos\\proyectos-ver"
   ],
-  "SelectedNode": "\\src\\app\\alumnos-ver\\alumnos-ver.component.ts",
+  "SelectedNode": "\\src\\app\\empresas\\empresas-ver\\empresas-ver.component.html",
   "PreviewInSolutionExplorer": false
 }

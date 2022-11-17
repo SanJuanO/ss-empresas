@@ -11,8 +11,8 @@ export class ProyectoService {
 
   constructor(private http: HttpClient) { }
 
-  getProyectoEmpresa(id: string | number) {
-    const uri = `${this.api}/Proyectos/GetByIdOrganizacion?idOrganizacion=${id}`;
+  getProyectoEmpresa(idOrganizacion,idPeriodo) {
+    const uri = `${this.api}/Proyectos/GetByIdOrganizacion?idOrganizacion=${idOrganizacion}&idPeriodo=${idPeriodo}`;
     console.log(uri);
     return this.http.get(uri);
   } 
@@ -133,6 +133,9 @@ export class ProyectoService {
     alumnosempresa(id) {
       const uri = `${this.api}/AlumnosProyectosAsignados/getByIdOrganizacion?idOrganizacion=${id}`
       return this.http.get(uri);
+  }
+  alumnosByEmpresaAndIdPeriodo(idInstitucion, idPeriodo) {
+    const uri = `${this.api}/AlumnosProyectosAsignados/getByIdOrganizacionAndIdPeriodo?idOrganizacion=${idInstitucion}&idPeriodo=${idPeriodo}`
+      return this.http.get(uri);
     }
   }
-  

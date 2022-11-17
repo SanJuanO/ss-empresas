@@ -1,1127 +1,1153 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <div class="container" style=" font-family:Helvetica; font-size: 17px;">
-  
 
-    <nav class="top-nav  shadow-lg navbar-expand-md navbar-light fixed-top bg-white " style="top:0;left: 0;  width: 100%;
+
+  <nav class="top-nav  shadow-lg navbar-expand-md navbar-light fixed-top bg-white " style="top:0;left: 0;  width: 100%;
     position: fixed;
     ">
-        <ul>
-            <li>
-                <a>
+    <ul>
+      <li>
+        <a>
 
-                    <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png " class="mt-3 mb-3" width="200 " style="margin-left: 100px;" height="60 " alt=" ">
-                </a>
-            </li>
-            <li class="pt-5 ">
-                <a class="text-black p-5 " style="font-size: 20px; font-family:Helvetica; ">
-                    <a class=" pt-6 ">Terminar registro de Institución / Área <span class="sr-only ">(current)</span></a>
-                </a>
-            </li>
+          <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png " class="mt-3 mb-3" width="200 " style="margin-left: 100px;" height="60 " alt=" ">
+        </a>
+      </li>
+      <li class="pt-5 ">
+        <a class="text-black p-5 " style="font-size: 20px; font-family:Helvetica; ">
+          <a class=" pt-6 ">Terminar registro de Institución / Área <span class="sr-only ">(current)</span></a>
+        </a>
+      </li>
 
-        </ul>
-    </nav>
-    <br> <br>
-    <form (ngSubmit)="create()" #form="ngForm">
+    </ul>
+  </nav>
+  <br> <br>
+  <form (ngSubmit)="create()" #form="ngForm">
 
-        <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
+    <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
 
-            <div class="modal" id="solo3">
-                <div class="modal__content modal__content--xl p-10 text-center">
-                    <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
-        
-                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
-                    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Sólo se permite seleccionar máximo 3 áreas de acción </div>
-        
-        
-        
-        
-                    <div class=" text-center">
-                        <br>
-                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                        "> <br><a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
-                    </div>
-                </div>
-        
-        
-            </div>
-            <div class="modal" id="superlarge-modal-size-preview">
-                <div class="modal__content modal__content--xl p-10 text-center">
-        
-                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Bienvenid@!</div>
-                    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por tu registro! </div>
-        
-        
-                    <div class="mt-1" style="font-size: 20px;" *ngIf="cambio">
-                      A continuación, completa el registro de la Institución que representas
-                    </div>
-                    
-                    <div class="mt-1 text-justify" style="font-size: 20px;" *ngIf="!cambio">
-                      A continuación, completa el registro del área interna de la universidad que representas
-                    </div>
-        
-                    <div class=" text-center">
-                        <br>
-                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                        "> <br><a  data-dismiss="modal" style="background: #FF8300; border-radius: 15px; font-size: 17px;" class=" text-white  p-2">Continuar</a> </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="modal" id="success-modal-preview" style="border-radius: 25px;">
-                <div class="modal__content modal__content--xl p-10 text-center">
-                    <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
-        
-                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Perfil Actualizado</div>
-                    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;"><div *ngIf="cambio">¡Gracias por registrar a la Institución!</div><div *ngIf="!cambio">¡Gracias por registrar a tu área!</div> </div>
-        
-        
-                    <div class=" mt-1 " style="font-size: 20px;">A continuación, <div *ngIf="cambio"> completa el perfil de la Institución subiendo la documentación solicitada.</div><div *ngIf="!cambio"> dirígete a Proyectos y registra tu proyecto(s)</div>
-        
-        
+    <div class="modal" id="solo3">
+      <div class="modal__content modal__content--xl p-10 text-center">
+        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Sólo se permite seleccionar máximo 3 áreas de acción </div>
+
+
+
+
+        <div class=" text-center">
+          <br>
+          <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <br><a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
         </div>
-                    <div class=" text-center">
-        
-                        <br>
-                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                        "> <br> <a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
-                    </div>
-                </div>
+      </div>
+
+
+    </div>
+    <div class="modal" id="superlarge-modal-size-preview">
+      <div class="modal__content modal__content--xl p-10 text-center">
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Bienvenid@!</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por tu registro! </div>
+
+
+        <div class="mt-1" style="font-size: 20px;" *ngIf="cambio">
+          A continuación, completa el registro de la Institución que representas
+        </div>
+
+        <div class="mt-1 text-justify" style="font-size: 20px;" *ngIf="!cambio">
+          A continuación, completa el registro del área interna de la universidad que representas
+        </div>
+
+        <div class="text-center">
+          <br>
+          <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">
+          <br>
+          <a data-dismiss="modal" style="background: #FF8300; border-radius: 15px; font-size: 17px;" class=" text-white  p-2">Continuar</a> </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="success-modal-preview" style="border-radius: 25px;">
+      <div class="modal__content modal__content--xl p-10 text-center">
+        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Perfil Actualizado</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;"><div *ngIf="cambio">¡Gracias por registrar a la Institución!</div><div *ngIf="!cambio">¡Gracias por registrar a tu área!</div> </div>
+
+
+        <div class=" mt-1 " style="font-size: 20px;">
+          A continuación, <div *ngIf="cambio"> completa el perfil de la Institución subiendo la documentación solicitada.</div><div *ngIf="!cambio"> dirígete a Proyectos y registra tu proyecto(s)</div>
+
+
+        </div>
+        <div class=" text-center">
+
+          <br>
+          <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="validacion">
+
+      <div class="modal__content modal__content--xl p-10 text-center">
+        <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">{{mensajevalidacion}}</div>
+
+
+
+
+        <div class=" text-center">
+          <br>
+          <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <br><a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="" style="display: none;">
+      <div class="sm:grid grid-cols-1 gap-2">
+        <div class="relative mt-2">
+          <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+            <h2 class="font-medium text-base mr-auto">
+              Institución / Área Externa
+            </h2>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center mt-3">
+            <label class="sm:w-32 sm:text-right sm:mr-5">Institución / Área externa? *</label>
+            <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="responsablemodel.externa" [ngModelOptions]="{standalone: true}" (ngModelChange)="externa()">
+              <option [ngValue]="true">Sí </option>
+
+              <option [ngValue]="false">No </option>
+
+            </select>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="horizontal-form" *ngIf="cambio">
+
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
+              Información General de la Institución
+
             </div>
-            <div class="modal" id="validacion">
-        
-                <div class="modal__content modal__content--xl p-10 text-center">
-                    <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                    <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
-        
-                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
-                    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">{{mensajevalidacion}}</div>
-        
-        
-        
-        
-                    <div class=" text-center">
-                        <br>
-                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                        "> <br><a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
-                    </div>
+            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class=" p-5">
+
+        <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
+          <div class="w-0 h-20 sm:w-24 sm:h-24 flex-none lg:w-72 lg:h-50 image-fit relative">
+            <img alt="Midone Tailwind HTML Admin Template" id="blah" src="{{logo}}">*
+          </div>
+          <div class="ml-5 button text-white  shadow-md mr-5" style="background-color:#FF8800;">
+            <a (click)="abrirsubir()">
+              Cambiar imagen (Ingrese aquí el Logo de la institución)
+            </a>
+          </div>
+
+        </div>
+        <p>
+
+          *La resolución de la imagen debe ser de 1280 x 720.
+        </p>
+        <br>
+
+        <div class="modal" id="abrirsubir">
+          <div class="modal__content modal__content--xl p-10 text-center">
+            <form #form="ngForm" (ngSubmit)="subeArchivo()">
+
+              <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+              <div class="text-3xl mt-5 text-center" style="font-size: 28px;">Subir Imagen</div>
+              <br>
+              <input type="file" id="file" accept="image/png, image/jpeg" name="file" (change)="uploadFile($event.target.files)">
+
+              <br>
+              <br>
+              <br>
+              <div class="px-5 pb-8 text-center">
+                <button data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">
+                  Cancelar
+                </button>
+                <button type="submit" data-dismiss="modal" class="button w-24 text-white" style="background-color: #FF8800;">Subir</button>
+              </div>
+
+
+
+            </form>
+
+
+          </div>
+        </div>
+
+        <div class="preview">
+          <div class="mt-3">
+            <div class="sm:grid grid-cols-2 gap-2">
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre Oficial de la Institución (denominación o razón social)*</label>
+                  <input type="text" class="input  w-full border mt-2 " placeholder="Como aparece en el Acta Constitutiva" id="organizacion" [(ngModel)]="empresaModel.organizacion" [ngModelOptions]="{standalone: true}" required>
+
                 </div>
-        
-        
+
+              </div>
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre Común de la Institución (nombre comercial)*</label>
+                  <input type="text" class="input  w-full border mt-2 " placeholder="Escribir el nombre con el que es comúnmente conocida la Institución" id="nombreComun" [(ngModel)]="empresaModel.nombreComun" [ngModelOptions]="{standalone: true}" required>
+                </div>
+              </div>
+
             </div>
-
-            <div class="" style="display: none;">
-                <div class="sm:grid grid-cols-1 gap-2">
-                    <div class="relative mt-2">
-                        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                            <h2 class="font-medium text-base mr-auto">
-                                Institución / Área Externa
-                            </h2>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row items-center mt-3">
-                            <label class="sm:w-32 sm:text-right sm:mr-5">Institución / Área externa? *</label>
-                            <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="responsablemodel.externa" [ngModelOptions]="{standalone: true}" (ngModelChange)="externa()">
-<option [ngValue]="true">Sí </option>
-
-<option [ngValue]="false">No </option>
-
-</select>
-                        </div>
-
-
-                    </div>
+          </div>
+          <br>
+          <div class="mt-3">
+            <div class="sm:grid grid-cols-1 gap-2">
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Descripción introductoria de la Institución (Objeto o Finalidad de la Institución)*</label>
+                  <textarea type="text" maxlength="500" class="input  w-full border mt-2 " rows="3" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.descripcion" id="descripcion" [ngModelOptions]="{standalone: true}" required></textarea>
                 </div>
+
+              </div>
+
             </div>
+          </div>
+          <br>
 
+          <div class="mt-3">
+            <div class="sm:grid grid-cols-2 gap-2">
 
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Años de Antigüedad de la Institución*</label>
+                  <input type="number" ng-value="0" class="input  w-full border mt-2 " rows="3" placeholder="¿Cuántos años lleva en pie la organización desde su fundación?" id="antiguedad" [(ngModel)]="empresaModel.antiguedad" [ngModelOptions]="{standalone: true}" required>
+                </div>
 
-            <div id="horizontal-form" *ngIf="cambio">
-
-                <div class="grid grid-cols-12 gap-6 mt-5">
-                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class=" p-5">
-                            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">Información General de la Institución
-
-                            </div>
-                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                        </div>
-
-                    </div>
+              </div>
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">¿Cuál es la razón de ser de la Institución?*</label>
+                  <textarea type="text" maxlength='500' class="input  w-full border mt-2 " rows="5" placeholder="Responda en función al principal propósito de la Institución | Máximo 500 caracteres" id="razon" [(ngModel)]="empresaModel.razon" [ngModelOptions]="{standalone: true}"
+                            required></textarea>
 
                 </div>
-                <div class=" p-5">
 
-                    <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
-                        <div class="w-0 h-20 sm:w-24 sm:h-24 flex-none lg:w-72 lg:h-50 image-fit relative">
-                            <img alt="Midone Tailwind HTML Admin Template" id="blah" src="{{logo}}">*
-                        </div>
-                        <div class="ml-5 button text-white  shadow-md mr-5" style="background-color:#FF8800;">
-                            <a (click)="abrirsubir()">
-                          Cambiar imagen (Ingrese aquí el Logo de la institución)
-                        </a>
-                        </div>
-
-                    </div>
-                    <p>
-
-                        *La resolución de la imagen debe ser de 1280 x 720.
-                    </p>
-                    <br>
-
-                    <div class="modal" id="abrirsubir">
-                        <div class="modal__content modal__content--xl p-10 text-center">
-                            <form #form="ngForm" (ngSubmit)="subeArchivo()">
-
-                                <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
-
-                                <div class="text-3xl mt-5 text-center" style="font-size: 28px;">Subir Imagen</div>
-                                <br>
-                                <input type="file" id="file" accept="image/png, image/jpeg" name="file" (change)="uploadFile($event.target.files)">
-
-                                <br>
-                                <br>
-                                <br>
-                                <div class="px-5 pb-8 text-center">
-                                    <button  data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">
-                    Cancelar
-                  </button>
-                                    <button type="submit" data-dismiss="modal" class="button w-24 text-white" style="background-color: #FF8800;">Subir</button>
-                                </div>
+              </div>
 
 
+            </div>
+          </div>
+          <br>
+          <div class="mt-3">
+            <div class="sm:grid grid-cols-2 gap-2">
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Visión*</label>
+                  <textarea type="text" maxlength='500' class="input  w-full border mt-2 " rows="5" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.vision" id="vision" [ngModelOptions]="{standalone: true}" required></textarea>
+                </div>
+              </div>
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Misión*</label>
+                  <textarea type="text" maxlength='500' class="input  w-full border mt-2 " rows="5" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.mision" id="mision" [ngModelOptions]="{standalone: true}" required></textarea>
+                </div>
+              </div>
 
-                            </form>
-
-
-                        </div>
-                    </div>
-
-                    <div class="preview">
-                        <div class="mt-3">
-                            <div class="sm:grid grid-cols-2 gap-2">
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre Oficial de la Institución (denominación o razón social)*</label>
-                                        <input type="text" class="input  w-full border mt-2 " placeholder="Como aparece en el Acta Constitutiva" id="organizacion" [(ngModel)]="empresaModel.organizacion" [ngModelOptions]="{standalone: true}" required>
-
-                                    </div>
-
-                                </div>
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre Común de la Institución (nombre comercial)*</label>
-                                        <input type="text" class="input  w-full border mt-2 " placeholder="Escribir el nombre con el que es comúnmente conocida la Institución" id="nombreComun" [(ngModel)]="empresaModel.nombreComun" [ngModelOptions]="{standalone: true}" required>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <br>
-                        <div class="mt-3">
-                            <div class="sm:grid grid-cols-1 gap-2">
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Descripción introductoria de la Institución (Objeto o Finalidad de la Institución)*</label>
-                                        <textarea type="text" maxlength="500" class="input  w-full border mt-2 " rows="3" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.descripcion" id="descripcion" [ngModelOptions]="{standalone: true}" required></textarea>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <br>
-
-                        <div class="mt-3">
-                            <div class="sm:grid grid-cols-2 gap-2">
-
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Años de Antigüedad de la Institución*</label>
-                                        <input type="number" ng-value="0" class="input  w-full border mt-2 " rows="3" placeholder="¿Cuántos años lleva en pie la organización desde su fundación?" id="antiguedad" [(ngModel)]="empresaModel.antiguedad" [ngModelOptions]="{standalone: true}" required>
-                                    </div>
-
-                                </div>
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">¿Cuál es la razón de ser de la Institución?*</label>
-                                        <textarea type="text" maxlength='500' class="input  w-full border mt-2 " rows="5" placeholder="Responda en función al principal propósito de la Institución | Máximo 500 caracteres" id="razon" [(ngModel)]="empresaModel.razon" [ngModelOptions]="{standalone: true}"
-                                            required></textarea>
-
-                                    </div>
-
-                                </div>
+            </div>
+          </div>
+          <br>
+          <div class="mt-3">
+            <div class="sm:grid grid-cols-3 gap-2">
 
 
-                            </div>
-                        </div>
-                        <br>
-                        <div class="mt-3">
-                            <div class="sm:grid grid-cols-2 gap-2">
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Visión*</label>
-                                        <textarea type="text" maxlength='500' class="input  w-full border mt-2 " rows="5" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.vision" id="vision" [ngModelOptions]="{standalone: true}" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Misión*</label>
-                                        <textarea type="text" maxlength='500' class="input  w-full border mt-2 " rows="5" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.mision" id="mision" [ngModelOptions]="{standalone: true}" required></textarea>
-                                    </div>
-                                </div>
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Principales Objetivos*</label>
+                  <textarea type="text" class="input  w-full border mt-2 " rows="5" maxlength="500" placeholder="Enlistarlos en orden de prioridad / Máximo 7" [(ngModel)]="empresaModel.objetivo" id="objetivo" [ngModelOptions]="{standalone: true}" required></textarea>
+                </div>
+              </div>
 
-                            </div>
-                        </div>
-                        <br>
-                        <div class="mt-3">
-                            <div class="sm:grid grid-cols-3 gap-2">
+              <div class="relative mt-2">
+                <div>
 
+                  <div>
+                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Enumere los Principales Logros de la Institución* </label>
+                    <textarea type="text" class="input  w-full border mt-2 " maxlength="500" rows="5" placeholder="Enlista máximo 7" [(ngModel)]="empresaModel.logros" id="logros" [ngModelOptions]="{standalone: true}" required></textarea>
 
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Principales Objetivos*</label>
-                                        <textarea type="text" class="input  w-full border mt-2 " rows="5" maxlength="500" placeholder="Enlistarlos en orden de prioridad / Máximo 7" [(ngModel)]="empresaModel.objetivo" id="objetivo" [ngModelOptions]="{standalone: true}" required></textarea>
-                                    </div>
-                                </div>
+                  </div>
 
-                                <div class="relative mt-2">
-                                    <div>
+                </div>
+              </div>
 
-                                        <div>
-                                            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Enumere los Principales Logros de la Institución* </label>
-                                            <textarea type="text" class="input  w-full border mt-2 " maxlength="500" rows="5" placeholder="Enlista máximo 7" [(ngModel)]="empresaModel.logros" id="logros" [ngModelOptions]="{standalone: true}" required></textarea>
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Enumere los Reconocimientos y Certificaciones con los que cuenta la Institución*</label>
+                  <textarea type="text" maxlength="500" class="input  w-full border mt-2 " rows="5" placeholder="Enlista máximo 7" [(ngModel)]="empresaModel.reconocimiento" id="reconocimiento" [ngModelOptions]="{standalone: true}" required></textarea>
 
-                                        </div>
+                </div>
 
-                                    </div>
-                                </div>
-
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Enumere los Reconocimientos y Certificaciones con los que cuenta la Institución*</label>
-                                        <textarea type="text" maxlength="500" class="input  w-full border mt-2 " rows="5" placeholder="Enlista máximo 7" [(ngModel)]="empresaModel.reconocimiento" id="reconocimiento" [ngModelOptions]="{standalone: true}" required></textarea>
-
-                                    </div>
-
-                                </div>
+              </div>
 
 
-                            </div>
-                        </div>
+            </div>
+          </div>
 
 
 
-                        <br>
+          <br>
 
 
-                        <div class="mt-3">
-                            <div class="sm:grid grid-cols-2 gap-2">
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Tipo de Organización*</label>
-                                        <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idTipoOrganizacion" id="idTipoOrganizacion" [ngModelOptions]="{standalone: true}">
+          <div class="mt-3">
+            <div class="sm:grid grid-cols-2 gap-2">
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Tipo de Organización*</label>
+                  <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idTipoOrganizacion" id="idTipoOrganizacion" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="ti.id" *ngFor="let ti of tipo">{{ti.tipo}} </option>
 
 
                   </select>
-                                    </div>
-                                </div>
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">¿La Institución pertenece al movimiento Regnum Christi?*</label>
-                                        <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.legionario" id="legionario" [ngModelOptions]="{standalone: true}">
-                                        <option [ngValue]="true">Sí </option>
-
-                                        <option [ngValue]="false">No </option>
-                                                                        </select> </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <br>
-                <div class="grid grid-cols-12 gap-6 mt-5">
-                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class=" p-5">
-                            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">Redes Sociales
+              </div>
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">¿La Institución pertenece al movimiento Regnum Christi?*</label>
+                  <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.legionario" id="legionario" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="true">Sí </option>
 
-                            </div>
-                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                        </div>
-
-                    </div>
-
+                    <option [ngValue]="false">No </option>
+                  </select>
                 </div>
 
+              </div>
 
-                <div class=" p-5">
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-2 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Página Web*</label>
-                                    <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="" id="web" [(ngModel)]="empresaModel.web" [ngModelOptions]="{standalone: true}" required>
-                                    <div style="margin-top:3px;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
+              Redes Sociales
 
-                                        Pega el link, ej: (https://www.anahuac.mx/)
+            </div>
+            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
-                                    </div>
+          </div>
 
-                                </div>
-                            </div>
+        </div>
 
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Facebook*</label>
-                                    <input type="text" value="https://" class="input  w-full border mt-2 " id="facebook" placeholder="Link del perfil de la Institución/ ejemplo: https://adam.anahuac.mx/serviciosocial" [(ngModel)]="empresaModel.facebook" [ngModelOptions]="{standalone: true}"
-                                        required>
-
-                                    <div style="margin-top:3px;">
-
-                                        Pega el link, ej:  (https://www.facebook.com)
-
-                                    </div>
-                                </div>
-                            </div>
+      </div>
 
 
-                        </div>
-                    </div>
+      <div class=" p-5">
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-2 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Página Web*</label>
+                <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="" id="web" [(ngModel)]="empresaModel.web" [ngModelOptions]="{standalone: true}" required>
+                <div style="margin-top:3px;">
 
-                    <br>
-                    <div class="mt-3">
-
-                        <div class="sm:grid grid-cols-3 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Instagram</label>
-                                    <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="Link del perfil de la Institución/ ejemplo: https://adam.anahuac.mx/serviciosocial" [(ngModel)]="empresaModel.instagram" [ngModelOptions]="{standalone: true}" required>
-
-
-                                    <div style="margin-top:3px;">
-
-                                        Pega el link, ej:  (https://www.instagram.com)
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">YouTube</label>
-                                    <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="Link del perfil de la Institución/ ejemplo: https://adam.anahuac.mx/serviciosocial" [(ngModel)]="empresaModel.youtube" [ngModelOptions]="{standalone: true}" required>
-
-
-                                    <div style="margin-top:3px;">
-
-                                        Pega el link, ej:  (https://www.youtube.com)
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Tik Tok</label>
-
-                                    <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="Link del perfil de la Institución/ ejemplo: https://adam.anahuac.mx/serviciosocial" [(ngModel)]="empresaModel.tiktok" [ngModelOptions]="{standalone: true}" required>
-
-                                    <div style="margin-top:3px;">
-
-                                        Pega el link, ej:  (https://www.tiktok.com)
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <br>
-
-
-
-                <div class="grid grid-cols-12 gap-6 mt-5">
-                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class=" p-5">
-                            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">Contacto del Responsable de Servicio Social
-
-                            </div>
-                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                        </div>
-
-                    </div>
+                  Pega el link, ej: (https://www.anahuac.mx/)
 
                 </div>
 
+              </div>
+            </div>
 
-                <div class=" ">
-                    <div class="">
-                        <div class="sm:grid grid-cols-1 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del Titular o Director de la Institución*</label>
-                                    <input type="text" class="input  w-full border mt-2 " id="nombreCompletoDirector" placeholder="" [(ngModel)]="responsablemodel.nombreCompletoDirector" [ngModelOptions]="{standalone: true}">
-                                </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Facebook*</label>
+                <input type="text" value="https://" class="input  w-full border mt-2 " id="facebook" placeholder="Link del perfil de la Institución/ ejemplo: https://adam.anahuac.mx/serviciosocial" [(ngModel)]="empresaModel.facebook" [ngModelOptions]="{standalone: true}"
+                       required>
 
-                            </div>
+                <div style="margin-top:3px;">
 
-
-                        </div>
-                    </div>
-
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-2 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del Responsable*</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="nombreCompletoResponsable" [(ngModel)]="responsablemodel.nombreCompletoResponsable" [ngModelOptions]="{standalone: true}">
-                                </div>
-                            </div>
-
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Departamento o Área:</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="departamento" [(ngModel)]="responsablemodel.departamento" [ngModelOptions]="{standalone: true}">
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Puesto:</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="puesto" [(ngModel)]="responsablemodel.puesto" [ngModelOptions]="{standalone: true}">
-                                </div>
-
-                            </div>
-                            <div class="sm:grid grid-cols-2 gap-2">
-
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Número telefónico :</label>
-                                        <input type="text" class="input  w-full border mt-2 " placeholder="" id="telefono" [(ngModel)]="responsablemodel.telefono" [ngModelOptions]="{standalone: true}">
-
-                                    </div>
-                                </div>
-                                <div class="relative mt-2">
-                                    <div>
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">Extensión:</label>
-                                        <input type="text" class="input  w-full border mt-2 " placeholder="" id="extension" [(ngModel)]="responsablemodel.extension" [ngModelOptions]="{standalone: true}">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="relative mt-2">
-
-                                <div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-2 gap-2">
-
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Correo del Responsable*</label>
-                                    <input type="text" class="input  w-full border mt-2 " id="correo" type="email" placeholder="" [(ngModel)]="responsablemodel.correo" [ngModelOptions]="{standalone: true}">
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Contraseña del Responsable*</label>
-                                    <input type="password" class="input  w-full border mt-2 " id="contrasena" placeholder="" [(ngModel)]="responsablemodel.contrasena" [ngModelOptions]="{standalone: true}">
-                                    <!-- checkbox que nos permite activar o desactivar la opcion -->
-                                    <div style="margin-top:3px;">
-                                        <input style="margin-left:20px;" type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña" (change)="mostrarpass()" /> &nbsp;&nbsp;Mostrar Contraseña</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <br>
-                <br>
-
-
-
-
-
-                <div class="grid grid-cols-12 gap-6 mt-5">
-                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class=" p-5">
-                            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">Domicilio
-                            </div>
-                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                        </div>
-
-                    </div>
+                  Pega el link, ej:  (https://www.facebook.com)
 
                 </div>
-                <div class=" ">
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-3 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">CP*</label>
-                                    <div class="sm:grid grid-cols-2 gap-2">
-                                        <div class="relative mt-2">
-
-                                            <input type="text" class="input  w-full border mt-2 " id="cp" minlength="5" maxlength="5" placeholder="" placeholder="" [(ngModel)]="empresaModel.cp" [ngModelOptions]="{standalone: true}">
-                                        </div>
-
-                                        <div class="relative mt-3">
-                                            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                                            "> <br><a (click)="obtenerdireccion()" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
+              </div>
+            </div>
 
 
-                                        </div>
+          </div>
+        </div>
 
-                                    </div>
-                                </div>
+        <br>
+        <div class="mt-3">
 
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">País*</label>
-
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.pais" id="pais" [ngModelOptions]="{standalone: true}">
-                        <option  *ngFor="let pais of listapais" [ngValue]="pais" >{{pais}} </option>
-                        
-                        
-                        </select>
-
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Estado*</label>
-
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.estado" id="estado" [ngModelOptions]="{standalone: true}">
-                                        <option *ngFor="let estado of listaestados" [ngValue]="estado" >{{estado}} </option>
-                                    </select>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
+          <div class="sm:grid grid-cols-3 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Instagram</label>
+                <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="Link del perfil de la Institución/ ejemplo: https://adam.anahuac.mx/serviciosocial" [(ngModel)]="empresaModel.instagram" [ngModelOptions]="{standalone: true}" required>
 
 
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-3 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Alcaldía/Municipio*</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.municipio" id="municipio" [ngModelOptions]="{standalone: true}">
-                                        <option *ngFor="let municipio of listamunicipios" [ngValue]="municipio" >{{municipio}} </option>
-                                    </select> </div>
+                <div style="margin-top:3px;">
 
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Ciudad*</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.ciudad" id="ciudad" [ngModelOptions]="{standalone: true}">
-                                        <option  *ngFor="let ciudad of listaciudad" [ngValue]="ciudad" >{{ciudad}} </option>
-                                    </select> </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Colonia*</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.colonia" id="colonia" [ngModelOptions]="{standalone: true}">
-                                        <option *ngFor="let colonia of listacolonias" [ngValue]="colonia" >{{colonia}} </option>
-                                    </select> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-3 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Calle*</label>
-                                    <input type="text" class="input w-full border mt-2" placeholder="" id="calle" [(ngModel)]="empresaModel.calle" [ngModelOptions]="{standalone: true}" maxlength="1900">
-                                </div>
-
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Num. Ext.*</label>
-                                    <input type="text" class="input  w-full border mt-2" placeholder="" id="noExt" [(ngModel)]="empresaModel.noExt" [ngModelOptions]="{standalone: true}" maxlength="400">
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Num. Int.</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" id="noInt" [(ngModel)]="empresaModel.noInt" [ngModelOptions]="{standalone: true}" maxlength="400">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
+                  Pega el link, ej:  (https://www.instagram.com)
 
                 </div>
-                <br>
-                <br>
-
-                <div class="mt-3">
-                    <div class="sm:grid grid-cols-1 gap-2">
-
-                        <div class="relative mt-2">
-
-
-                            <div class="grid grid-cols-12 gap-6 mt-5">
-                                <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                                    <div class=" p-5">
-                                        <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
-                                            Principal(es) Área(s) de Acción (selecciona máximo 3)*
-                                        </div>
-                                        <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">YouTube</label>
+                <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="Link del perfil de la Institución/ ejemplo: https://adam.anahuac.mx/serviciosocial" [(ngModel)]="empresaModel.youtube" [ngModelOptions]="{standalone: true}" required>
 
 
+                <div style="margin-top:3px;">
 
-                            <div class=" p-5">
-
-                                <div class="well">
-                                    <table style="padding: 15px; margin-left: 25px;">
-                                        <tbody>
-                                            <tr *ngFor="let area of areas">
-
-                                                <td style="padding:5px;"> <input type="checkbox" (change)="toggleArea(($event.target.checked), area.id)" id="area-{{area.id}}"></td>
-                                                <td style="font-size: 17px; font-weight: bold; color: #FF8800;">{{area.areaAccion}}
-
-
-                                                </td>
-                                                <div *ngIf="area.id==13">
-                                                    <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}" placeholder="" maxlength="900" disabled>
-                                                </div>
-
-                                            </tr>
-
-
-                                        </tbody>
-
-
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-
-
-                <br>
-
-                <div class="grid grid-cols-12 gap-6 mt-5">
-                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class=" p-5">
-                            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
-                                Observaciones
-                            </div>
-                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                        </div>
-
-                    </div>
+                  Pega el link, ej:  (https://www.youtube.com)
 
                 </div>
+              </div>
+            </div>
 
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Tik Tok</label>
 
-                <div class=" p-5">
+                <input type="text" value="https://" class="input  w-full border mt-2 " placeholder="Link del perfil de la Institución/ ejemplo: https://adam.anahuac.mx/serviciosocial" [(ngModel)]="empresaModel.tiktok" [ngModelOptions]="{standalone: true}" required>
 
-                    <textarea class="input  w-full border mt-2 " maxlength="500" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones" rows="10"></textarea>
-                    <br>
+                <div style="margin-top:3px;">
+
+                  Pega el link, ej:  (https://www.tiktok.com)
+
                 </div>
-                <br>
-                <div class="mt-3">
-                    <div class="sm:grid grid-cols-1 gap-2">
-
-                        <div class="relative mt-2">
-                            <div class="grid grid-cols-12 gap-6 mt-5">
-                                <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                                    <div class=" p-5">
-                                        <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">Estadísticas de Impacto
+              </div>
+            </div>
 
 
-                                            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">
-
-
-                                            </div>
-                                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                                        </div>
-
-                                        <i data-feather="alert-circle" class="w-5 h-5 mr-3" style="float: left;  cursor:pointer;
-                                        color:#FF8800"></i> Compártenos a cuántas personas apoyan como institución según cada rubro.
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class=" p-5">
-
-                                <div class="flex flex-col sm:flex-row items-center mt-3">
-                                    <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.ancianos" [ngModelOptions]="{standalone: true}">
-
-                                    <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Personas de la tercera edad.</label>
-                                </div>
-                                <div class="flex flex-col sm:flex-row items-center mt-3">
-                                    <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.discapacitados" [ngModelOptions]="{standalone: true}">
-
-                                    <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Personas con discapacidad. </label>
-                                </div>
-                                <div class="flex flex-col sm:flex-row items-center mt-3">
-                                    <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.indigenas" [ngModelOptions]="{standalone: true}">
-
-                                    <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Personas de población indígena.</label>
-                                </div>
-                                <div class="flex flex-col sm:flex-row items-center mt-3">
-                                    <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.jovenes" [ngModelOptions]="{standalone: true}">
-
-                                    <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Jóvenes.</label>
-                                </div>
-
-                                <div class="flex flex-col sm:flex-row items-center mt-3">
-                                    <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.mujeres" [ngModelOptions]="{standalone: true}">
-
-                                    <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Mujeres.</label>
-                                </div>
-                                <div class="flex flex-col sm:flex-row items-center mt-3">
-                                    <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.ninos" [ngModelOptions]="{standalone: true}">
-
-                                    <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Niños.</label>
-                                </div>
-                                <div class="flex flex-col sm:flex-row items-center mt-3">
-                                    <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.noAtiendeOtro" [ngModelOptions]="{standalone: true}">
-
-                                    <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Otros.</label>
-                                    <div>
-                                        <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.atiendeOtro" [ngModelOptions]="{standalone: true}" placeholder="" maxlength="900">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <br>
-
-                <br>
-                <br>
-
-                <br>
+          </div>
+        </div>
+        <br>
+      </div>
+      <br>
 
 
 
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
+              Contacto del Responsable de Servicio Social
+
+            </div>
+            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+          </div>
+
+        </div>
+
+      </div>
 
 
-
-
+      <div class=" ">
+        <div class="">
+          <div class="sm:grid grid-cols-1 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del Titular o Director de la Institución*</label>
+                <input type="text" class="input  w-full border mt-2 " id="nombreCompletoDirector" placeholder="" [(ngModel)]="responsablemodel.nombreCompletoDirector" [ngModelOptions]="{standalone: true}">
+              </div>
 
             </div>
 
-            <section class="" *ngIf="!cambio">
 
-
-                <div class="grid grid-cols-12 gap-6 mt-5">
-                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class=" p-5">
-                            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">Contacto del Responsable de Servicio Social
-
-                            </div>
-                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-
-
-
-                <div class="  p-5 ">
-
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-1 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del director del Área*</label>
-                                    <input type="text" class="input  w-full border mt-2 " id="nombreCompletoDirector" placeholder="" [(ngModel)]="responsablemodel.nombreCompletoDirector" [ngModelOptions]="{standalone: true}">
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-2 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del Responsable de Servicio Social del Área:</label>
-                                    <input type="text" class="input  w-full border mt-2 " id="nombreCompletoResponsable" placeholder="" [(ngModel)]="responsablemodel.nombreCompletoResponsable" [ngModelOptions]="{standalone: true}">
-                                </div>
-                            </div>
-
-
-                            <div class="relative mt-2" style="display: none;">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Departamento o Área:</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.departamento" [ngModelOptions]="{standalone: true}">
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Puesto del Responsable :</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.puesto" [ngModelOptions]="{standalone: true}">
-                                </div>
-
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Número telefónico del Responsable:</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.telefono" [ngModelOptions]="{standalone: true}">
-                                </div>
-
-                            </div>
-
-                            <div class="relative mt-2">
-
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Extensión:</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.extension" [ngModelOptions]="{standalone: true}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-2 gap-2">
-
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Correo del Responsable *</label>
-                                    <input type="text" class="input  w-full border mt-2 " id="correo" type="email" placeholder="" [(ngModel)]="responsablemodel.correo" [ngModelOptions]="{standalone: true}">
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Contraseña del Responsable*</label>
-                                    <input type="password" class="input  w-full border mt-2 " id="contrasena" placeholder="" [(ngModel)]="responsablemodel.contrasena" [ngModelOptions]="{standalone: true}">
-                                    <!-- checkbox que nos permite activar o desactivar la opcion -->
-                                    <div style="margin-top:3px;">
-                                        <input style="margin-left:20px;" type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña" (change)="mostrarpass()" /> &nbsp;&nbsp;Mostrar Contraseña</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="mt-3" style="display: none;">
-                        <div class="sm:grid grid-cols-2 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Usuario del Responsable *</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.usuario" [ngModelOptions]="{standalone: true}">
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <br>
-                <br>
-
-
-                <div class="grid grid-cols-12 gap-6 mt-5">
-                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                        <div class=" p-5">
-                            <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
-                                Campo de inf. áreas internas
-
-
-                            </div>
-                            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class=" p-5 ">
-
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-3 gap-2">
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Seleccionar Campus*</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idUniversidad" [ngModelOptions]="{standalone: true}">
-                <option [ngValue]="ti.id" *ngFor="let ti of universidades">{{ti.universidad}} </option>
-                
-                
-                </select>
-                                </div>
-
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Seleccionar Vicerrectoría*</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idVicerrectoria" [ngModelOptions]="{standalone: true}">
-                <option [ngValue]="ti.id" *ngFor="let ti of vicerectorias">{{ti.vicerrectoria}} </option>
-                
-                
-                </select>
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Seleccionar Área/Coordinación*</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idCordinacion" [ngModelOptions]="{standalone: true}">
-                <option [ngValue]="ti.id" *ngFor="let ti of cordinaciones">{{ti.cordinacion}} </option>
-                
-                
-                </select>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-
-
-                    <div class="mt-3">
-                        <div class="sm:grid grid-cols-2 gap-2">
-
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Descripción introductoria del área*</label>
-                                    <textarea type="text" maxlength="500" class="input  w-full border mt-2 " rows="5" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.descripcionArea" id="descripcionArea" [ngModelOptions]="{standalone: true}" required></textarea>
-
-
-                                </div>
-                            </div>
-                            <div class="relative mt-2">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Principales Objetivos*</label>
-                                    <textarea type="text" maxlength="500" class="input  w-full border mt-2 " rows="5" placeholder="Enlistarlos en orden de prioridad / Máximo 7" id="objetivo" [(ngModel)]="empresaModel.objetivo" [ngModelOptions]="{standalone: true}" required></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <br>
-
-                <br>
-
-                <div class="mt-3">
-                    <div class="sm:grid grid-cols-1 gap-2">
-
-                        <div class="relative mt-2">
-
-                            <div class="grid grid-cols-12 gap-6 mt-5">
-                                <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                                    <div class=" p-5">
-                                        <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
-                                            Principal(es) Área(s) de Acción (selecciona máximo 3)*
-
-
-                                        </div>
-                                        <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <div class=" p-5">
-
-                                <div class="well">
-                                    <table style="padding: 15px; margin-left: 25px;">
-                                        <tbody>
-                                            <tr *ngFor="let area of areas">
-
-                                                <td style="padding:5px;"> <input type="checkbox" (change)="toggleArea(($event.target.checked), area.id)" id="area-{{area.id}}"></td>
-                                                <td style="color: #FF8800;">{{area.areaAccion}}
-
-
-                                                </td>
-                                                <div *ngIf="area.id==13">
-                                                    <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}" placeholder="" disabled>
-                                                </div>
-                                            </tr>
-                                        </tbody>
-
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="relative mt-2" style="display: none;">
-                            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                                <h2 class="font-medium text-base mr-auto">
-                                    Sucesos en el sistema*
-                                </h2>
-                            </div>
-
-                            <div class="flex flex-col sm:flex-row items-center mt-3">
-                                <label class="sm:w-32 sm:text-right sm:mr-5">Estado:</label>
-                                <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="empresaModel.idEstadoOrganizacion" [ngModelOptions]="{standalone: true}">
-                          <option [ngValue]="gi.id" *ngFor="let gi of estado">{{gi.estado}}</option>
-            
-                        </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-    </form>
-
-    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">
-        </h2>
-        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a routerLink="/login" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
-            <button (click)="create()" class="button text-white  shadow-md mr-2" style="background-color:#FF8800;">Guardar</button>
+          </div>
         </div>
+
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-2 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del Responsable*</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" id="nombreCompletoResponsable" [(ngModel)]="responsablemodel.nombreCompletoResponsable" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Departamento o Área:</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" id="departamento" [(ngModel)]="responsablemodel.departamento" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Puesto:</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" id="puesto" [(ngModel)]="responsablemodel.puesto" [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+            <div class="sm:grid grid-cols-2 gap-2">
+
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Número telefónico :</label>
+                  <input type="text" class="input  w-full border mt-2 " placeholder="" id="telefono" [(ngModel)]="responsablemodel.telefono" [ngModelOptions]="{standalone: true}">
+
+                </div>
+              </div>
+              <div class="relative mt-2">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Extensión:</label>
+                  <input type="text" class="input  w-full border mt-2 " placeholder="" id="extension" [(ngModel)]="responsablemodel.extension" [ngModelOptions]="{standalone: true}">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mt-2">
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-2 gap-2">
+
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Correo del Responsable*</label>
+                <input type="text" class="input  w-full border mt-2 " id="correo" type="email" placeholder="" [(ngModel)]="responsablemodel.correo" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Contraseña del Responsable*</label>
+                <input type="password" class="input  w-full border mt-2 " id="contrasena" placeholder="" [(ngModel)]="responsablemodel.contrasena" [ngModelOptions]="{standalone: true}">
+                <!-- checkbox que nos permite activar o desactivar la opcion -->
+                <div style="margin-top:3px;">
+                  <input style="margin-left:20px;" type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña" (change)="mostrarpass()" /> &nbsp;&nbsp;Mostrar Contraseña
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <br>
+      <br>
+
+
+
+
+
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
+              Domicilio
+            </div>
+            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class=" ">
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-3 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">CP*</label>
+                <div class="sm:grid grid-cols-2 gap-2">
+                  <div class="relative mt-2">
+
+                    <input type="text" class="input  w-full border mt-2 " id="cp" minlength="5" maxlength="5" placeholder="" placeholder="" [(ngModel)]="empresaModel.cp" [ngModelOptions]="{standalone: true}">
+                  </div>
+
+                  <div class="relative mt-3">
+                    <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                                            "> <br><a (click)="obtenerdireccion()" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">País*</label>
+
+                <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.pais" id="pais" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let pais of listapais" [ngValue]="pais">{{pais}} </option>
+
+
+                </select>
+
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Estado*</label>
+
+                <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.estado" id="estado" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let estado of listaestados" [ngValue]="estado">{{estado}} </option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-3 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Alcaldía/Municipio*</label>
+                <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.municipio" id="municipio" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let municipio of listamunicipios" [ngValue]="municipio">{{municipio}} </option>
+                </select>
+              </div>
+
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Ciudad*</label>
+                <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.ciudad" id="ciudad" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let ciudad of listaciudad" [ngValue]="ciudad">{{ciudad}} </option>
+                </select>
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Colonia*</label>
+                <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.colonia" id="colonia" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let colonia of listacolonias" [ngValue]="colonia">{{colonia}} </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-3 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Calle*</label>
+                <input type="text" class="input w-full border mt-2" placeholder="" id="calle" [(ngModel)]="empresaModel.calle" [ngModelOptions]="{standalone: true}" maxlength="1900">
+              </div>
+
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Num. Ext.*</label>
+                <input type="text" class="input  w-full border mt-2" placeholder="" id="noExt" [(ngModel)]="empresaModel.noExt" [ngModelOptions]="{standalone: true}" maxlength="400">
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Num. Int.</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" id="noInt" [(ngModel)]="empresaModel.noInt" [ngModelOptions]="{standalone: true}" maxlength="400">
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+      </div>
+      <br>
+      <br>
+
+      <div class="mt-3">
+        <div class="sm:grid grid-cols-1 gap-2">
+
+          <div class="relative mt-2">
+
+
+            <div class="grid grid-cols-12 gap-6 mt-5">
+              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                  <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
+                    Principal(es) Área(s) de Acción (selecciona máximo 3)*
+                  </div>
+                  <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <div class=" p-5">
+
+              <div class="well">
+                <table style="padding: 15px; margin-left: 25px;">
+                  <tbody>
+                    <tr *ngFor="let area of areas">
+
+                      <td style="padding:5px;"> <input type="checkbox" (change)="toggleArea(($event.target.checked), area.id)" id="area-{{area.id}}"></td>
+                      <td style="font-size: 17px; font-weight: bold; color: #FF8800;">
+                        {{area.areaAccion}}
+
+
+                      </td>
+                      <div *ngIf="area.id==13">
+                        <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}" placeholder="" maxlength="900" disabled>
+                      </div>
+
+                    </tr>
+
+
+                  </tbody>
+
+
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+      <br>
+
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
+              Observaciones
+            </div>
+            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class=" p-5">
+
+        <textarea class="input  w-full border mt-2 " maxlength="500" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones" rows="10"></textarea>
+        <br>
+      </div>
+      <br>
+      <div class="mt-3">
+        <div class="sm:grid grid-cols-1 gap-2">
+
+          <div class="relative mt-2">
+            <div class="grid grid-cols-12 gap-6 mt-5">
+              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                  <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
+                    Estadísticas de Impacto
+
+
+                    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">
+
+
+                    </div>
+                    <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+                  </div>
+
+                  <i data-feather="alert-circle" class="w-5 h-5 mr-3" style="float: left;  cursor:pointer;
+                                        color:#FF8800"></i> Compártenos a cuántas personas apoyan como institución según cada rubro.
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class=" p-5">
+
+              <div class="flex flex-col sm:flex-row items-center mt-3">
+                <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.ancianos" [ngModelOptions]="{standalone: true}">
+
+                <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Personas de la tercera edad.</label>
+              </div>
+              <div class="flex flex-col sm:flex-row items-center mt-3">
+                <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.discapacitados" [ngModelOptions]="{standalone: true}">
+
+                <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Personas con discapacidad. </label>
+              </div>
+              <div class="flex flex-col sm:flex-row items-center mt-3">
+                <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.indigenas" [ngModelOptions]="{standalone: true}">
+
+                <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Personas de población indígena.</label>
+              </div>
+              <div class="flex flex-col sm:flex-row items-center mt-3">
+                <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.jovenes" [ngModelOptions]="{standalone: true}">
+
+                <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Jóvenes.</label>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-center mt-3">
+                <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.mujeres" [ngModelOptions]="{standalone: true}">
+
+                <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Mujeres.</label>
+              </div>
+              <div class="flex flex-col sm:flex-row items-center mt-3">
+                <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.ninos" [ngModelOptions]="{standalone: true}">
+
+                <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Niños.</label>
+              </div>
+              <div class="flex flex-col sm:flex-row items-center mt-3">
+                <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.noAtiendeOtro" [ngModelOptions]="{standalone: true}">
+
+                <label class="sm:w-32 sm:text-right sm:mr-5" style="font-size:19px; color:#FF8800; font-weight: bold;">Otros.</label>
+                <div>
+                  <input type="text" class="input  w-full border mt-2 " [(ngModel)]="empresaModel.atiendeOtro" [ngModelOptions]="{standalone: true}" placeholder="" maxlength="900">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative mt-2">
+            <div>
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">Seleccionar Campus*</label>
+              <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idUniversidad" [ngModelOptions]="{standalone: true}">
+                <option [ngValue]="ti.id" *ngFor="let ti of universidades2">{{ti.universidad}} </option>
+              </select>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <br>
+
+      <br>
+      <br>
+
+      <br>
+
+
+
+
+
+
+
+
     </div>
-    <br>
-    <!-- END: FORM -->
+
+    <section class="" *ngIf="!cambio">
+
+
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="   mt-1 font-weight-bold" style="font-size:25px; font-weight: bold; ">
+              Contacto del Responsable de Servicio Social
+
+            </div>
+            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+      <div class="  p-5 ">
+
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-1 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del director del Área*</label>
+                <input type="text" class="input  w-full border mt-2 " id="nombreCompletoDirector" placeholder="" [(ngModel)]="responsablemodel.nombreCompletoDirector" [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-2 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del Responsable de Servicio Social del Área:</label>
+                <input type="text" class="input  w-full border mt-2 " id="nombreCompletoResponsable" placeholder="" [(ngModel)]="responsablemodel.nombreCompletoResponsable" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+
+
+            <div class="relative mt-2" style="display: none;">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Departamento o Área:</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.departamento" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Puesto del Responsable :</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.puesto" [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Número telefónico del Responsable:</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.telefono" [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+
+            <div class="relative mt-2">
+
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Extensión:</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.extension" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-2 gap-2">
+
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Correo del Responsable *</label>
+                <input type="text" class="input  w-full border mt-2 " id="correo" type="email" placeholder="" [(ngModel)]="responsablemodel.correo" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Contraseña del Responsable*</label>
+                <input type="password" class="input  w-full border mt-2 " id="contrasena" placeholder="" [(ngModel)]="responsablemodel.contrasena" [ngModelOptions]="{standalone: true}">
+                <!-- checkbox que nos permite activar o desactivar la opcion -->
+                <div style="margin-top:3px;">
+                  <input style="margin-left:20px;" type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña" (change)="mostrarpass()" /> &nbsp;&nbsp;Mostrar Contraseña
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="mt-3" style="display: none;">
+          <div class="sm:grid grid-cols-2 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Usuario del Responsable *</label>
+                <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="responsablemodel.usuario" [ngModelOptions]="{standalone: true}">
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+        <br>
+      </div>
+      <br>
+      <br>
+
+
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
+              Campo de inf. áreas internas
+
+
+            </div>
+            <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class=" p-5 ">
+
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-3 gap-2">
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Seleccionar Campus*</label>
+                <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idUniversidad" [ngModelOptions]="{standalone: true}">
+                  <option [ngValue]="ti.id" *ngFor="let ti of universidades">{{ti.universidad}} </option>
+
+
+                </select>
+              </div>
+
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Seleccionar Vicerrectoría*</label>
+                <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idVicerrectoria" [ngModelOptions]="{standalone: true}">
+                  <option [ngValue]="ti.id" *ngFor="let ti of vicerectorias">{{ti.vicerrectoria}} </option>
+
+
+                </select>
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Seleccionar Área/Coordinación*</label>
+                <select class="input  w-full border mt-2 " [(ngModel)]="empresaModel.idCordinacion" [ngModelOptions]="{standalone: true}">
+                  <option [ngValue]="ti.id" *ngFor="let ti of cordinaciones">{{ti.cordinacion}} </option>
+
+
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-2 gap-2">
+
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Descripción introductoria del área*</label>
+                <textarea type="text" maxlength="500" class="input  w-full border mt-2 " rows="5" placeholder="Máximo 500 caracteres" [(ngModel)]="empresaModel.descripcionArea" id="descripcionArea" [ngModelOptions]="{standalone: true}" required></textarea>
+
+
+              </div>
+            </div>
+            <div class="relative mt-2">
+              <div>
+                <label style="font-size:19px; color:#FF8800; font-weight: bold;">Principales Objetivos*</label>
+                <textarea type="text" maxlength="500" class="input  w-full border mt-2 " rows="5" placeholder="Enlistarlos en orden de prioridad / Máximo 7" id="objetivo" [(ngModel)]="empresaModel.objetivo" [ngModelOptions]="{standalone: true}" required></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <br>
+
+      <br>
+
+      <div class="mt-3">
+        <div class="sm:grid grid-cols-1 gap-2">
+
+          <div class="relative mt-2">
+
+            <div class="grid grid-cols-12 gap-6 mt-5">
+              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class=" p-5">
+                  <div class="   mt-1 font-weight-bold" style="font-size:35px; ">
+                    Principal(es) Área(s) de Acción (selecciona máximo 3)*
+
+
+                  </div>
+                  <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <div class=" p-5">
+
+              <div class="well">
+                <table style="padding: 15px; margin-left: 25px;">
+                  <tbody>
+                    <tr *ngFor="let area of areas">
+
+                      <td style="padding:5px;"> <input type="checkbox" (change)="toggleArea(($event.target.checked), area.id)" id="area-{{area.id}}"></td>
+                      <td style="color: #FF8800;">
+                        {{area.areaAccion}}
+
+
+                      </td>
+                      <div *ngIf="area.id==13">
+                        <input type="text" class="input  w-full border mt-2 " id="areatext" [(ngModel)]="empresaModel.areaOtro" [ngModelOptions]="{standalone: true}" placeholder="" disabled>
+                      </div>
+                    </tr>
+                  </tbody>
+
+                </table>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="relative mt-2" style="display: none;">
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+              <h2 class="font-medium text-base mr-auto">
+                Sucesos en el sistema*
+              </h2>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center mt-3">
+              <label class="sm:w-32 sm:text-right sm:mr-5">Estado:</label>
+              <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="empresaModel.idEstadoOrganizacion" [ngModelOptions]="{standalone: true}">
+                <option [ngValue]="gi.id" *ngFor="let gi of estado">{{gi.estado}}</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </form>
+
+  <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+    </h2>
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+      <a routerLink="/login" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+      <button (click)="create()" class="button text-white  shadow-md mr-2" style="background-color:#FF8800;">Guardar</button>
+    </div>
+  </div>
+  <br>
+  <!-- END: FORM -->
 </div>
 <!-- END: Content -->

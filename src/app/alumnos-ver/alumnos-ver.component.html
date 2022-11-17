@@ -74,7 +74,7 @@
     </div>
     <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarestado()" *ngIf="idEstado<4" class="button text-center text-white  ml-5">Cambiar Estado del Alumno</button>
     <br>
-    <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarfecha()" *ngIf="fechaincr==null && idEstado==4" class="button text-center text-white  ml-5">Confirmar Fecha de Inicio </button>
+    <button style="font-size: 15px; background-color: #FF8800;" (click)="actualizarfecha()" *ngIf="idEstado==4" class="button text-center text-white  ml-5">Confirmar Fecha de Inicio </button>
 
     <div class="" *ngIf="fechaincr!=null">
       <a class="text-center" style="color: #6B3F23;">  Fecha de ingreso : </a>
@@ -135,13 +135,13 @@
           <div class="text-base font-bold leading-8 mt-1">{{alumno.materno}}</div>
         </div>
       </div>
-      <!--<div class="col-span-12 sm:col-span-6 xl:col-span-4  text-center">
+      <div *ngIf="idEstado==3 || idEstado==4 || idEstado==5" class="col-span-12 sm:col-span-6 xl:col-span-4  text-center">
           <div class="">
               <div class="font-weight-bold" style=" font-size:25px; color:#FF8800">
                   ID Matricula</div>
               <div class="text-base font-bold leading-8 mt-1">{{alumno.matricula}}</div>
           </div>
-      </div>-->
+      </div>
 
       <div class="col-span-12 sm:col-span-6 xl:col-span-4  text-center">
         <div class="">
@@ -237,7 +237,7 @@
                   <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
                   <div class="text-base mt-5 mb-5" style="color:#FF8800;font-size:25px"> Agregar Horas</div>
 
-                  <input type="number" max="80" maxlength="80" class="input  w-full border mt-2 " id="nohoras" placeholder="Horas que se agristrará al alumno" required>
+                  <input type="number" max="80" maxlength="80" class="input  w-full border mt-2 " id="nohoras" placeholder="Horas que registrará al alumno" required>
 
                   <div class="text-base mt-5" style="display: block;" id="advertencia0"> {{mensajeh0}}</div>
                   <div class="text-base mt-5" style="display: none;color: red;" id="advertencia"> {{mensajeh}}</div>
@@ -360,7 +360,7 @@
               <br>
               <div *ngIf="h.archivo!=null && h.archivo!=''">
               </div>
-              <div *ngIf="h.archivo!=null && h.archivo!=''">
+              <div *ngIf="h.ruta!=null && h.ruta!=''">
                 <div>
                   <div class="text-base text-gray-600">
                     <br><br>
@@ -445,7 +445,7 @@
             </td>
               -->
             <td style="background: rgb(250, 250, 250);" *ngIf="alumnoproyecto.rutaCartaInicio!=null && alumnoproyecto.rutaCartaInicio!=''">
-              <a href="javascript:;" (click)="descargarCarta(alumnoproyecto.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostar</a>
+              <a href="javascript:;" (click)="descargarCarta(alumnoproyecto.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostrar</a>
             </td>
             <!--<td>
               <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
@@ -462,10 +462,7 @@
             <td style="background: rgb(250, 250, 250);">
               <div>
                 <div *ngIf="alumnoproyecto.validaCartaTermino==0 || alumnoproyecto.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
                     PENDIENTE
-                  </div>
                 </div>
                 <div *ngIf="alumnoproyecto.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
                     REVISIÓN
@@ -563,9 +560,9 @@
 
 
 
-    <button (click)="contestarEncuesta(1)" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras/2) && RespuestasEvaluaciones1.length==0">Evaluación intermedia del alumno</button>
+    <button (click)="contestarEncuesta(1)" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="horastotales >0 && (horastotales)>= (noHoras/2) && RespuestasEvaluaciones1.length==0">Evaluación intermedia del alumno</button>
 
-    <button (click)="contestarEncuesta(2)" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="(horastotales)>= (noHoras) && RespuestasEvaluaciones2.length==0">Evaluación final del alumno</button>
+    <button (click)="contestarEncuesta(2)" style="background-color:#FF8800;border-radius: 15px;" class="button text-center text-white  shadow-md mr-2" *ngIf="horastotales >0 && (horastotales)>= (noHoras) && RespuestasEvaluaciones2.length==0">Evaluación final del alumno</button>
 
   </div>
   <br>
@@ -574,7 +571,7 @@
 
 
 
-  <div class="modal" id="mostareditaralumno">
+  <div class="modal" id="mostrareditaralumno">
     <div class="modal__content">
       <form #form="ngForm" (ngSubmit)="cambiarestatusalumno()">
         <div class="p-5 text-center">
@@ -625,7 +622,7 @@
           <div class="sm:grid grid-cols-2 gap-2">
             <div class="relative mt-2">
 
-              <input matInput [matDatepicker]="picker" id="fechadeinicio" placeholder="02/01/2021" class="input  w-full border mt-2 ">
+              <input matInput [matDatepicker]="picker" id="fechadeinicio" placeholder="02/01/2021" class="input  w-full border mt-2" [readonly]="true">
               <mat-datepicker #picker></mat-datepicker>
             </div>
 

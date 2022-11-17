@@ -32,6 +32,11 @@ export class ConvocatoriaServices {
     console.log(uri);
     return this.http.get(uri);
   }
+  getVPeriodo(idCampus){
+    const uri = `${this.api}/Periodos/getPeriodosV?idCampus=${idCampus}`;
+    console.log(uri);
+    return this.http.get(uri);
+  }
   getUniversidad(){
     const uri = `${this.api}/Universidades2`;
     console.log(uri);
@@ -42,10 +47,10 @@ export class ConvocatoriaServices {
          console.log(uri);
     return this.http.get(uri);
   }
-  getConvocatoriatipo(model){
-    const uri = `${this.api}/Convocatorias/getConvocatoriaByTipo?tipo=${model.tipo}`;
-         console.log(uri);
-    return this.http.post(uri,model);
+  getConvocatoriatipo(model, idPeriodo, idCampus) {
+    const uri = `${this.api}/Convocatorias/getConvocatoriaByTipo?tipo=${model.tipo}&idPeriodo=${idPeriodo}&idCampus=${idCampus}`;
+    console.log(uri);
+    return this.http.post(uri, model);
   }
 
   updateconvocatoria(id: string | number,convocatoria: Convocatoria) {

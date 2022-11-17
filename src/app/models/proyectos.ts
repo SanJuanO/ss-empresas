@@ -47,7 +47,9 @@ export class Proyecto {
     public competenciasList?: Array<ProyectosCompetencias>,
     public carrerasList?: Array<ProyectosCarreras>,
     public horas?:number,
-    public razonCapacitacion?:string,
+    public razonCapacitacion?: string,
+    public plazasAutorizadas?: number,
+    public convocatoria?: string,
 
   ) { }
 

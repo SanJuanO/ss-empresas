@@ -293,11 +293,11 @@ export class AlumnosverComponent implements OnInit {
 
       var nohoras = $('#nohoras').val();
       //console.log(nohoras);
-      if (Number(nohoras) > 80) {
+      if (Number(nohoras) < 0 || Number(nohoras) > 80) {
 
         document.getElementById("advertencia").style.display = "block";
         document.getElementById("advertencia0").style.display = "none";
-        this.mensajeh = "Máximo 80 horas";
+        this.mensajeh = "Número de horas debe estar en el rango 0 - 80 horas";
 
       } else {
         this.alumnoService.agregarhoras(this.idasignado, nohoras).subscribe((res: any) => {
@@ -370,7 +370,7 @@ export class AlumnosverComponent implements OnInit {
   }
   actualizarestado() {
 
-    $('#mostareditaralumno').modal('show');
+    $('#mostrareditaralumno').modal('show');
 
 
   }

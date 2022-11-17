@@ -1,150 +1,203 @@
 <app-menu></app-menu>
 <div class="" style=" font-family:Helvetica;">
-    <div class="modal" id="success-modal-preview">
-        <div class="modal__content modal__content--xl p-10 text-center">
-            <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+  <div class="modal" id="success-modal-preview">
+    <div class="modal__content modal__content--xl p-10 text-center">
+      <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
 
-            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Proyectos</div>
-            <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Proyecto Registrado!</div>
+      <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Proyectos</div>
+      <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Proyecto Registrado!</div>
 
 
-            <div class=" mt-1 " style="font-size: 20px;">Has agregado un proyecto a la actual convocatoria. Será evaluado  por el Comité Interdisciplinario de Servicio Social. El resultado de la resolución será notificado vía mail.
+      <div class=" mt-1 " style="font-size: 20px;">
+        Has agregado un proyecto a la actual convocatoria. Será evaluado  por el Comité Interdisciplinario de Servicio Social. El resultado de la resolución será notificado vía mail.
 
-            </div>
-            <div class=" text-center">
-                <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br>
-                    <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
-
-            </div>
+      </div>
+      <div class=" text-center">
+        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                ">
+          <br>
+          <br> <a data-dismiss="modal" style="border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a>
         </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" id="validacion">
+
+    <div class="modal__content modal__content--xl p-10 text-center">
+      <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+      <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">{{mensajevalidacion}}</div>
+
+      <div class=" text-center">
+        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                ">
+          <br>
+          <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a>
+        </div>
+
+      </div>
     </div>
 
 
-    <div class="modal" id="validacion">
+  </div>
+  
+  <div class="modal" id="modal-lista-proyectos">
+    <div class="modal__content modal__content--xl p-10 text-center">
+      <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+      <div class="text-3xl m-8 text-center" style="color: #FF8300; font-size: 28px;">Proyectos registrados</div>
 
-        <div class="modal__content modal__content--xl p-10 text-center">
-            <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">{{mensajevalidacion}}</div>
+      <div class="mt-1 intro-y col-span-12 overflow-auto lg:overflow-visible" style="font-size: 20px;">
+        
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead *ngIf="proyectos?.length != 0">
+              <tr>
+                <th class="border-b-2 whitespace-no-wrap">Proyecto</th>
+                <th class="border-b-2 text-center whitespace-no-wrap">Convocatoria</th>
+                <th class="border-b-2 text-center whitespace-no-wrap">Opcion</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="proyectos?.length != 0">
+              <tr *ngFor="let proyecto of proyectos">
+                <td class="border-b" style="background: rgb(250, 250, 250); font-size:17px;  font-weight: bold; ">
+                  <div class="font-medium whitespace-no-wrap">{{ proyecto.proyecto }}</div>
+                </td>
+                <td class="border-b" style="background: rgb(250, 250, 250); font-size:17px;  font-weight: bold; ">
+                  <div class="font-medium flex sm:justify-center items-center">{{ proyecto.convocatoria }}</div>
+                </td>
+                <td class="border-b" style="background: rgb(250, 250, 250); font-size:17px;  font-weight: bold; ">
+                  <a href="javascript:;" (click)="cargaInfoProyecto(proyecto)" data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;background: #FF8800;" class="button  btn-lg text-white  w-35 ">Seleccionar</a>
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="proyectos?.length == 0">
+              <tr>
+                <td colspan="3" class="no-data-available">Sin proyectos registrados!</td>
+              </tr>
+            <tbody>
+          </table>
 
-            <div class=" text-center">
-                <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                "> <br>
-                    <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  w-35 ">Continuar</a> </div>
+      </div>
 
-            </div>
+      <div class="px-5 pb-8 text-center">
+        <div class="relative mt-8">
+          <a data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;" class="button  btn-lg text-white ml-3">
+            Cancelar
+          </a>
         </div>
-
+      </div>
 
     </div>
+  </div>
 
-    <div class="container mt-8">
-        <div class="cargador" id="carg" style="display:none;"></div>
+  
 
-        <div class="mt-5">
-            <br>
-            <div class="grid grid-cols-12 gap-6 mt-5">
-                <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                    <div class=" p-5">
-                        <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
-                            Información General
-                        </div>
-                        <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+  <div class="container mt-8">
+    <div class="cargador" id="carg" style="display:none;"></div>
 
-                    </div>
+    <div class="mt-5">
+      <br>
+      <div class="grid grid-cols-12 gap-6 p-5 border-b border-gray-200 dark:border-dark-5">
+        <h2 class="xl:col-span-8 lg:col-span-8 sm:col-span-12 col-span-12 font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; ">
+          Información General
+        </h2>
+        <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
-                </div>
-
-            </div>
-
-            <form class="" #form="ngForm">
-                <!-- BEGIN: FORM  p-5 mt-5 w-full -->
-                <div class="intro-y  ">
+        <div class="xl:col-span-2 lg:col-span-2 sm:col-span-6 col-span-12">
+          <a (click)="cargaListaProyectos()" class="button text-white shadow-md mr-2" style="background-color: #FF8300;">Copiar desde</a>
+        </div>
+      </div>
 
 
-                    <div class="" style="font-size: 20px; ">
-                        <div class="sm:grid grid-cols-2 gap-2">
+      <form class="" #form="ngForm">
+        <!-- BEGIN: FORM  p-5 mt-5 w-full -->
+        <div class="intro-y  ">
 
-                            <div class="relative ">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Institución / Área*</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="idOrganizacion" [ngModelOptions]="{standalone: true}" style="display: none;">
+
+          <div class="" style="font-size: 20px; ">
+            <div class="sm:grid grid-cols-2 gap-2">
+
+              <div class="relative ">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Institución / Área*</label>
+                  <select class="input  w-full border mt-2 " [(ngModel)]="idOrganizacion" [ngModelOptions]="{standalone: true}" style="display: none;">
                     <option [ngValue]="idOrganizacion">{{Organizacion}} </option>
                   </select>
-                                    <div>
+                  <div>
 
-                                        <input type="text" class="input  w-full border mt-2 " value="{{Organizacion}}" disabled>
+                    <input type="text" class="input  w-full border mt-2 " value="{{Organizacion}}" disabled>
 
-                                    </div>
-                                </div>
-                            </div>
+                  </div>
+                </div>
+              </div>
 
-                            <div class="relative ">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del proyecto*</label>
-                                    <input type="text" class="input  w-full border mt-2 " max="500" [(ngModel)]="proyectoModel.proyecto" id="proyecto" [ngModelOptions]="{standalone: true}" ng-reflect-required="ejemplo nombre" maxlength="70" placeholder="Máximo 70 caracteres" required>
-                                </div>
-                            </div>
+              <div class="relative ">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre del proyecto*</label>
+                  <input type="text" class="input  w-full border mt-2 " max="500" [(ngModel)]="proyectoModel.proyecto" id="proyecto" [ngModelOptions]="{standalone: true}" ng-reflect-required="ejemplo nombre" maxlength="70" placeholder="Máximo 70 caracteres" required>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Descripción del proyecto*</label>
-                                    <textarea type="text" class="input  w-full border mt-2 " placeholder="" id="descripcion" [(ngModel)]="proyectoModel.descripcion" [ngModelOptions]="{standalone: true}" placeholder="Máximo 500 caracteres" maxlength="500" rows="5" required>
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Descripción del proyecto*</label>
+                  <textarea type="text" class="input  w-full border mt-2 " placeholder="" id="descripcion" [(ngModel)]="proyectoModel.descripcion" [ngModelOptions]="{standalone: true}" placeholder="Máximo 500 caracteres" maxlength="500" rows="5" required>
               </textarea>
-                                </div>
-                            </div>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Nombre del Responsable del Proyecto*
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " max="500" placeholder="" id="nombreResponsable" [(ngModel)]="proyectoModel.nombreResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
-                                </div>
-                            </div>
+                  <input type="text" class="input  w-full border mt-2 " max="500" placeholder="" id="nombreResponsable" [(ngModel)]="proyectoModel.nombreResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Puesto del Responsable del Proyecto*
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" max="500" id="puesto" [(ngModel)]="proyectoModel.puesto" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
-                                </div>
-                            </div>
+                  <input type="text" class="input  w-full border mt-2 " placeholder="" max="500" id="puesto" [(ngModel)]="proyectoModel.puesto" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Área del Responsbale del Proyecto*
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" max="1500" id="area" [(ngModel)]="proyectoModel.area" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
-                                </div>
-                            </div>
+                  <input type="text" class="input  w-full border mt-2 " placeholder="" max="1500" id="area" [(ngModel)]="proyectoModel.area" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Correo electrónico del responsable del proyecto*
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " max="200" placeholder="" id="correoResponsable" [(ngModel)]="proyectoModel.correoResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
-                                </div>
-                            </div>
+                  <input type="text" class="input  w-full border mt-2 " max="200" placeholder="" id="correoResponsable" [(ngModel)]="proyectoModel.correoResponsable" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Teléfono de responsable del proyecto
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " max="30" placeholder="" id="telefono" [(ngModel)]="proyectoModel.telefono" [ngModelOptions]="{standalone: true}" required>
-                                </div>
-                            </div>
+                  <input type="text" class="input  w-full border mt-2 " max="30" placeholder="" id="telefono" [(ngModel)]="proyectoModel.telefono" [ngModelOptions]="{standalone: true}" required>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                    ¿Plazas de Servicio Social disponibles para el proyecto?*
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    ¿Plazas de Servicio Social a solicitar para el proyecto?*
                   </label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.plazas" id="plazas" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.plazas" id="plazas" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="1">1</option>
                     <option [ngValue]="2">2</option>
                     <option [ngValue]="3">3</option>
@@ -156,839 +209,792 @@
                     <option [ngValue]="9">9</option>
                     <option [ngValue]="10">10</option>
                   </select>
-                                </div>
-                            </div>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                    ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?*
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    Selecciona el esquema bajo el cual los alumnos pueden realizar la prestación de su servicio social en este proyecto*
                   </label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.modalidadDistancia" id="modalidadDistancia" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="'si'">Sí</option>
-                    <option [ngValue]="'no'">No</option>
+                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.modalidadDistancia" id="modalidadDistancia" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="'presencial'">Presencial</option>
+                    <option [ngValue]="'distancia'">A distancia (virtual)</option>
+                    <option [ngValue]="'hibrido'">Híbrido (presencial y a distancia)</option>
                   </select>
-                                </div>
-                            </div>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Justifica el impacto social del proyecto*
                   </label>
-                                    <textarea type="text" class="input   w-full border mt-2 " placeholder="Máximo 500 caracteres" id="justificacionImpactoSocial" [(ngModel)]="proyectoModel.justificacionImpactoSocial" [ngModelOptions]="{standalone: true}" maxlength="500" rows="7" required>
+                  <textarea type="text" class="input   w-full border mt-2 " placeholder="Máximo 500 caracteres" id="justificacionImpactoSocial" [(ngModel)]="proyectoModel.justificacionImpactoSocial" [ngModelOptions]="{standalone: true}" maxlength="500" rows="7" required>
               </textarea>
-                                </div>
-                            </div>
+                </div>
+              </div>
 
 
-
-
-                            <!--<div class="relative mt-3">
-    <div>
-      <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-        ¿Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 240 hrs.?
-      </label>
-      <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.plazas240" [ngModelOptions]="{standalone: true}">
-        <option [ngValue]="1">1</option>
-        <option [ngValue]="2">2</option>
-        <option [ngValue]="3">3</option>
-        <option [ngValue]="4">4</option>
-        <option [ngValue]="5">5</option>
-        <option [ngValue]="6">6</option>
-        <option [ngValue]="7">7</option>
-        <option [ngValue]="8">8</option>
-        <option [ngValue]="9">9</option>
-        <option [ngValue]="10">10</option>
-      </select>
-    </div>
-  </div>-->
-
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Enlista los objetivos del proyecto*
                   </label>
-                                    <textarea type="text" maxlength="500" rows="7" class="input  w-full border mt-2 " placeholder="Enlista máximo 7" [(ngModel)]="proyectoModel.objetivo" [ngModelOptions]="{standalone: true}" required>
+                  <textarea type="text" maxlength="500" rows="7" class="input  w-full border mt-2 " placeholder="Enlista máximo 7" [(ngModel)]="proyectoModel.objetivo" [ngModelOptions]="{standalone: true}" required>
               </textarea>
-                                </div>
-                            </div>
+                </div>
+              </div>
 
-                        </div>
-                        <br>
-                        <div class="sm:grid grid-cols-2 gap-2">
-                            <!--TODO_SERGIO_OCULTO_TEMPORAL
-                              <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Campus:</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idUniversidad" [ngModelOptions]="{standalone: true}">
-                        <option [ngValue]="universidad.id" *ngFor="let universidad of universidades">{{universidad.universidad}}</option>
-                      </select>
-                                </div>
-
-                            </div>-->
-                            <div class="relative mt-3" style="display: none;">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Estado:</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idEstadoProyecto" [ngModelOptions]="{standalone: true}">
-                        <option [ngValue]="estadoProyecto.id" *ngFor="let estadoProyecto of estadosProyectos">{{estadoProyecto.estadoProyecto}}</option>
-                      </select>
-                                </div>
-                            </div>
-                            <div class="relative mt-3 col-span-12 lg:col-span-12 sm:col-span-12 xl:col-span-12">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Observaciones:</label>
-                                    <textarea type="text" class="input  w-full border mt-2 " row="5" placeholder="" [(ngModel)]="proyectoModel.observaciones" [ngModelOptions]="{standalone: true}" required>
+            </div>
+            <br>
+            <div class="sm:grid grid-cols-2 gap-2">
+              
+              <div class="relative mt-3" style="display: none;">
+                <div>
+                  <label style="    font-size: 19px;
+    color: #FF8800;
+    font-weight: bold;">Estado:</label>
+                  <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idEstadoProyecto" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="estadoProyecto.id" *ngFor="let estadoProyecto of estadosProyectos">{{estadoProyecto.estadoProyecto}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="relative mt-3 col-span-12 lg:col-span-12 sm:col-span-12 xl:col-span-12">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Observaciones:</label>
+                  <textarea type="text" class="input  w-full border mt-2 " row="5" placeholder="" [(ngModel)]="proyectoModel.observaciones" [ngModelOptions]="{standalone: true}" required>
                                     </textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="grid grid-cols-12 gap-6 mt-5">
-                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                            <div class="p-5 pb-1">
-                                <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
-                                    Información referente al Prestador de Servicio Social (Estudiante)
-                                </div>
-                                <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="p-5 pt-1 bg-light" style="font-size: 20px; background: rgb(255, 255, 255);">
-                        <div class="sm:grid grid-cols-2 gap-2">
-
-                            <!--<div class="relative mt-3">
-          <div>
-            <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-              ¿Cantidad de horas totales del proyecto?*
-            </label>
-            <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.horas" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()">
-              <option [ngValue]="240">240</option>
-              <option [ngValue]="480">480</option>
-            </select>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>-->
-                            <div class="relative">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Fecha de inicio*</label>
-                          
-                               <div class="sm:grid grid-cols-2 gap-2">
-                                <div class="relative mt-2">
 
-                                   <input matInput [matDatepicker]="picker" id="fechaInicio" max="10" placeholder="02/01/2021" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaInicio" id="fechaInicio" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()" required>
-                                     <mat-datepicker #picker></mat-datepicker>
-                                </div>
+          <br>
+          <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class="p-5 pb-1">
+                <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
+                  Información referente al Prestador de Servicio Social (Estudiante)
+                </div>
+                <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
-                                   <div class="relative mt-3">
-                                    <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="p-5 pt-1 bg-light" style="font-size: 20px; background: rgb(255, 255, 255);">
+            <div class="sm:grid grid-cols-2 gap-2">
+
+              <div class="relative">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Fecha de inicio*</label>
+
+                  <div class="sm:grid grid-cols-2 gap-2">
+                    <div class="relative mt-2">
+
+                      <input matInput [matDatepicker]="picker" id="fechaInicio" max="10" placeholder="02/01/2021" class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.fechaInicio" [ngModelOptions]="{standalone: true}" (change)="onChangeHoras()" required>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </div>
+
+                    <div class="relative mt-3">
+                      <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
                                     "> <a (click)="picker.open()" style=" border-radius: 10px; font-size: 15px;" class="button text-white  p-2">Ver Calendario</a> </div>
 
 
-                                </div>
+                    </div>
 
-                               </div>
-                                   <div style="margin-top:3px;">
+                  </div>
+                  <div style="margin-top:3px;">
 
-                                        * Indique a partir de qué fecha el estudiante podría comenzar su prestación de servicio social en el proyecto
-                                    </div>
+                    * Indique a partir de qué fecha el estudiante podría comenzar su prestación de servicio social en el proyecto
+                  </div>
 
-                                </div>
-                            </div>
-                            <!--
-        <div class="relative mt-3">
-          <div>
-            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Fecha de termino* </label>
-            <input type="date" class="input  w-full border mt-2 "
-                   [(ngModel)]="proyectoModel.fechaTermino"
-                   [ngModelOptions]="{standalone: true}"
-                   [disabled]="!fechaMinima"
-                   min="{{fechaMinima|date:'yyyy-MM-dd'}}"
-                   required>
-          </div>
-        </div>
-        -->
-                            <div class="relative">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                ¿El alumno recibe capacitación/formación por parte de la Institución?*
-              </label>
-                                    <select class="input  w-full border mt-2 " max="50" [(ngModel)]="proyectoModel.capacitacion" id="capacitacion" [ngModelOptions]="{standalone: true}">
-                <option [ngValue]="'si'">Sí</option>
-                <option [ngValue]="'no'">No</option>
-              </select>
-                                    <label *ngIf="proyectoModel.capacitacion=='si'">¿Qué tipo de capacitación se ofrece?</label>
-                                    <label *ngIf="proyectoModel.capacitacion=='no'">¿Razón por la que no ofrece capacitación?</label>
-                                    <textarea type="text" class="input   w-full border mt-2 " placeholder="Máximo 500 caracteres" [(ngModel)]="proyectoModel.razonCapacitacion" id="razonCapacitacion" [ngModelOptions]="{standalone: true}" maxlength="500" rows="7" required>
+                </div>
+              </div>
+              
+              <div class="relative">
+                
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    ¿El alumno recibe capacitación/formación por parte de la Institución?*
+                  </label>
+                  <select class="input  w-full border mt-2 " max="50" [(ngModel)]="proyectoModel.capacitacion" id="capacitacion" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="'si'">Sí</option>
+                    <option [ngValue]="'no'">No</option>
+                  </select>
+                  <label *ngIf="proyectoModel.capacitacion=='si'">¿Qué tipo de capacitación se ofrece?</label>
+                  <label *ngIf="proyectoModel.capacitacion=='no'">¿Razón por la que no ofrece capacitación?</label>
+                  <textarea type="text" class="input   w-full border mt-2 " placeholder="Máximo 500 caracteres" [(ngModel)]="proyectoModel.razonCapacitacion" id="razonCapacitacion" [ngModelOptions]="{standalone: true}" maxlength="500" rows="7" required>
               </textarea>
-                                </div>
-                            </div>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Días hábiles para la prestación de servicio social*
                   </label>
-                                </div>
-                                <div class="intro-y col-span-12 overflow-auto lg:overflow-visible" id="tabla1" style="display: block ;">
-                                    <table >
-                                        <tbody>
-                                            <tr>
+                </div>
+                <div class="intro-y col-span-12 overflow-auto lg:overflow-visible" id="tabla1" style="display: block ;">
+                  <table>
+                    <tbody>
+                      <tr>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             <input type="checkbox" id="lunes" (change)="toggleDias($event.target.checked, 'lunes')">
                             Lunes
                           </label>
-                                                </td>
+                        </td>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             <input type="checkbox" id="martes" (change)="toggleDias($event.target.checked, 'martes')">
                             Martes
                           </label>
-                                                </td>
+                        </td>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             <input type="checkbox" id="miercoles" (change)="toggleDias($event.target.checked, 'miercoles')">
                             Miércoles
                           </label>
-                                                </td>
+                        </td>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             <input type="checkbox" id="jueves" (change)="toggleDias($event.target.checked, 'jueves')">
                             Jueves
                           </label>
-                                                </td>
+                        </td>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             <input type="checkbox" id="viernes" (change)="toggleDias($event.target.checked, 'viernes')">
                             Viernes
                           </label>
-                                                </td>
+                        </td>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             <input type="checkbox" id="sabado" (change)="toggleDias($event.target.checked, 'sabado')">
                             Sábado
                           </label>
-                                                </td>
+                        </td>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             <input type="checkbox" id="domingo" (change)="toggleDias($event.target.checked, 'domingo')">
                             Domingo
                           </label>
-                                                </td>
+                        </td>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Horarios disponibles para la prestación de servicio social*
                   </label>
-                                </div>
-                                <div class="">
-                                    <table style="padding: 15px; margin-left: 25px;">
-                                        <tbody>
-                                            <tr>
+                </div>
+                <div class="">
+                  <table style="padding: 15px; margin-left: 25px;">
+                    <tbody>
+                      <tr>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             Entrada:
-                    </label>
+                          </label>
 
-                            <div class="default-time-example">
-                                <input class="input  w-full border mt-2 "  aria-label="default time" [format]="24" [(ngModel)]="proyectoModel.horaEntrada" id="horaEntrada" [ngModelOptions]="{standalone: true}"   [ngxTimepicker]="defaultValue"   >
-                                <ngx-material-timepicker #defaultValue></ngx-material-timepicker>
-                           </div>
+                          <div class="default-time-example">
+                            <input class="input  w-full border mt-2 " aria-label="default time" [format]="24" [(ngModel)]="proyectoModel.horaEntrada" id="horaEntrada" [ngModelOptions]="{standalone: true}" [ngxTimepicker]="defaultValue">
+                            <ngx-material-timepicker #defaultValue></ngx-material-timepicker>
+                          </div>
 
-                                                </td>
+                        </td>
 
-                                                <td style="padding:5px;">
-                                                    <label style="font-size:19px; font-weight: bold;">
+                        <td style="padding:5px;">
+                          <label style="font-size:19px; font-weight: bold;">
                             Salida:
-                        </label>
-                        
-                        <div class="default-time-example">
-    <input class="input  w-full border mt-2 "  aria-label="default time" [format]="24"  [(ngModel)]="proyectoModel.horaSalida" id="horaSalida" [ngModelOptions]="{standalone: true}" [ngxTimepicker]="defaultValue2"  >
-    <ngx-material-timepicker #defaultValue2></ngx-material-timepicker>
-</div>
+                          </label>
 
-                                                </td>
+                          <div class="default-time-example">
+                            <input class="input  w-full border mt-2 " aria-label="default time" [format]="24" [(ngModel)]="proyectoModel.horaSalida" id="horaSalida" [ngModelOptions]="{standalone: true}" [ngxTimepicker]="defaultValue2">
+                            <ngx-material-timepicker #defaultValue2></ngx-material-timepicker>
+                          </div>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        </td>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                                        Rol o principal posición del prestador de servicio social (estudiante) dentro del proyecto:
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    Rol o principal posición del prestador de servicio social (estudiante) dentro del proyecto:
                   </label>
-                                    <textarea type="text" class="input w-full border mt-2 " max="400" id="rolPrestador" placeholder="Máximo 400 caracteres" [(ngModel)]="proyectoModel.rolPrestador" [ngModelOptions]="{standalone: true}" maxlength="400" rows="5" required>
+                  <textarea type="text" class="input w-full border mt-2 " max="400" id="rolPrestador" placeholder="Máximo 400 caracteres" [(ngModel)]="proyectoModel.rolPrestador" [ngModelOptions]="{standalone: true}" maxlength="400" rows="5" required>
               </textarea>
-                                </div>
-                            </div>
+                </div>
+              </div>
 
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-3">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Responsabilidades del prestador de servicio social:
                   </label>
-                                    <textarea type="text" rows="7" class="input  w-full border mt-2 " id="responsabilidades" placeholder="Enumere las principales responsabilidades que tendrá el estudiante. Máximo 7" [(ngModel)]="proyectoModel.responsabilidades" [ngModelOptions]="{standalone: true}"
-                                        value="objetivo ejemplo" rows="5" required></textarea>
-                                </div>
-                            </div>
+                  <textarea type="text" rows="7" class="input  w-full border mt-2 " id="responsabilidades" placeholder="Enumere las principales responsabilidades que tendrá el estudiante. Máximo 7" [(ngModel)]="proyectoModel.responsabilidades" [ngModelOptions]="{standalone: true}"
+                            value="objetivo ejemplo" rows="5" required></textarea>
+                </div>
+              </div>
 
-                        </div>
-                    </div>
-                    <br>
-
-
-                    <br>
-
-                    <div class="grid grid-cols-12 gap-6 mt-5">
-                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                            <div class=" p-5">
-                                <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
-                                    Seleccione las competencias que el alumno podrá desarrollar por medio del proyecto:
+            </div>
+          </div>
+          <br>
 
 
-                                </div>
-                                <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+          <br>
 
-                            </div>
+          <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class=" p-5">
+                <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
+                  Seleccione las competencias que el alumno podrá desarrollar por medio del proyecto:
 
-                        </div>
 
-                    </div>
-                    <div class="mt-1  bg-light " style="font-size: 20px;">
-                        <div class="sm:grid grid-cols-1 gap-2">
+                </div>
+                <hr style="color: #000000;" noshade="noshade" size="3" /><br>
 
-                            <div class="relative ">
+              </div>
 
-                                <div class="sm:grid grid-cols-4 gap-2">
-                                    <div *ngFor="let competencia of listaProyectosCompetencias">
+            </div>
 
-                                        <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="co{{competencia.id}}"  (change)="toggleCompetencias($event.target.checked, competencia.id)">
+          </div>
+          <div class="mt-1  bg-light " style="font-size: 20px;">
+            <div class="sm:grid grid-cols-1 gap-2">
+
+              <div class="relative ">
+
+                <div class="sm:grid grid-cols-4 gap-2">
+                  <div *ngFor="let competencia of listaProyectosCompetencias">
+
+                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                      <input type="checkbox" id="co{{competencia.id}}" (change)="toggleCompetencias($event.target.checked, competencia.id)">
                       {{competencia.competencia}}
                     </label>
 
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <br>
-                    <div class="grid grid-cols-12 gap-6 mt-5 ">
-                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                            <div class=" p-5">
-                                <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
-                                    Seleccione las carreras más afines según el perfil que requiera el proyecto:
-
-
-                                </div>
-                                <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class=" pl-5 pr-5 bg-light" style="font-size: 20px;">
-
-                        <div class="relative " *ngIf="listaProyectosCarrerasA.length>0">
-                            <label class="font-weight-bold"> A </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasA">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasB.length>0">
-                            <label class="font-weight-bold"> B </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasB">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasC.length>0">
-                            <label class="font-weight-bold"> C </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasC">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasD.length>0">
-                            <label class="font-weight-bold"> D </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasD">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasE.length>0">
-                            <label class="font-weight-bold"> E </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasE">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasF.length>0">
-                            <label class="font-weight-bold"> F </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasF">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasG.length>0">
-                            <label class="font-weight-bold"> G </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasG">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasH.length>0">
-                            <label class="font-weight-bold"> H </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasH">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasI.length>0">
-                            <label class="font-weight-bold"> I </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasI">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasJ.length>0">
-                            <label class="font-weight-bold"> J </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasJ">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasK.length>0">
-                            <label class="font-weight-bold"> K </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasK">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasL.length>0">
-                            <label class="font-weight-bold"> L </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasL">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasM.length>0">
-                            <label class="font-weight-bold"> M </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasM">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasN.length>0">
-                            <label class="font-weight-bold"> N </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasN">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasNN.length>0">
-                            <label class="font-weight-bold"> Ñ </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasNN">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasO.length>0">
-                            <label class="font-weight-bold"> O </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasO">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasP.length>0">
-                            <label class="font-weight-bold"> P </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasP">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasQ.length>0">
-                            <label class="font-weight-bold"> Q </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasQ">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasR.length>0">
-                            <label class="font-weight-bold"> R </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasR">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasS.length>0">
-                            <label class="font-weight-bold"> S </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasS">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasT.length>0">
-                            <label class="font-weight-bold"> T </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasT">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasU.length>0">
-                            <label style="font-size:19px; color:#FF8800; font-weight: bold;">U </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasU">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasV.length>0">
-                            <label class="font-weight-bold"> V </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasV">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasW.length>0">
-                            <label class="font-weight-bold"> W </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasW">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasX.length>0">
-                            <label class="font-weight-bold"> X </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasX">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasY.length>0">
-                            <label class="font-weight-bold"> Y </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasY">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative mt-3" *ngIf="listaProyectosCarrerasZ.length>0">
-                            <label class="font-weight-bold"> Z </label>
-                            <div class="sm:grid grid-cols-4 gap-2">
-
-                                <div *ngFor="let carrera of listaProyectosCarrerasZ">
-
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-                      <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
-                      {{carrera.carrera}}
-                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <br>
-                    <div class="grid grid-cols-12 gap-6 mt-5">
-                        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                            <div class=" p-5 pb-1">
-                                <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
-                                    Objetivos de Desarrollo Sostenibles (ODS)
-
-
-                                </div>
-                                <hr style="color: #000000;" noshade="noshade" size="3" /><br>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="p-5 pt-1 bg-light" style="font-size: 20px;">
-                        <div class="sm:grid grid-cols-2 gap-2">
-
-                            <div class="relative">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <br>
+          <div class="grid grid-cols-12 gap-6 mt-5 ">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class=" p-5">
+                <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
+                  Seleccione las carreras más afines según el perfil que requiera el proyecto:
+
+
+                </div>
+                <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+              </div>
+
+            </div>
+
+          </div>
+          <div class=" pl-5 pr-5 bg-light" style="font-size: 20px;">
+
+            <div class="relative " *ngIf="listaProyectosCarrerasA.length>0">
+              <label class="font-weight-bold"> A </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasA">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasB.length>0">
+              <label class="font-weight-bold"> B </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasB">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasC.length>0">
+              <label class="font-weight-bold"> C </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasC">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasD.length>0">
+              <label class="font-weight-bold"> D </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasD">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasE.length>0">
+              <label class="font-weight-bold"> E </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasE">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasF.length>0">
+              <label class="font-weight-bold"> F </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasF">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasG.length>0">
+              <label class="font-weight-bold"> G </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasG">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasH.length>0">
+              <label class="font-weight-bold"> H </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasH">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasI.length>0">
+              <label class="font-weight-bold"> I </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasI">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasJ.length>0">
+              <label class="font-weight-bold"> J </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasJ">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasK.length>0">
+              <label class="font-weight-bold"> K </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasK">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasL.length>0">
+              <label class="font-weight-bold"> L </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasL">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasM.length>0">
+              <label class="font-weight-bold"> M </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasM">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasN.length>0">
+              <label class="font-weight-bold"> N </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasN">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasNN.length>0">
+              <label class="font-weight-bold"> Ñ </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasNN">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasO.length>0">
+              <label class="font-weight-bold"> O </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasO">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasP.length>0">
+              <label class="font-weight-bold"> P </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasP">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasQ.length>0">
+              <label class="font-weight-bold"> Q </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasQ">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasR.length>0">
+              <label class="font-weight-bold"> R </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasR">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasS.length>0">
+              <label class="font-weight-bold"> S </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasS">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasT.length>0">
+              <label class="font-weight-bold"> T </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasT">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasU.length>0">
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">U </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasU">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasV.length>0">
+              <label class="font-weight-bold"> V </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasV">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasW.length>0">
+              <label class="font-weight-bold"> W </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasW">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasX.length>0">
+              <label class="font-weight-bold"> X </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasX">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasY.length>0">
+              <label class="font-weight-bold"> Y </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasY">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+            <div class="relative mt-3" *ngIf="listaProyectosCarrerasZ.length>0">
+              <label class="font-weight-bold"> Z </label>
+              <div class="sm:grid grid-cols-4 gap-2">
+
+                <div *ngFor="let carrera of listaProyectosCarrerasZ">
+
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                    <input type="checkbox" id="ca{{carrera.id}}" (change)="toggleCarreras($event.target.checked, carrera.id)">
+                    {{carrera.carrera}}
+                  </label>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <br>
+          <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class=" p-5 pb-1">
+                <div class="   mt-1 font-weight-bold" style="font-size:25px;font-weight: bold; ">
+                  Objetivos de Desarrollo Sostenibles (ODS)
+
+
+                </div>
+                <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="p-5 pt-1 bg-light" style="font-size: 20px;">
+            <div class="sm:grid grid-cols-2 gap-2">
+
+              <div class="relative">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Según la naturaleza del proyecto, ¿a cuál de los siguientes objetivos de la ONU contribuye?
                   </label>
-                                    <select class="input  w-full border mt-2 " id="idObjetivoOnu" [(ngModel)]="proyectoModel.idObjetivoOnu" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " id="idObjetivoOnu" [(ngModel)]="proyectoModel.idObjetivoOnu" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="odss.id" *ngFor="let odss of ods">{{odss.odSstring}} </option>
                   </select>
-                                </div>
-                            </div>
+                </div>
+              </div>
 
-                            <div class="relative mt-2" style="display: none;">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+              <div class="relative mt-2" style="display: none;">
+                <div>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Periodo
                   </label>
-                                    <input type="text" class="input  w-full border mt-2 " value="{{periodo}}" disabled>
+                  <input type="text" class="input  w-full border mt-2 " value="{{periodo}}" disabled>
 
-                                </div>
-                            </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <br>
+
+          <!-- <div class="mt-1 p-5  bg-ligh" style="font-size: 20px;">
+                <div class="sm:grid grid-cols-4 gap-2">
+                    <div class="relative mt-3">
+                        <div>
+                            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Campus:</label>
+                            <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idUniversidad" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="universidad.id" *ngFor="let universidad of universidades">{{universidad.universidad}}</option>
+          </select>
+                        </div>
+
+                    </div>
+                    <div class="relative mt-3" style="display: none;">
+                        <div>
+                            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Estado:</label>
+                            <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idEstadoProyecto" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="estadoProyecto.id" *ngFor="let estadoProyecto of estadosProyectos">{{estadoProyecto.estadoProyecto}}</option>
+          </select>
+                        </div>
+                    </div>
+                    <div class="relative mt-3">
+                        <div>
+                            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Observaciones:</label>
+                            <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.observaciones" [ngModelOptions]="{standalone: true}" required>
 
                         </div>
                     </div>
-                    <br>
-
-                    <!-- <div class="mt-1 p-5  bg-ligh" style="font-size: 20px;">
-                        <div class="sm:grid grid-cols-4 gap-2">
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Campus:</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idUniversidad" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="universidad.id" *ngFor="let universidad of universidades">{{universidad.universidad}}</option>
-                  </select>
-                                </div>
-
-                            </div>
-                            <div class="relative mt-3" style="display: none;">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Estado:</label>
-                                    <select class="input  w-full border mt-2 " [(ngModel)]="proyectoModel.idEstadoProyecto" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="estadoProyecto.id" *ngFor="let estadoProyecto of estadosProyectos">{{estadoProyecto.estadoProyecto}}</option>
-                  </select>
-                                </div>
-                            </div>
-                            <div class="relative mt-3">
-                                <div>
-                                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Observaciones:</label>
-                                    <input type="text" class="input  w-full border mt-2 " placeholder="" [(ngModel)]="proyectoModel.observaciones" [ngModelOptions]="{standalone: true}" required>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <br>
-
                 </div>
+            </div> -->
+          <br>
 
-                <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-                    <h2 class="text-lg font-medium mr-auto">
-                        <!--Agregar Proyecto-->
-                    </h2>
-                    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                        <a routerLink="/dashboard" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
-                        <button (click)="create()" class="button text-white mr-2" style="background-color:#FF8800;" id="gg">Guardar</button>
-                    </div>
-                </div>
-                <br><br>
-            </form>
         </div>
+
+        <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+          <h2 class="text-lg font-medium mr-auto">
+            <!--Agregar Proyecto-->
+          </h2>
+          <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <a routerLink="/dashboard" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+            <button (click)="create()" class="button text-white mr-2" style="background-color:#FF8800;" id="gg">Guardar</button>
+          </div>
+        </div>
+        <br><br>
+      </form>
+
     </div>
 
-    <!-- END: FORM -->
+  </div>
+
+
+
+  <!-- END: FORM -->
 </div>
 <!-- END: Content -->
-

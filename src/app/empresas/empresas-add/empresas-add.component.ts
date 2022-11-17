@@ -25,6 +25,7 @@ export class EmpresasAddComponent implements OnInit {
   public areas: AreaAccion[] = [];
   public rubros: RubroEmpresa[] = [];
   public universidades: Universidad[] = [];
+  public universidades2: Universidad[] = [];
   public tipo: TipoEmpresa[] = [];
 
   public vicerectorias: vicerrectorias[] = [];
@@ -69,6 +70,7 @@ this.responsablemodel.externa=this.cambio;
     this.obtenerAreas();
     this.obtenerRubros();
     this.obtenerUniversidades();
+    this.obtenerUniversidades2();
     this.obtenerTipo();
     this.obtenerGiro();
     this.obtenerClasificacion();
@@ -276,6 +278,11 @@ listapaist.forEach(el => {
     return this.organizacionService
       .getRubros()
       .subscribe((rubros: RubroEmpresa[]) => this.rubros = rubros );
+  }
+  obtenerUniversidades2() {
+    return this.organizacionService
+      .getUniversidades2()
+      .subscribe((universidades: Universidad[]) => this.universidades2 = universidades );
   }
   obtenerUniversidades() {
     return this.organizacionService

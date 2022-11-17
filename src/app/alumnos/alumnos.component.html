@@ -25,47 +25,61 @@
                 </div>
                 <!-- BEGIN: General Report -->
                 <div class="col-span-12 mt-8">
-                    <div class="  " (click)="mostrarmodal()"> <i data-feather="alert-circle" class="w-8 h-8 " style="float: right;  cursor:pointer;
-                        color:#FF8800"></i> </div>
-                    <br><br>
-                    <div class="" *ngIf="alumnos.length==0 ">
-                        <div class="  ">
-
-                            <div class="box p-5 zoom-in">
-
-                                <div class="text center" align="center">
-                                    <div class="text-base  text-center font-bold  mt-1">Sin alumnos registrado</div>
-
-                                </div>
-
-
-
-                            </div>
-                            <br>
-                        </div>
+                  <div class="  " (click)="mostrarmodal()">
+                    <i data-feather="alert-circle" class="w-8 h-8 " style="float: right;  cursor:pointer;
+                        color:#FF8800"></i>
+                  </div>
+                  <br><br>
+                  <div class="grid grid-cols-12 gap-6 p-5 border-b border-gray-200 dark:border-dark-5">
+                    <h2 class="xl:col-span-10 lg:col-span-10 sm:col-span-12 col-span-12 font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; ">
+                    </h2>
+                    <div class="xl:col-span-2 lg:col-span-2 sm:col-span-6 col-span-12">
+                      <select (change)="cambiaPeriodo()" class="input  w-full border" [(ngModel)]="idPeriodo" id="idPeriodo" name="idPeriodo">
+                        <option [ngValue]="periodo.id" *ngFor="let periodo of periodos" [selected]="periodo.id==idPeriodo">
+                          {{ periodo.descripcion }}
+                        </option>
+                      </select>
                     </div>
+                  </div>
+                  <br><br>
+                  <div class="" *ngIf="alumnos.length==0 ">
+                    <div class="  ">
+
+                      <div class="box p-5 zoom-in">
+
+                        <div class="text center" align="center">
+                          <div class="text-base  text-center font-bold  mt-1">Sin alumnos registrado</div>
+
+                        </div>
 
 
 
-                    <div class="grid grid-cols-12 gap-6" *ngIf="alumnos.length>0 ">
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
-                            <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
-                                    Nuevos
-                                </h2>
+                      </div>
+                      <br>
+                    </div>
+                  </div>
 
 
-                            </div>
-                            <br>
-                            <hr style="color: #000000;" noshade="noshade" size="2" /><br>
-                            <div *ngFor="let a of alumnos">
 
-                                <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==1">
-                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
-                                        <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
+                  <div class="grid grid-cols-12 gap-6" *ngIf="alumnos.length>0 ">
+                    <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
+                      <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
+                          Nuevos
+                        </h2>
 
-                                            <div class="flex">
-                                                <div class="text-white" style="	width: 2rem;
+
+                      </div>
+                      <br>
+                      <hr style="color: #000000;" noshade="noshade" size="2" /><br>
+                      <div *ngFor="let a of alumnos">
+
+                        <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==1">
+                          <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
+                            <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
+
+                              <div class="flex">
+                                <div class="text-white" style="	width: 2rem;
                                                 height: 2rem;
                                                 border-radius: 50%;
                                                 background: rgb(59, 59, 59);
@@ -75,49 +89,49 @@
                                                 text-align: center;
                                               "> {{a.alumno.substring(0,1)}}</div>
 
-                                                <div class="ml-auto">
-                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
+                                <div class="ml-auto">
+                                  <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
 
-                                                </div>
-
-                                            </div>
-
-
-                                            <div class="">
-                                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
-                                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
-
-
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </a>
-                                    <br>
                                 </div>
+
+                              </div>
+
+
+                              <div class="">
+                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
+
+
+
+
+                              </div>
+
+
                             </div>
+                          </a>
+                          <br>
                         </div>
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
+                      </div>
+                    </div>
+                    <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
 
-                            <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
-                                    Entrevistados
-                                </h2>
+                      <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
+                          Entrevistados
+                        </h2>
 
-                            </div>
-                            <br>
-                            <hr style="color: #000000;" noshade="noshade" size="2" /><br>  
-                            <div *ngFor="let a of alumnos">
+                      </div>
+                      <br>
+                      <hr style="color: #000000;" noshade="noshade" size="2" /><br>
+                      <div *ngFor="let a of alumnos">
 
-                                <div class=" px-1 py-1 flex-1" *ngIf="a.idEstado==2">
-                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
-                                        <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
+                        <div class=" px-1 py-1 flex-1" *ngIf="a.idEstado==2">
+                          <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
+                            <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
 
-                                            <div class="flex">
-                                                <div class="text-white" style="	width: 2rem;
+                              <div class="flex">
+                                <div class="text-white" style="	width: 2rem;
                                                 height: 2rem;
                                                 border-radius: 50%;
                                                 background: rgb(59, 59, 59);
@@ -127,153 +141,153 @@
                                                 text-align: center;
                                               "> {{a.alumno.substring(0,1)}}</div>
 
-                                                <div class="ml-auto">
-                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
+                                <div class="ml-auto">
+                                  <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
 
-                                                </div>
-
-                                            </div>
-
-
-                                            <div class="">
-                                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
-
-                                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </a>
-                                    <br>
                                 </div>
-                            </div>
 
+                              </div>
+
+
+                              <div class="">
+                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
+
+
+                              </div>
+
+
+                            </div>
+                          </a>
+                          <br>
                         </div>
-
-
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
-                            <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
-                                    Aceptados
-                                </h2>
-                            </div>
-                            <br>
-                            <hr style="color: #000000;" noshade="noshade" size="2" /><br>
-                            <div *ngFor="let a of alumnos">
-
-                                <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==3">
-                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
-                                        <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
-
-                                            <div class="flex">
-                                                <div class="text-white" style="	width: 2rem;
-                                                height: 2rem;
-                                                border-radius: 50%;
-                                                background: rgb(59, 59, 59);
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                                text-align: center;
-                                              "> {{a.alumno.substring(0,1)}}</div>
-
-                                                <div class="ml-auto">
-                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
-
-                                                </div>
-
-                                            </div>
-
-
-                                            <div class="">
-                                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-                                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
-
-                                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
-
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </a>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
-
-                            <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
-                                    Inscritos
-                                </h2>
-
-                            </div>
-                            <br>
-                            <hr style="color: #000000;" noshade="noshade" size="2" /><br>
-                            <div *ngFor="let a of alumnos">
-
-                                <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==4">
-                                    <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
-                                        <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
-
-                                            <div class="flex">
-                                                <div class="text-white" style="	width: 2rem;
-                                                height: 2rem;
-                                                border-radius: 50%;
-                                                background: rgb(59, 59, 59);
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                                text-align: center;
-                                              "> {{a.alumno.substring(0,1)}}</div>
-
-                                                <div class="ml-auto">
-                                                    <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="flex">
-                                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
-
-
-                                                <div class="ml-auto">
-                                                    <div class="font-bold leading-8 ">Horas: {{a.horasRegistradas}} </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="">
-                                                <div class=" text-gray-600 ">Carrera: {{a.carrera}}</div>
-
-                                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
-
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </a>
-                                    <br>
-                                </div>
-                            </div>
-
-                        </div>
-
+                      </div>
 
                     </div>
 
 
+                    <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y ">
+                      <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
+                          Aceptados
+                        </h2>
+                      </div>
+                      <br>
+                      <hr style="color: #000000;" noshade="noshade" size="2" /><br>
+                      <div *ngFor="let a of alumnos">
 
-                    <!-- END: Convocatorias Abiertas -->
+                        <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==3">
+                          <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
+                            <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
+
+                              <div class="flex">
+                                <div class="text-white" style="	width: 2rem;
+                                                height: 2rem;
+                                                border-radius: 50%;
+                                                background: rgb(59, 59, 59);
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                text-align: center;
+                                              "> {{a.alumno.substring(0,1)}}</div>
+
+                                <div class="ml-auto">
+                                  <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
+
+                                </div>
+
+                              </div>
+
+
+                              <div class="">
+                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+                                <div class=" text-gray-600 mt-1">Carrera: {{a.carrera}}</div>
+
+                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
+
+
+
+                              </div>
+
+
+                            </div>
+                          </a>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-span-12 sm:col-span-4 xl:col-span-3 intro-y">
+
+                      <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5" style="font-weight: bold; font-size:25px;">
+                          Inscritos
+                        </h2>
+
+                      </div>
+                      <br>
+                      <hr style="color: #000000;" noshade="noshade" size="2" /><br>
+                      <div *ngFor="let a of alumnos">
+
+                        <div class=" px-1 py-1  flex-1 " *ngIf="a.idEstado==4">
+                          <a (click)="veralumno(a.id,a.idAlumno,a.idEstado,a.idProyecto,a.fechaInicioInstitucion);">
+                            <div class="box bg-light p-2 zoom-in " style="background: rgb(250, 250, 250);">
+
+                              <div class="flex">
+                                <div class="text-white" style="	width: 2rem;
+                                                height: 2rem;
+                                                border-radius: 50%;
+                                                background: rgb(59, 59, 59);
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                text-align: center;
+                                              "> {{a.alumno.substring(0,1)}}</div>
+
+                                <div class="ml-auto">
+                                  <div class="text-base  font-bold  mt-1">{{a.alumno}}</div>
+
+                                </div>
+
+                              </div>
+
+                              <div class="flex">
+                                <div class=" text-gray-600 mt-1">Campus: {{a.universidad}}</div>
+
+
+                                <div class="ml-auto">
+                                  <div class="font-bold leading-8 ">Horas: {{a.horasRegistradas}} </div>
+
+                                </div>
+                              </div>
+                              <div class="">
+                                <div class=" text-gray-600 ">Carrera: {{a.carrera}}</div>
+
+                                <div class=" text-gray-600 mt-1">Proyecto: {{a.proyectoNombre}}</div>
+
+
+
+                              </div>
+
+
+                            </div>
+                          </a>
+                          <br>
+                        </div>
+                      </div>
+
+                    </div>
+
+
+                  </div>
+
+
+
+                  <!-- END: Convocatorias Abiertas -->
 
 
                 </div>

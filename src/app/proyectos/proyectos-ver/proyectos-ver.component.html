@@ -53,14 +53,18 @@
                     <div class="grid grid-cols-12 gap-6 mt-5">
 
                         <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                            <div class=" p-5">
-                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
+                          <div class=" p-5">
+                            <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
 
-                                    ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?
-                                </div>
+                              Esquema bajo el cual los alumnos pueden realizar la prestación de su servicio social en este proyecto
 
-                                <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.modalidadDistancia}}</div>
                             </div>
+                            
+                            <div *ngIf="proyectoModel.modalidadDistancia=='presencial'" class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> Presencial </div>
+                            <div *ngIf="proyectoModel.modalidadDistancia=='distancia'" class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> A distancia (virtual)</div>
+                            <div *ngIf="proyectoModel.modalidadDistancia=='hibrido'" class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> Híbrido (presencial y a distancia)</div>
+
+                          </div>
                         </div>
 
                         <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
@@ -121,10 +125,18 @@
 
                         <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
                             <div class=" p-5">
-                                <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
-                                    Plazas de Servicio Social disponibles para el proyecto
-                                </div>
+                              <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
+                                Plazas de Servicio Social solicitadas para el proyecto
+                              </div>
                                 <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.plazas}}</div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+                            <div class=" p-5">
+                              <div class=" text-center  mt-1 font-weight-bold" style="font-size:25px; color:#FF8800" align="center">
+                                Plazas de Servicio Social autorizadas para el proyecto
+                              </div>
+                              <div class=" font-bold leading-8 mt-6" style="font-size:20px; " align="center"> {{proyectoModel.plazasAutorizadas}}</div>
                             </div>
                         </div>
                         <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
@@ -449,7 +461,7 @@
                                                 <th class="border-b-2 text-center whitespace-no-wrap">Campus</th>
                                                 <th class="border-b-2 text-center whitespace-no-wrap">Estatus</th>
                                                 <th class="border-b-2 text-center whitespace-no-wrap">Fecha de ingreso</th>
-                                                <th class="border-b-2 text-center whitespace-no-wrap">Acción</th>
+                                                <!--<th class="border-b-2 text-center whitespace-no-wrap">Acción</th>-->
                                                 <th class="border-b-2 text-center whitespace-no-wrap">Detalle</th>
 
 
@@ -486,6 +498,7 @@
                                                     <div class="ext-base text-xs whitespace-no-wrap" align="center" *ngIf="alumno.fechaInicioInstitucion!=null && alumno.idEstado==4 "> {{alumno.fechaInicioInstitucion}}</div>
 
                                                 </td>
+                                              <!--
                                                 <td *ngIf="alumno.idEstado<4 " style="background: rgb(250, 250, 250);">
                                                     <div class="ext-base text-xs whitespace-no-wrap" align="center"> <a (click)="mostraractualizarestado(alumno.idAlumno)" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px;background-color: #FF8800; " class="button text-white  mr-2" >Cambiar Estado</a></div>
 
@@ -496,12 +509,13 @@
                                                 </td>
                                                 <td *ngIf="alumno.idEstado>4" style="background: rgb(250, 250, 250);">
                                                     <div class="font-medium flex sm:justify-center items-center">Finalizado</div>
-                                                </td>
+                                                </td>-->
                                                 <td class="w-5 border-b" style="background: rgb(250, 250, 250);">
                                                     <a (click)="veralumno(alumno.id,alumno.idAlumno,alumno.idEstado,alumno.idProyecto,alumno.fechaInicioInstitucion);" style="margin-right: auto; border-radius: 35px; text-align:justify; font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Ver
                                                     </a>
                                                 </td>
-                                                <div class="modal" id="mostareditaralumno-{{alumno.idAlumno}}">
+
+                                              <!--<div class="modal" id="mostareditaralumno-{{alumno.idAlumno}}">
                                                     <div class="modal__content">
                                                         <form #form="ngForm" (ngSubmit)="cambiarestatusalumno(alumno.idEstado)">
                                                             <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
@@ -533,7 +547,7 @@
 
                                                     </div>
                                                 </div>
-
+                                                -->
                                                 <div class="modal" id="mostrarfecha-{{alumno.id}}">
                                                     <div class="modal__content">
                                                         <form #form="ngForm" (ngSubmit)="cambiarfecha(alumno.id)">

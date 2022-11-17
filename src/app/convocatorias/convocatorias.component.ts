@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import * as Feather from 'feather-icons';
 import { ConvocatoriaServices } from '../services/convocatoria.service';
 import { Convocatoria,Tipo } from "../models/convocatoria"
+import { SessionService } from '../services/session.service';
 declare var $: any;
 
 @Component({
@@ -14,7 +15,8 @@ export class ConvocatoriasComponent implements OnInit {
 
   dataTable: any;
   public convocatorias:Convocatoria [] = [ ];
-  constructor(private convocatoriaService: ConvocatoriaServices) { }
+  constructor(private convocatoriaService: ConvocatoriaServices,
+    public session: SessionService) { }
   public tipoModel = new Tipo(1);
 
   ngOnInit(): void {
@@ -32,8 +34,8 @@ export class ConvocatoriasComponent implements OnInit {
   }
   obtenerConvocatoria(tipo) {
     let model = this.tipoModel;
-    model.tipo=tipo;
-    this.convocatoriaService.getConvocatoriatipo(model).subscribe((res: any[])=>{
+    model.tipo = tipo;
+    this.convocatoriaService.getConvocatoriatipo(model, this.session.getPeriodo(), this.session.getCampus()).subscribe((res: any[]) => {
 this.convocatorias=res;
 
 })

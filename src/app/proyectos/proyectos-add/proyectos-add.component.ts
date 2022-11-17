@@ -10,6 +10,7 @@ import { ConvocatoriaServices } from '../../services/convocatoria.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { Subject } from 'rxjs';
 import { SessionService } from '../../services/session.service';
 import {
   MAT_MOMENT_DATE_FORMATS,
@@ -61,7 +62,9 @@ export const MY_FORMATS = {
 })
 
 export class ProyectosAddComponent implements OnInit {
-  
+  dtOptions: DataTables.Settings = {};
+  dtTrigger = new Subject<any>();
+  cargaTabla: boolean = true;
 
    public mensajevalidacion="";
   public d: Date = new Date(); // but the type can also be inferred from "new Date()" already
@@ -97,6 +100,8 @@ export class ProyectosAddComponent implements OnInit {
   public listaProyectosCarrerasY = new Array<ProyectosCarreras>();
   public listaProyectosCarrerasZ = new Array<ProyectosCarreras>();
 
+  public proyectos: Proyecto[] = [];
+
   public proyectoModel = new Proyecto(0,"", "", "", 0, "", "", "", "", "", "", "", "", 0, "", "", "", "", false,false, false, false, false, false, false, "", "", "", 0, "", 0, "", 0,"", 1, "", "", "", true, 0, this.listaProyectosCompetencias, this.listaProyectosCarreras);
 public idOrganizacion="";
 public Organizacion="";
@@ -125,7 +130,7 @@ public idPeriodorecibido="";
 
 this.idOrganizacion= this.session.getToken();
 this.Organizacion= this.session.getnombre();
-console.log(this.Organizacion);
+//console.log(this.Organizacion);
 this.idPeriodorecibido = <any>(this.activatedRoute.snapshot.paramMap.get("id"));
     
     this.obtenerOrganizaciones();
@@ -139,10 +144,10 @@ this.idPeriodorecibido = <any>(this.activatedRoute.snapshot.paramMap.get("id"));
 
     this.proyectoModel.horas = 240;
     this.proyectoModel.idUniversidad = 1;
-
+    //this.cargaListaProyectos();
   }
   show(){
-console.log("adddd");
+    //console.log("adddd");
     $( "#datepicker" ).datepicker('show'); //Show on click of button
 
   }
@@ -171,137 +176,137 @@ console.log("adddd");
 
         if(carreras[i]['carrera'].substr(0,1)=="A"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasA.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="B"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasB.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="C"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasC.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="D"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasD.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="E"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasE.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="F"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasF.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="G"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasG.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="H"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasH.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="I"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasI.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="J"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasJ.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="K"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasK.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="L"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasL.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="M"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasM.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="N"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasN.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="Ñ"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasNN.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="O"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasO.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="P"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasP.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="Q"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasQ.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="R"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasR.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="S"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasS.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="T"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasT.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="U"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasU.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="V"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasV.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="W"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasW.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="X"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasX.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="Y"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasY.push(carreras[i]);
         }
         if(carreras[i]['carrera'].substr(0,1)=="Z"){
 
-          console.log(carreras[i]['carrera'].substr(0,1));
+          //console.log(carreras[i]['carrera'].substr(0,1));
 this.listaProyectosCarrerasZ.push(carreras[i]);
         }
       }
@@ -319,12 +324,12 @@ this.listaProyectosCarrerasZ.push(carreras[i]);
   obtenerPeriodos() {
     return this.convocatoriaService.getPeriodo()
       .subscribe((res: any[])=>{
-console.log(res);
+//console.log(res);
 for(var i=0;i<res.length;i++){
 
   if((res[i]['id'])=this.idPeriodorecibido){
     this.periodos = res[i];
-console.log(this.periodos);
+//console.log(this.periodos);
     this.periodo=res[i]['periodo'];
   }
 }
@@ -380,7 +385,7 @@ console.log(this.periodos);
   
   
   toggleDias(checked, id) {
-    console.log(checked);
+    //console.log(checked);
 
     if (id == 'lunes') {
       if (checked) {
@@ -426,7 +431,7 @@ console.log(this.periodos);
       }
     }
 
-    console.log(this.proyectoModel);
+    //console.log(this.proyectoModel);
   }
   
   create() {
@@ -453,7 +458,7 @@ console.log(this.periodos);
     model.activo = true;
 model.idPeriodo=Number(<number><any>(this.activatedRoute.snapshot.paramMap.get("id")));
 model.idOrganizacion= Number(this.idOrganizacion);
-    console.log(model)
+    //console.log(model)
     if (model.idOrganizacion == 0) {
       this.mensajevalidacion = "No puedes dejar el campo de institucion vacío"
       $('#validacion').modal('show');
@@ -580,7 +585,7 @@ model.idOrganizacion= Number(this.idOrganizacion);
       (<HTMLInputElement> document.getElementById("gg")).disabled = true;
       document.getElementById("carg").style.display = "block";
 
-console.log(model);
+//console.log(model);
       this.proyectoService.create(model).subscribe((res: any) => {
         $('#success-modal-preview').modal('show');
         document.getElementById("carg").style.display = "none";
@@ -619,5 +624,43 @@ console.log(model);
     }
   }
 
+  cargaListaProyectos() {
+    $('#modal-lista-proyectos').modal('show');
+    
+
+    if (this.cargaTabla) {
+      this.cargaTabla = false;
+      this.proyectoService.getProyectoEmpresa(this.idOrganizacion, 0).subscribe((res: any[]) => {
+        this.proyectos = res;
+
+          this.dtTrigger.next();
+        
+      });
+    }
+  }
+  cargaInfoProyecto(proyectoAux: Proyecto) {
+    console.log(proyectoAux);
+    this.proyectoModel.proyecto = proyectoAux.proyecto;
+    this.proyectoModel.descripcion = proyectoAux.descripcion;
+    this.proyectoModel.nombreResponsable = proyectoAux.nombreResponsable;
+    this.proyectoModel.puesto = proyectoAux.puesto;
+    this.proyectoModel.area = proyectoAux.area;
+    this.proyectoModel.correoResponsable = proyectoAux.correoResponsable;
+    this.proyectoModel.telefono = proyectoAux.telefono;
+    this.proyectoModel.modalidadDistancia = proyectoAux.modalidadDistancia;
+    this.proyectoModel.justificacionImpactoSocial = proyectoAux.justificacionImpactoSocial;
+    this.proyectoModel.objetivo = proyectoAux.objetivo;
+    this.proyectoModel.observaciones = proyectoAux.observaciones;
+    this.proyectoModel.capacitacion = proyectoAux.capacitacion;
+    this.proyectoModel.razonCapacitacion = proyectoAux.razonCapacitacion;
+    this.proyectoModel.rolPrestador = proyectoAux.rolPrestador;
+    this.proyectoModel.responsabilidades = proyectoAux.responsabilidades;
+    this.proyectoModel.idObjetivoOnu = proyectoAux.idObjetivoOnu;
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+
+  }
 }
 

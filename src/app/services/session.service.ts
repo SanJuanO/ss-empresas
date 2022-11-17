@@ -94,4 +94,18 @@ if(txt=="1"){
   setestado(token) {
     this.cookies.set("idEstado", token);
   }
+
+  setPeriodo(idPeriodo) {
+    this.cookies.set("periodo", idPeriodo);
+  }
+  getPeriodo() {
+    return this.cookies.get("periodo");
+  }
+
+  setCampus(campus) {
+    this.cookies.set("campus", campus);
+  }
+  getCampus() {
+    return this.cookies.get("campus");
+  } 
 }
